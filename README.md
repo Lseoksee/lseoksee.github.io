@@ -1,18 +1,12 @@
-# Quartz v4
+# My-Study-WebSite
+Obsidian 으로 스터디 한것들을 웹으로 배포합니다
 
-> “[One] who works with the door open gets all kinds of interruptions, but [they] also occasionally gets clues as to what the world is and what might be important.” — Richard Hamming
+- 템플릿: [Quartz v4](https://github.com/jackyzha0/quartz) 
+- 공식문서: https://jzhao.xyz/posts/networked-thought
 
-Quartz is a set of tools that helps you publish your [digital garden](https://jzhao.xyz/posts/networked-thought) and notes as a website for free.
-Quartz v4 features a from-the-ground rewrite focusing on end-user extensibility and ease-of-use.
 
-🔗 Read the documentation and get started: https://quartz.jzhao.xyz/
-
-[Join the Discord Community](https://discord.gg/cRFFHYye7t)
-
-## Sponsors
-
-<p align="center">
-  <a href="https://github.com/sponsors/jackyzha0">
-    <img src="https://cdn.jsdelivr.net/gh/jackyzha0/jackyzha0/sponsorkit/sponsors.svg" />
-  </a>
-</p>
+## 배포 구조
+- `content` 폴더가 실제 작성되는 markdown 인데 
+- `gitmodules` 로 해당 폴더를 My-Study-File 리포지토리와 symbolic link 느낌으로 엮음 
+- `My-Study-File` 리포지토리에 Push 할때 마다 Github Actions Workflows 시작
+- Workflows에서 Github Rest API 로  `My-Study-WebSite`의 `Deploy` workflows 를 시작하게 됨
