@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ko"><head><title>네트워크 프로그래밍 중간고사 정리</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM Plex Mono&amp;family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta property="og:title" content="네트워크 프로그래밍 중간고사 정리"/><meta property="og:description" content="인터넷 구성요소 호스트, 라우터, 통신 프로토콜 패킷 전송 과정 프로그램 → TCP → IP → 이더넷 TCP 와 UDP TCP 연결 설정 후 통신 가능 일대일 통신 데이터 경계 구분x (바이트 스트림 서비스) UDP 연결 설정 없이 통신가능 일대일, 일대다 상관없음 데이터 경계 구분 소켓생성 socket(IP 타입, TCP|UDP, 0); ip 타입 AF_INET: ..."/><meta property="og:image" content="https://quartz.jzhao.xyz/static/og-image.png"/><meta property="og:width" content="1200"/><meta property="og:height" content="675"/><link rel="icon" href="../../../static/icon.png"/><meta name="description" content="인터넷 구성요소 호스트, 라우터, 통신 프로토콜 패킷 전송 과정 프로그램 → TCP → IP → 이더넷 TCP 와 UDP TCP 연결 설정 후 통신 가능 일대일 통신 데이터 경계 구분x (바이트 스트림 서비스) UDP 연결 설정 없이 통신가능 일대일, 일대다 상관없음 데이터 경계 구분 소켓생성 socket(IP 타입, TCP|UDP, 0); ip 타입 AF_INET: ..."/><meta name="generator" content="Quartz"/><link href="../../../index.css" rel="stylesheet" type="text/css" spa-preserve/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../../../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../../../static/contentIndex.json").then(data => data.json())</script></head><body data-slug="시험-정리/2-2/네트워크-프로그래밍-중간/네트워크-프로그래밍-중간고사-정리"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../../..">안녕하세요 저는</a></h2><div class="spacer mobile-only"></div><div class="search"><button class="search-button" id="search-button"><p>검색</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div id="search-container"><div id="search-space"><input autocomplete="off" id="search-bar" name="search" type="text" aria-label="검색어를 입력하세요" placeholder="검색어를 입력하세요"/><div id="search-layout" data-preview="true"></div></div></div></div><button class="darkmode" id="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="다크 모드"><title>다크 모드</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="라이트 모드"><title>라이트 모드</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button><div class="explorer desktop-only"><button type="button" id="explorer" data-behavior="collapse" data-collapsed="collapsed" data-savestate="true" data-tree="[{&quot;path&quot;:&quot;CLI-프로그램-명령어&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;강의필기&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;개발-언어&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;리눅스&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;스터디&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/2-2&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/2-2/교양-파이썬-기말&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/2-2/네트워크-프로그래밍-중간&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/2-2/자료구조-기말&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/2-2/자료구조-중간&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/기말---딥러닝-프로그래밍&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/기말---알고리즘&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/기말---인공지능-프로그래밍-기말&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/중간---Iot&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/중간---딥러닝-프로그래밍&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/중간---알고리즘&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/중간---인공지능-프로그래밍-중간&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;유용한-것들-모음&quot;,&quot;collapsed&quot;:true}]" aria-controls="explorer-content" aria-expanded="false"><h2>탐색기</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-content"><ul class="overflow" id="explorer-ul"><li><div class="folder-outer open"><ul style="padding-left:0;" class="content" data-folderul><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="CLI-프로그램-명령어"><button class="folder-button"><span class="folder-title">CLI 프로그램 명령어</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="CLI-프로그램-명령어"><li><a href="../../../CLI-프로그램-명령어/Conda-명령어-정리" data-for="CLI-프로그램-명령어/Conda-명령어-정리">Conda 명령어 정리</a></li><li><a href="../../../CLI-프로그램-명령어/Docker-명령어-정리" data-for="CLI-프로그램-명령어/Docker-명령어-정리">Docker 명령어 정리</a></li><li><a href="../../../CLI-프로그램-명령어/Git-명령어-정리" data-for="CLI-프로그램-명령어/Git-명령어-정리">Git 명령어 정리</a></li><li><a href="../../../CLI-프로그램-명령어/MySql-명령어-정리" data-for="CLI-프로그램-명령어/MySql-명령어-정리">MySql 명령어 정리</a></li><li><a href="../../../CLI-프로그램-명령어/pip-명령어-정리" data-for="CLI-프로그램-명령어/pip-명령어-정리">pip 명령어 정리</a></li><li><a href="../../../CLI-프로그램-명령어/Pnpm-명령어-정리" data-for="CLI-프로그램-명령어/Pnpm-명령어-정리">Pnpm 명령어 정리</a></li><li><a href="../../../CLI-프로그램-명령어/Poetry-명령어-정리" data-for="CLI-프로그램-명령어/Poetry-명령어-정리">Poetry 명령어 정리</a></li></ul></div></li><li><div class="folder-outer "><ul style="padding-left:0;" class="content" data-folderul></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="강의필기"><button class="folder-button"><span class="folder-title">강의필기</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="강의필기"><li><a href="../../../강의필기/기계학습프로그래밍" data-for="강의필기/기계학습프로그래밍">기계학습프로그래밍</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="개발-언어"><button class="folder-button"><span class="folder-title">개발 언어</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="개발-언어"><li><a href="../../../개발-언어/Java" data-for="개발-언어/Java">Java</a></li><li><a href="../../../개발-언어/Python" data-for="개발-언어/Python">Python</a></li><li><a href="../../../개발-언어/Shell-Script" data-for="개발-언어/Shell-Script">Shell Script</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="리눅스"><button class="folder-button"><span class="folder-title">리눅스</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="리눅스"><li><a href="../../../리눅스/Vim-사용법" data-for="리눅스/Vim-사용법">Vim 사용법</a></li><li><a href="../../../리눅스/단축키" data-for="리눅스/단축키">단축키</a></li><li><a href="../../../리눅스/리눅스-명령어-정리" data-for="리눅스/리눅스-명령어-정리">리눅스 명령어 정리</a></li><li><a href="../../../리눅스/패키지-설치" data-for="리눅스/패키지-설치">패키지 설치</a></li><li><a href="../../../리눅스/프로그램-암호" data-for="리눅스/프로그램-암호">프로그램 암호</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="스터디"><button class="folder-button"><span class="folder-title">스터디</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="스터디"><li><a href="../../../스터디/AWS-스터디--and--프로젝트" data-for="스터디/AWS-스터디--and--프로젝트">AWS 스터디 &amp; 프로젝트</a></li><li><a href="../../../스터디/CORS-(Cross-Origin-Resource-Sharing)" data-for="스터디/CORS-(Cross-Origin-Resource-Sharing)">CORS (Cross-Origin Resource Sharing)</a></li><li><a href="../../../스터디/Doker-스터디" data-for="스터디/Doker-스터디">Doker 스터디</a></li><li><a href="../../../스터디/Express.js-정리" data-for="스터디/Express.js-정리">Express.js 정리</a></li><li><a href="../../../스터디/File-IO" data-for="스터디/File-IO">File IO</a></li><li><a href="../../../스터디/Git-스터디" data-for="스터디/Git-스터디">Git 스터디</a></li><li><a href="../../../스터디/gRPC-통신" data-for="스터디/gRPC-통신">gRPC 통신</a></li><li><a href="../../../스터디/IPC-통신" data-for="스터디/IPC-통신">IPC 통신</a></li><li><a href="../../../스터디/Kubernetes-(K8S)-스터디" data-for="스터디/Kubernetes-(K8S)-스터디">Kubernetes (K8S) 스터디</a></li><li><a href="../../../스터디/React-Native-정리" data-for="스터디/React-Native-정리">React-Native 정리</a></li><li><a href="../../../스터디/SSE-(Server-Sent-Event)" data-for="스터디/SSE-(Server-Sent-Event)">SSE (Server Sent Event)</a></li><li><a href="../../../스터디/SSH-(Secure-Shell-Protocol)" data-for="스터디/SSH-(Secure-Shell-Protocol)">SSH (Secure Shell Protocol)</a></li><li><a href="../../../스터디/개발-용어-정리" data-for="스터디/개발-용어-정리">개발 용어 정리</a></li><li><a href="../../../스터디/공개키-암호화" data-for="스터디/공개키-암호화">공개키 암호화</a></li><li><a href="../../../스터디/네트워크-통신" data-for="스터디/네트워크-통신">네트워크 통신</a></li><li><a href="../../../스터디/데이터-베이스-정규화" data-for="스터디/데이터-베이스-정규화">데이터 베이스 정규화</a></li><li><a href="../../../스터디/문자-인코딩" data-for="스터디/문자-인코딩">문자 인코딩</a></li><li><a href="../../../스터디/비동기와-멀티스레드-차이" data-for="스터디/비동기와-멀티스레드-차이">비동기와 멀티스레드 차이</a></li><li><a href="../../../스터디/추후-스터디-할-것들-모음" data-for="스터디/추후-스터디-할-것들-모음">추후 스터디 할 것들 모음</a></li><li><a href="../../../스터디/컴퓨터-수-표현" data-for="스터디/컴퓨터-수-표현">컴퓨터 수 표현</a></li><li><a href="../../../스터디/파일-링크" data-for="스터디/파일-링크">파일 링크</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리"><button class="folder-button"><span class="folder-title">시험 정리</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/2-2"><button class="folder-button"><span class="folder-title">2-2</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/2-2"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/2-2/교양-파이썬-기말"><button class="folder-button"><span class="folder-title">교양 파이썬 기말</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/2-2/교양-파이썬-기말"><li><a href="../../../시험-정리/2-2/교양-파이썬-기말/교양-파이썬-기말" data-for="시험-정리/2-2/교양-파이썬-기말/교양-파이썬-기말">교양 파이썬 기말</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/2-2/네트워크-프로그래밍-중간"><button class="folder-button"><span class="folder-title">네트워크 프로그래밍 중간</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/2-2/네트워크-프로그래밍-중간"><li><a href="../../../시험-정리/2-2/네트워크-프로그래밍-중간/네트워크-프로그래밍-중간고사-정리" data-for="시험-정리/2-2/네트워크-프로그래밍-중간/네트워크-프로그래밍-중간고사-정리">네트워크 프로그래밍 중간고사 정리</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/2-2/자료구조-기말"><button class="folder-button"><span class="folder-title">자료구조 기말</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/2-2/자료구조-기말"><li><a href="../../../시험-정리/2-2/자료구조-기말/자료구조-기말" data-for="시험-정리/2-2/자료구조-기말/자료구조-기말">자료구조 기말</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/2-2/자료구조-중간"><button class="folder-button"><span class="folder-title">자료구조 중간</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/2-2/자료구조-중간"><li><a href="../../../시험-정리/2-2/자료구조-중간/자료구조-중간-정리" data-for="시험-정리/2-2/자료구조-중간/자료구조-중간-정리">자료구조 중간 정리</a></li></ul></div></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1"><button class="folder-button"><span class="folder-title">3-1</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/기말---딥러닝-프로그래밍"><button class="folder-button"><span class="folder-title">기말 - 딥러닝 프로그래밍</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/기말---딥러닝-프로그래밍"><li><a href="../../../시험-정리/3-1/기말---딥러닝-프로그래밍/딥러닝-프로그래밍-기말" data-for="시험-정리/3-1/기말---딥러닝-프로그래밍/딥러닝-프로그래밍-기말">딥러닝 프로그래밍 기말</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/기말---알고리즘"><button class="folder-button"><span class="folder-title">기말 - 알고리즘</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/기말---알고리즘"><li><a href="../../../시험-정리/3-1/기말---알고리즘/알고리즘-기말" data-for="시험-정리/3-1/기말---알고리즘/알고리즘-기말">알고리즘 기말</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/기말---인공지능-프로그래밍-기말"><button class="folder-button"><span class="folder-title">기말 - 인공지능 프로그래밍 기말</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/기말---인공지능-프로그래밍-기말"><li><a href="../../../시험-정리/3-1/기말---인공지능-프로그래밍-기말/인공지능-프로그래밍-기말" data-for="시험-정리/3-1/기말---인공지능-프로그래밍-기말/인공지능-프로그래밍-기말">인공지능 프로그래밍 기말</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/중간---Iot"><button class="folder-button"><span class="folder-title">중간 - Iot</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/중간---Iot"><li><a href="../../../시험-정리/3-1/중간---Iot/Iot-중간" data-for="시험-정리/3-1/중간---Iot/Iot-중간">Iot 중간</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/중간---딥러닝-프로그래밍"><button class="folder-button"><span class="folder-title">중간 - 딥러닝 프로그래밍</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/중간---딥러닝-프로그래밍"><li><a href="../../../시험-정리/3-1/중간---딥러닝-프로그래밍/딥러닝-프로그래밍-중간" data-for="시험-정리/3-1/중간---딥러닝-프로그래밍/딥러닝-프로그래밍-중간">딥러닝 프로그래밍 중간</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/중간---알고리즘"><button class="folder-button"><span class="folder-title">중간 - 알고리즘</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/중간---알고리즘"><li><a href="../../../시험-정리/3-1/중간---알고리즘/알고리즘-중간" data-for="시험-정리/3-1/중간---알고리즘/알고리즘-중간">알고리즘 중간</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/중간---인공지능-프로그래밍-중간"><button class="folder-button"><span class="folder-title">중간 - 인공지능 프로그래밍 중간</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/중간---인공지능-프로그래밍-중간"><li><a href="../../../시험-정리/3-1/중간---인공지능-프로그래밍-중간/인공지능-프로그래밍-중간" data-for="시험-정리/3-1/중간---인공지능-프로그래밍-중간/인공지능-프로그래밍-중간">인공지능 프로그래밍 중간</a></li></ul></div></li></ul></div></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="유용한-것들-모음"><button class="folder-button"><span class="folder-title">유용한 것들 모음</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="유용한-것들-모음"><li><a href="../../../유용한-것들-모음/Apache-Tomcat-관련" data-for="유용한-것들-모음/Apache-Tomcat-관련">Apache Tomcat 관련</a></li><li><a href="../../../유용한-것들-모음/CLI-옵션-국룰" data-for="유용한-것들-모음/CLI-옵션-국룰">CLI 옵션 국룰</a></li><li><a href="../../../유용한-것들-모음/Github-Actions-정리" data-for="유용한-것들-모음/Github-Actions-정리">Github Actions 정리</a></li><li><a href="../../../유용한-것들-모음/Google-API-사용법" data-for="유용한-것들-모음/Google-API-사용법">Google API 사용법</a></li><li><a href="../../../유용한-것들-모음/Google-Colab-세션-유지-방법" data-for="유용한-것들-모음/Google-Colab-세션-유지-방법">Google Colab 세션 유지 방법</a></li><li><a href="../../../유용한-것들-모음/Gradle-스크립트-한글-깨짐-문제-해결" data-for="유용한-것들-모음/Gradle-스크립트-한글-깨짐-문제-해결">Gradle 스크립트 한글 깨짐 문제 해결</a></li><li><a href="../../../유용한-것들-모음/JVM-Args" data-for="유용한-것들-모음/JVM-Args">JVM Args</a></li><li><a href="../../../유용한-것들-모음/뭔가-문서로-분리하긴-뭐한" data-for="유용한-것들-모음/뭔가-문서로-분리하긴-뭐한">뭔가 문서로 분리하긴 뭐한</a></li><li><a href="../../../유용한-것들-모음/짜잘한-윈도우-팁-모음" data-for="유용한-것들-모음/짜잘한-윈도우-팁-모음">짜잘한 윈도우 팁 모음</a></li></ul></div></li></ul></div></li><li id="explorer-end"></li></ul></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../시험-정리/">시험 정리</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../시험-정리/2-2/">2 2</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../시험-정리/2-2/네트워크-프로그래밍-중간/">네트워크 프로그래밍 중간</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>네트워크 프로그래밍 중간고사 정리</a></div></nav><h1 class="article-title">네트워크 프로그래밍 중간고사 정리</h1><p show-comma="true" class="content-meta"><span>2024년 9월 14일</span><span>10 min read</span></p></div></div><article class="popover-hint"><h2 id="인터넷-구성요소">인터넷 구성요소<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#인터넷-구성요소" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>호스트, 라우터, 통신 프로토콜</li>
+</ul>
+<h3 id="패킷-전송-과정">패킷 전송 과정<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#패킷-전송-과정" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>프로그램 <span>→</span> TCP <span>→</span> IP <span>→</span> 이더넷</li>
+</ul>
+<h2 id="tcp-와-udp">TCP 와 UDP<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#tcp-와-udp" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="tcp">TCP<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#tcp" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>연결 설정 후 통신 가능</li>
+<li>일대일 통신</li>
+<li>데이터 경계 구분x (바이트 스트림 서비스)</li>
+</ul>
+<h3 id="udp">UDP<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#udp" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>연결 설정 없이 통신가능</li>
+<li>일대일, 일대다 상관없음</li>
+<li>데이터 경계 구분</li>
+</ul>
+<h2 id="소켓생성">소켓생성<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#소켓생성" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="C" data-theme="github-light github-dark"><code data-language="C" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>socket(IP 타입, TCP|UDP, 0);</span></span></code></pre></figure>
+<ul>
+<li>ip 타입
+<code>AF_INET:</code> IPv4
+<code>AF_INET6:</code> IPv6</li>
+<li>TCP: <code>SOCK_STREAM</code>, UDP: <code>SOCK_DGRAM</code></li>
+</ul>
+<p>IPv6 사용시: <code>AF_INET6</code>, <code>sockaddr_in6</code></p>
+<h2 id="tcp-소켓-처리-과정">TCP 소켓 처리 과정<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#tcp-소켓-처리-과정" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="서버">서버<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#서버" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><code>WSAStartup():</code> 소켓 초기화</li>
+<li><code>socket():</code> 서버 소켓 생성</li>
+<li><code>bind():</code> 소켓 바인딩 (소켓의 지역 IP 주소와 지역 포트 번호를 결정)</li>
+<li><code>listen():</code> 클라이언트 연결대기, 클라이언트 얼마나 받을건지 결정</li>
+<li><code>accept():</code> 클라이언트 접속 수락, 클라이언트 통신을 위한 새로운 소켓 생성</li>
+<li><code>send()</code>: 메시지 보내기 &amp;&amp; <code>recv()</code>: 데이터 받기</li>
+</ol>
+<h3 id="클라이언트">클라이언트<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#클라이언트" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><code>WSAStartup():</code> 소켓 초기화</li>
+<li><code>socket():</code> 클라이언트 소켓 생성</li>
+<li><code>connect():</code> 서버와 연결 설정, 연결을 위한 패킷 교환</li>
+<li><code>send()</code>: 메시지 보내기 &amp;&amp; <code>recv()</code>: 데이터 받기</li>
+</ol>
+<h2 id="udp-소켓-처리과정">UDP 소켓 처리과정<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#udp-소켓-처리과정" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="서버-1">서버<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#서버-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><code>WSAStartup():</code> 소켓 초기화</li>
+<li><code>socket():</code> 서버 소켓 생성</li>
+<li><code>bind():</code> 소켓 바인딩 (소켓의 지역 IP 주소와 지역 포트 번호를 결정)</li>
+<li><code>sendto()</code>: 메시지 보내기 &amp;&amp; <code>recvfrom()</code>: 데이터 받기</li>
+</ol>
+<h3 id="클라이언트-1">클라이언트<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#클라이언트-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><code>WSAStartup():</code> 소켓 초기화</li>
+<li><code>socket():</code> 클라이언트 소켓 생성</li>
+<li><code>sendto()</code>: 메시지 보내기 &amp;&amp; <code>recvfrom()</code>: 데이터 받기</li>
+</ol>
+<h2 id="tcp-서버---클라이언트-동작-원리">TCP 서버 - 클라이언트 동작 원리<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#tcp-서버---클라이언트-동작-원리" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ol>
+<li>서버는 소켓을 생성, 클라이언트 대기</li>
+<li>클라이언트가 서버에 접속, 연결설정을 위한 패킷 교환 (3-way handshaking 방식)</li>
+<li>서버는 클라이언트와 데이터 송, 수신을 위한 새로운 소켓 생성</li>
+<li>기존에 생성한 소켓은 다른 클라이언트 접속대기</li>
+</ol>
+<p><img src="../../../시험-정리/2-2/네트워크-프로그래밍-중간/TCP-네트워크-과정.jpg" width="auto" height="auto" alt/></p>
+<h2 id="udp-서버---클라이언트-동작-원리">UDP 서버 - 클라이언트 동작 원리<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#udp-서버---클라이언트-동작-원리" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ol>
+<li>서버는 소캣 생성, 클라이언트가 데이터 보내길 기다림</li>
+<li>클라이언트는 연결설정 없이 서버와 곧바로 데이터 주고 받음, 이때 서버는 소켓 한 게만 사용</li>
+<li>아무 클라이언트가 접속해서 서버와 통신할 수 있다</li>
+</ol>
+<h2 id="tcp-메시지-경계-구분">TCP 메시지 경계 구분<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#tcp-메시지-경계-구분" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ol>
+<li>항상 고정길이로 보냄
+<blockquote>
+<p>주고받을 데이터의 길이 변동폭이 크지 않을 때 적합</p>
+</blockquote>
+</li>
+<li>가변 데이터를 보내고 특별한 표식(EOR)을 붙임
+<blockquote>
+<p>생성 데이터의 길이를 미리 알 수 없을 때 적합</p>
+</blockquote>
+</li>
+<li>고정 길이 보내고 가변길이 보냄, 수신자는 고정길이 읽고, 뒤에 가변길이 알아냄
+<blockquote>
+<p>생성 데이터의 길이를 미리 알고 있는 상황에서 구현이 쉽고 처리 효율성이 높음</p>
+</blockquote>
+</li>
+<li>모든 가변 데이터 보내고 연결종료
+<blockquote>
+<p>한쪽에서 일방적으로 가변 길이 데이터를 보낼 때 적합</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="udp-데이터-전송">UDP 데이터 전송<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#udp-데이터-전송" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>유니캐스팅
+<blockquote>
+<p>1:1 데이터 전송</p>
+</blockquote>
+</li>
+<li>브로드캐스팅(IPv4)
+<blockquote>
+<p>특정 네트워크에 속한 모든 객체</p>
+</blockquote>
+</li>
+<li>멀티캐스팅
+<blockquote>
+<p>동일한 그룹에 속한 객체</p>
+</blockquote>
+</li>
+<li>애니캐스팅(IPv6)
+<blockquote>
+<p>동일한 그룹에 속한 객체 중 가장 가까운 객체
+그리고 그 객체가 나머지 객체들에게 전송</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="브로드케스팅">브로드케스팅<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#브로드케스팅" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>송신자가 보낸 데이터 하나를 다수의 수신자가 받는 방식</li>
+<li>소켓 생성 이후 <code>setsockopt()</code> 함수 인자로 <code>SO_BRODCAST</code> 를 넘겨 브로드케스팅 허용</li>
+</ul>
+<h3 id="브로드케스트-주소-종류">브로드케스트 주소 종류<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#브로드케스트-주소-종류" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>네트워크 브로드 케스트
+[ip].[ip].[255].[255]</li>
+<li>서브넷 브로드케스트
+[ip].[ip].[ip].255</li>
+<li>지역 브로드케스트
+255.255.255.255</li>
+</ul>
+<h2 id="바이트-정렬">바이트 정렬<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#바이트-정렬" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<pre><code>메모리에 데이터 저장때 바이트 배치 순서
+ex) 0x12345678
+
+빅엔디언: 0x12, 0x34, 0x56, 0x78
+리틀 엔디언: 0x78, 0x56, 0x34, 0x12
+</code></pre>
+<ul>
+<li>바이트 정렬을 고려하는 경우
+<ol>
+<li>IP 주소에 문제가 발생하는 상황</li>
+<li>포트 번호에 문제가 발생하는 상황</li>
+<li>응용 프로그램 데이터에서 문제가 발생하는 상황</li>
+</ol>
+</li>
+</ul>
+<h2 id="멀티-쓰레딩">멀티 쓰레딩<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#멀티-쓰레딩" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="교착-상태-해결">교착 상태 해결<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#교착-상태-해결" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>데이터  송수신 부분 잘 설계
+<blockquote>
+<p>빠른 구현, 모든 경우 해결책x</p>
+</blockquote>
+</li>
+<li>소켓에 타입아웃 적용
+<blockquote>
+<p>구현 쉬움, 성능 떨어짐</p>
+</blockquote>
+</li>
+<li>넌블로킹 소켓 사용하기
+<blockquote>
+<p>조건 만족하지 않아도 소켓 함수 즉시 리턴으로 교착 해결, 구현복잡  &amp;&amp; 자원낭비</p>
+</blockquote>
+</li>
+<li>입출력 모델 사용
+<blockquote>
+<p>넌블로킹 단점 보안, 구현복잡</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="생성">생성<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#생성" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="쓰레드-함수">쓰레드 함수<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#쓰레드-함수" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p><code>DWORD WINAPI 함수명(LPVOID param){ }</code></p>
+<h4 id="쓰레드-api">쓰레드 API<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#쓰레드-api" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p><code>CreateThread(NULL, 0, 함수명, 보낼데이터주소, 0, NULL):</code> 쓰레드 생성</p>
+<h3 id="종료">종료<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#종료" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>함수 안 return</li>
+<li>쓰레드 함수 내 ExitThread() 호출</li>
+<li>다른 쓰레드가 TerminateThread() 호출</li>
+</ul>
+<h3 id="종료-대기">종료 대기<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#종료-대기" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>종료 대기를 위해 쓰레드 함수를 HANDLE에 메핑</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="C" data-theme="github-light github-dark"><code data-language="C" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>HANDLE hThread = CreateThread();</span></span></code></pre></figure>
+<ul>
+<li>한개: <code>WaitForSingleObject(HANDLE 쓰레드, int 대기시간=INFINITE)</code></li>
+<li>여러개: <code>WaitForMultipleObjects(int 대기할개수, HANDLE *쓰레드주소, TRUE, 대기시간=INFINITE)</code></li>
+</ul>
+<h3 id="실행-제어">실행 제어<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#실행-제어" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>일시 정지: <code>SuspendThread(HANDLE 쓰레드)</code> || <code>Sleep(HANDLE 쓰레드)</code></li>
+<li>재실행: <code>ResumeThread(HANDLE 쓰레드)</code></li>
+<li>종료:  <code>CloseHandle(HANDLE 쓰레드)</code></li>
+</ul>
+<h3 id="동기화">동기화<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#동기화" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>[임계영역, 뮤텍스, 이벤트, 세마포어, 대기가능 타이머]</li>
+</ul>
+<h4 id="임계영역">임계영역<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#임계영역" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>두 개 이상의 스레드가 공유 자원에 접근할 때, 오직 한 스레드만 접근을 허용해야 하는 경우에 사용</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="C" data-theme="github-light github-dark"><code data-language="C" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>//쓰레드 입장</span></span>
+<span data-line><span>CRITICAL_SECTION cs; //전역변수 선언</span></span>
+<span data-line> </span>
+<span data-line><span>DWORD WINAPI thread() {</span></span>
+<span data-line><span>	EnterCriticalSection(&amp;cs);</span></span>
+<span data-line><span>	// 공유 자원 접근</span></span>
+<span data-line><span>	// 해당 영역이 건드는 모든 변수는 LeaveCriticalSection 를 호출하기 전까지 다른 쓰레드가 건들면 대기시켜 버림</span></span>
+<span data-line><span>	LeaveCriticalSection(&amp;cs);</span></span>
+<span data-line><span>}</span></span>
+<span data-line> </span>
+<span data-line><span>// 메인 입장</span></span>
+<span data-line><span>main() {</span></span>
+<span data-line><span>	EnterCriticalSection(&amp;cs);</span></span>
+<span data-line><span>	// 공유 자원 접근</span></span>
+<span data-line><span>	// 해당 영역이 건드는 모든 변수는 DeleteCriticalSection 를 호출하기 전까지 다른 쓰레드가 건들면 대기시켜 버림</span></span>
+<span data-line><span>	DeleteCriticalSection(&amp;cs);</span></span>
+<span data-line><span>}</span></span></code></pre></figure>
+<h4 id="이벤트">이벤트<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#이벤트" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>사건이 발생하기 전 다른 쓰레드에게 알리는 기법</li>
+<li>생성
+<code>CreateEvent(NULL, FALSE, FALSE, NULL): HANDLE</code></li>
+<li>이벤트 발생
+<code>SetEvent(HANDLE 이벤트)</code></li>
+<li>이벤트 종료
+<code>ResetEvent(HANDLE 이벤트)</code></li>
+</ul>
+<h2 id="용어정리">용어정리<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#용어정리" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><code>소켓:</code> 전송 계층과 응용 프로그램 사이의 인터페이스 역할을 하며 떨어져 있는 두 호스트를 연결함 (전송 프로토콜, ip, 포트번호로 정의)</li>
+<li><code>패킷</code>: IP주소, 포트 번호, 오류코드 + 데이터</li>
+</ul>
+<h2 id="함수-정리">함수 정리<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#함수-정리" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><code>WSACleanup()</code> 소켓 끝 마무리</li>
+<li><code>closesocket(SOCKET):</code> 소켓 종료</li>
+<li><code>gethostbyname(Char * 도메인):</code> 호스트 이름 <span>→</span> ip주소</li>
+<li><code>gethostbyaddr(char *ip주소, int 길이, int ip타입):</code> ip 주소 <span>→</span> 호스트 이름</li>
+<li><code>inet_ntop(int ip타입, Char *반환할 데이터, void *담을주소):</code> 바이트 ip 주소 <span>→</span> 실제 ip 주소</li>
+<li><code>inet_pton(int ip타입, void *변환값주소, 버퍼, 길이):</code> 실제ip 주소 <span>→</span> 바이트 ip 주소</li>
+<li><code>(자료형*)malloc(sizeof(자료형)):</code> 동적 메모리 할당
+(p[0], p[1]…) 이렇게 할당하는 순간 해당 하는 만큼 메모리를 할당해서 무한대로 쓸 수 있음</li>
+</ul>
+<h3 id="바이트-정렬함수">바이트 정렬함수<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#바이트-정렬함수" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><code>htons():</code> 2바이트 호스트 바이트 <span>→</span> 네트워크 바이트(빅엔디안 으로 변환)</li>
+<li><code>htonl():</code> 4바이트 호스트 바이트 <span>→</span> 네트워크 바이트(빅엔디안 으로 변환)
+<blockquote>
+<p>프로그램이 소켓에 넘겨주기 전</p>
+</blockquote>
+</li>
+<li><code>ntohs():</code> 2바이트 네트워크 바이트 <span>→</span> 호스트 바이트</li>
+<li><code>ntohl():</code> 4바이트 네트워크 바이트 <span>→</span> 호스트 바이트
+<blockquote>
+<p>소켓이 전송한 결과를 받아볼 때</p>
+</blockquote>
+</li>
+</ul>
+<p>클라이언트는 <code>hton*</code> 로 전송하고 서버는 <code>ntoh*</code> 로 받으면 됨</p></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" id="toc" class aria-controls="toc-content" aria-expanded="true"><h3>목차</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="toc-content" class><ul class="overflow"><li class="depth-0"><a href="#인터넷-구성요소" data-for="인터넷-구성요소">인터넷 구성요소</a></li><li class="depth-1"><a href="#패킷-전송-과정" data-for="패킷-전송-과정">패킷 전송 과정</a></li><li class="depth-0"><a href="#tcp-와-udp" data-for="tcp-와-udp">TCP 와 UDP</a></li><li class="depth-1"><a href="#tcp" data-for="tcp">TCP</a></li><li class="depth-1"><a href="#udp" data-for="udp">UDP</a></li><li class="depth-0"><a href="#소켓생성" data-for="소켓생성">소켓생성</a></li><li class="depth-0"><a href="#tcp-소켓-처리-과정" data-for="tcp-소켓-처리-과정">TCP 소켓 처리 과정</a></li><li class="depth-1"><a href="#서버" data-for="서버">서버</a></li><li class="depth-1"><a href="#클라이언트" data-for="클라이언트">클라이언트</a></li><li class="depth-0"><a href="#udp-소켓-처리과정" data-for="udp-소켓-처리과정">UDP 소켓 처리과정</a></li><li class="depth-1"><a href="#서버-1" data-for="서버-1">서버</a></li><li class="depth-1"><a href="#클라이언트-1" data-for="클라이언트-1">클라이언트</a></li><li class="depth-0"><a href="#tcp-서버---클라이언트-동작-원리" data-for="tcp-서버---클라이언트-동작-원리">TCP 서버 - 클라이언트 동작 원리</a></li><li class="depth-0"><a href="#udp-서버---클라이언트-동작-원리" data-for="udp-서버---클라이언트-동작-원리">UDP 서버 - 클라이언트 동작 원리</a></li><li class="depth-0"><a href="#tcp-메시지-경계-구분" data-for="tcp-메시지-경계-구분">TCP 메시지 경계 구분</a></li><li class="depth-0"><a href="#udp-데이터-전송" data-for="udp-데이터-전송">UDP 데이터 전송</a></li><li class="depth-0"><a href="#브로드케스팅" data-for="브로드케스팅">브로드케스팅</a></li><li class="depth-1"><a href="#브로드케스트-주소-종류" data-for="브로드케스트-주소-종류">브로드케스트 주소 종류</a></li><li class="depth-0"><a href="#바이트-정렬" data-for="바이트-정렬">바이트 정렬</a></li><li class="depth-0"><a href="#멀티-쓰레딩" data-for="멀티-쓰레딩">멀티 쓰레딩</a></li><li class="depth-1"><a href="#교착-상태-해결" data-for="교착-상태-해결">교착 상태 해결</a></li><li class="depth-1"><a href="#생성" data-for="생성">생성</a></li><li class="depth-1"><a href="#종료" data-for="종료">종료</a></li><li class="depth-1"><a href="#종료-대기" data-for="종료-대기">종료 대기</a></li><li class="depth-1"><a href="#실행-제어" data-for="실행-제어">실행 제어</a></li><li class="depth-1"><a href="#동기화" data-for="동기화">동기화</a></li><li class="depth-0"><a href="#용어정리" data-for="용어정리">용어정리</a></li><li class="depth-0"><a href="#함수-정리" data-for="함수-정리">함수 정리</a></li><li class="depth-1"><a href="#바이트-정렬함수" data-for="바이트-정렬함수">바이트 정렬함수</a></li></ul></div></div><div class="graph"><h3>그래프 뷰</h3><div class="graph-outer"><div id="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false}"></div><button id="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div id="global-graph-outer"><div id="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true}"></div></div></div><div class="backlinks"><h3>백링크</h3><ul class="overflow"><li>백링크가 없습니다.</li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.3.1</a> © 2024</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></body><script type="application/javascript">function c(){let t=this.parentElement;t.classList.toggle("is-collapsed");let l=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=l+"px";let o=t,e=t.parentElement;for(;e;){if(!e.classList.contains("callout"))return;let n=e.classList.contains("is-collapsed")?e.scrollHeight:e.scrollHeight+o.scrollHeight;e.style.maxHeight=n+"px",o=e,e=e.parentElement}}function i(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let l=s.firstElementChild;if(l){l.addEventListener("click",c),window.addCleanup(()=>l.removeEventListener("click",c));let e=s.classList.contains("is-collapsed")?l.scrollHeight:s.scrollHeight;s.style.maxHeight=e+"px"}}}document.addEventListener("nav",i);window.addEventListener("resize",i);
+</script><script type="module">
+          let mermaidImport = undefined
+          document.addEventListener('nav', async () => {
+            if (document.querySelector("code.mermaid")) {
+              mermaidImport ||= await import('https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.7.0/mermaid.esm.min.mjs')
+              const mermaid = mermaidImport.default
+              const darkMode = document.documentElement.getAttribute('saved-theme') === 'dark'
+              mermaid.initialize({
+                startOnLoad: false,
+                securityLevel: 'loose',
+                theme: darkMode ? 'dark' : 'default'
+              })
+
+              await mermaid.run({
+                querySelector: '.mermaid'
+              })
+            }
+          });
+          </script><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../../../postscript.js" type="module"></script></html>

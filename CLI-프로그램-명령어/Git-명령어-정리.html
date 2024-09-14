@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="ko"><head><title>Git 명령어 정리</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM Plex Mono&amp;family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta property="og:title" content="Git 명령어 정리"/><meta property="og:description" content="..."/><meta property="og:image" content="https://quartz.jzhao.xyz/static/og-image.png"/><meta property="og:width" content="1200"/><meta property="og:height" content="675"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script></head><body data-slug="CLI-프로그램-명령어/Git-명령어-정리"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">안녕하세요 저는</a></h2><div class="spacer mobile-only"></div><div class="search"><button class="search-button" id="search-button"><p>검색</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div id="search-container"><div id="search-space"><input autocomplete="off" id="search-bar" name="search" type="text" aria-label="검색어를 입력하세요" placeholder="검색어를 입력하세요"/><div id="search-layout" data-preview="true"></div></div></div></div><button class="darkmode" id="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="다크 모드"><title>다크 모드</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="라이트 모드"><title>라이트 모드</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button><div class="explorer desktop-only"><button type="button" id="explorer" data-behavior="collapse" data-collapsed="collapsed" data-savestate="true" data-tree="[{&quot;path&quot;:&quot;CLI-프로그램-명령어&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;강의필기&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;개발-언어&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;리눅스&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;스터디&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/2-2&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/2-2/교양-파이썬-기말&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/2-2/네트워크-프로그래밍-중간&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/2-2/자료구조-기말&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/2-2/자료구조-중간&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/기말---딥러닝-프로그래밍&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/기말---알고리즘&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/기말---인공지능-프로그래밍-기말&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/중간---Iot&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/중간---딥러닝-프로그래밍&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/중간---알고리즘&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/중간---인공지능-프로그래밍-중간&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;유용한-것들-모음&quot;,&quot;collapsed&quot;:true}]" aria-controls="explorer-content" aria-expanded="false"><h2>탐색기</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-content"><ul class="overflow" id="explorer-ul"><li><div class="folder-outer open"><ul style="padding-left:0;" class="content" data-folderul><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="CLI-프로그램-명령어"><button class="folder-button"><span class="folder-title">CLI 프로그램 명령어</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="CLI-프로그램-명령어"><li><a href="../CLI-프로그램-명령어/Conda-명령어-정리" data-for="CLI-프로그램-명령어/Conda-명령어-정리">Conda 명령어 정리</a></li><li><a href="../CLI-프로그램-명령어/Docker-명령어-정리" data-for="CLI-프로그램-명령어/Docker-명령어-정리">Docker 명령어 정리</a></li><li><a href="../CLI-프로그램-명령어/Git-명령어-정리" data-for="CLI-프로그램-명령어/Git-명령어-정리">Git 명령어 정리</a></li><li><a href="../CLI-프로그램-명령어/MySql-명령어-정리" data-for="CLI-프로그램-명령어/MySql-명령어-정리">MySql 명령어 정리</a></li><li><a href="../CLI-프로그램-명령어/pip-명령어-정리" data-for="CLI-프로그램-명령어/pip-명령어-정리">pip 명령어 정리</a></li><li><a href="../CLI-프로그램-명령어/Pnpm-명령어-정리" data-for="CLI-프로그램-명령어/Pnpm-명령어-정리">Pnpm 명령어 정리</a></li><li><a href="../CLI-프로그램-명령어/Poetry-명령어-정리" data-for="CLI-프로그램-명령어/Poetry-명령어-정리">Poetry 명령어 정리</a></li></ul></div></li><li><div class="folder-outer "><ul style="padding-left:0;" class="content" data-folderul></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="강의필기"><button class="folder-button"><span class="folder-title">강의필기</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="강의필기"><li><a href="../강의필기/기계학습프로그래밍" data-for="강의필기/기계학습프로그래밍">기계학습프로그래밍</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="개발-언어"><button class="folder-button"><span class="folder-title">개발 언어</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="개발-언어"><li><a href="../개발-언어/Java" data-for="개발-언어/Java">Java</a></li><li><a href="../개발-언어/Python" data-for="개발-언어/Python">Python</a></li><li><a href="../개발-언어/Shell-Script" data-for="개발-언어/Shell-Script">Shell Script</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="리눅스"><button class="folder-button"><span class="folder-title">리눅스</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="리눅스"><li><a href="../리눅스/Vim-사용법" data-for="리눅스/Vim-사용법">Vim 사용법</a></li><li><a href="../리눅스/단축키" data-for="리눅스/단축키">단축키</a></li><li><a href="../리눅스/리눅스-명령어-정리" data-for="리눅스/리눅스-명령어-정리">리눅스 명령어 정리</a></li><li><a href="../리눅스/패키지-설치" data-for="리눅스/패키지-설치">패키지 설치</a></li><li><a href="../리눅스/프로그램-암호" data-for="리눅스/프로그램-암호">프로그램 암호</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="스터디"><button class="folder-button"><span class="folder-title">스터디</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="스터디"><li><a href="../스터디/AWS-스터디--and--프로젝트" data-for="스터디/AWS-스터디--and--프로젝트">AWS 스터디 &amp; 프로젝트</a></li><li><a href="../스터디/CORS-(Cross-Origin-Resource-Sharing)" data-for="스터디/CORS-(Cross-Origin-Resource-Sharing)">CORS (Cross-Origin Resource Sharing)</a></li><li><a href="../스터디/Doker-스터디" data-for="스터디/Doker-스터디">Doker 스터디</a></li><li><a href="../스터디/Express.js-정리" data-for="스터디/Express.js-정리">Express.js 정리</a></li><li><a href="../스터디/File-IO" data-for="스터디/File-IO">File IO</a></li><li><a href="../스터디/Git-스터디" data-for="스터디/Git-스터디">Git 스터디</a></li><li><a href="../스터디/gRPC-통신" data-for="스터디/gRPC-통신">gRPC 통신</a></li><li><a href="../스터디/IPC-통신" data-for="스터디/IPC-통신">IPC 통신</a></li><li><a href="../스터디/Kubernetes-(K8S)-스터디" data-for="스터디/Kubernetes-(K8S)-스터디">Kubernetes (K8S) 스터디</a></li><li><a href="../스터디/React-Native-정리" data-for="스터디/React-Native-정리">React-Native 정리</a></li><li><a href="../스터디/SSE-(Server-Sent-Event)" data-for="스터디/SSE-(Server-Sent-Event)">SSE (Server Sent Event)</a></li><li><a href="../스터디/SSH-(Secure-Shell-Protocol)" data-for="스터디/SSH-(Secure-Shell-Protocol)">SSH (Secure Shell Protocol)</a></li><li><a href="../스터디/개발-용어-정리" data-for="스터디/개발-용어-정리">개발 용어 정리</a></li><li><a href="../스터디/공개키-암호화" data-for="스터디/공개키-암호화">공개키 암호화</a></li><li><a href="../스터디/네트워크-통신" data-for="스터디/네트워크-통신">네트워크 통신</a></li><li><a href="../스터디/데이터-베이스-정규화" data-for="스터디/데이터-베이스-정규화">데이터 베이스 정규화</a></li><li><a href="../스터디/문자-인코딩" data-for="스터디/문자-인코딩">문자 인코딩</a></li><li><a href="../스터디/비동기와-멀티스레드-차이" data-for="스터디/비동기와-멀티스레드-차이">비동기와 멀티스레드 차이</a></li><li><a href="../스터디/추후-스터디-할-것들-모음" data-for="스터디/추후-스터디-할-것들-모음">추후 스터디 할 것들 모음</a></li><li><a href="../스터디/컴퓨터-수-표현" data-for="스터디/컴퓨터-수-표현">컴퓨터 수 표현</a></li><li><a href="../스터디/파일-링크" data-for="스터디/파일-링크">파일 링크</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리"><button class="folder-button"><span class="folder-title">시험 정리</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/2-2"><button class="folder-button"><span class="folder-title">2-2</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/2-2"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/2-2/교양-파이썬-기말"><button class="folder-button"><span class="folder-title">교양 파이썬 기말</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/2-2/교양-파이썬-기말"><li><a href="../시험-정리/2-2/교양-파이썬-기말/교양-파이썬-기말" data-for="시험-정리/2-2/교양-파이썬-기말/교양-파이썬-기말">교양 파이썬 기말</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/2-2/네트워크-프로그래밍-중간"><button class="folder-button"><span class="folder-title">네트워크 프로그래밍 중간</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/2-2/네트워크-프로그래밍-중간"><li><a href="../시험-정리/2-2/네트워크-프로그래밍-중간/네트워크-프로그래밍-중간고사-정리" data-for="시험-정리/2-2/네트워크-프로그래밍-중간/네트워크-프로그래밍-중간고사-정리">네트워크 프로그래밍 중간고사 정리</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/2-2/자료구조-기말"><button class="folder-button"><span class="folder-title">자료구조 기말</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/2-2/자료구조-기말"><li><a href="../시험-정리/2-2/자료구조-기말/자료구조-기말" data-for="시험-정리/2-2/자료구조-기말/자료구조-기말">자료구조 기말</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/2-2/자료구조-중간"><button class="folder-button"><span class="folder-title">자료구조 중간</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/2-2/자료구조-중간"><li><a href="../시험-정리/2-2/자료구조-중간/자료구조-중간-정리" data-for="시험-정리/2-2/자료구조-중간/자료구조-중간-정리">자료구조 중간 정리</a></li></ul></div></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1"><button class="folder-button"><span class="folder-title">3-1</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/기말---딥러닝-프로그래밍"><button class="folder-button"><span class="folder-title">기말 - 딥러닝 프로그래밍</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/기말---딥러닝-프로그래밍"><li><a href="../시험-정리/3-1/기말---딥러닝-프로그래밍/딥러닝-프로그래밍-기말" data-for="시험-정리/3-1/기말---딥러닝-프로그래밍/딥러닝-프로그래밍-기말">딥러닝 프로그래밍 기말</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/기말---알고리즘"><button class="folder-button"><span class="folder-title">기말 - 알고리즘</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/기말---알고리즘"><li><a href="../시험-정리/3-1/기말---알고리즘/알고리즘-기말" data-for="시험-정리/3-1/기말---알고리즘/알고리즘-기말">알고리즘 기말</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/기말---인공지능-프로그래밍-기말"><button class="folder-button"><span class="folder-title">기말 - 인공지능 프로그래밍 기말</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/기말---인공지능-프로그래밍-기말"><li><a href="../시험-정리/3-1/기말---인공지능-프로그래밍-기말/인공지능-프로그래밍-기말" data-for="시험-정리/3-1/기말---인공지능-프로그래밍-기말/인공지능-프로그래밍-기말">인공지능 프로그래밍 기말</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/중간---Iot"><button class="folder-button"><span class="folder-title">중간 - Iot</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/중간---Iot"><li><a href="../시험-정리/3-1/중간---Iot/Iot-중간" data-for="시험-정리/3-1/중간---Iot/Iot-중간">Iot 중간</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/중간---딥러닝-프로그래밍"><button class="folder-button"><span class="folder-title">중간 - 딥러닝 프로그래밍</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/중간---딥러닝-프로그래밍"><li><a href="../시험-정리/3-1/중간---딥러닝-프로그래밍/딥러닝-프로그래밍-중간" data-for="시험-정리/3-1/중간---딥러닝-프로그래밍/딥러닝-프로그래밍-중간">딥러닝 프로그래밍 중간</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/중간---알고리즘"><button class="folder-button"><span class="folder-title">중간 - 알고리즘</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/중간---알고리즘"><li><a href="../시험-정리/3-1/중간---알고리즘/알고리즘-중간" data-for="시험-정리/3-1/중간---알고리즘/알고리즘-중간">알고리즘 중간</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/중간---인공지능-프로그래밍-중간"><button class="folder-button"><span class="folder-title">중간 - 인공지능 프로그래밍 중간</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/중간---인공지능-프로그래밍-중간"><li><a href="../시험-정리/3-1/중간---인공지능-프로그래밍-중간/인공지능-프로그래밍-중간" data-for="시험-정리/3-1/중간---인공지능-프로그래밍-중간/인공지능-프로그래밍-중간">인공지능 프로그래밍 중간</a></li></ul></div></li></ul></div></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="유용한-것들-모음"><button class="folder-button"><span class="folder-title">유용한 것들 모음</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="유용한-것들-모음"><li><a href="../유용한-것들-모음/Apache-Tomcat-관련" data-for="유용한-것들-모음/Apache-Tomcat-관련">Apache Tomcat 관련</a></li><li><a href="../유용한-것들-모음/CLI-옵션-국룰" data-for="유용한-것들-모음/CLI-옵션-국룰">CLI 옵션 국룰</a></li><li><a href="../유용한-것들-모음/Github-Actions-정리" data-for="유용한-것들-모음/Github-Actions-정리">Github Actions 정리</a></li><li><a href="../유용한-것들-모음/Google-API-사용법" data-for="유용한-것들-모음/Google-API-사용법">Google API 사용법</a></li><li><a href="../유용한-것들-모음/Google-Colab-세션-유지-방법" data-for="유용한-것들-모음/Google-Colab-세션-유지-방법">Google Colab 세션 유지 방법</a></li><li><a href="../유용한-것들-모음/Gradle-스크립트-한글-깨짐-문제-해결" data-for="유용한-것들-모음/Gradle-스크립트-한글-깨짐-문제-해결">Gradle 스크립트 한글 깨짐 문제 해결</a></li><li><a href="../유용한-것들-모음/JVM-Args" data-for="유용한-것들-모음/JVM-Args">JVM Args</a></li><li><a href="../유용한-것들-모음/뭔가-문서로-분리하긴-뭐한" data-for="유용한-것들-모음/뭔가-문서로-분리하긴-뭐한">뭔가 문서로 분리하긴 뭐한</a></li><li><a href="../유용한-것들-모음/짜잘한-윈도우-팁-모음" data-for="유용한-것들-모음/짜잘한-윈도우-팁-모음">짜잘한 윈도우 팁 모음</a></li></ul></div></li></ul></div></li><li id="explorer-end"></li></ul></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../CLI-프로그램-명령어/">CLI 프로그램 명령어</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>Git 명령어 정리</a></div></nav><h1 class="article-title">Git 명령어 정리</h1><p show-comma="true" class="content-meta"><span>2024년 9월 14일</span><span>9 min read</span></p></div></div><article class="popover-hint"><blockquote class="callout note" data-callout="note">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>같이보기 </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><a href="../스터디/Git-스터디" class="internal alias" data-slug="스터디/Git-스터디">Git 스터디</a></li>
+</ul>
+</div>
+</blockquote>
+<h2 id="git-update-index-assume-unchanged-파일명">git update-index —assume-unchanged &lt;파일명><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#git-update-index-assume-unchanged-파일명" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>커밋무시</li>
+</ul>
+<h2 id="git-update-index-no-assume-unchanged-파일명">git update-index —no-assume-unchanged &lt;파일명><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#git-update-index-no-assume-unchanged-파일명" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>커밋 무시 되돌리기</li>
+</ul>
+<h2 id="git-fetch-all">git fetch —all<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#git-fetch-all" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>모든 브랜치 패치하기</li>
+</ul>
+<h3 id="git-fetch-all-prune">git fetch —all —prune<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#git-fetch-all-prune" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>원격저장소 삭제된 브랜치 정보 정리</li>
+</ul>
+<h2 id="git-rm--r-cached-">git rm -r —cached .<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#git-rm--r-cached-" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><code>.gitignore</code> 적용 안될때 캐시제거</li>
+</ul>
+<h2 id="git-add---파일명">git add &lt;. | 파일명><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#git-add---파일명" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>변경사항 스테이징 (스테이징 해야만 커밋가능)</li>
+<li><code>.</code> 은 모두 선택</li>
+</ul>
+<h2 id="git-restore---파일명">git restore &lt;. | 파일명><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#git-restore---파일명" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>변경사항 취소 (스테이징 된거 제외)`</li>
+<li><code>.</code> 은 모두 선택</li>
+</ul>
+<h3 id="옵션">옵션<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#옵션" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><code>--staged</code>:
+<ul>
+<li>스테이징 취소하기 (변경사항은 유지)</li>
+</ul>
+</li>
+</ul>
+<h2 id="git-pull">git pull<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#git-pull" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>원격 pull 하기</li>
+<li>만일 커밋 이후에 <code>pull</code>을 통해서 원격 브랜치 변경사항을 받아오면 merge 커밋이 생김</li>
+<li>커밋안한 변경사항 있는 상태에서 <code>pull</code> 할때 해당 변경사항과 충돌이 생기는 경우 pull 이 안되기에 <code>stash에 저장</code>하거나, <code>커밋</code>하거나 <code>버리거나</code> 해서 변경사항 없는 상태로 만들어야 함</li>
+</ul>
+<h3 id="git-pull-원격저장소-브랜치">git pull &lt;원격저장소> &lt;브랜치><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#git-pull-원격저장소-브랜치" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>특정 브랜치 pull 하기</li>
+</ul>
+<h3 id="옵션-1">옵션<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#옵션-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><code>--ff-only</code>
+<ul>
+<li>pull 할때 merge 안생기게 <code>fast-forwarded</code> 로 하게끔</li>
+</ul>
+</li>
+<li><code>--rebase</code>
+<ul>
+<li><code>--ff-only</code> 가 안먹히는 경우 <code>rebase</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="git-push">git push<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#git-push" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>커밋 push 하기</li>
+</ul>
+<h3 id="git-push-원격저장소-브랜치">git push &lt;원격저장소> &lt;브랜치><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#git-push-원격저장소-브랜치" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>특정 브랜치 push 하기</li>
+</ul>
+<h3 id="옵션-2">옵션<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#옵션-2" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><code>-f</code>
+<ul>
+<li>로컬 커밋으로 강제 푸쉬 진행하기</li>
+<li><code>reset</code>, <code>rebase</code> 진행 시 사용</li>
+</ul>
+</li>
+</ul>
+<h2 id="git-status">git status<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#git-status" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>git 상태 보기</li>
+<li><code>pull</code> 할꺼, <code>push</code> 할꺼 체크 가능</li>
+<li>변경 사항 체크가능
+<ul>
+<li><code>빨강</code>: 스테이징 안된것</li>
+<li><code>초록</code>: 스테이징 된것</li>
+</ul>
+</li>
+<li><code>Unmerged paths</code>:
+<ul>
+<li>해결해야하는 병합 파일 목록</li>
+</ul>
+</li>
+</ul>
+<h2 id="git-diff-옵션--null-비교대상--null">git diff &lt;옵션 | null> &lt;비교대상 | null><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#git-diff-옵션--null-비교대상--null" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>변경 사항 보기 (기본은 스테이징 안한것만)</li>
+<li>새로 만든 파일인 경우 반드시 스테이징 해야만 출력된다</li>
+</ul>
+<h3 id="git-difftool-옵션--null-비교대상--null">git difftool &lt;옵션 | null> &lt;비교대상 | null><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#git-difftool-옵션--null-비교대상--null" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>이건 아예 <code>vim</code> 같은 CLI 텍스트 에디터로 비교해줌</li>
+<li>사용볍은 <code>diff</code>와 같음</li>
+</ul>
+<h3 id="기본옵션">기본옵션<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#기본옵션" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><code>--staged</code>:
+<ul>
+<li>스테이징 항목 변경사항보기</li>
+<li>그냥 하면 스테이징 안된것만</li>
+</ul>
+</li>
+</ul>
+<h3 id="비교대상">비교대상<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#비교대상" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="git-diff-head">git diff HEAD<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#git-diff-head" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>스테이징 포함하여 모든 현재 변경사항 출력</li>
+</ul>
+<h4 id="git-diff-브랜치a-브랜치b">git diff &lt;브랜치A> &lt;브랜치B><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#git-diff-브랜치a-브랜치b" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>두 브랜치 간 비교</li>
+</ul>
+<h4 id="git-diff-커밋a-커밋b">git diff &lt;커밋A> &lt;커밋B><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#git-diff-커밋a-커밋b" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>두 커밋 간 비교</li>
+</ul>
+<h4 id="git-diff-파일명">git diff &lt;파일명><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#git-diff-파일명" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>특정 파일에 변경사항 확인</li>
+</ul>
+<h2 id="git-merge-abort">git merge —abort<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#git-merge-abort" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>병합 해드 취소</li>
+</ul>
+<h2 id="git-reset-리셋타입--null-돌아갈-주소">git reset &lt;리셋타입 | null> &lt;돌아갈 주소><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#git-reset-리셋타입--null-돌아갈-주소" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>커밋 리셋</li>
+<li>리셋이지만 앞 작업으로 가는 것도 가능하다</li>
+<li>push 하려면 <code>push -f</code>로 강제 푸쉬해야 함
+<ul>
+<li>누군가 <code>reset</code> 되기 전까지의 커밋까지 정보를 가지고 있는 경우 해당 사람도 똑같이 <code>reset</code> 진행 해야함</li>
+</ul>
+</li>
+</ul>
+<h3 id="옵션-3">옵션<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#옵션-3" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="리셋타입">리셋타입<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#리셋타입" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><code>--soft | --hard</code>:
+<ul>
+<li>reset 타입 지정</li>
+</ul>
+</li>
+</ul>
+<h4 id="돌아갈-주소">돌아갈 주소<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#돌아갈-주소" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><code>커밋 값</code>:
+<ul>
+<li>git log 에서 확인</li>
+</ul>
+</li>
+<li><code>작업로그 값</code>:
+<ul>
+<li>git reflog 에서 확인</li>
+</ul>
+</li>
+<li><code>브랜치명</code>:
+<ul>
+<li>해당 브랜치 까지 리셋 (원격도 가능 <code>원격저장소/브랜치명</code>)</li>
+<li>원격 브랜치로 리셋 할 경우 pull 받지 않고 로컬 브랜치를 강제로 원격 브랜치에 위치시킴
+<ul>
+<li>로컬 브랜치가 꼬여 pull이 안되는 경우 사용하기 좋다.</li>
+<li>대신에 모든 로컬 커밋은 취소된다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>HEAD~</code>:
+<ul>
+<li>이전 커밋 취소</li>
+</ul>
+</li>
+</ul>
+<h2 id="git-log">git log<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#git-log" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>커밋로그 보기 (빠져 나올때 “q”)`</li>
+</ul>
+<h3 id="git-log-all-oneline-graph">git log —all —oneline —graph<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#git-log-all-oneline-graph" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>그래프 형태로 보기</li>
+</ul>
+<h2 id="git-reflog-브랜치">git reflog &lt;브랜치><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#git-reflog-브랜치" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>브랜치 작업로그 보기  (빠져 나올때 “q”)</li>
+</ul>
+<h2 id="git-rebase-브랜치">git rebase &lt;브랜치><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#git-rebase-브랜치" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>rebase 하기</li>
+<li>push 하려면 <code>push -f</code>로 강제 푸쉬해야 함
+<ul>
+<li>누군가 <code>rebase</code> 되기 전까지의 커밋을 보유하고 있는 경우
+<code>git reset --hard 원격저장소/브랜치</code> 해서 원격 브랜치로 reset 해야함</li>
+</ul>
+</li>
+</ul>
+<h3 id="옵션-4">옵션<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#옵션-4" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><code>--continue</code>:
+<ul>
+<li>rebase 작업 계속하기</li>
+</ul>
+</li>
+<li><code>--skip</code>
+<ul>
+<li><code>HEAD(Rebase 타겟)</code>가 가지고 있는 사항으로 유지 시킨다</li>
+<li>충돌해결 안해도 상관없는경우 해당부분 스킵</li>
+</ul>
+</li>
+<li><code>--abort</code>:
+<ul>
+<li>rebase 되돌리기</li>
+</ul>
+</li>
+<li><code>-s ours</code>
+<ul>
+<li>충돌나는 모든 커밋을 <code>타겟 브랜치</code> 커밋으로 교체</li>
+</ul>
+</li>
+<li><code>-X ours</code>
+<ul>
+<li>위와 반대</li>
+<li>충돌나는 모든 커밋을 <code>기존 브랜치</code> 커밋으로 교체</li>
+</ul>
+</li>
+</ul>
+<h2 id="git-branch-브랜치">git branch &lt;브랜치><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#git-branch-브랜치" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>브랜치 생성</li>
+</ul>
+<h2 id="git-branch-all">git branch —all<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#git-branch-all" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>모든 브랜치 보기</li>
+<li>원격 브랜치는 <code>remotes</code> 빼고 보면 됨</li>
+</ul>
+<h3 id="git-branch--d-브랜치">git branch -D &lt;브랜치><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#git-branch--d-브랜치" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>로컬 브랜치 삭제</li>
+</ul>
+<h3 id="git-push-원격-저장소-브랜치">git push &lt;원격 저장소> &lt;브랜치><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#git-push-원격-저장소-브랜치" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>원격 브랜치 생성</li>
+<li><code>원격 저장소</code>는 보통 <span class="text-highlight">origin</span></li>
+</ul>
+<h3 id="git-push-원격-저장소--d-브랜치">git push &lt;원격 저장소> -d &lt;브랜치><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#git-push-원격-저장소--d-브랜치" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>원격 브랜치 삭제</li>
+</ul>
+<h3 id="git-branch--m-현재이름-바꿀이름">git branch -m &lt;현재이름> &lt;바꿀이름><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#git-branch--m-현재이름-바꿀이름" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>브랜치명 변경</li>
+<li>이름 변경이후 원격 브랜치 push 는 이전 브랜치 <code>삭제</code> <span>→</span> 변경된 브랜치 <code>push</code></li>
+</ul>
+<h2 id="git-switch-브랜치">git switch &lt;브랜치><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#git-switch-브랜치" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>브랜치 간 전환</li>
+</ul>
+<h3 id="옵션-5">옵션<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#옵션-5" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><code>-c</code>:
+<ul>
+<li>브랜치 생성  &amp; 전환</li>
+</ul>
+</li>
+<li><code>-f</code>:
+<ul>
+<li>변경사항(커밋안한) 존재할 시 버리고 전환</li>
+</ul>
+</li>
+<li><code>-m</code>:
+<ul>
+<li>변경사항과(커밋안한) 병합하기</li>
+</ul>
+</li>
+</ul>
+<h3 id="브랜치">브랜치<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#브랜치" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><code>-</code>:
+<ul>
+<li>최신 커밋으로 돌아가기</li>
+</ul>
+</li>
+</ul>
+<h2 id="git-checkout-커밋값--브랜치">git checkout &lt;커밋값 | 브랜치><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#git-checkout-커밋값--브랜치" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>브랜치, 커밋 전환</li>
+<li>switch 로는 커밋간 전환이 안되므로 체크아웃으로</li>
+</ul>
+<h3 id="git-checkout-커밋값--브랜치--">git checkout &lt;커밋값 | 브랜치> — .<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#git-checkout-커밋값--브랜치--" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>브랜치 전환하지 않고 해당 브랜치의 변경사항을 가져오기</li>
+</ul>
+<h3 id="옵션-6">옵션<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#옵션-6" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><code>-f</code>:
+<ul>
+<li>변경사항(커밋안한) 존재할 시 버리고 전환</li>
+</ul>
+</li>
+<li><code>-m</code>:
+<ul>
+<li>변경사항과(커밋안한)  병합하기</li>
+</ul>
+</li>
+</ul>
+<h2 id="git-stash-작업--null-옵션--null">git stash &lt;작업 | null> &lt;옵션 | null><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#git-stash-작업--null-옵션--null" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote>
+<p>git 임시 저장소, 스텍구조로 되어있음</p>
+</blockquote>
+<ul>
+<li>stash에 변경사항 저장하기</li>
+<li><code>-m</code> 설정 안하면 0, 1, 2 순으로 저장</li>
+</ul>
+<h3 id="기본옵션-1">기본옵션<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#기본옵션-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><code>-m</code>:
+<ul>
+<li>저장할 이름</li>
+</ul>
+</li>
+<li><code> -S</code>:
+<ul>
+<li>스테이지에 있는것만</li>
+</ul>
+</li>
+</ul>
+<h3 id="작업">작업<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#작업" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="git-stash-list">git stash list<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#git-stash-list" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>stash 목록보기</li>
+</ul>
+<h4 id="git-stash-drop-이름--null">git stash drop &lt;이름 | null><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#git-stash-drop-이름--null" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>stash 제거하기</li>
+<li>이름 안정하면 가장 최근꺼</li>
+</ul>
+<h4 id="git-stash-apply-index--null">git stash apply &lt;index | null><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#git-stash-apply-index--null" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>stash 적용하기 (이름은 쓸 수 없음 <code>list</code> 명령에서 앞에 인덱스 확인)</li>
+<li>이름 없으면 가장 최근꺼</li>
+</ul>
+<h4 id="git-stash-pop">git stash pop<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#git-stash-pop" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>가장최근꺼 적용하고 삭제</li>
+<li>스텍구조라 drop 으로 하면 인덱스가 뒤섞임</li>
+</ul>
+<h2 id="참고">참고<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#참고" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="로컬-원격-브랜치-선택">로컬, 원격 브랜치 선택<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#로컬-원격-브랜치-선택" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><code>로컬</code>:
+<ul>
+<li>그냥 브랜치명 <code>master</code></li>
+</ul>
+</li>
+<li><code>원격</code>
+<ul>
+<li>원격 저장소명/브랜치명 <code>origin/master</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="모든-것을-의미하는-문자">모든 것을 의미하는 문자<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#모든-것을-의미하는-문자" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><code>.</code></li>
+</ul></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" id="toc" class aria-controls="toc-content" aria-expanded="true"><h3>목차</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="toc-content" class><ul class="overflow"><li class="depth-0"><a href="#git-update-index-assume-unchanged-파일명" data-for="git-update-index-assume-unchanged-파일명">git update-index —assume-unchanged &lt;파일명></a></li><li class="depth-0"><a href="#git-update-index-no-assume-unchanged-파일명" data-for="git-update-index-no-assume-unchanged-파일명">git update-index —no-assume-unchanged &lt;파일명></a></li><li class="depth-0"><a href="#git-fetch-all" data-for="git-fetch-all">git fetch —all</a></li><li class="depth-1"><a href="#git-fetch-all-prune" data-for="git-fetch-all-prune">git fetch —all —prune</a></li><li class="depth-0"><a href="#git-rm--r-cached-" data-for="git-rm--r-cached-">git rm -r —cached .</a></li><li class="depth-0"><a href="#git-add---파일명" data-for="git-add---파일명">git add &lt;. | 파일명></a></li><li class="depth-0"><a href="#git-restore---파일명" data-for="git-restore---파일명">git restore &lt;. | 파일명></a></li><li class="depth-1"><a href="#옵션" data-for="옵션">옵션</a></li><li class="depth-0"><a href="#git-pull" data-for="git-pull">git pull</a></li><li class="depth-1"><a href="#git-pull-원격저장소-브랜치" data-for="git-pull-원격저장소-브랜치">git pull &lt;원격저장소> &lt;브랜치></a></li><li class="depth-1"><a href="#옵션-1" data-for="옵션-1">옵션</a></li><li class="depth-0"><a href="#git-push" data-for="git-push">git push</a></li><li class="depth-1"><a href="#git-push-원격저장소-브랜치" data-for="git-push-원격저장소-브랜치">git push &lt;원격저장소> &lt;브랜치></a></li><li class="depth-1"><a href="#옵션-2" data-for="옵션-2">옵션</a></li><li class="depth-0"><a href="#git-status" data-for="git-status">git status</a></li><li class="depth-0"><a href="#git-diff-옵션--null-비교대상--null" data-for="git-diff-옵션--null-비교대상--null">git diff &lt;옵션 | null> &lt;비교대상 | null></a></li><li class="depth-1"><a href="#git-difftool-옵션--null-비교대상--null" data-for="git-difftool-옵션--null-비교대상--null">git difftool &lt;옵션 | null> &lt;비교대상 | null></a></li><li class="depth-1"><a href="#기본옵션" data-for="기본옵션">기본옵션</a></li><li class="depth-1"><a href="#비교대상" data-for="비교대상">비교대상</a></li><li class="depth-0"><a href="#git-merge-abort" data-for="git-merge-abort">git merge —abort</a></li><li class="depth-0"><a href="#git-reset-리셋타입--null-돌아갈-주소" data-for="git-reset-리셋타입--null-돌아갈-주소">git reset &lt;리셋타입 | null> &lt;돌아갈 주소></a></li><li class="depth-1"><a href="#옵션-3" data-for="옵션-3">옵션</a></li><li class="depth-0"><a href="#git-log" data-for="git-log">git log</a></li><li class="depth-1"><a href="#git-log-all-oneline-graph" data-for="git-log-all-oneline-graph">git log —all —oneline —graph</a></li><li class="depth-0"><a href="#git-reflog-브랜치" data-for="git-reflog-브랜치">git reflog &lt;브랜치></a></li><li class="depth-0"><a href="#git-rebase-브랜치" data-for="git-rebase-브랜치">git rebase &lt;브랜치></a></li><li class="depth-1"><a href="#옵션-4" data-for="옵션-4">옵션</a></li><li class="depth-0"><a href="#git-branch-브랜치" data-for="git-branch-브랜치">git branch &lt;브랜치></a></li><li class="depth-0"><a href="#git-branch-all" data-for="git-branch-all">git branch —all</a></li><li class="depth-1"><a href="#git-branch--d-브랜치" data-for="git-branch--d-브랜치">git branch -D &lt;브랜치></a></li><li class="depth-1"><a href="#git-push-원격-저장소-브랜치" data-for="git-push-원격-저장소-브랜치">git push &lt;원격 저장소> &lt;브랜치></a></li><li class="depth-1"><a href="#git-push-원격-저장소--d-브랜치" data-for="git-push-원격-저장소--d-브랜치">git push &lt;원격 저장소> -d &lt;브랜치></a></li><li class="depth-1"><a href="#git-branch--m-현재이름-바꿀이름" data-for="git-branch--m-현재이름-바꿀이름">git branch -m &lt;현재이름> &lt;바꿀이름></a></li><li class="depth-0"><a href="#git-switch-브랜치" data-for="git-switch-브랜치">git switch &lt;브랜치></a></li><li class="depth-1"><a href="#옵션-5" data-for="옵션-5">옵션</a></li><li class="depth-1"><a href="#브랜치" data-for="브랜치">브랜치</a></li><li class="depth-0"><a href="#git-checkout-커밋값--브랜치" data-for="git-checkout-커밋값--브랜치">git checkout &lt;커밋값 | 브랜치></a></li><li class="depth-1"><a href="#git-checkout-커밋값--브랜치--" data-for="git-checkout-커밋값--브랜치--">git checkout &lt;커밋값 | 브랜치> — .</a></li><li class="depth-1"><a href="#옵션-6" data-for="옵션-6">옵션</a></li><li class="depth-0"><a href="#git-stash-작업--null-옵션--null" data-for="git-stash-작업--null-옵션--null">git stash &lt;작업 | null> &lt;옵션 | null></a></li><li class="depth-1"><a href="#기본옵션-1" data-for="기본옵션-1">기본옵션</a></li><li class="depth-1"><a href="#작업" data-for="작업">작업</a></li><li class="depth-0"><a href="#참고" data-for="참고">참고</a></li><li class="depth-1"><a href="#로컬-원격-브랜치-선택" data-for="로컬-원격-브랜치-선택">로컬, 원격 브랜치 선택</a></li><li class="depth-1"><a href="#모든-것을-의미하는-문자" data-for="모든-것을-의미하는-문자">모든 것을 의미하는 문자</a></li></ul></div></div><div class="graph"><h3>그래프 뷰</h3><div class="graph-outer"><div id="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false}"></div><button id="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div id="global-graph-outer"><div id="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true}"></div></div></div><div class="backlinks"><h3>백링크</h3><ul class="overflow"><li><a href="../스터디/Git-스터디" class="internal">Git 스터디</a></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.3.1</a> © 2024</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></body><script type="application/javascript">function c(){let t=this.parentElement;t.classList.toggle("is-collapsed");let l=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=l+"px";let o=t,e=t.parentElement;for(;e;){if(!e.classList.contains("callout"))return;let n=e.classList.contains("is-collapsed")?e.scrollHeight:e.scrollHeight+o.scrollHeight;e.style.maxHeight=n+"px",o=e,e=e.parentElement}}function i(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let l=s.firstElementChild;if(l){l.addEventListener("click",c),window.addCleanup(()=>l.removeEventListener("click",c));let e=s.classList.contains("is-collapsed")?l.scrollHeight:s.scrollHeight;s.style.maxHeight=e+"px"}}}document.addEventListener("nav",i);window.addEventListener("resize",i);
+</script><script type="module">
+          let mermaidImport = undefined
+          document.addEventListener('nav', async () => {
+            if (document.querySelector("code.mermaid")) {
+              mermaidImport ||= await import('https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.7.0/mermaid.esm.min.mjs')
+              const mermaid = mermaidImport.default
+              const darkMode = document.documentElement.getAttribute('saved-theme') === 'dark'
+              mermaid.initialize({
+                startOnLoad: false,
+                securityLevel: 'loose',
+                theme: darkMode ? 'dark' : 'default'
+              })
+
+              await mermaid.run({
+                querySelector: '.mermaid'
+              })
+            }
+          });
+          </script><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>

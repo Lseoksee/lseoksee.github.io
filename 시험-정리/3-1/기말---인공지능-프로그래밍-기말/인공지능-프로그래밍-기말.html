@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="ko"><head><title>인공지능 프로그래밍 기말</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM Plex Mono&amp;family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta property="og:title" content="인공지능 프로그래밍 기말"/><meta property="og:description" content="로지스틱 회귀 어떤 사건이 발생할지 말지 예측이 아니라 그 확률을 계산하는 것 특징 선형회귀+로지스틱 함수 로지스틱 함수는 시그모이드 함수와 거의 동일 이진 분류의 경우 확률이 0.5 이상이면 참 아니면 거짓 이진 분류는 시그모이드, 다중분류는 소프트 맥스 LogisticRegression init: C: float: 규제 정도 (로그 값) 과적합 ..."/><meta property="og:image" content="https://quartz.jzhao.xyz/static/og-image.png"/><meta property="og:width" content="1200"/><meta property="og:height" content="675"/><link rel="icon" href="../../../static/icon.png"/><meta name="description" content="로지스틱 회귀 어떤 사건이 발생할지 말지 예측이 아니라 그 확률을 계산하는 것 특징 선형회귀+로지스틱 함수 로지스틱 함수는 시그모이드 함수와 거의 동일 이진 분류의 경우 확률이 0.5 이상이면 참 아니면 거짓 이진 분류는 시그모이드, 다중분류는 소프트 맥스 LogisticRegression init: C: float: 규제 정도 (로그 값) 과적합 ..."/><meta name="generator" content="Quartz"/><link href="../../../index.css" rel="stylesheet" type="text/css" spa-preserve/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../../../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../../../static/contentIndex.json").then(data => data.json())</script></head><body data-slug="시험-정리/3-1/기말---인공지능-프로그래밍-기말/인공지능-프로그래밍-기말"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../../..">안녕하세요 저는</a></h2><div class="spacer mobile-only"></div><div class="search"><button class="search-button" id="search-button"><p>검색</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div id="search-container"><div id="search-space"><input autocomplete="off" id="search-bar" name="search" type="text" aria-label="검색어를 입력하세요" placeholder="검색어를 입력하세요"/><div id="search-layout" data-preview="true"></div></div></div></div><button class="darkmode" id="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="다크 모드"><title>다크 모드</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="라이트 모드"><title>라이트 모드</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button><div class="explorer desktop-only"><button type="button" id="explorer" data-behavior="collapse" data-collapsed="collapsed" data-savestate="true" data-tree="[{&quot;path&quot;:&quot;CLI-프로그램-명령어&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;강의필기&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;개발-언어&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;리눅스&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;스터디&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/2-2&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/2-2/교양-파이썬-기말&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/2-2/네트워크-프로그래밍-중간&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/2-2/자료구조-기말&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/2-2/자료구조-중간&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/기말---딥러닝-프로그래밍&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/기말---알고리즘&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/기말---인공지능-프로그래밍-기말&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/중간---Iot&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/중간---딥러닝-프로그래밍&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/중간---알고리즘&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/중간---인공지능-프로그래밍-중간&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;유용한-것들-모음&quot;,&quot;collapsed&quot;:true}]" aria-controls="explorer-content" aria-expanded="false"><h2>탐색기</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-content"><ul class="overflow" id="explorer-ul"><li><div class="folder-outer open"><ul style="padding-left:0;" class="content" data-folderul><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="CLI-프로그램-명령어"><button class="folder-button"><span class="folder-title">CLI 프로그램 명령어</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="CLI-프로그램-명령어"><li><a href="../../../CLI-프로그램-명령어/Conda-명령어-정리" data-for="CLI-프로그램-명령어/Conda-명령어-정리">Conda 명령어 정리</a></li><li><a href="../../../CLI-프로그램-명령어/Docker-명령어-정리" data-for="CLI-프로그램-명령어/Docker-명령어-정리">Docker 명령어 정리</a></li><li><a href="../../../CLI-프로그램-명령어/Git-명령어-정리" data-for="CLI-프로그램-명령어/Git-명령어-정리">Git 명령어 정리</a></li><li><a href="../../../CLI-프로그램-명령어/MySql-명령어-정리" data-for="CLI-프로그램-명령어/MySql-명령어-정리">MySql 명령어 정리</a></li><li><a href="../../../CLI-프로그램-명령어/pip-명령어-정리" data-for="CLI-프로그램-명령어/pip-명령어-정리">pip 명령어 정리</a></li><li><a href="../../../CLI-프로그램-명령어/Pnpm-명령어-정리" data-for="CLI-프로그램-명령어/Pnpm-명령어-정리">Pnpm 명령어 정리</a></li><li><a href="../../../CLI-프로그램-명령어/Poetry-명령어-정리" data-for="CLI-프로그램-명령어/Poetry-명령어-정리">Poetry 명령어 정리</a></li></ul></div></li><li><div class="folder-outer "><ul style="padding-left:0;" class="content" data-folderul></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="강의필기"><button class="folder-button"><span class="folder-title">강의필기</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="강의필기"><li><a href="../../../강의필기/기계학습프로그래밍" data-for="강의필기/기계학습프로그래밍">기계학습프로그래밍</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="개발-언어"><button class="folder-button"><span class="folder-title">개발 언어</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="개발-언어"><li><a href="../../../개발-언어/Java" data-for="개발-언어/Java">Java</a></li><li><a href="../../../개발-언어/Python" data-for="개발-언어/Python">Python</a></li><li><a href="../../../개발-언어/Shell-Script" data-for="개발-언어/Shell-Script">Shell Script</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="리눅스"><button class="folder-button"><span class="folder-title">리눅스</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="리눅스"><li><a href="../../../리눅스/Vim-사용법" data-for="리눅스/Vim-사용법">Vim 사용법</a></li><li><a href="../../../리눅스/단축키" data-for="리눅스/단축키">단축키</a></li><li><a href="../../../리눅스/리눅스-명령어-정리" data-for="리눅스/리눅스-명령어-정리">리눅스 명령어 정리</a></li><li><a href="../../../리눅스/패키지-설치" data-for="리눅스/패키지-설치">패키지 설치</a></li><li><a href="../../../리눅스/프로그램-암호" data-for="리눅스/프로그램-암호">프로그램 암호</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="스터디"><button class="folder-button"><span class="folder-title">스터디</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="스터디"><li><a href="../../../스터디/AWS-스터디--and--프로젝트" data-for="스터디/AWS-스터디--and--프로젝트">AWS 스터디 &amp; 프로젝트</a></li><li><a href="../../../스터디/CORS-(Cross-Origin-Resource-Sharing)" data-for="스터디/CORS-(Cross-Origin-Resource-Sharing)">CORS (Cross-Origin Resource Sharing)</a></li><li><a href="../../../스터디/Doker-스터디" data-for="스터디/Doker-스터디">Doker 스터디</a></li><li><a href="../../../스터디/Express.js-정리" data-for="스터디/Express.js-정리">Express.js 정리</a></li><li><a href="../../../스터디/File-IO" data-for="스터디/File-IO">File IO</a></li><li><a href="../../../스터디/Git-스터디" data-for="스터디/Git-스터디">Git 스터디</a></li><li><a href="../../../스터디/gRPC-통신" data-for="스터디/gRPC-통신">gRPC 통신</a></li><li><a href="../../../스터디/IPC-통신" data-for="스터디/IPC-통신">IPC 통신</a></li><li><a href="../../../스터디/Kubernetes-(K8S)-스터디" data-for="스터디/Kubernetes-(K8S)-스터디">Kubernetes (K8S) 스터디</a></li><li><a href="../../../스터디/React-Native-정리" data-for="스터디/React-Native-정리">React-Native 정리</a></li><li><a href="../../../스터디/SSE-(Server-Sent-Event)" data-for="스터디/SSE-(Server-Sent-Event)">SSE (Server Sent Event)</a></li><li><a href="../../../스터디/SSH-(Secure-Shell-Protocol)" data-for="스터디/SSH-(Secure-Shell-Protocol)">SSH (Secure Shell Protocol)</a></li><li><a href="../../../스터디/개발-용어-정리" data-for="스터디/개발-용어-정리">개발 용어 정리</a></li><li><a href="../../../스터디/공개키-암호화" data-for="스터디/공개키-암호화">공개키 암호화</a></li><li><a href="../../../스터디/네트워크-통신" data-for="스터디/네트워크-통신">네트워크 통신</a></li><li><a href="../../../스터디/데이터-베이스-정규화" data-for="스터디/데이터-베이스-정규화">데이터 베이스 정규화</a></li><li><a href="../../../스터디/문자-인코딩" data-for="스터디/문자-인코딩">문자 인코딩</a></li><li><a href="../../../스터디/비동기와-멀티스레드-차이" data-for="스터디/비동기와-멀티스레드-차이">비동기와 멀티스레드 차이</a></li><li><a href="../../../스터디/추후-스터디-할-것들-모음" data-for="스터디/추후-스터디-할-것들-모음">추후 스터디 할 것들 모음</a></li><li><a href="../../../스터디/컴퓨터-수-표현" data-for="스터디/컴퓨터-수-표현">컴퓨터 수 표현</a></li><li><a href="../../../스터디/파일-링크" data-for="스터디/파일-링크">파일 링크</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리"><button class="folder-button"><span class="folder-title">시험 정리</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/2-2"><button class="folder-button"><span class="folder-title">2-2</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/2-2"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/2-2/교양-파이썬-기말"><button class="folder-button"><span class="folder-title">교양 파이썬 기말</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/2-2/교양-파이썬-기말"><li><a href="../../../시험-정리/2-2/교양-파이썬-기말/교양-파이썬-기말" data-for="시험-정리/2-2/교양-파이썬-기말/교양-파이썬-기말">교양 파이썬 기말</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/2-2/네트워크-프로그래밍-중간"><button class="folder-button"><span class="folder-title">네트워크 프로그래밍 중간</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/2-2/네트워크-프로그래밍-중간"><li><a href="../../../시험-정리/2-2/네트워크-프로그래밍-중간/네트워크-프로그래밍-중간고사-정리" data-for="시험-정리/2-2/네트워크-프로그래밍-중간/네트워크-프로그래밍-중간고사-정리">네트워크 프로그래밍 중간고사 정리</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/2-2/자료구조-기말"><button class="folder-button"><span class="folder-title">자료구조 기말</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/2-2/자료구조-기말"><li><a href="../../../시험-정리/2-2/자료구조-기말/자료구조-기말" data-for="시험-정리/2-2/자료구조-기말/자료구조-기말">자료구조 기말</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/2-2/자료구조-중간"><button class="folder-button"><span class="folder-title">자료구조 중간</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/2-2/자료구조-중간"><li><a href="../../../시험-정리/2-2/자료구조-중간/자료구조-중간-정리" data-for="시험-정리/2-2/자료구조-중간/자료구조-중간-정리">자료구조 중간 정리</a></li></ul></div></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1"><button class="folder-button"><span class="folder-title">3-1</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/기말---딥러닝-프로그래밍"><button class="folder-button"><span class="folder-title">기말 - 딥러닝 프로그래밍</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/기말---딥러닝-프로그래밍"><li><a href="../../../시험-정리/3-1/기말---딥러닝-프로그래밍/딥러닝-프로그래밍-기말" data-for="시험-정리/3-1/기말---딥러닝-프로그래밍/딥러닝-프로그래밍-기말">딥러닝 프로그래밍 기말</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/기말---알고리즘"><button class="folder-button"><span class="folder-title">기말 - 알고리즘</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/기말---알고리즘"><li><a href="../../../시험-정리/3-1/기말---알고리즘/알고리즘-기말" data-for="시험-정리/3-1/기말---알고리즘/알고리즘-기말">알고리즘 기말</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/기말---인공지능-프로그래밍-기말"><button class="folder-button"><span class="folder-title">기말 - 인공지능 프로그래밍 기말</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/기말---인공지능-프로그래밍-기말"><li><a href="../../../시험-정리/3-1/기말---인공지능-프로그래밍-기말/인공지능-프로그래밍-기말" data-for="시험-정리/3-1/기말---인공지능-프로그래밍-기말/인공지능-프로그래밍-기말">인공지능 프로그래밍 기말</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/중간---Iot"><button class="folder-button"><span class="folder-title">중간 - Iot</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/중간---Iot"><li><a href="../../../시험-정리/3-1/중간---Iot/Iot-중간" data-for="시험-정리/3-1/중간---Iot/Iot-중간">Iot 중간</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/중간---딥러닝-프로그래밍"><button class="folder-button"><span class="folder-title">중간 - 딥러닝 프로그래밍</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/중간---딥러닝-프로그래밍"><li><a href="../../../시험-정리/3-1/중간---딥러닝-프로그래밍/딥러닝-프로그래밍-중간" data-for="시험-정리/3-1/중간---딥러닝-프로그래밍/딥러닝-프로그래밍-중간">딥러닝 프로그래밍 중간</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/중간---알고리즘"><button class="folder-button"><span class="folder-title">중간 - 알고리즘</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/중간---알고리즘"><li><a href="../../../시험-정리/3-1/중간---알고리즘/알고리즘-중간" data-for="시험-정리/3-1/중간---알고리즘/알고리즘-중간">알고리즘 중간</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/중간---인공지능-프로그래밍-중간"><button class="folder-button"><span class="folder-title">중간 - 인공지능 프로그래밍 중간</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/중간---인공지능-프로그래밍-중간"><li><a href="../../../시험-정리/3-1/중간---인공지능-프로그래밍-중간/인공지능-프로그래밍-중간" data-for="시험-정리/3-1/중간---인공지능-프로그래밍-중간/인공지능-프로그래밍-중간">인공지능 프로그래밍 중간</a></li></ul></div></li></ul></div></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="유용한-것들-모음"><button class="folder-button"><span class="folder-title">유용한 것들 모음</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="유용한-것들-모음"><li><a href="../../../유용한-것들-모음/Apache-Tomcat-관련" data-for="유용한-것들-모음/Apache-Tomcat-관련">Apache Tomcat 관련</a></li><li><a href="../../../유용한-것들-모음/CLI-옵션-국룰" data-for="유용한-것들-모음/CLI-옵션-국룰">CLI 옵션 국룰</a></li><li><a href="../../../유용한-것들-모음/Github-Actions-정리" data-for="유용한-것들-모음/Github-Actions-정리">Github Actions 정리</a></li><li><a href="../../../유용한-것들-모음/Google-API-사용법" data-for="유용한-것들-모음/Google-API-사용법">Google API 사용법</a></li><li><a href="../../../유용한-것들-모음/Google-Colab-세션-유지-방법" data-for="유용한-것들-모음/Google-Colab-세션-유지-방법">Google Colab 세션 유지 방법</a></li><li><a href="../../../유용한-것들-모음/Gradle-스크립트-한글-깨짐-문제-해결" data-for="유용한-것들-모음/Gradle-스크립트-한글-깨짐-문제-해결">Gradle 스크립트 한글 깨짐 문제 해결</a></li><li><a href="../../../유용한-것들-모음/JVM-Args" data-for="유용한-것들-모음/JVM-Args">JVM Args</a></li><li><a href="../../../유용한-것들-모음/뭔가-문서로-분리하긴-뭐한" data-for="유용한-것들-모음/뭔가-문서로-분리하긴-뭐한">뭔가 문서로 분리하긴 뭐한</a></li><li><a href="../../../유용한-것들-모음/짜잘한-윈도우-팁-모음" data-for="유용한-것들-모음/짜잘한-윈도우-팁-모음">짜잘한 윈도우 팁 모음</a></li></ul></div></li></ul></div></li><li id="explorer-end"></li></ul></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../시험-정리/">시험 정리</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../시험-정리/3-1/">3 1</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../시험-정리/3-1/기말---인공지능-프로그래밍-기말/">기말   인공지능 프로그래밍 기말</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>인공지능 프로그래밍 기말</a></div></nav><h1 class="article-title">인공지능 프로그래밍 기말</h1><p show-comma="true" class="content-meta"><span>2024년 9월 14일</span><span>18 min read</span></p></div></div><article class="popover-hint"><h2 id="로지스틱-회귀">로지스틱 회귀<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#로지스틱-회귀" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote>
+<p>어떤 사건이 발생할지 말지 예측이 아니라 그 확률을 계산하는 것</p>
+</blockquote>
+<h3 id="특징">특징<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#특징" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>선형회귀+로지스틱 함수
+<ul>
+<li>로지스틱 함수는 시그모이드 함수와 거의 동일</li>
+</ul>
+</li>
+<li>이진 분류의 경우 확률이 0.5 이상이면 <code>참</code> 아니면 <code>거짓</code></li>
+<li>이진 분류는 <code>시그모이드</code>, 다중분류는 <code>소프트 맥스</code></li>
+</ul>
+<h3 id="logisticregression">LogisticRegression<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#logisticregression" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><code>init</code>:
+<ul>
+<li><code>C: float</code>: 규제 정도 (로그 값) 과적합 방지</li>
+<li><code>max_iter: int</code>: 경사하강법 횟수</li>
+</ul>
+</li>
+<li><code>property</code>:
+<ul>
+<li><code>classes_</code>: 분류되는 타깃 정보 저장</li>
+<li><code>coef_</code>: 분류되는 가중치</li>
+<li><code>intercept_</code>: 절편값</li>
+<li><code>decision_function(test 데이터) -> list</code>: 계산된 <code>Z</code> 값 (가중치+편향)</li>
+<li><code>predict_proba(test 데이터) -> list</code>: 각 샘플들 예측 확률</li>
+</ul>
+</li>
+</ul>
+<h2 id="확률적-경사-하강법">확률적 경사 하강법<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#확률적-경사-하강법" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote>
+<p>하나의 샘플을 랜덤하게 골라서 오차를 최소하는 지점 <code>a</code>, <code>b</code> 를 고르는 방법
+최소 오차를 찾기 위해 반복하게 되는데 이를 <code>에포크</code></p>
+</blockquote>
+<h3 id="특징-1">특징<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#특징-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>새로 들어온 데이터에 대해 점진적으로 학습하는</li>
+<li><code>미니 배치 경사 하강법</code>:
+<ul>
+<li>훈련데이터 에서 무작위로 샘플 추출해서 하는방식</li>
+</ul>
+</li>
+<li><code>배치 경사 하강법</code>:
+<ul>
+<li>전체 훈련 데이터에서</li>
+</ul>
+</li>
+<li><code>손실함수</code>
+<ul>
+<li><span class="text-highlight">로지스틱 손실 함수 (이진분류)</span>
+<ul>
+<li><code>타깃값이 1이면</code>: 예측확률 x 타깃 x -1</li>
+<li><code>타깃값이 0이면</code>:  1 - (예측확률 x 타깃 x -1)</li>
+</ul>
+</li>
+<li>크로스 엔트로피 손실 함수 (다중분류)
+<ul>
+<li><code>엔트로피</code>: 불확실성의 척도 (ex: 동전던지기)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="sgdclassifier">SGDClassifier<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#sgdclassifier" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>확률적 경사하강법 분류용 클래스</p>
+</blockquote>
+<ul>
+<li><code>init</code>:
+<ul>
+<li><code>loss: &quot;log_loss&quot; | &quot;hinge&quot;</code>: 손실함수 log_loss=로지스틱 손실함수</li>
+<li><code>penalty: &quot;l1&quot; | &quot;l2&quot; = &quot;l1&quot;</code>: 규제</li>
+<li><code>max_iter: int</code>: 에포크</li>
+<li><code>tol: number</code>: 반복조건 (손실이 <code>tol</code> 만큼 줄어들지 않으면)</li>
+</ul>
+</li>
+<li><code>property</code>:
+<ul>
+<li><span class="text-highlight">partial_fit(특성, 타겟)</span>: 점진적 학습</li>
+</ul>
+</li>
+</ul>
+<h2 id="결정-트리">결정 트리<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#결정-트리" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote>
+<p>설명 가능한 AI</p>
+</blockquote>
+<h3 id="특징-2">특징<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#특징-2" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>AI 는 뛰어난 판단 능력을 보이지만 이 판단 과정을 설명하는게 너무 어려움</li>
+<li>이걸 마치 스무고개 하듯이 구조를 짜 놓는것
+<img src="../../../시험-정리/3-1/기말---인공지능-프로그래밍-기말/결정트리.png" width="auto" height="auto" alt/>
+<img src="../../../시험-정리/3-1/기말---인공지능-프로그래밍-기말/결정트리-노드.png" width="auto" height="auto" alt/></li>
+<li>분할된 노드가 하나의 값을 가질 때 까지 반복 분활</li>
+<li><span class="text-highlight">결정 트리는 표준화 할 필요 없다</span></li>
+</ul>
+<h4 id="장단점">장단점<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#장단점" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>분류시 계산이 빠르고 쉬움 +</li>
+<li>예측 결과에 대해 왜 그런 결과가 도출되었는지 설명 가능 +</li>
+<li>선형 모형에는 적합하지 못함 -</li>
+<li>과대 적합 가능성이 있음 -</li>
+</ul>
+<h4 id="과적합-방지">과적합 방지<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#과적합-방지" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><code>가지치기</code>:
+<ul>
+<li><code>사전 가지치기</code>: 최대깊이, 각 노드에 최소 샘플 수 정해서 훈련</li>
+<li><code>사후 가지치기</code>: 훈련 후 데이터 수가 적은 노드 삭제</li>
+</ul>
+</li>
+<li>앙상블 기법</li>
+</ul>
+<h4 id="지니계수">지니계수<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#지니계수" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<blockquote>
+<p>불순도 측정에 사용되는 값</p>
+</blockquote>
+<ul>
+<li><code>불순도</code>: 여러 범주의 데이터가 섞여 있는 정도 (예측한 값과 실제 값이 다른 값들이 많이 모인 정도)</li>
+<li><code>지니 불순도</code>: 1 - <code>(데이터총계/특성1개수)**2</code> + <code>(데이터총계/특성2개수)**2</code>
+<ul>
+<li><img src="../../../시험-정리/3-1/기말---인공지능-프로그래밍-기말/지니-불순도.png" width="auto" height="auto" alt/></li>
+<li><code>0.5</code> 즉 반반이 제일 낮은 거 <code>1</code> 이 제일 높은 거</li>
+</ul>
+</li>
+</ul>
+<h3 id="decisiontreeclassifier">DecisionTreeClassifier<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#decisiontreeclassifier" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>결정트리 클래스</p>
+</blockquote>
+<ul>
+<li><code>init</code>:
+<ul>
+<li><code>max_depth: int</code>: 최대 깊이 설정</li>
+<li>random_state</li>
+</ul>
+</li>
+<li><code>property</code>:
+<ul>
+<li><code>feature_importances_: list</code>: 각 특성별 중요도 출력</li>
+<li>그 외 다른 훈련 클래스랑 동일</li>
+</ul>
+</li>
+</ul>
+<h3 id="plot_tree">plot_tree()<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#plot_tree" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>결정트리 시각화 함수</p>
+</blockquote>
+<ul>
+<li><code>매개 변수</code>:
+<ul>
+<li><code>max_depth: int</code>: 시각화 최대 길이</li>
+<li><code>filled: bool</code>: 색칠</li>
+<li><code>feature_names: list</code>: 특성 이름 정하기</li>
+</ul>
+</li>
+</ul>
+<h2 id="k-폴드-교차-검증">K-폴드 교차 검증<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#k-폴드-교차-검증" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote>
+<p><a href="#%EA%B2%80%EC%A6%9D%EC%84%B8%ED%8A%B8-validation-set" class="internal alias">검증세트 (validation set)</a> 를 <code>K</code>개의 부분(폴드)로 나누는 방법</p>
+</blockquote>
+<h3 id="특징-3">특징<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#특징-3" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>K 가 3인 경우 (### 3-Fold cross validation)
+<img src="../../../시험-정리/3-1/기말---인공지능-프로그래밍-기말/3-Fold-cross-validation.png" width="auto" height="auto" alt/></li>
+<li>3개로 세트를 나누고 그 3개 데이터 셋 을 <code>각각 훈련, 평가 하고 평균을 계산</code></li>
+</ul>
+<h3 id="cross_validate">cross_validate()<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#cross_validate" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>교차 검증 함수</p>
+</blockquote>
+<ul>
+<li><code>매개 변수</code>:
+<ul>
+<li><code>estimator: any</code>: 학습 모델 객체 (DecisionTreeClassifier 같은거)</li>
+<li><code>X: any</code>: 훈련 특성</li>
+<li><code>Y: any</code>: 훈련 타겟</li>
+<li><code>cv: any</code>: 분할기 (이걸로 <code>K(폴드)</code> 값 조정)</li>
+<li><code>return_train_score: bool</code>: 학습에 쓰인 데이터도 스코어 출력 할지 말지</li>
+</ul>
+</li>
+<li><code>Return</code>:
+<ul>
+<li>fit_time: [] score_time: [] test_score: [] train_score: [] (return_train_score)
+<ul>
+<li>각각은 다 list</li>
+</ul>
+</li>
+<li><code>test_score</code> 나 <code>train_score</code> 이거 리스트 평균구하면 교차검증 끝</li>
+</ul>
+</li>
+</ul>
+<h4 id="stratifiedkfold">StratifiedKFold()<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#stratifiedkfold" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<blockquote>
+<p>분류 모델에 사용하는 분할기</p>
+</blockquote>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">cross_validate(model, train_input, train_target, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">cv</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">StratifiedKFold())</span></span></code></pre></figure>
+<ul>
+<li><code>매개 변수</code>:
+<ul>
+<li><code>n_splits: int=5</code>: <code>K</code> 값 조정</li>
+<li><code>shuffle: bool</code>: 데이터를 섞을지 말지</li>
+</ul>
+</li>
+</ul>
+<h2 id="그리드-서치">그리드 서치<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#그리드-서치" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote>
+<p>하이퍼 파라미터 값이 많을경우 하나씩 입력해보며 최적 파라미터 구하는 방법</p>
+</blockquote>
+<h3 id="특징-4">특징<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#특징-4" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>K-폴드 검증이 데이터 세트에 대한 검증이라면 이건 하이퍼 파라미터에 대한 검증</li>
+<li>교차검증 까지 해줌</li>
+</ul>
+<h3 id="gridsearchcv">GridSearchCV<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#gridsearchcv" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>GridSearch 객체</p>
+</blockquote>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># min_impurity_decrease가 찾을 파라미터임</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">GridSearchCV(dt, {</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">'min_impurity_decrease'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">0.0001</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">0.0002</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">0.0003</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">0.0004</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">0.0005</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]}, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">n_jobs</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">1</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span></code></pre></figure>
+<ul>
+<li><code>init</code>:
+<ul>
+<li><code>estimator</code>: 학습 모델 객체</li>
+<li><code>param_grid: dict</code>: 찾을 하이퍼 파라미터를 딕셔너리로 저장</li>
+<li><code>n_jobs: int</code>: 사용할 cpu 코어 수 (-1 이면 모든 코어 사용)</li>
+<li><code>cv: any</code>: 분할기 (이걸로 <code>K(폴드)</code> 값 조정)</li>
+</ul>
+</li>
+<li><code>property</code>:
+<ul>
+<li><code>fit(X, Y)</code>: 최적 파라미터 찾기수행</li>
+<li><code>best_params_: dict</code>: 최적값 찾아서 반환 <code>{min_impurity_decrease: 0.001}</code></li>
+<li><code>cv_results_: dict</code>: 각 파라미터별 학습 결과를 도출 (DataFrame 생성해서 볼 수 있음)
+<ul>
+<li><code>mean_test_score: arr</code>: 각 파라미터별 교차 검증 평균성능</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="randomizedsearchcv">RandomizedSearchCV<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#randomizedsearchcv" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>랜덤서치 객체</p>
+</blockquote>
+<ul>
+<li>그리드서치에 문제가 내가 지정해놓은 탐색 하이퍼 파리미터가 최적값과는 먼 경우 실제 최적값을 찾는다는 보장이 없다</li>
+<li>랜덤서치는 단순 범위만 지정해놓고 모델이 직접 거기중에 하나 뽑아서 최적 파라미터 구하는 방식</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">RandomizedSearchCV(dt, {</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">'min_impurity_decrease'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: uniform(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">0.0001</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">0.001</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)}, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">n_iter</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">100</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span></code></pre></figure>
+<ul>
+<li><code>init</code>:
+<ul>
+<li><code>estimator</code>: 학습 모델 객체</li>
+<li><code>param_grid: dict</code>: 찾을 하이퍼파라미터를 딕셔너리로 저장
+<ul>
+<li><code>randint(0, 10)</code>: 이 안에 있는 <code>정수</code> 값으로 범위 제한</li>
+<li><code>uniform(0, 10</code>: 이 안에 있는 <code>실수</code> 값으로 범위 제한</li>
+</ul>
+</li>
+<li><code>n_jobs: int</code>: 사용할 cpu 코어 수 (-1 이면 모든 코어 사용)</li>
+<li><code>n_iter:int </code>: 주어진 범위 중 실제 훈련에 쓰일 거 계수</li>
+</ul>
+</li>
+<li><code>property</code>:
+<ul>
+<li>그리드 서치와 동일</li>
+</ul>
+</li>
+</ul>
+<h2 id="앙상블">앙상블<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#앙상블" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote>
+<p>여러개 분류 모델을 조합하여 분류의 과적합을 방지하는 방법 (분류)</p>
+</blockquote>
+<ul>
+<li><code>Voting</code>:
+<ul>
+<li>같은 데이터 셋을 <span class="text-highlight">다른 알고리즘</span>으로 예측하고 다수결로 투표해서 최종 예측 값을 결정하는</li>
+</ul>
+</li>
+<li><code>Bagging</code>:
+<ul>
+<li>같은 모델을 사용하는데 <span class="text-highlight">다른 데이터 셋</span> 으로 예측하고 투표해서 최종 예측 값을 결정하는</li>
+<li><code>Bootstrap</code>: 훈련 데이터에서 중복을 허용하여 랜덤하게 샘플을 추출</li>
+</ul>
+</li>
+<li><code>Boosting</code>:
+<ul>
+<li>이전 모델에 예측 결과가 오답인 모델에 더 많은 가중치를 부여</li>
+<li>각각 모델의 가중치가 추후 예측하게 될 모델에 영향을 미쳐 분류 규칙을 만들어 내는 것</li>
+</ul>
+</li>
+</ul>
+<h3 id="랜덤-포레스트-bagging">랜덤 포레스트 (Bagging)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#랜덤-포레스트-bagging" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>결정 트리기반, 여러개의 결정트리 모델(depth 를 다르게하는등)을 만들고 예측값을 취합 하여 결정하는 방식</p>
+</blockquote>
+<h4 id="특징-5">특징<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#특징-5" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>각 모델들의 독립성, 무작위성, 일반화 등을 최대화 시켜 최대한 모델간의 상관관계를 약화시킨다</li>
+<li>결정트리 장점을 그대로 \</li>
+<li>하이퍼 파라미터가 많아 튜닝시간이 길다</li>
+<li>랜덤 포레스트는 여러 모델을 조합한거라 그리드서치보다 성능이 더 뛰어나다</li>
+</ul>
+<h4 id="randomforestclassifier">RandomForestClassifier<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#randomforestclassifier" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<blockquote>
+<p>랜덤 포레스트 수행 객체</p>
+</blockquote>
+<ul>
+<li><code>init</code>:
+<ul>
+<li><code>n_estimators: int=100</code>: 결정트리 계수</li>
+<li><code>bootstrap: bool</code>: 부트스트랩 허용, 비허용</li>
+<li><code>oob_score: bool</code>: 부트스트랩에 포함되지 않은 남은 샘플을 이용하여 훈련</li>
+</ul>
+</li>
+<li><code>property</code>:
+<ul>
+<li>DecisionTreeClassifier 와 동일</li>
+</ul>
+</li>
+</ul>
+<h4 id="extratreesclassifier">ExtraTreesClassifier<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#extratreesclassifier" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<blockquote>
+<p>랜덤 포레스트 수행 객체 2</p>
+</blockquote>
+<ul>
+<li>결정트리 만들때 전체 데이터 셋 활용</li>
+<li>노드 분할시 가장 좋은 게 아니라 랜덤 분활</li>
+</ul>
+<h3 id="그레이디언트-부스팅-boosting">그레이디언트 부스팅 (Boosting)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#그레이디언트-부스팅-boosting" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>깊이가 앝은 결정트리를 사용하여 오차를 보정해가는, 선형회귀 에도 사용 가능</p>
+</blockquote>
+<h4 id="특징-6">특징<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#특징-6" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>경사하강 방식을 사용하여 결정트리를 계속 추가하여 손실이 적을 수 있도록</li>
+<li>과대적합에 강함</li>
+<li>랜덤 포레스트보다 성능은 더 좋지만 훈련 속도는 느림</li>
+</ul>
+<h4 id="gradientboostingclassifier">GradientBoostingClassifier<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#gradientboostingclassifier" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<blockquote>
+<p>그레이디언트 부스팅 수행 객체</p>
+</blockquote>
+<ul>
+<li><code>init</code>:
+<ul>
+<li><code>learning_rate: float</code>: 학습률 (오차를 얼마나 보정할 것인지)</li>
+<li>그외 RandomForestClassifier 와 동일</li>
+</ul>
+</li>
+<li><code>property</code>:
+<ul>
+<li>RandomForestClassifier 와 동일</li>
+</ul>
+</li>
+</ul>
+<h2 id="군집">군집<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#군집" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote>
+<p>이게 어떤 건지(타겟) 모른 상태로 분류하는 것</p>
+</blockquote>
+<ul>
+<li><code>군집 (cluster)</code>: 비슷한것 끼리 묶음</li>
+<li><code>군집화(clustering)</code>: 주어진 데이터를 <code>cluster(군집)</code> 으로 묶음</li>
+<li><code>중심점(centroid)</code>: 각 클러스터 중심</li>
+</ul>
+<h3 id="k-means-k-평균">K-Means (K 평균)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#k-means-k-평균" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p><code>K-Means 알고리즘</code>: 각 군집에 평균을 사용하여 <code>K</code>개의 군집으로 묶는 것</p>
+</blockquote>
+<h4 id="작동-원리"><span class="text-highlight">작동 원리</span><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#작동-원리" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p><img src="../../../시험-정리/3-1/기말---인공지능-프로그래밍-기말/K-Means.png" width="auto" height="auto" alt/></p>
+<ol>
+<li>군집 개수 <code>K</code> 정함</li>
+<li>초기 중심점 설정 (랜덤으로 정하거나 특정 알고리즘에 의해)</li>
+<li>모든 중심점 중 제일 가까운것들을 군집에 할당</li>
+<li>중심점을 조금씩 움직이면서, 데이터들을 재할당</li>
+<li>어느정도 할당 당하면 중심점의 위치가 변하지 않게 됨</li>
+</ol>
+<h4 id="장단점-1">장단점<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#장단점-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>
+<ul>
+<li>직관적이고 구현이 쉬움</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>대용량 데이터에 적용 가능</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>클러스터의 모양을 원형으로 간주</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>특성이 많을 수록 값이 분산되어 군집하기 어렵다는</li>
+</ul>
+</li>
+</ul>
+<h4 id="실루엣-분석">실루엣 분석<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#실루엣-분석" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<blockquote>
+<p>K-Means 에 성능 평가 방법</p>
+</blockquote>
+<ul>
+<li>각 군집 간의 거리가 얼마나 효율적으로 분리되있는지를 나타내는</li>
+<li><code>1</code> 에 가까울 수록 멀리, <code>0</code> 에 가까울 수록 가깝다는</li>
+<li>음수값이 나온다면 잘못 할당된것</li>
+<li>일반적으로 값이 높을수록 군집화가 잘 됬다 볼 수 있지만 항상 그런건 아니다.
+<ul>
+<li>적당히 분포된게 제일 좋은거</li>
+</ul>
+</li>
+</ul>
+<h4 id="적절한-k-찾는-방법">적절한 K 찾는 방법<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#적절한-k-찾는-방법" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><code>엘보우</code>: K 값을 늘려 가며 <code>이니셔</code>의 변화를 관찰하는 법 일반적으로 클러스터 개수가 늘면 이니셔도 감소하여
+<ul>
+<li><code>이니셔</code>: 클러스터 중심과 속한 데이터 사이 <code>거리의 제곱합</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="kmeans">KMeans<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#kmeans" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<blockquote>
+<p>K-Means 수행 객체</p>
+</blockquote>
+<ul>
+<li><code>init</code>:
+<ul>
+<li><code>n_clusters: int=8</code>: 군집 개수</li>
+<li><code>init: 'kmeans++' | 'random'</code>: 초기 중심점 설정 방법</li>
+<li><code>n_init: int=10</code>: 초기 중심점 찾기 반복 횟수</li>
+<li><code>max_iter</code>: 최대 반복횟수</li>
+</ul>
+</li>
+<li><code>property</code>:
+<ul>
+<li><code>fit(X)</code>: 다른 것들과 다르게 <code>특성</code> 만 가지고 학습 (타겟 정보가 없는 알고리즘)</li>
+<li><code>inertia_</code>: 각 샘플들 <code>이니셔</code>값</li>
+<li><code>cluster_centers_: list[list[float]]</code>: 각 군집에 중심점</li>
+</ul>
+</li>
+</ul>
+<h2 id="차원-축소">차원 축소<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#차원-축소" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote>
+<p>특성이 많은 고차원 데이터의 중요하지 않은 특성을 빼서 꼭 필요한 특징만 데이터로 표현하는 것</p>
+</blockquote>
+<p><a href="../../../시험-정리/3-1/중간---인공지능-프로그래밍-중간/인공지능-프로그래밍-중간#특성공학" class="internal alias" data-slug="시험-정리/3-1/중간---인공지능-프로그래밍-중간/인공지능-프로그래밍-중간">특성공학</a></p>
+<ul>
+<li>예를 들어 키, 몸무게 라는 특성은 2차원으로 표현 가능하다, 근데 여기에 성별이 추가되면? 3차원</li>
+<li><code>필요한 이유</code>:
+<ul>
+<li>모델이 복잡해지고, 오버피팅 가능성이 있다</li>
+<li>데이터 개수를 늘리면 개선 되기도 하는데 학습 속도 느려짐</li>
+</ul>
+</li>
+</ul>
+<h3 id="투영">투영<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#투영" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><img src="../../../시험-정리/3-1/기말---인공지능-프로그래밍-기말/투영.png" width="auto" height="auto" alt/></p>
+<blockquote>
+<p>3차원 데이터를 2차원으로 이동 시켰다.</p>
+</blockquote>
+<ul>
+<li>고차원 데이터를 저차원 공간으로 수직 이동시키는</li>
+<li>일부 고차원 데이터를 표현 가능하다</li>
+</ul>
+<h3 id="메니폴드">메니폴드<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#메니폴드" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>데이터가 존재하는 공간을 다양한 시각으로 바라 볼 수 있다는</p>
+</blockquote>
+<ul>
+<li>데이터가 고차원 이라도 데이터에 집합을 포함하는 저차원에 무언가(다향체)가 있다는것</li>
+</ul>
+<h3 id="주성분-분석-pac">주성분 분석 (PAC)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#주성분-분석-pac" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><img src="../../../시험-정리/3-1/기말---인공지능-프로그래밍-기말/PAC.png" width="auto" height="auto" alt/></p>
+<blockquote>
+<p>가장 널리 사용하는 차원 축소 기법</p>
+</blockquote>
+<ul>
+<li>기존 데이터에서 가장 연관성 없는 데이터의 축을 찾아 그 차원으로 축소</li>
+<li>찾아낸 주성분 중 몇 개의 특성을 선택하여 분석을 실행하면 계산과 시각화가 용이</li>
+</ul>
+<h4 id="원리">원리<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#원리" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ol>
+<li>각 축에 평균값을 구하고 해당점이 원점이 되도록 shift 한다</li>
+<li>데이터에 원점을 지나는 수선의 발 내려 해당 길이가 최대가 되는 직선 찾기</li>
+<li>데이터에서 원점을 지나는 직선의 수선에 발을 내려, 해당길이가 최대가 되는 직선 찾기</li>
+<li>찾은 직선을 PC1(첫 주성분), Loading score 구하기 (X 축 길이와 Y 축 길이의 비율)</li>
+<li>PC1에 직교하는 직선을 PC2로 설정</li>
+<li>PC1과 PC2를 축으로 하여 회전시켜 주성분 분산 계산</li>
+<li>이후 막대그래프를 생성해 얼마나 특징점이 있는지 계산</li>
+<li>더 특징을 나타내는 주성분을 선택하여 축소</li>
+</ol>
+<h4 id="pac">PAC<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#pac" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<blockquote>
+<p>PAC 수행 객체</p>
+</blockquote>
+<ul>
+<li><code>init</code>:
+<ul>
+<li><code>n_components: int</code>: 주성분 개수</li>
+</ul>
+</li>
+<li><code>property</code>:
+<ul>
+<li><code>components_</code>: 찾아낸 주성분</li>
+<li><code>explained_variance_ratio_</code>:  각 주성분에 분산</li>
+<li><code>inverse_transform()</code>: 주성분으로 원본데이터 재구성</li>
+</ul>
+</li>
+</ul>
+<h2 id="용어정리">용어정리<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#용어정리" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="점진적-학습-온라인-학습">점진적 학습 (온라인 학습)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#점진적-학습-온라인-학습" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>학습이 완료된 모델에 <code>미니배치</code>라 부르는 작은 데이터를 주입하여 학습하는 방식</p>
+</blockquote>
+<ul>
+<li>무슨 소리냐면 모델을 대중에게 배포한다 치면 거기서 쌓인 데이터를 통해 또 학습하고 학습하며 점진적으로 하는 방식</li>
+</ul>
+<h3 id="검증세트-validation-set">검증세트 (validation set)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#검증세트-validation-set" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>테스트 세트를 이용하지 않고 모델 성능 측정 위해</p>
+</blockquote>
+<ul>
+<li>결국은 테스트 세트로 성능체크 해도 <code>테스트 세트</code>에 편향적인 모델이 만들어 질 수 있으니</li>
+<li>전체 데이터 중 <code>20 ~ 30%</code> 정도로 둠</li>
+</ul>
+<h3 id="이미지-처리">이미지 처리<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#이미지-처리" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>흑백사진 인 경우 배열은 2차원 이면 충분하다. (블랙 값에 수치만 조정 하면되니)</li>
+</ul>
+<h3 id="그-외">그 외<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#그-외" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><code>독립변수</code>, <code>종속변수</code>:
+<ul>
+<li>키가 몸무게의 영형을 얼마나 주나 뭐 이런거</li>
+<li>이때 <code>키</code> 는 독립변수<code>x</code>, <code>몸무게</code> 는 종속변수 <code>y</code></li>
+<li>또는 <code>특성</code>, <code>타겟</code></li>
+</ul>
+</li>
+<li><code>정형 &amp; 비정형 데이터</code>:
+<ul>
+<li>정형은 우리가 읽는데이터, 비정형은 컴퓨터가 읽는거</li>
+</ul>
+</li>
+</ul>
+<h2 id="함수정리">함수정리<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#함수정리" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><a href="../../../시험-정리/3-1/중간---인공지능-프로그래밍-중간/인공지능-프로그래밍-중간#함수정리" class="internal alias" data-slug="시험-정리/3-1/중간---인공지능-프로그래밍-중간/인공지능-프로그래밍-중간">함수정리</a></p>
+<h4 id="표준화">표준화<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#표준화" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<blockquote>
+<p>StandardScaler 클래스 사용</p>
+</blockquote>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">ss </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> StandardScaler()</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">ss.fit(train_poly)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">train_scaled </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> ss.transform(train_poly)</span></span></code></pre></figure>
+<blockquote>
+<p>MinMaxScaler 클래스 사용</p>
+</blockquote>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">mm </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> MinMaxScaler()</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">mm.fit(train_input)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">train_scaled </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> mm.transform(train_input)</span></span></code></pre></figure>
+<h3 id="scipy">scipy<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#scipy" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><code>expit(list)</code>: 시그모이드 함수 (<code>decision_function()</code> 결과값을 넣어 시그모이드로 예측한 값 얻음)</li>
+<li><code>special.softmax(list, axis=1)</code>: 소프트맥스 함수 (이것도 <code>decision_function()</code>과 같이)</li>
+</ul>
+<p><a href="../../../시험-정리/3-1/중간---딥러닝-프로그래밍/딥러닝-프로그래밍-중간#활성화-함수" class="internal alias" data-slug="시험-정리/3-1/중간---딥러닝-프로그래밍/딥러닝-프로그래밍-중간">활성화 함수</a></p>
+<h3 id="기타">기타<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#기타" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><code>pyplot</code>:
+<ul>
+<li><code>imshow(cmap='gray-r')</code>: 색상 반전</li>
+</ul>
+</li>
+</ul></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" id="toc" class aria-controls="toc-content" aria-expanded="true"><h3>목차</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="toc-content" class><ul class="overflow"><li class="depth-0"><a href="#로지스틱-회귀" data-for="로지스틱-회귀">로지스틱 회귀</a></li><li class="depth-1"><a href="#특징" data-for="특징">특징</a></li><li class="depth-1"><a href="#logisticregression" data-for="logisticregression">LogisticRegression</a></li><li class="depth-0"><a href="#확률적-경사-하강법" data-for="확률적-경사-하강법">확률적 경사 하강법</a></li><li class="depth-1"><a href="#특징-1" data-for="특징-1">특징</a></li><li class="depth-1"><a href="#sgdclassifier" data-for="sgdclassifier">SGDClassifier</a></li><li class="depth-0"><a href="#결정-트리" data-for="결정-트리">결정 트리</a></li><li class="depth-1"><a href="#특징-2" data-for="특징-2">특징</a></li><li class="depth-1"><a href="#decisiontreeclassifier" data-for="decisiontreeclassifier">DecisionTreeClassifier</a></li><li class="depth-1"><a href="#plot_tree" data-for="plot_tree">plot_tree()</a></li><li class="depth-0"><a href="#k-폴드-교차-검증" data-for="k-폴드-교차-검증">K-폴드 교차 검증</a></li><li class="depth-1"><a href="#특징-3" data-for="특징-3">특징</a></li><li class="depth-1"><a href="#cross_validate" data-for="cross_validate">cross_validate()</a></li><li class="depth-0"><a href="#그리드-서치" data-for="그리드-서치">그리드 서치</a></li><li class="depth-1"><a href="#특징-4" data-for="특징-4">특징</a></li><li class="depth-1"><a href="#gridsearchcv" data-for="gridsearchcv">GridSearchCV</a></li><li class="depth-1"><a href="#randomizedsearchcv" data-for="randomizedsearchcv">RandomizedSearchCV</a></li><li class="depth-0"><a href="#앙상블" data-for="앙상블">앙상블</a></li><li class="depth-1"><a href="#랜덤-포레스트-bagging" data-for="랜덤-포레스트-bagging">랜덤 포레스트 (Bagging)</a></li><li class="depth-1"><a href="#그레이디언트-부스팅-boosting" data-for="그레이디언트-부스팅-boosting">그레이디언트 부스팅 (Boosting)</a></li><li class="depth-0"><a href="#군집" data-for="군집">군집</a></li><li class="depth-1"><a href="#k-means-k-평균" data-for="k-means-k-평균">K-Means (K 평균)</a></li><li class="depth-0"><a href="#차원-축소" data-for="차원-축소">차원 축소</a></li><li class="depth-1"><a href="#투영" data-for="투영">투영</a></li><li class="depth-1"><a href="#메니폴드" data-for="메니폴드">메니폴드</a></li><li class="depth-1"><a href="#주성분-분석-pac" data-for="주성분-분석-pac">주성분 분석 (PAC)</a></li><li class="depth-0"><a href="#용어정리" data-for="용어정리">용어정리</a></li><li class="depth-1"><a href="#점진적-학습-온라인-학습" data-for="점진적-학습-온라인-학습">점진적 학습 (온라인 학습)</a></li><li class="depth-1"><a href="#검증세트-validation-set" data-for="검증세트-validation-set">검증세트 (validation set)</a></li><li class="depth-1"><a href="#이미지-처리" data-for="이미지-처리">이미지 처리</a></li><li class="depth-1"><a href="#그-외" data-for="그-외">그 외</a></li><li class="depth-0"><a href="#함수정리" data-for="함수정리">함수정리</a></li><li class="depth-1"><a href="#scipy" data-for="scipy">scipy</a></li><li class="depth-1"><a href="#기타" data-for="기타">기타</a></li></ul></div></div><div class="graph"><h3>그래프 뷰</h3><div class="graph-outer"><div id="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false}"></div><button id="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div id="global-graph-outer"><div id="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true}"></div></div></div><div class="backlinks"><h3>백링크</h3><ul class="overflow"><li>백링크가 없습니다.</li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.3.1</a> © 2024</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></body><script type="application/javascript">function c(){let t=this.parentElement;t.classList.toggle("is-collapsed");let l=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=l+"px";let o=t,e=t.parentElement;for(;e;){if(!e.classList.contains("callout"))return;let n=e.classList.contains("is-collapsed")?e.scrollHeight:e.scrollHeight+o.scrollHeight;e.style.maxHeight=n+"px",o=e,e=e.parentElement}}function i(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let l=s.firstElementChild;if(l){l.addEventListener("click",c),window.addCleanup(()=>l.removeEventListener("click",c));let e=s.classList.contains("is-collapsed")?l.scrollHeight:s.scrollHeight;s.style.maxHeight=e+"px"}}}document.addEventListener("nav",i);window.addEventListener("resize",i);
+</script><script type="module">
+          let mermaidImport = undefined
+          document.addEventListener('nav', async () => {
+            if (document.querySelector("code.mermaid")) {
+              mermaidImport ||= await import('https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.7.0/mermaid.esm.min.mjs')
+              const mermaid = mermaidImport.default
+              const darkMode = document.documentElement.getAttribute('saved-theme') === 'dark'
+              mermaid.initialize({
+                startOnLoad: false,
+                securityLevel: 'loose',
+                theme: darkMode ? 'dark' : 'default'
+              })
+
+              await mermaid.run({
+                querySelector: '.mermaid'
+              })
+            }
+          });
+          </script><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../../../postscript.js" type="module"></script></html>

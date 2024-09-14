@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="ko"><head><title>Doker 스터디</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM Plex Mono&amp;family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta property="og:title" content="Doker 스터디"/><meta property="og:description" content="..."/><meta property="og:image" content="https://quartz.jzhao.xyz/static/og-image.png"/><meta property="og:width" content="1200"/><meta property="og:height" content="675"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script></head><body data-slug="스터디/Doker-스터디"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">안녕하세요 저는</a></h2><div class="spacer mobile-only"></div><div class="search"><button class="search-button" id="search-button"><p>검색</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div id="search-container"><div id="search-space"><input autocomplete="off" id="search-bar" name="search" type="text" aria-label="검색어를 입력하세요" placeholder="검색어를 입력하세요"/><div id="search-layout" data-preview="true"></div></div></div></div><button class="darkmode" id="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="다크 모드"><title>다크 모드</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="라이트 모드"><title>라이트 모드</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button><div class="explorer desktop-only"><button type="button" id="explorer" data-behavior="collapse" data-collapsed="collapsed" data-savestate="true" data-tree="[{&quot;path&quot;:&quot;CLI-프로그램-명령어&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;강의필기&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;개발-언어&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;리눅스&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;스터디&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/2-2&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/2-2/교양-파이썬-기말&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/2-2/네트워크-프로그래밍-중간&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/2-2/자료구조-기말&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/2-2/자료구조-중간&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/기말---딥러닝-프로그래밍&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/기말---알고리즘&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/기말---인공지능-프로그래밍-기말&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/중간---Iot&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/중간---딥러닝-프로그래밍&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/중간---알고리즘&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/중간---인공지능-프로그래밍-중간&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;유용한-것들-모음&quot;,&quot;collapsed&quot;:true}]" aria-controls="explorer-content" aria-expanded="false"><h2>탐색기</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-content"><ul class="overflow" id="explorer-ul"><li><div class="folder-outer open"><ul style="padding-left:0;" class="content" data-folderul><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="CLI-프로그램-명령어"><button class="folder-button"><span class="folder-title">CLI 프로그램 명령어</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="CLI-프로그램-명령어"><li><a href="../CLI-프로그램-명령어/Conda-명령어-정리" data-for="CLI-프로그램-명령어/Conda-명령어-정리">Conda 명령어 정리</a></li><li><a href="../CLI-프로그램-명령어/Docker-명령어-정리" data-for="CLI-프로그램-명령어/Docker-명령어-정리">Docker 명령어 정리</a></li><li><a href="../CLI-프로그램-명령어/Git-명령어-정리" data-for="CLI-프로그램-명령어/Git-명령어-정리">Git 명령어 정리</a></li><li><a href="../CLI-프로그램-명령어/MySql-명령어-정리" data-for="CLI-프로그램-명령어/MySql-명령어-정리">MySql 명령어 정리</a></li><li><a href="../CLI-프로그램-명령어/pip-명령어-정리" data-for="CLI-프로그램-명령어/pip-명령어-정리">pip 명령어 정리</a></li><li><a href="../CLI-프로그램-명령어/Pnpm-명령어-정리" data-for="CLI-프로그램-명령어/Pnpm-명령어-정리">Pnpm 명령어 정리</a></li><li><a href="../CLI-프로그램-명령어/Poetry-명령어-정리" data-for="CLI-프로그램-명령어/Poetry-명령어-정리">Poetry 명령어 정리</a></li></ul></div></li><li><div class="folder-outer "><ul style="padding-left:0;" class="content" data-folderul></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="강의필기"><button class="folder-button"><span class="folder-title">강의필기</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="강의필기"><li><a href="../강의필기/기계학습프로그래밍" data-for="강의필기/기계학습프로그래밍">기계학습프로그래밍</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="개발-언어"><button class="folder-button"><span class="folder-title">개발 언어</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="개발-언어"><li><a href="../개발-언어/Java" data-for="개발-언어/Java">Java</a></li><li><a href="../개발-언어/Python" data-for="개발-언어/Python">Python</a></li><li><a href="../개발-언어/Shell-Script" data-for="개발-언어/Shell-Script">Shell Script</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="리눅스"><button class="folder-button"><span class="folder-title">리눅스</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="리눅스"><li><a href="../리눅스/Vim-사용법" data-for="리눅스/Vim-사용법">Vim 사용법</a></li><li><a href="../리눅스/단축키" data-for="리눅스/단축키">단축키</a></li><li><a href="../리눅스/리눅스-명령어-정리" data-for="리눅스/리눅스-명령어-정리">리눅스 명령어 정리</a></li><li><a href="../리눅스/패키지-설치" data-for="리눅스/패키지-설치">패키지 설치</a></li><li><a href="../리눅스/프로그램-암호" data-for="리눅스/프로그램-암호">프로그램 암호</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="스터디"><button class="folder-button"><span class="folder-title">스터디</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="스터디"><li><a href="../스터디/AWS-스터디--and--프로젝트" data-for="스터디/AWS-스터디--and--프로젝트">AWS 스터디 &amp; 프로젝트</a></li><li><a href="../스터디/CORS-(Cross-Origin-Resource-Sharing)" data-for="스터디/CORS-(Cross-Origin-Resource-Sharing)">CORS (Cross-Origin Resource Sharing)</a></li><li><a href="../스터디/Doker-스터디" data-for="스터디/Doker-스터디">Doker 스터디</a></li><li><a href="../스터디/Express.js-정리" data-for="스터디/Express.js-정리">Express.js 정리</a></li><li><a href="../스터디/File-IO" data-for="스터디/File-IO">File IO</a></li><li><a href="../스터디/Git-스터디" data-for="스터디/Git-스터디">Git 스터디</a></li><li><a href="../스터디/gRPC-통신" data-for="스터디/gRPC-통신">gRPC 통신</a></li><li><a href="../스터디/IPC-통신" data-for="스터디/IPC-통신">IPC 통신</a></li><li><a href="../스터디/Kubernetes-(K8S)-스터디" data-for="스터디/Kubernetes-(K8S)-스터디">Kubernetes (K8S) 스터디</a></li><li><a href="../스터디/React-Native-정리" data-for="스터디/React-Native-정리">React-Native 정리</a></li><li><a href="../스터디/SSE-(Server-Sent-Event)" data-for="스터디/SSE-(Server-Sent-Event)">SSE (Server Sent Event)</a></li><li><a href="../스터디/SSH-(Secure-Shell-Protocol)" data-for="스터디/SSH-(Secure-Shell-Protocol)">SSH (Secure Shell Protocol)</a></li><li><a href="../스터디/개발-용어-정리" data-for="스터디/개발-용어-정리">개발 용어 정리</a></li><li><a href="../스터디/공개키-암호화" data-for="스터디/공개키-암호화">공개키 암호화</a></li><li><a href="../스터디/네트워크-통신" data-for="스터디/네트워크-통신">네트워크 통신</a></li><li><a href="../스터디/데이터-베이스-정규화" data-for="스터디/데이터-베이스-정규화">데이터 베이스 정규화</a></li><li><a href="../스터디/문자-인코딩" data-for="스터디/문자-인코딩">문자 인코딩</a></li><li><a href="../스터디/비동기와-멀티스레드-차이" data-for="스터디/비동기와-멀티스레드-차이">비동기와 멀티스레드 차이</a></li><li><a href="../스터디/추후-스터디-할-것들-모음" data-for="스터디/추후-스터디-할-것들-모음">추후 스터디 할 것들 모음</a></li><li><a href="../스터디/컴퓨터-수-표현" data-for="스터디/컴퓨터-수-표현">컴퓨터 수 표현</a></li><li><a href="../스터디/파일-링크" data-for="스터디/파일-링크">파일 링크</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리"><button class="folder-button"><span class="folder-title">시험 정리</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/2-2"><button class="folder-button"><span class="folder-title">2-2</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/2-2"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/2-2/교양-파이썬-기말"><button class="folder-button"><span class="folder-title">교양 파이썬 기말</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/2-2/교양-파이썬-기말"><li><a href="../시험-정리/2-2/교양-파이썬-기말/교양-파이썬-기말" data-for="시험-정리/2-2/교양-파이썬-기말/교양-파이썬-기말">교양 파이썬 기말</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/2-2/네트워크-프로그래밍-중간"><button class="folder-button"><span class="folder-title">네트워크 프로그래밍 중간</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/2-2/네트워크-프로그래밍-중간"><li><a href="../시험-정리/2-2/네트워크-프로그래밍-중간/네트워크-프로그래밍-중간고사-정리" data-for="시험-정리/2-2/네트워크-프로그래밍-중간/네트워크-프로그래밍-중간고사-정리">네트워크 프로그래밍 중간고사 정리</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/2-2/자료구조-기말"><button class="folder-button"><span class="folder-title">자료구조 기말</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/2-2/자료구조-기말"><li><a href="../시험-정리/2-2/자료구조-기말/자료구조-기말" data-for="시험-정리/2-2/자료구조-기말/자료구조-기말">자료구조 기말</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/2-2/자료구조-중간"><button class="folder-button"><span class="folder-title">자료구조 중간</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/2-2/자료구조-중간"><li><a href="../시험-정리/2-2/자료구조-중간/자료구조-중간-정리" data-for="시험-정리/2-2/자료구조-중간/자료구조-중간-정리">자료구조 중간 정리</a></li></ul></div></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1"><button class="folder-button"><span class="folder-title">3-1</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/기말---딥러닝-프로그래밍"><button class="folder-button"><span class="folder-title">기말 - 딥러닝 프로그래밍</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/기말---딥러닝-프로그래밍"><li><a href="../시험-정리/3-1/기말---딥러닝-프로그래밍/딥러닝-프로그래밍-기말" data-for="시험-정리/3-1/기말---딥러닝-프로그래밍/딥러닝-프로그래밍-기말">딥러닝 프로그래밍 기말</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/기말---알고리즘"><button class="folder-button"><span class="folder-title">기말 - 알고리즘</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/기말---알고리즘"><li><a href="../시험-정리/3-1/기말---알고리즘/알고리즘-기말" data-for="시험-정리/3-1/기말---알고리즘/알고리즘-기말">알고리즘 기말</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/기말---인공지능-프로그래밍-기말"><button class="folder-button"><span class="folder-title">기말 - 인공지능 프로그래밍 기말</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/기말---인공지능-프로그래밍-기말"><li><a href="../시험-정리/3-1/기말---인공지능-프로그래밍-기말/인공지능-프로그래밍-기말" data-for="시험-정리/3-1/기말---인공지능-프로그래밍-기말/인공지능-프로그래밍-기말">인공지능 프로그래밍 기말</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/중간---Iot"><button class="folder-button"><span class="folder-title">중간 - Iot</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/중간---Iot"><li><a href="../시험-정리/3-1/중간---Iot/Iot-중간" data-for="시험-정리/3-1/중간---Iot/Iot-중간">Iot 중간</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/중간---딥러닝-프로그래밍"><button class="folder-button"><span class="folder-title">중간 - 딥러닝 프로그래밍</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/중간---딥러닝-프로그래밍"><li><a href="../시험-정리/3-1/중간---딥러닝-프로그래밍/딥러닝-프로그래밍-중간" data-for="시험-정리/3-1/중간---딥러닝-프로그래밍/딥러닝-프로그래밍-중간">딥러닝 프로그래밍 중간</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/중간---알고리즘"><button class="folder-button"><span class="folder-title">중간 - 알고리즘</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/중간---알고리즘"><li><a href="../시험-정리/3-1/중간---알고리즘/알고리즘-중간" data-for="시험-정리/3-1/중간---알고리즘/알고리즘-중간">알고리즘 중간</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/중간---인공지능-프로그래밍-중간"><button class="folder-button"><span class="folder-title">중간 - 인공지능 프로그래밍 중간</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/중간---인공지능-프로그래밍-중간"><li><a href="../시험-정리/3-1/중간---인공지능-프로그래밍-중간/인공지능-프로그래밍-중간" data-for="시험-정리/3-1/중간---인공지능-프로그래밍-중간/인공지능-프로그래밍-중간">인공지능 프로그래밍 중간</a></li></ul></div></li></ul></div></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="유용한-것들-모음"><button class="folder-button"><span class="folder-title">유용한 것들 모음</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="유용한-것들-모음"><li><a href="../유용한-것들-모음/Apache-Tomcat-관련" data-for="유용한-것들-모음/Apache-Tomcat-관련">Apache Tomcat 관련</a></li><li><a href="../유용한-것들-모음/CLI-옵션-국룰" data-for="유용한-것들-모음/CLI-옵션-국룰">CLI 옵션 국룰</a></li><li><a href="../유용한-것들-모음/Github-Actions-정리" data-for="유용한-것들-모음/Github-Actions-정리">Github Actions 정리</a></li><li><a href="../유용한-것들-모음/Google-API-사용법" data-for="유용한-것들-모음/Google-API-사용법">Google API 사용법</a></li><li><a href="../유용한-것들-모음/Google-Colab-세션-유지-방법" data-for="유용한-것들-모음/Google-Colab-세션-유지-방법">Google Colab 세션 유지 방법</a></li><li><a href="../유용한-것들-모음/Gradle-스크립트-한글-깨짐-문제-해결" data-for="유용한-것들-모음/Gradle-스크립트-한글-깨짐-문제-해결">Gradle 스크립트 한글 깨짐 문제 해결</a></li><li><a href="../유용한-것들-모음/JVM-Args" data-for="유용한-것들-모음/JVM-Args">JVM Args</a></li><li><a href="../유용한-것들-모음/뭔가-문서로-분리하긴-뭐한" data-for="유용한-것들-모음/뭔가-문서로-분리하긴-뭐한">뭔가 문서로 분리하긴 뭐한</a></li><li><a href="../유용한-것들-모음/짜잘한-윈도우-팁-모음" data-for="유용한-것들-모음/짜잘한-윈도우-팁-모음">짜잘한 윈도우 팁 모음</a></li></ul></div></li></ul></div></li><li id="explorer-end"></li></ul></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../스터디/">스터디</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>Doker 스터디</a></div></nav><h1 class="article-title">Doker 스터디</h1><p show-comma="true" class="content-meta"><span>2024년 9월 14일</span><span>20 min read</span></p></div></div><article class="popover-hint"><blockquote>
+<p>리눅스 운영체제 딴 가상화, 컨테이너 기술</p>
+</blockquote>
+<blockquote class="callout note" data-callout="note">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>같이보기 </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><a href="../CLI-프로그램-명령어/Docker-명령어-정리" class="internal alias" data-slug="CLI-프로그램-명령어/Docker-명령어-정리">Docker 명령어 정리</a></li>
+<li><a href="../리눅스/패키지-설치#docker-설치" class="internal alias" data-slug="리눅스/패키지-설치">리눅스 Docker 설치</a></li>
+</ul>
+</div>
+</blockquote>
+<ul>
+<li>Conda 같은 느낌으로 가상환경을 생성/관리하는 기술</li>
+<li>개발환경 간 차이를 <code>이미지</code> 라는걸 통해 거의 동일하게 하여 개발환경 셋팅이 복잡한 서비스를 한번에 설치 할 수 있다</li>
+<li>컨테이너 간 격리된 구조로 보안이 좋음</li>
+<li><code>이미지</code> 를 통해 가상환경을 만든다 라는걸 <code>컨테이너 생성</code> 이라고 함</li>
+</ul>
+<h2 id="사용하는-이유">사용하는 이유<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#사용하는-이유" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><a href="https://www.44bits.io/ko/post/why-should-i-use-docker-container" class="external">왜 굳이 Docker를 써야하나요<svg aria-hidden="true" class="external-icon" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></p>
+<ul>
+<li>
+<p><code>딥러닝 한번 해보면 안다....</code></p>
+<ul>
+<li>논문에 재연된 코드들 대부분은 python 버전 부터 시작해서 cuda 버전 부터 다 제각각 이다.</li>
+<li>conda를 통해서 python 까지는 어느정도 분리 시킨다 하더라도 cuda는 드라이버이기 때문</li>
+<li>그래서 컨테이너 통해서 필요 리눅스 패키지들과 드라이버를 환경을 분리 한채로 이 한계를 극복 가능하다</li>
+</ul>
+</li>
+<li>
+<p><code>성능하락 없음 &amp; 가벼움</code></p>
+<ul>
+<li>VM 으로 구성한다고 치자. 내 시스템에 있는 모든 자원이 해당 VM에 미리 할당을 해놔야 한다</li>
+<li>그러니까 할당된 자원 만큼 VM이 쓰지 않는다면 해당 자원 만큼 시스템이 낭비된다</li>
+<li>하지만 Docker는 하드웨어는 어차피 내꺼를 그대로 쓰니까 그냥 해당 컨테이너가 쓰는 만큼 자원 소모가 된다</li>
+<li>자원을 풀로 써야 하는 경우에도 VM 은 미리 할당 받은 만큼에 성능까지 이지만 Docker는 그냥 내 시스템 자원 100% 를 쓸 수 있다 (물론 이건 설정 가능하다)</li>
+</ul>
+</li>
+<li>
+<p><code>커뮤니티 이미지의 사기성</code></p>
+<ul>
+<li>위 경우에 딥러닝 관련 패키지를 모두 설치하고 cuda 셋팅까지 해놓은 이미지가 <code>Docker Hub</code>에 수도 없이 존재한다</li>
+<li>난 그냥 이미지만 pull 받아서 조금 셋팅 해주면 금방 서비스가 가능하다</li>
+<li>또한 mysql, node.js부터 시작해서 이런 패키지 싹다 설치해놓은 이미지도 금방 찾아 볼 수 있으니 배포에 귀찮음을 덜어낼 수 있다</li>
+</ul>
+</li>
+<li>
+<p><code>시스탬 백업 &amp; 복원</code>:</p>
+<ul>
+<li>내가 컨테이너에서 한 모든 내용을 <code>commit</code> 하여 해당 가상환경을 통으로 이미지 를 만드는게 가능하다</li>
+<li>이걸 응용하여 백업 시스템을 구축하는게 가능하다</li>
+</ul>
+</li>
+</ul>
+<h2 id="작동-원리">작동 원리<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#작동-원리" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>Docker는 하나의 커널 안에서 여러 OS를 쓰게된다
+(리눅스 커널의 <code>Cgroup</code>과 NameSpace 기능을 사용)
+<ul>
+<li>만약 VM이라면 시스템에서 VM이 실행중인 프로그램을 알 방법이 없다</li>
+<li>허나 Docker는 커널이 같기에 시스템에서 프로그램이 뜨게된다</li>
+</ul>
+</li>
+<li><span class="text-highlight">컨테이너 기술은 기본적으로 리눅스에서만 사용가능하다</span>
+<ul>
+<li>Docker에서 macOS/Windows 환경에서는 Hipervisor를 통해 가상화 된다</li>
+<li>즉 리눅스가 아닌 환경에서는 VM을 사용하여 리눅스를 가상화 하고 Docker Engine을 통해 컨테이너를 생성하게 된다</li>
+</ul>
+</li>
+</ul>
+<h3 id="가상머신-vm과-차이점">가상머신 (VM)과 차이점<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#가상머신-vm과-차이점" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><img src="../res/도커-vs-vm.jpg" width="auto" height="auto" alt/></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>특성</th><th>Docker</th><th>가상 머신</th></tr></thead><tbody><tr><td><strong>경량화</strong></td><td>매우 경량화되어 있으며, 커널을 공유하므로 빠르게 시작 가능</td><td>각 VM은 독립적인 OS 및 커널을 가지고 있어 무겁고 시작 시간이 길다</td></tr><tr><td><strong>보안</strong></td><td>커널을 공유하므로, 보안 격리가 VM보다 약할 수 있다</td><td>각 VM은 독립적인 OS와 커널을 사용하여 높은 보안 격리를 제공</td></tr><tr><td><strong>운영체제 지원</strong></td><td>리눅스만 가능</td><td>다양한 운영체제를 동시에 실행 가능 (Linux, Windows, macOS 등)</td></tr><tr><td><strong>하드웨어 지원</strong></td><td>특정 하드웨어 가상화 기능 (예: GPU 가상화) 지원이 제한될 수 있음</td><td>다양한 하드웨어 가상화 기능을 완벽하게 지원 (예: GPU, 네트워크 카드 등)</td></tr><tr><td><strong>네트워크 구성</strong></td><td>네트워크 설정이 복잡할 수 있으며, 대규모 시스템에서는 추가 설정이 필요할 수 있음</td><td>호스트 PC 와 아예 다른 네트워크 망 취급</td></tr></tbody></table></div>
+<h2 id="작동-방식">작동 방식<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#작동-방식" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote>
+<p>이미지 &amp; 컨테이너 작동 방식</p>
+</blockquote>
+<p><img src="../res/docker.png" width="auto" height="auto" alt/></p>
+<ol>
+<li><code>Dockerfile</code> 빌드 하거나, Docker Hub 에서 이미지를 pull 받는다
+<ul>
+<li>실제 저장공간에 실행 이미지를 다운받는다</li>
+</ul>
+</li>
+<li><code>pull</code> 받은 이미지를 <code>run</code> 하여 컨테이너를 생성한다
+<ul>
+<li>이미지를 메모리에 로드 시킨다</li>
+</ul>
+</li>
+<li>만들어진 컨테이너의 접속한다</li>
+</ol>
+<h3 id="이미지">이미지<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#이미지" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>Doker의 컨테이너 생성은 무조건 이미지 기반, 따라서 base 이미지 없이는 가상화 하지 못함
+즉 내가 ubuntu 사용하고 있는데 내 시스템 기반으로 컨테이너를 생성한다 이딴건 안된다.
+그래서 Docker Hub에 있는 ubuntu 기본 이미지를 pull 받아 작업</p>
+</blockquote>
+<ul>
+<li><a href="https://hub.docker.com/" class="external">Docker Hub 에서 다양한 이미지를 gitHub 처럼 호스팅 하고 있음<svg aria-hidden="true" class="external-icon" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li>예를들어 ubutu 환경에서 <code>Arch Linux</code> 이미지를 <code>pull</code> 받아서 컨테이너를 만들면 <code>Arch Linux</code> 를 가상화 해서 사용 가능한 구조</li>
+<li><code>만드는 방법</code>
+<ul>
+<li>Dockerfile 빌드</li>
+<li>컨테이너 commit</li>
+</ul>
+</li>
+</ul>
+<h2 id="docker-컨테이너-상의-네트워크">Docker 컨테이너 상의 네트워크<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#docker-컨테이너-상의-네트워크" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote>
+<p>어떤 느낌이냐면 호스트PC 가 공유기 이고 각 컨테이너들이 그 공유기에 물린 컴퓨터들 느낌이다</p>
+</blockquote>
+<ul>
+<li>Docker의 각 컨테이너들은 각각 독립적이므로 같은 포트를 쓰는게 가능하다
+<ul>
+<li>내부 컨테이너들은 같은 공유기에 연결된 다른 PC 취급인것이다</li>
+<li>각각의 컨테이너가 <code>80</code> 포트로 서버를 호스팅 하는게 가능하다</li>
+</ul>
+</li>
+<li>하지만 Docker는 호스트의 네트워크 망을 똑같이 쓴다</li>
+<li>그래서 포트포워딩 과정이 필요하게 된다
+<ul>
+<li>하나는 <code>8080</code> 하나는 <code>8081</code>에 메핑 하는등</li>
+</ul>
+</li>
+<li>그러니까 컨테이너 내부에서는 같은 포트를 써도 무방한데 호스트 PC는 하나니까 다른 포트로 메핑시켜서 실제로 접속되는 포트는 다르게 설계 해야한다는거</li>
+</ul>
+<h3 id="실제">실제<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#실제" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>실제 PC 에서 본 네트워크
+<ul>
+<li>첫번째로 뜬게 Docker Network 의 게이트웨이
+정확히 말하면 <code>docker0</code> 라는 Docker의 기본 브릿지 네트워크</li>
+<li>두번째가 실제 IP 주소</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">seoksee@ubuntu:~$</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> ifconfig</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">docker0:</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> flags=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">4099</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">&lt;</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">UP,BROADCAST,MULTICAS</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">T</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">></span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  mtu</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 1500</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">        inet</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 172.17.0.1</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  netmask</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 255.255.0.0</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  broadcast</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 172.17.255.255</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">        ether</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 02:42:3d:eb:eb:ff</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  txqueuelen</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  (Ethernet)</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">        RX</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> packets</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  bytes</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (0.0 </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">B</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">        RX</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> errors</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  dropped</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  overruns</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  frame</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">        TX</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> packets</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  bytes</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (0.0 </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">B</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">        TX</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> errors</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  dropped</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> overruns</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  carrier</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  collisions</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">eth0:</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> flags=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">4163</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">&lt;</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">UP,BROADCAST,RUNNING,MULTICAS</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">T</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">></span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  mtu</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 1500</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">        inet</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 192.168.0.11</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  netmask</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 255.255.255.0</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  broadcast</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 192.168.0.255</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">        inet6</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> fe80::2ecf:67ff:fe28:f509</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  prefixlen</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 64</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  scopeid</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0x20</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">&lt;</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">lin</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">k</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">></span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">        ether</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 2c:cf:67:28:f5:09</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  txqueuelen</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 1000</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  (Ethernet)</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">        RX</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> packets</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 72</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  bytes</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 11307</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (11.3 </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">KB</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">        RX</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> errors</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  dropped</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  overruns</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  frame</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">        TX</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> packets</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 62</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  bytes</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 13242</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (13.2 </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">KB</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">        TX</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> errors</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  dropped</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> overruns</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  carrier</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  collisions</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">        device</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> interrupt</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 110</span></span></code></pre></figure>
+</li>
+<li>Docker Continer 에서 본 네트워크
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">root@e684ca6d5112:/workspace/fitpin_ar_backend</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">eth0:</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> flags=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">4163</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">&lt;</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">UP,BROADCAST,RUNNING,MULTICAS</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">T</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">></span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  mtu</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 1500</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">        inet</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 172.17.0.2</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  netmask</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 255.255.0.0</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  broadcast</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 172.17.255.255</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">        ether</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 02:42:ac:11:00:02</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  txqueuelen</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  (Ethernet)</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">        RX</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> packets</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 2191</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  bytes</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 3228490</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (3.2 </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">MB</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">        RX</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> errors</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  dropped</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  overruns</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  frame</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">        TX</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> packets</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 1121</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  bytes</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 92127</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (92.1 </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">KB</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">        TX</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> errors</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  dropped</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> overruns</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  carrier</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  collisions</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0</span></span></code></pre></figure>
+</li>
+</ul>
+<h2 id="docker-network">Docker Network<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#docker-network" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout note" data-callout="note">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>참고자료 </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><a href="https://velog.io/@choidongkuen/%EC%84%9C%EB%B2%84-Docker-Network-%EC%97%90-%EB%8C%80%ED%95%B4#-%EB%8F%84%EC%BB%A4-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EC%A2%85%EB%A5%98%EC%99%80-%EA%B0%9C%EB%85%90" class="external">(서버) Docker Network 에 대해<svg aria-hidden="true" class="external-icon" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+</ul>
+</div>
+</blockquote>
+<blockquote>
+<p>위 컨테이너 상의 네트워크를 Docker Network 구조 라고  부르게 된다</p>
+</blockquote>
+<ul>
+<li>Docker의 특성상 하나의 PC 네트워크를 서브넷을 통해 컨테이너 끼리 IP주소를 분배하게 되는데</li>
+<li>이 논리적 Network 기술을 통해 컨테이너 간 통신을 할 수 있개 된다</li>
+</ul>
+<h3 id="veth-virtual-ethernet-interface">Veth (Virtual Ethernet Interface)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#veth-virtual-ethernet-interface" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p><a href="../스터디/네트워크-통신#tcpip-계층" class="internal alias" data-slug="스터디/네트워크-통신">가상 네트워크 인터페이스</a></p>
+</blockquote>
+<ul>
+<li>실제 컴퓨터에서 렌카드를 통해 이너넷을 연결하듯이 컨테이너 상에서 docker-engine 과 컨테이너를 연결하는 가상의 네트워크 인터페이스를 뜻함</li>
+<li>각각의 컨테이너는 다른 <code>Veth</code> 를 가진다</li>
+</ul>
+<h3 id="구조">구조<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#구조" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><img src="../res/docker_veth.png" width="auto" height="auto" alt/></p>
+<ul>
+<li>외부 접속은 실제 호스트 PC 와 포트바인딩(포트포워딩)을 통해 이루어진다
+<ul>
+<li>예를들어 <code>80</code> 포트를 호스트 <code>8080</code> 포트로 바인딩 시켜 실제 접속은 <code>호스트:8080</code> 이런식으로</li>
+</ul>
+</li>
+<li><code>docker network create</code> 명령으로 네트워크를 생성하여
+두 컨테이너 간 네트워크를 분리시킨 다면 아예 다른 망이 되어버린다
+<ul>
+<li><code>ifconfg</code> 로 살펴 보면 아예 다른 네트워크가 생성되는것을 볼 수 있다</li>
+</ul>
+</li>
+</ul>
+<h4 id="종류-drivers">종류 (Drivers)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#종류-drivers" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<blockquote>
+<p>네트워크 드라이버 라고도 함</p>
+</blockquote>
+<h5 id="bridge-네트워크">Bridge 네트워크<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#bridge-네트워크" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<blockquote>
+<p>Docker 기본 네트워크 드라이버</p>
+</blockquote>
+<ul>
+<li><code>veth</code> 로 컨테이너의 다른 IP 주소를 할당시키고 호스트 PC 와 포트를 연결 하여 에플리케이션 포트를 외부로 노출 시키는 방법</li>
+</ul>
+<h5 id="host-네트워크">Host 네트워크<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#host-네트워크" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<ul>
+<li><code>veth</code>를 사용하지 않고 <span class="text-highlight">호스트PC IP 주소 그대로</span> 사용 하는방법</li>
+<li>당연하지만 컨테이너 생성시 포트포워딩 과정이 필요하지 않다</li>
+</ul>
+<h5 id="none-네트워크">None 네트워크<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#none-네트워크" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<ul>
+<li>이름 그대로 네트워크를 사용하지 않는</li>
+<li>그냥 렌 케이블 뺐다 생각함 됨</li>
+</ul>
+<h5 id="overlay-네트워크">Overlay 네트워크<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#overlay-네트워크" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<blockquote class="callout note" data-callout="note">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>참고자료 </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><a href="https://awlhdla.tistory.com/181" class="external">도커 네트워킹 (Docker Networking) - [4] overlay network<svg aria-hidden="true" class="external-icon" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+</ul>
+</div>
+</blockquote>
+<ul>
+<li>실제 물리적인 PC 여러대에서 실행되고있는 컨테이너나, 다른 Docker Network 상의 컨테이너를 연결 시켜주는 상위 네트워크</li>
+<li><a href="#docker-swarm" class="internal alias">Docker Swarm</a> 개념을 사용한다</li>
+</ul>
+<h3 id="장점">장점<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#장점" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>예를들어 API 서버의 포트 <code>8080</code>을 열었다 치자</li>
+<li>API 는 DB와 통신을 하는 구조이다</li>
+<li>이때 API 서버와 DB서버를 각각의 컨테이너로 구성하고 같은  Docker network 를 쓴다 라고 하면</li>
+<li>DB 컨테이너의 외부 접근은 모두 막아둔채 API 서버의 포트만 노출 시킬 수 있게되는 거다</li>
+</ul>
+<h2 id="docker-swarm">Docker Swarm<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#docker-swarm" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote>
+<p>Docker 에서 만든 <code>컨테이너 오케스트레이션 툴</code></p>
+</blockquote>
+<ul>
+<li>물리적으로 떨어진 여러 PC 의 컨테이너를 하나의 네트워크로 묶거나 배포 관리 해주는</li>
+<li>기존 Docker 의 단점인 하나의 물리적 PC에서 밖에 안되는 문제를 해결한 것</li>
+<li><code>K8S(쿠버네티스)</code> 비슷한 것</li>
+</ul>
+<h2 id="dockerfile">Dockerfile<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#dockerfile" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote>
+<p>docker의 이미지를 만드는 스크립트</p>
+</blockquote>
+<h3 id="규칙">규칙<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#규칙" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>파일명은 <code>Dockerfile</code>
+<ul>
+<li>다른파일명을 써도 되지만 웬만해선 바꾸지 않는편</li>
+</ul>
+</li>
+</ul>
+<h3 id="문법">문법<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#문법" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>
+<p><code>RUN</code>:</p>
+<ul>
+<li>명령어 실행</li>
+<li>RUN 꼭 여러개 써야하는 상황이 아니면 웬만해서는 &amp;&amp; 로 여러 명령어를 실행하는게 좋다</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">RUN</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> apt</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> install</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> git</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -y</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">#Exec 형식으로 사용</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">RUN</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;/bin/bash&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;-c&quot;,</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> &quot;apt-get install -y git&quot;]</span></span></code></pre></figure>
+</li>
+<li>
+<p><code>WORKDIR</code>:</p>
+<ul>
+<li>컨테이너 작업 디렉토리를 변경 (컨테이너 처음 실행시 접속됨)</li>
+<li>베이스에서 <code>WORKDIR</code> 을 지정했을경우 실제 작업경로는 설정된 작업 경로가 맞는데 가끔 프로그램에서 인식 못 할 수 있으므로 다시 정의</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">WORKDIR</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> &quot;/dir&quot;</span></span></code></pre></figure>
+</li>
+<li>
+<p><code>CMD</code>:</p>
+<ul>
+<li>컨테이너가 시작되었을 때 실행할 실행 파일 또는 sh</li>
+<li>Dockerfile 내 1회만 사용가능</li>
+<li>RUN 할때 명령을 따로 준다면 이 설정은 무시됨</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">CMD</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;/bin/bash&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]</span></span></code></pre></figure>
+</li>
+<li>
+<p><code>ENV</code>: 시스템 환경변수 설정</p>
+<ul>
+<li>컨테이너 OS 내부에서 관리됨</li>
+<li>다만 <code>.bashrc</code> 파일이 수정되는건 아님</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">ENV</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> LC_ALL=C.utf8</span></span></code></pre></figure>
+</li>
+<li>
+<p><code>ARG</code>: 이미지 빌드시 전달할 환경변수</p>
+<ul>
+<li>유일하게 FROM 이전에 선언이 가능하다</li>
+<li>따라서 빌드 시 변수로 base 이미지를 바꾸거나 하는게 가능하다</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 선언</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">ARG</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> BASE_VERSION=latest</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 사용</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">FROM</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> ubuntu:</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">${BASE_VERSION}</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">#빌드 시 인자로 이렇게 넘겨주면 됨</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">--build-arg</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> &quot;BASE_VERSION=latest&quot;</span></span></code></pre></figure>
+</li>
+</ul>
+<h4 id="참고">참고<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#참고" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><a href="https://velog.io/@tjdwns2243/dockerfile-%EB%AC%B8%EB%B2%95-%EC%9E%91%EC%84%B1%EB%B2%95" class="external">https://velog.io/@tjdwns2243/dockerfile-%EB%AC%B8%EB%B2%95-%EC%9E%91%EC%84%B1%EB%B2%95<svg aria-hidden="true" class="external-icon" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><a href="https://docs.docker.com/reference/dockerfile/" class="external">https://docs.docker.com/reference/dockerfile/<svg aria-hidden="true" class="external-icon" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+</ul>
+<h3 id="예제">예제<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#예제" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># ubuntu 베이스 이미지 사용</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">FROM</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> ubuntu:latest</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">LABEL</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> maintainer=&quot;da864268@naver.com&quot;</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">LABEL</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> description=&quot;my-ubuntu&quot;</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 패키지 업데이트 먼저</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">RUN</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> apt</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> update</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">RUN</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> apt</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> upgrade</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -y</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 패키지 설치 </span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">RUN</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> apt</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> install</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> sudo</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -y</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">RUN</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> apt</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> install</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> git</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -y</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 프로젝트 폴더 구성</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">RUN</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> mkdir</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> &quot;/workspace&quot;</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">WORKDIR</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> &quot;/workspace&quot;</span></span></code></pre></figure>
+<h3 id="컨테이너-root-문제">컨테이너 root 문제<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#컨테이너-root-문제" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote class="callout note" data-callout="note">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>참고자료 </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><a href="https://stackoverflow.com/questions/68155641/should-i-run-things-inside-a-docker-container-as-non-root-for-safety" class="external">Should I run things inside a docker container as non root for safety?<svg aria-hidden="true" class="external-icon" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+</ul>
+</div>
+</blockquote>
+<ul>
+<li>대부분에 이미지에서 기본 계정은 root 이다</li>
+<li>아무리 컨테이너 내부라도 하이재킹 같은 보안 문제를 초례할 수 있게때문에 root 계정을 쓰는건 위험하다</li>
+<li>따라서 따로 계정 만들어서 사용하자</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">RUN</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> adduser</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --disabled-password</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> &lt;</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">유저이</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">름</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">></span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">USER</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> &lt;</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">유저이</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">름</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">></span></span></code></pre></figure>
+<h2 id="docker-compose">Docker-Compose<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#docker-compose" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote>
+<p>여러 docker 컨테이너 생성을 별도의 <code>yml</code> 로  정의하여 묶어서 관리 하는 도구</p>
+</blockquote>
+<h3 id="사용-이유">사용 이유<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#사용-이유" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>하나의 서비스를 위해서 컨테이너를 여러개를 생성한다 치자</li>
+<li>이런식으로 컨테이너 개수가 늘때마다 입력해야 하는 명령어가 너무나 많아짐으로
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">docker</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> run</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -d</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --name</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> wordpress_db</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> \ </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">--network</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> seunghwan_network</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> \ </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">-p</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 3306:3306</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> \ </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">-e</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> MYSQL_ROOT_PASSWORD=seosh817</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> \ </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">-e</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> MYSQL_DATABASE=seosh817</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> \ </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">-e</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> MYSQL_USER=seosh817</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> \ </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">-e</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> MYSQL_PASSWORD=seosh817</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> \ </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">-v</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> mysql:/var/lib/mysql</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> \ </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">--restart</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> unless-stopped</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> \ </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">mysql:8</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> </span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">docker</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> run</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -d</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --name</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> seunghwan_wordpress</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> \ </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">--network</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> seunghwan_network</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> \ </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">-p</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 8080:80</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> \ </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">--link</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> wordpress_db:mysql</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> \ </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">-e</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> WORDPRESS_DB_HOST=db:3306</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> \ </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">-e</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> WORDPRESS_DB_USER=seosh817</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> \ </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">-e</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> WORDPRESS_DB_PASSWORD=seosh817</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> \ </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">-e</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> WORDPRESS_DB_NAME=seosh817</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> \ </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">--restart</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> unless-stopped</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> \ </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">wordpress:latest</span></span></code></pre></figure>
+</li>
+</ul>
+<h3 id="docker-composeyml-예제">docker-compose.yml 예제<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#docker-composeyml-예제" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote class="callout note" data-callout="note">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>참고 </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><a href="https://docs.docker.com/reference/compose-file/" class="external">공식문서 참고<svg aria-hidden="true" class="external-icon" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><a href="https://seosh817.tistory.com/387" class="external">Docker 도커 컴포즈(Docker compose) - 개념 정리 및 사용법<svg aria-hidden="true" class="external-icon" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+</ul>
+</div>
+</blockquote>
+<ul>
+<li>
+<p>기본예제</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="yml" data-theme="github-light github-dark"><code data-language="yml" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">services</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">  # 서비스 이름</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">  fitpin</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">    #이미지 명</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    image</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">fitpin</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">    #이미지를 hub 쪽에서 하는게 아니라 Dockerfile 을 빌드해야 하는 경우</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    build</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">      context</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">.</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">      dockerfile</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">./Dockerfile</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">    #생성시 커멘드 (run 할때 뒤쪽에 붙는)</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    command</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;executable&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;arg&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    ports</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">      - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">8080:8080</span></span></code></pre></figure>
+</li>
+<li>
+<p>Docker Network 를 구성하는 예제</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="yml" data-theme="github-light github-dark"><code data-language="yml" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">services</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">  # 서비스 이름</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">  fitpin</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">    #이미지 명</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    image</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">fitpin</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">    #이미지를 hub 쪽에서 하는게 아니라 Dockerfile 을 빌드해야 하는 경우</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    build</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">      context</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">.</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">      dockerfile</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">./Dockerfile</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">    #생성시 커멘드 (run 할때 뒤쪽에 붙는)</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    command</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;executable&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;arg&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    ports</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">      - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">8080:8080</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">	networks</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">	  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">default</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">	  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">test</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># driver 지정 안하면 bridge</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">networks</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">test</span></span></code></pre></figure>
+</li>
+<li>
+<p>IP 주소 고정 &amp; 폴더를 마운트 하는 예제</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="yml" data-theme="github-light github-dark"><code data-language="yml" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">services</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">  server</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    image</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">node_test</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">    #생성될 컨테이너 이름</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    container_name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">server</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    build</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">      context</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">.</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">      dockerfile</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">./Dockerfile</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    volumes</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">      - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">/home/seoksee/home/docker_Compose:/workspace/docker_Compose</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    networks</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">      # 아래서 생성한 네트워크 이름</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">      my-networks</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">        ipv4_address</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">192.168.0.2</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;"> networks</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">  # 네트워크 이름</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">  my-networks</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    ipam</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">      config</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        - </span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">subnet</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">192.168.0.0/16</span></span></code></pre></figure>
+</li>
+</ul>
+<h4 id="참고-1">참고<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#참고-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>최상단에 <code>version</code>을 명시하는 경우도 있는데 이제는 사용안함</li>
+</ul>
+<h2 id="docker-컨테이너간-ipc-통신">Docker 컨테이너간 IPC 통신<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#docker-컨테이너간-ipc-통신" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote>
+<p>Docker 컨테이너의 커널은 호스트PC 와 동일하기에
+커널에서 작동하는 named pipe 는 동일하게 사용가능하다</p>
+</blockquote>
+<ul>
+<li>컨테이너 생성시 Pipe 를 마운트 시켜준다
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">docker</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> run</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -d</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -p</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 8080:8080</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -v</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> \\</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">.</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">\p</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">ipe</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">\d</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">ocker_engine:</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">\\</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">.</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">\p</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">ipe</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">\d</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">ocker_engine</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> friism/jenkins</span></span></code></pre></figure>
+</li>
+</ul>
+<h2 id="docker-hub">Docker Hub<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#docker-hub" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote>
+<p>GitHub의 Docker 버전이라고 볼 수 있다</p>
+</blockquote>
+<ul>
+<li>이곳에서 이미지를 <code>pull</code> 받아 작업하고</li>
+<li>나만의 이미지를 구축하여 <code>push</code> 하여</li>
+<li>Docker Hub 원격 저장소에 저장하는 구조 이다</li>
+</ul>
+<h2 id="설치-에디션">설치 에디션<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#설치-에디션" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><code>Docker Desktop</code>:
+<ul>
+<li>GUI 버전. <code>Docker Engine</code> 및 <code>Docker Compose</code> 가 포함됨</li>
+<li>Windows 의 경우 Docker Desktop으로만 설치 가능</li>
+</ul>
+</li>
+<li><code>Docker Engine</code>:
+<ul>
+<li>CLI 버전. GUI 를 사용하지 않는 OS는 이걸로 밖에 설치 불가</li>
+<li><code>Docker Compose</code>는 따로 설치</li>
+</ul>
+</li>
+</ul></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" id="toc" class aria-controls="toc-content" aria-expanded="true"><h3>목차</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="toc-content" class><ul class="overflow"><li class="depth-0"><a href="#사용하는-이유" data-for="사용하는-이유">사용하는 이유</a></li><li class="depth-0"><a href="#작동-원리" data-for="작동-원리">작동 원리</a></li><li class="depth-1"><a href="#가상머신-vm과-차이점" data-for="가상머신-vm과-차이점">가상머신 (VM)과 차이점</a></li><li class="depth-0"><a href="#작동-방식" data-for="작동-방식">작동 방식</a></li><li class="depth-1"><a href="#이미지" data-for="이미지">이미지</a></li><li class="depth-0"><a href="#docker-컨테이너-상의-네트워크" data-for="docker-컨테이너-상의-네트워크">Docker 컨테이너 상의 네트워크</a></li><li class="depth-1"><a href="#실제" data-for="실제">실제</a></li><li class="depth-0"><a href="#docker-network" data-for="docker-network">Docker Network</a></li><li class="depth-1"><a href="#veth-virtual-ethernet-interface" data-for="veth-virtual-ethernet-interface">Veth (Virtual Ethernet Interface)</a></li><li class="depth-1"><a href="#구조" data-for="구조">구조</a></li><li class="depth-1"><a href="#장점" data-for="장점">장점</a></li><li class="depth-0"><a href="#docker-swarm" data-for="docker-swarm">Docker Swarm</a></li><li class="depth-0"><a href="#dockerfile" data-for="dockerfile">Dockerfile</a></li><li class="depth-1"><a href="#규칙" data-for="규칙">규칙</a></li><li class="depth-1"><a href="#문법" data-for="문법">문법</a></li><li class="depth-1"><a href="#예제" data-for="예제">예제</a></li><li class="depth-1"><a href="#컨테이너-root-문제" data-for="컨테이너-root-문제">컨테이너 root 문제</a></li><li class="depth-0"><a href="#docker-compose" data-for="docker-compose">Docker-Compose</a></li><li class="depth-1"><a href="#사용-이유" data-for="사용-이유">사용 이유</a></li><li class="depth-1"><a href="#docker-composeyml-예제" data-for="docker-composeyml-예제">docker-compose.yml 예제</a></li><li class="depth-0"><a href="#docker-컨테이너간-ipc-통신" data-for="docker-컨테이너간-ipc-통신">Docker 컨테이너간 IPC 통신</a></li><li class="depth-0"><a href="#docker-hub" data-for="docker-hub">Docker Hub</a></li><li class="depth-0"><a href="#설치-에디션" data-for="설치-에디션">설치 에디션</a></li></ul></div></div><div class="graph"><h3>그래프 뷰</h3><div class="graph-outer"><div id="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false}"></div><button id="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div id="global-graph-outer"><div id="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true}"></div></div></div><div class="backlinks"><h3>백링크</h3><ul class="overflow"><li><a href="../CLI-프로그램-명령어/Docker-명령어-정리" class="internal">Docker 명령어 정리</a></li><li><a href="../리눅스/패키지-설치" class="internal">패키지 설치</a></li><li><a href="../스터디/Kubernetes-(K8S)-스터디" class="internal">Kubernetes (K8S) 스터디</a></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.3.1</a> © 2024</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></body><script type="application/javascript">function c(){let t=this.parentElement;t.classList.toggle("is-collapsed");let l=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=l+"px";let o=t,e=t.parentElement;for(;e;){if(!e.classList.contains("callout"))return;let n=e.classList.contains("is-collapsed")?e.scrollHeight:e.scrollHeight+o.scrollHeight;e.style.maxHeight=n+"px",o=e,e=e.parentElement}}function i(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let l=s.firstElementChild;if(l){l.addEventListener("click",c),window.addCleanup(()=>l.removeEventListener("click",c));let e=s.classList.contains("is-collapsed")?l.scrollHeight:s.scrollHeight;s.style.maxHeight=e+"px"}}}document.addEventListener("nav",i);window.addEventListener("resize",i);
+</script><script type="module">
+          let mermaidImport = undefined
+          document.addEventListener('nav', async () => {
+            if (document.querySelector("code.mermaid")) {
+              mermaidImport ||= await import('https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.7.0/mermaid.esm.min.mjs')
+              const mermaid = mermaidImport.default
+              const darkMode = document.documentElement.getAttribute('saved-theme') === 'dark'
+              mermaid.initialize({
+                startOnLoad: false,
+                securityLevel: 'loose',
+                theme: darkMode ? 'dark' : 'default'
+              })
+
+              await mermaid.run({
+                querySelector: '.mermaid'
+              })
+            }
+          });
+          </script><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>

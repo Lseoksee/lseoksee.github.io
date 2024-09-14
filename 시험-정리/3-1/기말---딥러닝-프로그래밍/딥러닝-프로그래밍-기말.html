@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ko"><head><title>딥러닝 프로그래밍 기말</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM Plex Mono&amp;family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta property="og:title" content="딥러닝 프로그래밍 기말"/><meta property="og:description" content="RNN (순환 신경망) 입력과 출력을 시퀀스 단위로 처리하는 모델 피드포워드 신경망과 유사하지만 순환하는 연결도 있다는게 차이점 시퀀스: 문장 같은 단어가 나열된 것 (쉽게말해서 문장을 처리하기위한 모델이다) 셀: RNN 에서 은닉층에서 함수를 통해 결과를 내보내는 역할 RNN은 입력을 받아 출력으로 나온 값을 다시 입력으로 넣는 순환구조 를 가지고 ..."/><meta property="og:image" content="https://quartz.jzhao.xyz/static/og-image.png"/><meta property="og:width" content="1200"/><meta property="og:height" content="675"/><link rel="icon" href="../../../static/icon.png"/><meta name="description" content="RNN (순환 신경망) 입력과 출력을 시퀀스 단위로 처리하는 모델 피드포워드 신경망과 유사하지만 순환하는 연결도 있다는게 차이점 시퀀스: 문장 같은 단어가 나열된 것 (쉽게말해서 문장을 처리하기위한 모델이다) 셀: RNN 에서 은닉층에서 함수를 통해 결과를 내보내는 역할 RNN은 입력을 받아 출력으로 나온 값을 다시 입력으로 넣는 순환구조 를 가지고 ..."/><meta name="generator" content="Quartz"/><link href="../../../index.css" rel="stylesheet" type="text/css" spa-preserve/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../../../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../../../static/contentIndex.json").then(data => data.json())</script></head><body data-slug="시험-정리/3-1/기말---딥러닝-프로그래밍/딥러닝-프로그래밍-기말"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../../..">안녕하세요 저는</a></h2><div class="spacer mobile-only"></div><div class="search"><button class="search-button" id="search-button"><p>검색</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div id="search-container"><div id="search-space"><input autocomplete="off" id="search-bar" name="search" type="text" aria-label="검색어를 입력하세요" placeholder="검색어를 입력하세요"/><div id="search-layout" data-preview="true"></div></div></div></div><button class="darkmode" id="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="다크 모드"><title>다크 모드</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="라이트 모드"><title>라이트 모드</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button><div class="explorer desktop-only"><button type="button" id="explorer" data-behavior="collapse" data-collapsed="collapsed" data-savestate="true" data-tree="[{&quot;path&quot;:&quot;CLI-프로그램-명령어&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;강의필기&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;개발-언어&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;리눅스&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;스터디&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/2-2&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/2-2/교양-파이썬-기말&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/2-2/네트워크-프로그래밍-중간&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/2-2/자료구조-기말&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/2-2/자료구조-중간&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/기말---딥러닝-프로그래밍&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/기말---알고리즘&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/기말---인공지능-프로그래밍-기말&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/중간---Iot&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/중간---딥러닝-프로그래밍&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/중간---알고리즘&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/중간---인공지능-프로그래밍-중간&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;유용한-것들-모음&quot;,&quot;collapsed&quot;:true}]" aria-controls="explorer-content" aria-expanded="false"><h2>탐색기</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-content"><ul class="overflow" id="explorer-ul"><li><div class="folder-outer open"><ul style="padding-left:0;" class="content" data-folderul><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="CLI-프로그램-명령어"><button class="folder-button"><span class="folder-title">CLI 프로그램 명령어</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="CLI-프로그램-명령어"><li><a href="../../../CLI-프로그램-명령어/Conda-명령어-정리" data-for="CLI-프로그램-명령어/Conda-명령어-정리">Conda 명령어 정리</a></li><li><a href="../../../CLI-프로그램-명령어/Docker-명령어-정리" data-for="CLI-프로그램-명령어/Docker-명령어-정리">Docker 명령어 정리</a></li><li><a href="../../../CLI-프로그램-명령어/Git-명령어-정리" data-for="CLI-프로그램-명령어/Git-명령어-정리">Git 명령어 정리</a></li><li><a href="../../../CLI-프로그램-명령어/MySql-명령어-정리" data-for="CLI-프로그램-명령어/MySql-명령어-정리">MySql 명령어 정리</a></li><li><a href="../../../CLI-프로그램-명령어/pip-명령어-정리" data-for="CLI-프로그램-명령어/pip-명령어-정리">pip 명령어 정리</a></li><li><a href="../../../CLI-프로그램-명령어/Pnpm-명령어-정리" data-for="CLI-프로그램-명령어/Pnpm-명령어-정리">Pnpm 명령어 정리</a></li><li><a href="../../../CLI-프로그램-명령어/Poetry-명령어-정리" data-for="CLI-프로그램-명령어/Poetry-명령어-정리">Poetry 명령어 정리</a></li></ul></div></li><li><div class="folder-outer "><ul style="padding-left:0;" class="content" data-folderul></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="강의필기"><button class="folder-button"><span class="folder-title">강의필기</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="강의필기"><li><a href="../../../강의필기/기계학습프로그래밍" data-for="강의필기/기계학습프로그래밍">기계학습프로그래밍</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="개발-언어"><button class="folder-button"><span class="folder-title">개발 언어</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="개발-언어"><li><a href="../../../개발-언어/Java" data-for="개발-언어/Java">Java</a></li><li><a href="../../../개발-언어/Python" data-for="개발-언어/Python">Python</a></li><li><a href="../../../개발-언어/Shell-Script" data-for="개발-언어/Shell-Script">Shell Script</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="리눅스"><button class="folder-button"><span class="folder-title">리눅스</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="리눅스"><li><a href="../../../리눅스/Vim-사용법" data-for="리눅스/Vim-사용법">Vim 사용법</a></li><li><a href="../../../리눅스/단축키" data-for="리눅스/단축키">단축키</a></li><li><a href="../../../리눅스/리눅스-명령어-정리" data-for="리눅스/리눅스-명령어-정리">리눅스 명령어 정리</a></li><li><a href="../../../리눅스/패키지-설치" data-for="리눅스/패키지-설치">패키지 설치</a></li><li><a href="../../../리눅스/프로그램-암호" data-for="리눅스/프로그램-암호">프로그램 암호</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="스터디"><button class="folder-button"><span class="folder-title">스터디</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="스터디"><li><a href="../../../스터디/AWS-스터디--and--프로젝트" data-for="스터디/AWS-스터디--and--프로젝트">AWS 스터디 &amp; 프로젝트</a></li><li><a href="../../../스터디/CORS-(Cross-Origin-Resource-Sharing)" data-for="스터디/CORS-(Cross-Origin-Resource-Sharing)">CORS (Cross-Origin Resource Sharing)</a></li><li><a href="../../../스터디/Doker-스터디" data-for="스터디/Doker-스터디">Doker 스터디</a></li><li><a href="../../../스터디/Express.js-정리" data-for="스터디/Express.js-정리">Express.js 정리</a></li><li><a href="../../../스터디/File-IO" data-for="스터디/File-IO">File IO</a></li><li><a href="../../../스터디/Git-스터디" data-for="스터디/Git-스터디">Git 스터디</a></li><li><a href="../../../스터디/gRPC-통신" data-for="스터디/gRPC-통신">gRPC 통신</a></li><li><a href="../../../스터디/IPC-통신" data-for="스터디/IPC-통신">IPC 통신</a></li><li><a href="../../../스터디/Kubernetes-(K8S)-스터디" data-for="스터디/Kubernetes-(K8S)-스터디">Kubernetes (K8S) 스터디</a></li><li><a href="../../../스터디/React-Native-정리" data-for="스터디/React-Native-정리">React-Native 정리</a></li><li><a href="../../../스터디/SSE-(Server-Sent-Event)" data-for="스터디/SSE-(Server-Sent-Event)">SSE (Server Sent Event)</a></li><li><a href="../../../스터디/SSH-(Secure-Shell-Protocol)" data-for="스터디/SSH-(Secure-Shell-Protocol)">SSH (Secure Shell Protocol)</a></li><li><a href="../../../스터디/개발-용어-정리" data-for="스터디/개발-용어-정리">개발 용어 정리</a></li><li><a href="../../../스터디/공개키-암호화" data-for="스터디/공개키-암호화">공개키 암호화</a></li><li><a href="../../../스터디/네트워크-통신" data-for="스터디/네트워크-통신">네트워크 통신</a></li><li><a href="../../../스터디/데이터-베이스-정규화" data-for="스터디/데이터-베이스-정규화">데이터 베이스 정규화</a></li><li><a href="../../../스터디/문자-인코딩" data-for="스터디/문자-인코딩">문자 인코딩</a></li><li><a href="../../../스터디/비동기와-멀티스레드-차이" data-for="스터디/비동기와-멀티스레드-차이">비동기와 멀티스레드 차이</a></li><li><a href="../../../스터디/추후-스터디-할-것들-모음" data-for="스터디/추후-스터디-할-것들-모음">추후 스터디 할 것들 모음</a></li><li><a href="../../../스터디/컴퓨터-수-표현" data-for="스터디/컴퓨터-수-표현">컴퓨터 수 표현</a></li><li><a href="../../../스터디/파일-링크" data-for="스터디/파일-링크">파일 링크</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리"><button class="folder-button"><span class="folder-title">시험 정리</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/2-2"><button class="folder-button"><span class="folder-title">2-2</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/2-2"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/2-2/교양-파이썬-기말"><button class="folder-button"><span class="folder-title">교양 파이썬 기말</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/2-2/교양-파이썬-기말"><li><a href="../../../시험-정리/2-2/교양-파이썬-기말/교양-파이썬-기말" data-for="시험-정리/2-2/교양-파이썬-기말/교양-파이썬-기말">교양 파이썬 기말</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/2-2/네트워크-프로그래밍-중간"><button class="folder-button"><span class="folder-title">네트워크 프로그래밍 중간</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/2-2/네트워크-프로그래밍-중간"><li><a href="../../../시험-정리/2-2/네트워크-프로그래밍-중간/네트워크-프로그래밍-중간고사-정리" data-for="시험-정리/2-2/네트워크-프로그래밍-중간/네트워크-프로그래밍-중간고사-정리">네트워크 프로그래밍 중간고사 정리</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/2-2/자료구조-기말"><button class="folder-button"><span class="folder-title">자료구조 기말</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/2-2/자료구조-기말"><li><a href="../../../시험-정리/2-2/자료구조-기말/자료구조-기말" data-for="시험-정리/2-2/자료구조-기말/자료구조-기말">자료구조 기말</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/2-2/자료구조-중간"><button class="folder-button"><span class="folder-title">자료구조 중간</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/2-2/자료구조-중간"><li><a href="../../../시험-정리/2-2/자료구조-중간/자료구조-중간-정리" data-for="시험-정리/2-2/자료구조-중간/자료구조-중간-정리">자료구조 중간 정리</a></li></ul></div></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1"><button class="folder-button"><span class="folder-title">3-1</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/기말---딥러닝-프로그래밍"><button class="folder-button"><span class="folder-title">기말 - 딥러닝 프로그래밍</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/기말---딥러닝-프로그래밍"><li><a href="../../../시험-정리/3-1/기말---딥러닝-프로그래밍/딥러닝-프로그래밍-기말" data-for="시험-정리/3-1/기말---딥러닝-프로그래밍/딥러닝-프로그래밍-기말">딥러닝 프로그래밍 기말</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/기말---알고리즘"><button class="folder-button"><span class="folder-title">기말 - 알고리즘</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/기말---알고리즘"><li><a href="../../../시험-정리/3-1/기말---알고리즘/알고리즘-기말" data-for="시험-정리/3-1/기말---알고리즘/알고리즘-기말">알고리즘 기말</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/기말---인공지능-프로그래밍-기말"><button class="folder-button"><span class="folder-title">기말 - 인공지능 프로그래밍 기말</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/기말---인공지능-프로그래밍-기말"><li><a href="../../../시험-정리/3-1/기말---인공지능-프로그래밍-기말/인공지능-프로그래밍-기말" data-for="시험-정리/3-1/기말---인공지능-프로그래밍-기말/인공지능-프로그래밍-기말">인공지능 프로그래밍 기말</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/중간---Iot"><button class="folder-button"><span class="folder-title">중간 - Iot</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/중간---Iot"><li><a href="../../../시험-정리/3-1/중간---Iot/Iot-중간" data-for="시험-정리/3-1/중간---Iot/Iot-중간">Iot 중간</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/중간---딥러닝-프로그래밍"><button class="folder-button"><span class="folder-title">중간 - 딥러닝 프로그래밍</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/중간---딥러닝-프로그래밍"><li><a href="../../../시험-정리/3-1/중간---딥러닝-프로그래밍/딥러닝-프로그래밍-중간" data-for="시험-정리/3-1/중간---딥러닝-프로그래밍/딥러닝-프로그래밍-중간">딥러닝 프로그래밍 중간</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/중간---알고리즘"><button class="folder-button"><span class="folder-title">중간 - 알고리즘</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/중간---알고리즘"><li><a href="../../../시험-정리/3-1/중간---알고리즘/알고리즘-중간" data-for="시험-정리/3-1/중간---알고리즘/알고리즘-중간">알고리즘 중간</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/중간---인공지능-프로그래밍-중간"><button class="folder-button"><span class="folder-title">중간 - 인공지능 프로그래밍 중간</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/중간---인공지능-프로그래밍-중간"><li><a href="../../../시험-정리/3-1/중간---인공지능-프로그래밍-중간/인공지능-프로그래밍-중간" data-for="시험-정리/3-1/중간---인공지능-프로그래밍-중간/인공지능-프로그래밍-중간">인공지능 프로그래밍 중간</a></li></ul></div></li></ul></div></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="유용한-것들-모음"><button class="folder-button"><span class="folder-title">유용한 것들 모음</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="유용한-것들-모음"><li><a href="../../../유용한-것들-모음/Apache-Tomcat-관련" data-for="유용한-것들-모음/Apache-Tomcat-관련">Apache Tomcat 관련</a></li><li><a href="../../../유용한-것들-모음/CLI-옵션-국룰" data-for="유용한-것들-모음/CLI-옵션-국룰">CLI 옵션 국룰</a></li><li><a href="../../../유용한-것들-모음/Github-Actions-정리" data-for="유용한-것들-모음/Github-Actions-정리">Github Actions 정리</a></li><li><a href="../../../유용한-것들-모음/Google-API-사용법" data-for="유용한-것들-모음/Google-API-사용법">Google API 사용법</a></li><li><a href="../../../유용한-것들-모음/Google-Colab-세션-유지-방법" data-for="유용한-것들-모음/Google-Colab-세션-유지-방법">Google Colab 세션 유지 방법</a></li><li><a href="../../../유용한-것들-모음/Gradle-스크립트-한글-깨짐-문제-해결" data-for="유용한-것들-모음/Gradle-스크립트-한글-깨짐-문제-해결">Gradle 스크립트 한글 깨짐 문제 해결</a></li><li><a href="../../../유용한-것들-모음/JVM-Args" data-for="유용한-것들-모음/JVM-Args">JVM Args</a></li><li><a href="../../../유용한-것들-모음/뭔가-문서로-분리하긴-뭐한" data-for="유용한-것들-모음/뭔가-문서로-분리하긴-뭐한">뭔가 문서로 분리하긴 뭐한</a></li><li><a href="../../../유용한-것들-모음/짜잘한-윈도우-팁-모음" data-for="유용한-것들-모음/짜잘한-윈도우-팁-모음">짜잘한 윈도우 팁 모음</a></li></ul></div></li></ul></div></li><li id="explorer-end"></li></ul></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../시험-정리/">시험 정리</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../시험-정리/3-1/">3 1</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../시험-정리/3-1/기말---딥러닝-프로그래밍/">기말   딥러닝 프로그래밍</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>딥러닝 프로그래밍 기말</a></div></nav><h1 class="article-title">딥러닝 프로그래밍 기말</h1><p show-comma="true" class="content-meta"><span>2024년 9월 14일</span><span>15 min read</span></p></div></div><article class="popover-hint"><h2 id="rnn-순환-신경망">RNN (순환 신경망)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#rnn-순환-신경망" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote>
+<p>입력과 출력을 시퀀스 단위로 처리하는 모델  피드포워드 신경망과 유사하지만 순환하는 연결도 있다는게 차이점</p>
+</blockquote>
+<p><img src="../../../시험-정리/3-1/기말---딥러닝-프로그래밍/RNN.png" width="auto" height="auto" alt/></p>
+<ul>
+<li><code>시퀀스</code>: 문장 같은 단어가 나열된 것 (쉽게말해서 문장을 처리하기위한 모델이다)</li>
+<li><code>셀</code>: RNN 에서 은닉층에서 함수를 통해 결과를 내보내는 역할
+<ul>
+<li>RNN은 입력을 받아 출력으로 나온 값을 다시 입력으로 넣는 <code>순환구조</code> 를 가지고 있다</li>
+</ul>
+</li>
+<li><code>메모리 셀</code>: 이전 셀의 값을 기억하는 역할을 하는 셀</li>
+<li>현재 출력 데이터는 다음 노드에 입력이되는 약간 연결리스트 구조를 가진다.
+<ul>
+<li>그래서 시간의 축으로 나타낼 수도 있는데 이를
+<code>unrolling the network through time</code>라 부름</li>
+</ul>
+</li>
+</ul>
+<h3 id="모델-종류">모델 종류<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#모델-종류" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><code>시퀀스-투-시퀀스</code>: 번역기
+<ul>
+<li>각 단어 하나하나를 셀로 분활하며 인코더와, 디코더를 거쳐 번역되는데 이때 이전 단어결과를 참조하여 번역되게 되는</li>
+<li><code>인코더</code>-<code>디코더</code>:
+<ul>
+<li>
+<p>입력을 인코더로 처리하여 <code>중간 백터(context)</code>를 만들고 디코더가 백터를 바탕으로 출력을 만드는 구조</p>
+</li>
+<li>
+<p>인코더는 입력만, 디코더는 출력만 처리</p>
+<p><img src="../../../시험-정리/3-1/기말---딥러닝-프로그래밍/시퀀스-투-시퀀스.png" width="auto" height="auto" alt/></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>시퀀스-투-벡터</code>: 감정처리, 문서 분류
+<ul>
+<li>입력 시퀀스를 고정된 길이의 벡터로 인코딩하는 모델
+쉽게 말해 입력데이터를 가지고 하나의 결론을 도출하는
+인코더만 필요</li>
+<li>각 셀에 출력값은 무시하며 그냥 그 값을 다음 셀에게 전달 하게 된다</li>
+<li>이러한 특성땜에 감정처리, 문서 분류에 사용한다 (굳이 단어 하나하나 당 결과를 도출하는게 아니니)</li>
+</ul>
+</li>
+<li><code>벡터-투-시퀀스</code>: 음성 합성, 영상 생성 같은
+<ul>
+<li><span class="text-highlight">하나의 입력</span>만 가지고 순환처리하는 구조
+디코더만 필요</li>
+</ul>
+</li>
+<li><code>상태가 있는(Stateful) RNN</code>:
+<ul>
+<li>긴 시퀀스에 데이터를 처리 할 때 각 배치 상태를 유지시켜 긴 패턴을 더 잘 학습 시킬 수 있다</li>
+</ul>
+</li>
+</ul>
+<h3 id="bptt">BPTT<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#bptt" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>타임 스탭으로 네트워크를 펼치고 보통의 역전파를 사용</p>
+</blockquote>
+<ul>
+<li>걍 연결되있는 쉘 따라서 역전파 하는</li>
+</ul>
+<h3 id="lstm-셀">LSTM 셀<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#lstm-셀" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>RNN 에 단점 중 하나가 길이가 길어 셀이 먼 곳에 위치한 경우 성능 저하 발생</p>
+</blockquote>
+<ul>
+<li>RNN 훈련할 때 단기 데이터의 의존하지 않고 장기 데이터의 의존하게 끔</li>
+<li>은닉층에 call-state를 추가한 구조</li>
+</ul>
+<h4 id="구조">구조<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#구조" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p><img src="../../../시험-정리/3-1/기말---딥러닝-프로그래밍/lstm.png" width="auto" height="auto" alt/></p>
+<ul>
+<li>RNN에 히든 stage를 추가 한 구조</li>
+<li>오래된 기억은 <code>삭제</code> 쪽을 지나 일부를 잃고 덧셈 연산으로 새로운 기억 추가</li>
+<li>만들어진 건 바로 출력하게 됨</li>
+<li>연산 후 상태가 복사 되어 <code>tanh</code> 함수로 전달</li>
+<li>결과는 출력 게이트에 의해 걸러지고 단기상태를 만듬</li>
+<li><code>게이트</code>:
+<ul>
+<li><code>input gate</code>: 이번 입력을 얼마나 반영할지</li>
+<li><code>output gate</code>: 이번 정보를 얼마나 내보낼지</li>
+<li><code>forget gate</code>: 과거정보를 얼마나 잊을지</li>
+</ul>
+</li>
+</ul>
+<h4 id="코드">코드<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#코드" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">tf.keras.models.Sequential([</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    tf.keras.layers.LSTM(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">32</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">return_sequences</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">True</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">input_shape</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">[</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">None</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">5</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]),</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    tf.keras.layers.Dense(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">14</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">])</span></span></code></pre></figure>
+<h3 id="gru-셀">GRU 셀<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#gru-셀" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>LSTM의 간소화 버전</p>
+</blockquote>
+<ul>
+<li>GRU는 게이트가 <code>2개</code> (LSTM 은 <code>3개</code>)</li>
+<li>출력게이트가 없는것이 특징이다</li>
+<li><code>게이트</code>:
+<ul>
+<li><code>update gate</code>: 이번 입력을 얼마나 반영할지</li>
+<li><code>reset gate</code>: 과거정보를 얼마나 잊을지</li>
+</ul>
+</li>
+</ul>
+<h3 id="wavenet">WaveNet<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#wavenet" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>층마다 팽창비율을 두배로 늘리는 1D 합성곱 층을 쌓음</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">for</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> rate </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">in</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">1</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">2</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">4</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">8</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">*</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 2</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    wavenet_model.add(tf.keras.layers.Conv1D(</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">        filters</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">32</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">kernel_size</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">2</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">padding</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;causal&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">activation</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;relu&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">        dilation_rate</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">rate))</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">wavenet_model.add(tf.keras.layers.Conv1D(</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">filters</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">14</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">kernel_size</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">1</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">))</span></span></code></pre></figure>
+<h2 id="char-rnn">Char-RNN<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#char-rnn" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote>
+<p>문자 단위 RNN</p>
+</blockquote>
+<ul>
+<li>
+<p>글자 예측</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">y_proba </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> shakespeare_model.predict([</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;To be or not to b&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">])[</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">1</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">y_pred </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> tf.argmax(y_proba)  </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 가장 가능성이 높은 문자 ID 선택</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">text_vec_layer.get_vocabulary()[y_pred </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">+</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 2</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 결과</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">e</span></span></code></pre></figure>
+</li>
+<li>
+<p>다음 단어 예측</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">print</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(extend_text(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;To be or not to be&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">temperature</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">0.01</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">))</span></span></code></pre></figure>
+</li>
+<li>
+<p><code>temperature</code> 값이 낮으면 원본에 가깝게 나오고 높으면 창작률이 높아진다</p>
+</li>
+<li>
+<p><code>마스킹</code>: 모델이 패딩 토큰을 무시하게 만들기 (의미없는 데이터를 날려버리는)</p>
+</li>
+</ul>
+<h3 id="greedy-decoding">Greedy decoding<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#greedy-decoding" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>Char-RNN에 디코딩 방식</p>
+</blockquote>
+<ul>
+<li>초기 텍스트를 주입하고 모델이 가장 가능성 있는 다음글자 예측</li>
+<li>예측한 글자를 텍스트 끝에 추가하고 늘어난 텍스트를 모델을 전달 다음글자 예측</li>
+</ul>
+<h3 id="모델">모델<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#모델" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><code>ELMo</code>: 심층 양방향 언어 모델의 내부상태에서 학습된 문맥이 반영된 단어 임베딩</li>
+<li><code>NLP</code>: 대규모 텍스트, 말뭉치에서 LSTM 언어 학습한 다음 미세 튜닝</li>
+</ul>
+<h3 id="nmt">NMT<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#nmt" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>인간에 신경을 모방한 머신러닝 기법</p>
+</blockquote>
+<ul>
+<li><code>Seq2Seq</code> 기반</li>
+<li><code>원리</code>
+<ul>
+<li>전체 문맥 파악 후 통째로 번역</li>
+</ul>
+</li>
+<li>아주 짧은 문장에서는 작동이 잘되지만 아직 두 언어에 능숙하지 못하며 특히 긴 문장에서는 어려움</li>
+</ul>
+<h4 id="구조-1">구조<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#구조-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p><img src="../../../시험-정리/3-1/기말---딥러닝-프로그래밍/NMT.png" width="auto" height="auto" alt/></p>
+<ul>
+<li><code>인코더</code>:
+<ul>
+<li>예를들어 <code>i love you</code> 를 받으면 의미를 요약한 백터 생성</li>
+</ul>
+</li>
+<li><code>디코더</code>:
+<ul>
+<li>인코더에서 생성된 컨텍스트 벡터를 입력으로 받아 타겟 시퀀스를 생성</li>
+</ul>
+</li>
+<li><code>어텐션 메커니즘</code>:
+<ul>
+<li>인코더의 문제가 고정크기에 모든 정보를 압축할려니 정보 손실이 발생함</li>
+<li>디코더가 번역을 생성할때 인코더의 모든 은닉 상태를 참조하도록 하여, 각 타임스텝에서 중요한 부분에 더 집중할 수 있게</li>
+</ul>
+</li>
+</ul>
+<h2 id="정규화">정규화<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#정규화" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote>
+<p>여러 특성 데이터 값의 범위를 사용자가 원하는 범위로 제한하는
+데이터의 편차가 크면 큰 특성 위주로 데이터를 이상하게 해결하는</p>
+</blockquote>
+<p><img src="../../../시험-정리/3-1/기말---딥러닝-프로그래밍/배치-층-정규화.png" width="auto" height="auto" alt/></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th><strong>특성</strong></th><th>배치 정규화 (Batch Normalization)</th><th>층 정규화 (Layer Normalization)</th></tr></thead><tbody><tr><td><strong>정규화 대상</strong></td><td>미니 배치의 각 샘플</td><td>층의 뉴런들</td></tr><tr><td><strong>배치 크기 의존성</strong></td><td>의존적</td><td>비의존적</td></tr><tr><td><strong>순차 데이터 모델</strong></td><td>덜 효과적</td><td>효과적</td></tr><tr><td><strong>특화 모델</strong></td><td>CNN 모델에 효과적</td><td>순차데이터나 소규모 배치에 적합 (RNN 같은)</td></tr><tr><td><strong>특이사항</strong></td><td>RNN에 쥐약이다. <br/>각 시점마다 다른데이터가 <br/>연속적으로 나오기 때문</td><td>각 층별로 정규화를 진행하는거라 <br/>입력 데이터와 출력이 많이 다른<br/>것들에 유리하다</td></tr></tbody></table></div>
+<h2 id="양방향-rnn-bi-rnn">양방향 RNN (BI-RNN)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#양방향-rnn-bi-rnn" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote>
+<p>두 개의 독립적인 RNN을 사용하여 입력 시퀀스를 처리</p>
+</blockquote>
+<p><img src="../../../시험-정리/3-1/기말---딥러닝-프로그래밍/양방향-RNN.png" width="auto" height="auto" alt/></p>
+<ul>
+<li>예를들어 <code>거지같은 행색</code>, <code>꺼지지 않는</code>이런 문맥상 정보가 필요한경우 사용</li>
+<li>하나의 RNN은 정방향으로 입력받고 다른하나는 역방향으로 입력받는</li>
+<li>양방향으로 메모제이션(계산결과 저장후 다음 것이 결과 사용하는) 얻어진 출력 값을 time-step 기준으로 연결되어 출력</li>
+</ul>
+<h2 id="오토-인코더">오토 인코더<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#오토-인코더" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote>
+<p>표현 학습 작업에서 신경망을 사용하도록 하는 <code>비지도 학습법</code></p>
+</blockquote>
+<ul>
+<li>입력이 들어왔을 때, 해당입력을 최대한 압축, 데이터의 특징을 추출하여 본래의 입력형태로 복원시키는 신경망</li>
+<li>즉 한마디로 말하면 복원 비복원 하는 신경망</li>
+<li>입력, 출력층의 뉴런수가 동일 그외에는 일반 <code>MLP</code> 와 비슷</li>
+</ul>
+<h3 id="undercomplete-autoencoder">Undercomplete Autoencoder<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#undercomplete-autoencoder" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>불완전한 오토인코더</p>
+</blockquote>
+<ul>
+<li>출력층이 입력층보다 작아지는, 즉 저처원으로 표현되는 오토인코더</li>
+<li>여기서 활성화 함수를 <code>sigmoid</code>, 손실함수로 <code>MSE</code>를 사용한다면 <code>PCA(주성분 분석)</code>을 구현 할 수 있다</li>
+</ul>
+<h3 id="활용">활용<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#활용" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>차원감소</li>
+<li>이미지 잡음 제거</li>
+<li>이미지 생성 등</li>
+</ul>
+<h2 id="생성형-적대-신경망-gan">생성형 적대 신경망 (GAN)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#생성형-적대-신경망-gan" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote>
+<p>예측 값을 도출하는 것이 아닌 새로운 결과 값을 생성하는 모델</p>
+</blockquote>
+<h3 id="단순-원리">단순 원리<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#단순-원리" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>지폐 위조범과 그걸 감시해내는 경찰로 설명하겠다</p>
+</blockquote>
+<ul>
+<li>위조지폐범은 위조지폐를 만들고</li>
+<li>경찰이 그걸 위조 지폐로 판단하면</li>
+<li>더 진짜 같은 위조지폐를 만들어 낸다</li>
+<li>이 과정을 반복하는 것처럼 진짜 같은 가짜를 생성하게 해주는게 GAN 에 핵심</li>
+</ul>
+<h3 id="작동-원리">작동 원리<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#작동-원리" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><img src="../../../시험-정리/3-1/기말---딥러닝-프로그래밍/GAN.png" width="auto" height="auto" alt/></p>
+<ol>
+<li>노이즈 이미지 입력</li>
+<li>Generator 가 가짜 이미지를 생성</li>
+<li>Discriminator 에 만들어진 가짜 이미지와 실제 이미지를 input</li>
+<li>Discriminator가 두 사진을 보고 가짜 이미지에 대한 판단을 하는것</li>
+</ol>
+<h3 id="가이드라인">가이드라인<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#가이드라인" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>판별자 풀링층을 스트라이드 합성곱 층으로</li>
+<li>생성자, 판별자 배치 정규화 사용</li>
+<li>출력층 제외하고는 ReLU 함수</li>
+<li>판별자는 LeakyReLU 활성화 함수</li>
+</ul>
+<h2 id="diffusion-model-확산-모델">Diffusion Model (확산 모델)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#diffusion-model-확산-모델" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote>
+<p>데이터로 부터 노이즈를 조금씩 더해가며 데이터를 완전한 모델로 노이즈로 만들어 가는</p>
+</blockquote>
+<ul>
+<li>흔히 하는 이미지 생성 ai가 다 이 모델 이다</li>
+</ul>
+<h3 id="원리">원리<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#원리" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><img src="../../../시험-정리/3-1/기말---딥러닝-프로그래밍/Diffusion-Model.png" width="auto" height="auto" alt/></p>
+<ol>
+<li>사진 하나를 주어 진다 치자</li>
+<li>이를 노이즈를 점점 끼게하여 맨 첫번째 사진으로 만든다</li>
+<li>그리고 노이즈 낀 사진을 다시 원래 사진으로 복원하는 과정을 거치게 된다</li>
+</ol>
+<h4 id="상세">상세<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#상세" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><code>노이즈</code>:  gaussian noise</li>
+<li><code>노이즈를 추가하는 단계</code>: Noising</li>
+<li><code>원본으로 복원하는 단계</code>: Denoising</li>
+</ul>
+<h2 id="시계열-데이터-예측-모델">시계열 데이터 예측 모델<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#시계열-데이터-예측-모델" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><code>AR</code>: 자기회귀
+<ul>
+<li>과거의 값이 현재값에 영향을 미친다는것을 전제 즉 <code>자기상관 시계열</code>, 과거와 현재 값에 관계를 모델링하는</li>
+</ul>
+</li>
+<li><code>MA</code>: 이동평균
+<ul>
+<li>시계열을 따라 이동하는 (주식 이동 평균이랑 같은 개념)</li>
+</ul>
+</li>
+</ul>
+<h3 id="arma-armr-모델">ARMA (AR+MR) 모델<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#arma-armr-모델" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>과거 값에 간단한 가중치 합+이동평균 하여 예측수정해 가는 모델</p>
+</blockquote>
+<ul>
+<li><code>ARMA</code>는 데이터가 꾸준하게 정상적이라는 전제로 함 그래서 주식 이나 이런 실제 데이터를 예측하기에는 좀 그럼</li>
+</ul>
+<h3 id="arima">ARIMA<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#arima" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p><code>x</code> 번의 차분을 수행하여 시계열 데이터를 좀 정상적으로 만들고 <code>ARMA</code> 모델을 적용한 것</p>
+</blockquote>
+<h3 id="sarima">SARIMA<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#sarima" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p><code>ARIMA</code> 와 같은 모델을 사용하지만 주어진 빈도(주, 월간)에 대한 항을 추가로 모델링</p>
+</blockquote>
+<ul>
+<li>
+<p>예를들어 뭐 1분기 실적 2분기 실적 이런거 할때 좋음</p>
+</li>
+<li>
+<p><code>그리드 서치</code>와 좋합이 좋다</p>
+</li>
+<li>
+<p>간단한 예제</p>
+</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">model </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> ARIMA(rail_series,</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">              order</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">1</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">),</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">              seasonal_order</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">1</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">1</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">7</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)) </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># seasonal_order 들어가면 SARIMA 모델</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">             </span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">model </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> model.fit()</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">y_pred </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> model.forecast()  </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 427,758.6 반환</span></span></code></pre></figure>
+<h2 id="용어정리">용어정리<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#용어정리" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="역전파">역전파<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#역전파" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>목표와 모델의 예측결과와 얼마나 차이 나는지 확인 후 <code>가중치</code>, <code>편향</code> 을 뒤에서 앞으로 갱신하는</p>
+</blockquote>
+<h4 id="경사하강법">경사하강법<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#경사하강법" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>2차 함수 그래프가 있다 치자, 위에서 계산된 예측결과 <code>x</code> 값이 그래프에 최소 값 으로 부터 기울기가 얼마나 차이나는지를 계산한다</li>
+<li><code>MSE</code>: 예측값과 실제값 사이의 차이를 제곱한 후 평균을 구한 손실 함수</li>
+</ul>
+<blockquote>
+<p>종합하자면 <code>경사 하강법</code> 은 손실함수(MSE 등) 값을 최소화 하도록 만들어낸 알고리즘 인것</p>
+</blockquote>
+<ul>
+<li><code>다변량 시계열</code>: 시계열 분석에 있어 변수가 2개 이상으로 분석할 때</li>
+<li><code>단변량 시계열</code>: 이건 변수 하나로</li>
+<li><code>자기상관 시계열</code>: 시계열이 시간이 지연된 자기 자신과 상관관계를 가질 때
+<ul>
+<li>예를 들어 지하철 이용객이 일주일 전과 현재가 급격한 차이를 보인다면
+오늘 또는 그때에 무슨 일이 있겠구나를 알 수 있다</li>
+</ul>
+</li>
+<li><code>배치</code>: 훈련 시 데이터 샘플 묶음</li>
+</ul></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" id="toc" class aria-controls="toc-content" aria-expanded="true"><h3>목차</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="toc-content" class><ul class="overflow"><li class="depth-0"><a href="#rnn-순환-신경망" data-for="rnn-순환-신경망">RNN (순환 신경망)</a></li><li class="depth-1"><a href="#모델-종류" data-for="모델-종류">모델 종류</a></li><li class="depth-1"><a href="#bptt" data-for="bptt">BPTT</a></li><li class="depth-1"><a href="#lstm-셀" data-for="lstm-셀">LSTM 셀</a></li><li class="depth-1"><a href="#gru-셀" data-for="gru-셀">GRU 셀</a></li><li class="depth-1"><a href="#wavenet" data-for="wavenet">WaveNet</a></li><li class="depth-0"><a href="#char-rnn" data-for="char-rnn">Char-RNN</a></li><li class="depth-1"><a href="#greedy-decoding" data-for="greedy-decoding">Greedy decoding</a></li><li class="depth-1"><a href="#모델" data-for="모델">모델</a></li><li class="depth-1"><a href="#nmt" data-for="nmt">NMT</a></li><li class="depth-0"><a href="#정규화" data-for="정규화">정규화</a></li><li class="depth-0"><a href="#양방향-rnn-bi-rnn" data-for="양방향-rnn-bi-rnn">양방향 RNN (BI-RNN)</a></li><li class="depth-0"><a href="#오토-인코더" data-for="오토-인코더">오토 인코더</a></li><li class="depth-1"><a href="#undercomplete-autoencoder" data-for="undercomplete-autoencoder">Undercomplete Autoencoder</a></li><li class="depth-1"><a href="#활용" data-for="활용">활용</a></li><li class="depth-0"><a href="#생성형-적대-신경망-gan" data-for="생성형-적대-신경망-gan">생성형 적대 신경망 (GAN)</a></li><li class="depth-1"><a href="#단순-원리" data-for="단순-원리">단순 원리</a></li><li class="depth-1"><a href="#작동-원리" data-for="작동-원리">작동 원리</a></li><li class="depth-1"><a href="#가이드라인" data-for="가이드라인">가이드라인</a></li><li class="depth-0"><a href="#diffusion-model-확산-모델" data-for="diffusion-model-확산-모델">Diffusion Model (확산 모델)</a></li><li class="depth-1"><a href="#원리" data-for="원리">원리</a></li><li class="depth-0"><a href="#시계열-데이터-예측-모델" data-for="시계열-데이터-예측-모델">시계열 데이터 예측 모델</a></li><li class="depth-1"><a href="#arma-armr-모델" data-for="arma-armr-모델">ARMA (AR+MR) 모델</a></li><li class="depth-1"><a href="#arima" data-for="arima">ARIMA</a></li><li class="depth-1"><a href="#sarima" data-for="sarima">SARIMA</a></li><li class="depth-0"><a href="#용어정리" data-for="용어정리">용어정리</a></li><li class="depth-1"><a href="#역전파" data-for="역전파">역전파</a></li></ul></div></div><div class="graph"><h3>그래프 뷰</h3><div class="graph-outer"><div id="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false}"></div><button id="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div id="global-graph-outer"><div id="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true}"></div></div></div><div class="backlinks"><h3>백링크</h3><ul class="overflow"><li>백링크가 없습니다.</li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.3.1</a> © 2024</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></body><script type="application/javascript">function c(){let t=this.parentElement;t.classList.toggle("is-collapsed");let l=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=l+"px";let o=t,e=t.parentElement;for(;e;){if(!e.classList.contains("callout"))return;let n=e.classList.contains("is-collapsed")?e.scrollHeight:e.scrollHeight+o.scrollHeight;e.style.maxHeight=n+"px",o=e,e=e.parentElement}}function i(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let l=s.firstElementChild;if(l){l.addEventListener("click",c),window.addCleanup(()=>l.removeEventListener("click",c));let e=s.classList.contains("is-collapsed")?l.scrollHeight:s.scrollHeight;s.style.maxHeight=e+"px"}}}document.addEventListener("nav",i);window.addEventListener("resize",i);
+</script><script type="module">
+          let mermaidImport = undefined
+          document.addEventListener('nav', async () => {
+            if (document.querySelector("code.mermaid")) {
+              mermaidImport ||= await import('https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.7.0/mermaid.esm.min.mjs')
+              const mermaid = mermaidImport.default
+              const darkMode = document.documentElement.getAttribute('saved-theme') === 'dark'
+              mermaid.initialize({
+                startOnLoad: false,
+                securityLevel: 'loose',
+                theme: darkMode ? 'dark' : 'default'
+              })
+
+              await mermaid.run({
+                querySelector: '.mermaid'
+              })
+            }
+          });
+          </script><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../../../postscript.js" type="module"></script></html>

@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="ko"><head><title>네트워크 통신</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM Plex Mono&amp;family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta property="og:title" content="네트워크 통신"/><meta property="og:description" content="기본적인 용어 정리 네트워크 컴퓨터, 라우터, 스우치 등 여러 장비들이 서로 유/무선 으로 연결되어 데이터를 공유하는 시스템 네트워크는 단순히 내부 망(이더넷) 끼리의 통신이나, 외부 네트워크 끼리 통신하는 것 모두를 포함 이더넷 네트워크 기술의 일종. 공유기, 허브에 연결되어 여러 시스템들이 통신 가능한 네트워크 구조 인터넷 전 세계 네트워크가 서로 연결 되있는 전체 네트워크에 집합 따라서 외부 네트워크와의 통신 그 자체를 말함 네트워크 인터페이스 물리적인 렌카드 (사실상 하나의 PC) 보통은 렌포트가 하나인데 요즘 좋은것들은 2개씩 존재하는것도 있다 TCP/IP 계층 모든 네트워크 장비가 실제 물리적인 데이터 전송이 되기 전까지의 과정들을 추상화 한것 이론상 존재하는 OSI 7계층을 실제 구현한 것 보통은 컴퓨터 네트워크 통신에서는 TCP/IP로 많이 설명하는데 다른 네트워크 장비들은 설명하기 쉽다고 OSI 7으로 설명되는 경우가 많다 구조 응용계층 설명: 여긴 그냥 개발자가 개발하기 나름 프로토콜: HTTP, FTP, SSH 전송계층 설명: 데이터 전송할 수 있도록 해주는 계층 프로토콜: TCP, UDP 인터넷 계층 설명: IP 주소를 설정하여 목적지를 지정 프로토콜: IP, Port 네트워크 인터페이스 계층 (NIC 계층) 설명: 실제 물리적인 전송을 담당하는 계층 PC에 경우 보통은 공유기와 연결됨으로 공유기의 MAC 주소를 추가해준다 프로토콜: MAC, 이더넷 오해하면 큰일나는 것 각 계층에 역할(구현)은 네트워크 장비마다 다르다 보통 설명할때 전송하는 PC 입장에서 설명해놓은 경우가 많다 모든 네트워크 장비가 TCP/IP 계층을 따르긴 하는데 아래 설명한것 처럼 각각이 어떤역할을 하는지는 컴퓨터 라는 네트워크 장비를 예를 들어 설명한거다 예를들어 라우터는 TCP/IP 모델에 L2(인터넷) 계층에서 작동한다 이 말은 라우터는 TCP/IP 계층 구조에서 인터넷 계층 까지만 구현이 되어있는거다 PC가 NIC 계층에서 물리적으로 전송되어 그 정보를 라우터가 받았다 치자 네트워크 인터페이스 계층: 라우터는 PC NIC계층에서 온 프레임해더에 MAC 주소와 자신의 MAC 주소를 비교하게된다 여기서 동일한 MAC 주소가 나오면 인터넷 계층: 디캡술레이션 과정을 거쳐 최종 목적지IP 주소를 확인하게 된다 그 IP 주소를 라우팅 테이블을 참조하여 다음 목적지 주소를 확인 하고 네트워크 인터페이스 계층: 다음 목적지 MAC 주소를 결정하여 다시 프레임으로 캡슐레이션 해서 전송하게 된다 OSI 7계층 | TCP/IP 계층 #TCP/IP역할OSI 7전송단위L1네트워크 인터페이스Mac, RS-232C물리프레임L2데이터 링크L3인터넷라우팅, IP, ICMP, ARP, RARP네트워크패킷L4전송TCP, UDP, Port전송세그먼트L5세션L6표현L7응용HTTP, SSH, FTP, RIP, OSPF, RIP응용 수신자PC 입장에서 본 TCP/IP 전송 구조 &amp;amp; 단위 인캡술레이션: 데이터 전송시 각계층을 지날때 마다 각자 해더가 하나씩 붙어가는것 디캡술레이션: 데이터 수신시 각 계층을 지날때 마다 캡슐화된 데이터를 복원하는 것 소켓 스트림 (응용계층) 아래 전송계층단은 OS 커널영역 인데 이걸 파일형태로 추상화 해서 개발자가 사용할수 있게끔 인터페이스화 한게 소켓이다 우리가 쓰는 WinSocket 이나 이런건 그 인터페이스의 구현체 인거고 사실상 모든 네트워크 데이터는 소켓스트림 이다 세그먼트 (TCP 계층) 소켓에서 날라온 데이터가 일정크기 만큼 잘려서 TCP 단에 들어오게 된다 (세그먼트화) 그럼 그 잘린 데이터에 TCP 해더를 붙이게 되면 이게 세그먼트다 세그먼트 관점에서는 TCP해더 쪽이 해더, 데이터 영역이 페이로드 그럼 만들어진 세그먼트를 IP단에 전송하면 여기 작업은 끝난다 MSS (Maximum Segment Size) 최대 세그먼트 사이즈 해당 사이즈는 패킷에 크기 에 기초에서 잘려지는데 당연하지만 패킷에 크기보다 작음 IP 해더 20바이트, TCP 해더 20바이트 해서 MSS의 최대 크기는 패킷크기-40 이다 패킷 (IP 단) 실제 전송될 데이터 덩어리 패킷은 세그먼트를 인터넷에서 전송가능한 형태로 변환한게 패킷이다 TCP 단에서 전달받은 세그먼트+IP 해더 이것이 패킷이다 IP 해더 = 해더, 세그먼트 = 페이로드 페킷을 TCP 단으로 보내는 경우 세그먼트를 디켑슐레이션 과정을 통해 TCP해더를 얻게된다 즉 세그먼트=패킷에 페이로드 영역이다 라고 볼 수 있다 MTU (Maximum Transmission Unit) 패킷에 최대 크기 별일없으면 MTU=1500바이트 그니까 하나의 패킷으로 전송가능한 최대 크기는 1500바이트 라는 뜻 사실상 해더 제외하면 실제 순수데이터 만으로는 1460바이트가된다 더 큰 사이즈를 전송하고 싶으면 위 세그먼트 단계에서 잘게잘게 잘려서 여러 패킷으로 나오게 되어 전송이 된다 프레임 (MAC 주소단) 네트워크가 실제로 데이터를 전송할때 쓰는 단위 이더넷 프레임 이라고 하기도 함 IP 단에서 전달받은 패킷+ 프레임 해더 프레임 해더 = 해더, 패킷 = 페이로드 목적지, 소스 실제 MAC 주소를 담고 있다 여기서 MAC 주소는 최종 전달자가 아니다 만약 PC가 공유기(라우터)와 연결되어있다 치면 해당 공유기의 MAC 주소인거다 FCS: 프레임의 무결성을 확인하기 위한 오류 검출 코드 여기서 IPv4, IPv6 판단이 이루어 진다 소켓 통신 네트워크들을 연결하는 하나의 접점을 제공하는 기술."/><meta property="og:image" content="https://quartz.jzhao.xyz/static/og-image.png"/><meta property="og:width" content="1200"/><meta property="og:height" content="675"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="기본적인 용어 정리 네트워크 컴퓨터, 라우터, 스우치 등 여러 장비들이 서로 유/무선 으로 연결되어 데이터를 공유하는 시스템 네트워크는 단순히 내부 망(이더넷) 끼리의 통신이나, 외부 네트워크 끼리 통신하는 것 모두를 포함 이더넷 네트워크 기술의 일종. 공유기, 허브에 연결되어 여러 시스템들이 통신 가능한 네트워크 구조 인터넷 전 세계 네트워크가 서로 연결 되있는 전체 네트워크에 집합 따라서 외부 네트워크와의 통신 그 자체를 말함 네트워크 인터페이스 물리적인 렌카드 (사실상 하나의 PC) 보통은 렌포트가 하나인데 요즘 좋은것들은 2개씩 존재하는것도 있다 TCP/IP 계층 모든 네트워크 장비가 실제 물리적인 데이터 전송이 되기 전까지의 과정들을 추상화 한것 이론상 존재하는 OSI 7계층을 실제 구현한 것 보통은 컴퓨터 네트워크 통신에서는 TCP/IP로 많이 설명하는데 다른 네트워크 장비들은 설명하기 쉽다고 OSI 7으로 설명되는 경우가 많다 구조 응용계층 설명: 여긴 그냥 개발자가 개발하기 나름 프로토콜: HTTP, FTP, SSH 전송계층 설명: 데이터 전송할 수 있도록 해주는 계층 프로토콜: TCP, UDP 인터넷 계층 설명: IP 주소를 설정하여 목적지를 지정 프로토콜: IP, Port 네트워크 인터페이스 계층 (NIC 계층) 설명: 실제 물리적인 전송을 담당하는 계층 PC에 경우 보통은 공유기와 연결됨으로 공유기의 MAC 주소를 추가해준다 프로토콜: MAC, 이더넷 오해하면 큰일나는 것 각 계층에 역할(구현)은 네트워크 장비마다 다르다 보통 설명할때 전송하는 PC 입장에서 설명해놓은 경우가 많다 모든 네트워크 장비가 TCP/IP 계층을 따르긴 하는데 아래 설명한것 처럼 각각이 어떤역할을 하는지는 컴퓨터 라는 네트워크 장비를 예를 들어 설명한거다 예를들어 라우터는 TCP/IP 모델에 L2(인터넷) 계층에서 작동한다 이 말은 라우터는 TCP/IP 계층 구조에서 인터넷 계층 까지만 구현이 되어있는거다 PC가 NIC 계층에서 물리적으로 전송되어 그 정보를 라우터가 받았다 치자 네트워크 인터페이스 계층: 라우터는 PC NIC계층에서 온 프레임해더에 MAC 주소와 자신의 MAC 주소를 비교하게된다 여기서 동일한 MAC 주소가 나오면 인터넷 계층: 디캡술레이션 과정을 거쳐 최종 목적지IP 주소를 확인하게 된다 그 IP 주소를 라우팅 테이블을 참조하여 다음 목적지 주소를 확인 하고 네트워크 인터페이스 계층: 다음 목적지 MAC 주소를 결정하여 다시 프레임으로 캡슐레이션 해서 전송하게 된다 OSI 7계층 | TCP/IP 계층 #TCP/IP역할OSI 7전송단위L1네트워크 인터페이스Mac, RS-232C물리프레임L2데이터 링크L3인터넷라우팅, IP, ICMP, ARP, RARP네트워크패킷L4전송TCP, UDP, Port전송세그먼트L5세션L6표현L7응용HTTP, SSH, FTP, RIP, OSPF, RIP응용 수신자PC 입장에서 본 TCP/IP 전송 구조 &amp;amp; 단위 인캡술레이션: 데이터 전송시 각계층을 지날때 마다 각자 해더가 하나씩 붙어가는것 디캡술레이션: 데이터 수신시 각 계층을 지날때 마다 캡슐화된 데이터를 복원하는 것 소켓 스트림 (응용계층) 아래 전송계층단은 OS 커널영역 인데 이걸 파일형태로 추상화 해서 개발자가 사용할수 있게끔 인터페이스화 한게 소켓이다 우리가 쓰는 WinSocket 이나 이런건 그 인터페이스의 구현체 인거고 사실상 모든 네트워크 데이터는 소켓스트림 이다 세그먼트 (TCP 계층) 소켓에서 날라온 데이터가 일정크기 만큼 잘려서 TCP 단에 들어오게 된다 (세그먼트화) 그럼 그 잘린 데이터에 TCP 해더를 붙이게 되면 이게 세그먼트다 세그먼트 관점에서는 TCP해더 쪽이 해더, 데이터 영역이 페이로드 그럼 만들어진 세그먼트를 IP단에 전송하면 여기 작업은 끝난다 MSS (Maximum Segment Size) 최대 세그먼트 사이즈 해당 사이즈는 패킷에 크기 에 기초에서 잘려지는데 당연하지만 패킷에 크기보다 작음 IP 해더 20바이트, TCP 해더 20바이트 해서 MSS의 최대 크기는 패킷크기-40 이다 패킷 (IP 단) 실제 전송될 데이터 덩어리 패킷은 세그먼트를 인터넷에서 전송가능한 형태로 변환한게 패킷이다 TCP 단에서 전달받은 세그먼트+IP 해더 이것이 패킷이다 IP 해더 = 해더, 세그먼트 = 페이로드 페킷을 TCP 단으로 보내는 경우 세그먼트를 디켑슐레이션 과정을 통해 TCP해더를 얻게된다 즉 세그먼트=패킷에 페이로드 영역이다 라고 볼 수 있다 MTU (Maximum Transmission Unit) 패킷에 최대 크기 별일없으면 MTU=1500바이트 그니까 하나의 패킷으로 전송가능한 최대 크기는 1500바이트 라는 뜻 사실상 해더 제외하면 실제 순수데이터 만으로는 1460바이트가된다 더 큰 사이즈를 전송하고 싶으면 위 세그먼트 단계에서 잘게잘게 잘려서 여러 패킷으로 나오게 되어 전송이 된다 프레임 (MAC 주소단) 네트워크가 실제로 데이터를 전송할때 쓰는 단위 이더넷 프레임 이라고 하기도 함 IP 단에서 전달받은 패킷+ 프레임 해더 프레임 해더 = 해더, 패킷 = 페이로드 목적지, 소스 실제 MAC 주소를 담고 있다 여기서 MAC 주소는 최종 전달자가 아니다 만약 PC가 공유기(라우터)와 연결되어있다 치면 해당 공유기의 MAC 주소인거다 FCS: 프레임의 무결성을 확인하기 위한 오류 검출 코드 여기서 IPv4, IPv6 판단이 이루어 진다 소켓 통신 네트워크들을 연결하는 하나의 접점을 제공하는 기술."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script></head><body data-slug="스터디/네트워크-통신"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">안녕하세요 저는</a></h2><div class="spacer mobile-only"></div><div class="search"><button class="search-button" id="search-button"><p>검색</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div id="search-container"><div id="search-space"><input autocomplete="off" id="search-bar" name="search" type="text" aria-label="검색어를 입력하세요" placeholder="검색어를 입력하세요"/><div id="search-layout" data-preview="true"></div></div></div></div><button class="darkmode" id="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="다크 모드"><title>다크 모드</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="라이트 모드"><title>라이트 모드</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button><div class="explorer desktop-only"><button type="button" id="explorer" data-behavior="collapse" data-collapsed="collapsed" data-savestate="true" data-tree="[{&quot;path&quot;:&quot;CLI-프로그램-명령어&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;강의필기&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;개발-언어&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;리눅스&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;스터디&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/2-2&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/2-2/교양-파이썬-기말&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/2-2/네트워크-프로그래밍-중간&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/2-2/자료구조-기말&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/2-2/자료구조-중간&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/기말---딥러닝-프로그래밍&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/기말---알고리즘&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/기말---인공지능-프로그래밍-기말&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/중간---Iot&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/중간---딥러닝-프로그래밍&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/중간---알고리즘&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;시험-정리/3-1/중간---인공지능-프로그래밍-중간&quot;,&quot;collapsed&quot;:true},{&quot;path&quot;:&quot;유용한-것들-모음&quot;,&quot;collapsed&quot;:true}]" aria-controls="explorer-content" aria-expanded="false"><h2>탐색기</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-content"><ul class="overflow" id="explorer-ul"><li><div class="folder-outer open"><ul style="padding-left:0;" class="content" data-folderul><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="CLI-프로그램-명령어"><button class="folder-button"><span class="folder-title">CLI 프로그램 명령어</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="CLI-프로그램-명령어"><li><a href="../CLI-프로그램-명령어/Conda-명령어-정리" data-for="CLI-프로그램-명령어/Conda-명령어-정리">Conda 명령어 정리</a></li><li><a href="../CLI-프로그램-명령어/Docker-명령어-정리" data-for="CLI-프로그램-명령어/Docker-명령어-정리">Docker 명령어 정리</a></li><li><a href="../CLI-프로그램-명령어/Git-명령어-정리" data-for="CLI-프로그램-명령어/Git-명령어-정리">Git 명령어 정리</a></li><li><a href="../CLI-프로그램-명령어/MySql-명령어-정리" data-for="CLI-프로그램-명령어/MySql-명령어-정리">MySql 명령어 정리</a></li><li><a href="../CLI-프로그램-명령어/pip-명령어-정리" data-for="CLI-프로그램-명령어/pip-명령어-정리">pip 명령어 정리</a></li><li><a href="../CLI-프로그램-명령어/Pnpm-명령어-정리" data-for="CLI-프로그램-명령어/Pnpm-명령어-정리">Pnpm 명령어 정리</a></li><li><a href="../CLI-프로그램-명령어/Poetry-명령어-정리" data-for="CLI-프로그램-명령어/Poetry-명령어-정리">Poetry 명령어 정리</a></li></ul></div></li><li><div class="folder-outer "><ul style="padding-left:0;" class="content" data-folderul></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="강의필기"><button class="folder-button"><span class="folder-title">강의필기</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="강의필기"><li><a href="../강의필기/기계학습프로그래밍" data-for="강의필기/기계학습프로그래밍">기계학습프로그래밍</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="개발-언어"><button class="folder-button"><span class="folder-title">개발 언어</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="개발-언어"><li><a href="../개발-언어/Java" data-for="개발-언어/Java">Java</a></li><li><a href="../개발-언어/Python" data-for="개발-언어/Python">Python</a></li><li><a href="../개발-언어/Shell-Script" data-for="개발-언어/Shell-Script">Shell Script</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="리눅스"><button class="folder-button"><span class="folder-title">리눅스</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="리눅스"><li><a href="../리눅스/Vim-사용법" data-for="리눅스/Vim-사용법">Vim 사용법</a></li><li><a href="../리눅스/단축키" data-for="리눅스/단축키">단축키</a></li><li><a href="../리눅스/리눅스-명령어-정리" data-for="리눅스/리눅스-명령어-정리">리눅스 명령어 정리</a></li><li><a href="../리눅스/패키지-설치" data-for="리눅스/패키지-설치">패키지 설치</a></li><li><a href="../리눅스/프로그램-암호" data-for="리눅스/프로그램-암호">프로그램 암호</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="스터디"><button class="folder-button"><span class="folder-title">스터디</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="스터디"><li><a href="../스터디/AWS-스터디--and--프로젝트" data-for="스터디/AWS-스터디--and--프로젝트">AWS 스터디 &amp; 프로젝트</a></li><li><a href="../스터디/CORS-(Cross-Origin-Resource-Sharing)" data-for="스터디/CORS-(Cross-Origin-Resource-Sharing)">CORS (Cross-Origin Resource Sharing)</a></li><li><a href="../스터디/Doker-스터디" data-for="스터디/Doker-스터디">Doker 스터디</a></li><li><a href="../스터디/Express.js-정리" data-for="스터디/Express.js-정리">Express.js 정리</a></li><li><a href="../스터디/File-IO" data-for="스터디/File-IO">File IO</a></li><li><a href="../스터디/Git-스터디" data-for="스터디/Git-스터디">Git 스터디</a></li><li><a href="../스터디/gRPC-통신" data-for="스터디/gRPC-통신">gRPC 통신</a></li><li><a href="../스터디/IPC-통신" data-for="스터디/IPC-통신">IPC 통신</a></li><li><a href="../스터디/Kubernetes-(K8S)-스터디" data-for="스터디/Kubernetes-(K8S)-스터디">Kubernetes (K8S) 스터디</a></li><li><a href="../스터디/React-Native-정리" data-for="스터디/React-Native-정리">React-Native 정리</a></li><li><a href="../스터디/SSE-(Server-Sent-Event)" data-for="스터디/SSE-(Server-Sent-Event)">SSE (Server Sent Event)</a></li><li><a href="../스터디/SSH-(Secure-Shell-Protocol)" data-for="스터디/SSH-(Secure-Shell-Protocol)">SSH (Secure Shell Protocol)</a></li><li><a href="../스터디/개발-용어-정리" data-for="스터디/개발-용어-정리">개발 용어 정리</a></li><li><a href="../스터디/공개키-암호화" data-for="스터디/공개키-암호화">공개키 암호화</a></li><li><a href="../스터디/네트워크-통신" data-for="스터디/네트워크-통신">네트워크 통신</a></li><li><a href="../스터디/데이터-베이스-정규화" data-for="스터디/데이터-베이스-정규화">데이터 베이스 정규화</a></li><li><a href="../스터디/문자-인코딩" data-for="스터디/문자-인코딩">문자 인코딩</a></li><li><a href="../스터디/비동기와-멀티스레드-차이" data-for="스터디/비동기와-멀티스레드-차이">비동기와 멀티스레드 차이</a></li><li><a href="../스터디/추후-스터디-할-것들-모음" data-for="스터디/추후-스터디-할-것들-모음">추후 스터디 할 것들 모음</a></li><li><a href="../스터디/컴퓨터-수-표현" data-for="스터디/컴퓨터-수-표현">컴퓨터 수 표현</a></li><li><a href="../스터디/파일-링크" data-for="스터디/파일-링크">파일 링크</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리"><button class="folder-button"><span class="folder-title">시험 정리</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/2-2"><button class="folder-button"><span class="folder-title">2-2</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/2-2"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/2-2/교양-파이썬-기말"><button class="folder-button"><span class="folder-title">교양 파이썬 기말</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/2-2/교양-파이썬-기말"><li><a href="../시험-정리/2-2/교양-파이썬-기말/교양-파이썬-기말" data-for="시험-정리/2-2/교양-파이썬-기말/교양-파이썬-기말">교양 파이썬 기말</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/2-2/네트워크-프로그래밍-중간"><button class="folder-button"><span class="folder-title">네트워크 프로그래밍 중간</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/2-2/네트워크-프로그래밍-중간"><li><a href="../시험-정리/2-2/네트워크-프로그래밍-중간/네트워크-프로그래밍-중간고사-정리" data-for="시험-정리/2-2/네트워크-프로그래밍-중간/네트워크-프로그래밍-중간고사-정리">네트워크 프로그래밍 중간고사 정리</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/2-2/자료구조-기말"><button class="folder-button"><span class="folder-title">자료구조 기말</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/2-2/자료구조-기말"><li><a href="../시험-정리/2-2/자료구조-기말/자료구조-기말" data-for="시험-정리/2-2/자료구조-기말/자료구조-기말">자료구조 기말</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/2-2/자료구조-중간"><button class="folder-button"><span class="folder-title">자료구조 중간</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/2-2/자료구조-중간"><li><a href="../시험-정리/2-2/자료구조-중간/자료구조-중간-정리" data-for="시험-정리/2-2/자료구조-중간/자료구조-중간-정리">자료구조 중간 정리</a></li></ul></div></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1"><button class="folder-button"><span class="folder-title">3-1</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/기말---딥러닝-프로그래밍"><button class="folder-button"><span class="folder-title">기말 - 딥러닝 프로그래밍</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/기말---딥러닝-프로그래밍"><li><a href="../시험-정리/3-1/기말---딥러닝-프로그래밍/딥러닝-프로그래밍-기말" data-for="시험-정리/3-1/기말---딥러닝-프로그래밍/딥러닝-프로그래밍-기말">딥러닝 프로그래밍 기말</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/기말---알고리즘"><button class="folder-button"><span class="folder-title">기말 - 알고리즘</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/기말---알고리즘"><li><a href="../시험-정리/3-1/기말---알고리즘/알고리즘-기말" data-for="시험-정리/3-1/기말---알고리즘/알고리즘-기말">알고리즘 기말</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/기말---인공지능-프로그래밍-기말"><button class="folder-button"><span class="folder-title">기말 - 인공지능 프로그래밍 기말</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/기말---인공지능-프로그래밍-기말"><li><a href="../시험-정리/3-1/기말---인공지능-프로그래밍-기말/인공지능-프로그래밍-기말" data-for="시험-정리/3-1/기말---인공지능-프로그래밍-기말/인공지능-프로그래밍-기말">인공지능 프로그래밍 기말</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/중간---Iot"><button class="folder-button"><span class="folder-title">중간 - Iot</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/중간---Iot"><li><a href="../시험-정리/3-1/중간---Iot/Iot-중간" data-for="시험-정리/3-1/중간---Iot/Iot-중간">Iot 중간</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/중간---딥러닝-프로그래밍"><button class="folder-button"><span class="folder-title">중간 - 딥러닝 프로그래밍</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/중간---딥러닝-프로그래밍"><li><a href="../시험-정리/3-1/중간---딥러닝-프로그래밍/딥러닝-프로그래밍-중간" data-for="시험-정리/3-1/중간---딥러닝-프로그래밍/딥러닝-프로그래밍-중간">딥러닝 프로그래밍 중간</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/중간---알고리즘"><button class="folder-button"><span class="folder-title">중간 - 알고리즘</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/중간---알고리즘"><li><a href="../시험-정리/3-1/중간---알고리즘/알고리즘-중간" data-for="시험-정리/3-1/중간---알고리즘/알고리즘-중간">알고리즘 중간</a></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="시험-정리/3-1/중간---인공지능-프로그래밍-중간"><button class="folder-button"><span class="folder-title">중간 - 인공지능 프로그래밍 중간</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="시험-정리/3-1/중간---인공지능-프로그래밍-중간"><li><a href="../시험-정리/3-1/중간---인공지능-프로그래밍-중간/인공지능-프로그래밍-중간" data-for="시험-정리/3-1/중간---인공지능-프로그래밍-중간/인공지능-프로그래밍-중간">인공지능 프로그래밍 중간</a></li></ul></div></li></ul></div></li></ul></div></li><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div data-folderpath="유용한-것들-모음"><button class="folder-button"><span class="folder-title">유용한 것들 모음</span></button></div></div><div class="folder-outer "><ul style="padding-left:1.4rem;" class="content" data-folderul="유용한-것들-모음"><li><a href="../유용한-것들-모음/Apache-Tomcat-관련" data-for="유용한-것들-모음/Apache-Tomcat-관련">Apache Tomcat 관련</a></li><li><a href="../유용한-것들-모음/CLI-옵션-국룰" data-for="유용한-것들-모음/CLI-옵션-국룰">CLI 옵션 국룰</a></li><li><a href="../유용한-것들-모음/Github-Actions-정리" data-for="유용한-것들-모음/Github-Actions-정리">Github Actions 정리</a></li><li><a href="../유용한-것들-모음/Google-API-사용법" data-for="유용한-것들-모음/Google-API-사용법">Google API 사용법</a></li><li><a href="../유용한-것들-모음/Google-Colab-세션-유지-방법" data-for="유용한-것들-모음/Google-Colab-세션-유지-방법">Google Colab 세션 유지 방법</a></li><li><a href="../유용한-것들-모음/Gradle-스크립트-한글-깨짐-문제-해결" data-for="유용한-것들-모음/Gradle-스크립트-한글-깨짐-문제-해결">Gradle 스크립트 한글 깨짐 문제 해결</a></li><li><a href="../유용한-것들-모음/JVM-Args" data-for="유용한-것들-모음/JVM-Args">JVM Args</a></li><li><a href="../유용한-것들-모음/뭔가-문서로-분리하긴-뭐한" data-for="유용한-것들-모음/뭔가-문서로-분리하긴-뭐한">뭔가 문서로 분리하긴 뭐한</a></li><li><a href="../유용한-것들-모음/짜잘한-윈도우-팁-모음" data-for="유용한-것들-모음/짜잘한-윈도우-팁-모음">짜잘한 윈도우 팁 모음</a></li></ul></div></li></ul></div></li><li id="explorer-end"></li></ul></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../스터디/">스터디</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>네트워크 통신</a></div></nav><h1 class="article-title">네트워크 통신</h1><p show-comma="true" class="content-meta"><span>2024년 9월 14일</span><span>37 min read</span></p></div></div><article class="popover-hint"><h2 id="기본적인-용어-정리">기본적인 용어 정리<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#기본적인-용어-정리" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="네트워크">네트워크<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#네트워크" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>컴퓨터, 라우터, 스우치 등 여러 장비들이 서로 유/무선 으로 연결되어 데이터를 공유하는 시스템</li>
+<li>네트워크는 단순히 내부 망(이더넷) 끼리의 통신이나, 외부 네트워크 끼리 통신하는 것 모두를 포함</li>
+</ul>
+<h4 id="이더넷">이더넷<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#이더넷" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>네트워크 기술의 일종.</li>
+<li>공유기, 허브에 연결되어 여러 시스템들이 통신 가능한 네트워크 구조</li>
+</ul>
+<h3 id="인터넷">인터넷<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#인터넷" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>전 세계 네트워크가 서로 연결 되있는 <strong>전체 네트워크에 집합</strong></li>
+<li>따라서 외부 네트워크와의 통신 그 자체를 말함</li>
+</ul>
+<h3 id="네트워크-인터페이스">네트워크 인터페이스<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#네트워크-인터페이스" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>물리적인 렌카드 (사실상 하나의 PC)</li>
+<li>보통은 렌포트가 하나인데 요즘 좋은것들은 2개씩 존재하는것도 있다</li>
+</ul>
+<h2 id="tcpip-계층">TCP/IP 계층<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#tcpip-계층" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote>
+<p>모든 네트워크 장비가 실제 물리적인 데이터 전송이 되기 전까지의 과정들을 추상화 한것</p>
+</blockquote>
+<ul>
+<li>이론상 존재하는 OSI 7계층을 실제 구현한 것</li>
+<li>보통은 컴퓨터 네트워크 통신에서는 <code>TCP/IP</code>로 많이 설명하는데 다른 네트워크 장비들은 설명하기 쉽다고 <code>OSI 7</code>으로 설명되는 경우가 많다</li>
+</ul>
+<h3 id="구조">구조<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#구조" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><code>응용계층</code>
+<ul>
+<li><code>설명</code>: 여긴 그냥 개발자가 개발하기 나름</li>
+<li><code>프로토콜</code>: HTTP, FTP, SSH</li>
+</ul>
+</li>
+<li><code>전송계층</code>
+<ul>
+<li><code>설명</code>: 데이터 전송할 수 있도록 해주는 계층</li>
+<li><code>프로토콜</code>: TCP, UDP</li>
+</ul>
+</li>
+<li>인터넷 계층
+<ul>
+<li><code>설명</code>: IP 주소를 설정하여 목적지를 지정</li>
+<li><code>프로토콜</code>: IP, Port</li>
+</ul>
+</li>
+<li>네트워크 인터페이스 계층 (NIC 계층)
+<ul>
+<li><code>설명</code>:
+<ul>
+<li>실제 물리적인 전송을 담당하는 계층</li>
+<li>PC에 경우 보통은 공유기와 연결됨으로 공유기의 MAC 주소를 추가해준다</li>
+</ul>
+</li>
+<li><code>프로토콜</code>: MAC, 이더넷</li>
+</ul>
+</li>
+</ol>
+<h3 id="오해하면-큰일나는-것">오해하면 큰일나는 것<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#오해하면-큰일나는-것" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>각 계층에 역할(구현)은 네트워크 장비마다 다르다</strong>
+<ul>
+<li>보통 설명할때 전송하는 <strong>PC 입장에서 설명해놓은 경우가 많다</strong></li>
+<li>모든 네트워크 장비가 TCP/IP 계층을 따르긴 하는데 아래 설명한것 처럼 각각이 어떤역할을 하는지는 <code>컴퓨터</code> 라는 네트워크 장비를 예를 들어 설명한거다</li>
+</ul>
+</li>
+<li>예를들어 라우터는 TCP/IP 모델에 L2(인터넷) 계층에서 작동한다
+이 말은 라우터는 TCP/IP 계층 구조에서 <strong>인터넷 계층 까지만 구현이 되어있는거다</strong>
+<ul>
+<li>PC가 NIC 계층에서 물리적으로 전송되어 그 정보를 라우터가 받았다 치자</li>
+<li><code>네트워크 인터페이스 계층</code>:
+<ul>
+<li>라우터는 PC NIC계층에서 온 프레임해더에 MAC 주소와 자신의 MAC 주소를 비교하게된다 여기서 동일한 MAC 주소가 나오면</li>
+</ul>
+</li>
+<li><code>인터넷 계층</code>:
+<ul>
+<li><code>디캡술레이션</code> 과정을 거쳐 최종 목적지IP 주소를 확인하게 된다</li>
+<li>그 IP 주소를 라우팅 테이블을 참조하여 다음 목적지 주소를 확인 하고</li>
+</ul>
+</li>
+<li><code>네트워크 인터페이스 계층</code>:
+<ul>
+<li>다음 목적지 MAC 주소를 결정하여 다시 <code>프레임</code>으로 캡슐레이션 해서 전송하게 된다</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="osi-7계층--tcpip-계층">OSI 7계층 | TCP/IP 계층<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#osi-7계층--tcpip-계층" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>#</th><th style="text-align:left;">TCP/IP</th><th>역할</th><th>OSI 7</th><th>전송단위</th></tr></thead><tbody><tr><td>L1</td><td style="text-align:left;">네트워크 인터페이스</td><td>Mac, RS-232C</td><td>물리</td><td>프레임</td></tr><tr><td>L2</td><td style="text-align:left;"></td><td></td><td>데이터 링크</td><td></td></tr><tr><td>L3</td><td style="text-align:left;">인터넷</td><td>라우팅, IP, ICMP, ARP, RARP</td><td>네트워크</td><td>패킷</td></tr><tr><td>L4</td><td style="text-align:left;">전송</td><td>TCP, UDP, Port</td><td>전송</td><td>세그먼트</td></tr><tr><td>L5</td><td style="text-align:left;"></td><td></td><td>세션</td><td></td></tr><tr><td>L6</td><td style="text-align:left;"></td><td></td><td>표현</td><td></td></tr><tr><td>L7</td><td style="text-align:left;">응용</td><td>HTTP, SSH, FTP, RIP, OSPF, RIP</td><td>응용</td><td></td></tr></tbody></table></div>
+<h2 id="수신자pc-입장에서-본-tcpip-전송-구조--단위">수신자PC 입장에서 본 TCP/IP 전송 구조 &amp; 단위<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#수신자pc-입장에서-본-tcpip-전송-구조--단위" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><code>인캡술레이션</code>: 데이터 전송시 각계층을 지날때 마다 각자 해더가 하나씩 붙어가는것</li>
+<li><code>디캡술레이션</code>: 데이터 수신시 각 계층을 지날때 마다 캡슐화된 데이터를 복원하는 것</li>
+</ul>
+<p><img src="../res/패킷구조.png" width="auto" height="auto" alt/></p>
+<h3 id="소켓-스트림-응용계층">소켓 스트림 (응용계층)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#소켓-스트림-응용계층" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>아래 전송계층단은 OS 커널영역 인데 이걸 파일형태로 추상화 해서 개발자가 사용할수 있게끔 인터페이스화 한게 <strong>소켓</strong>이다</li>
+<li>우리가 쓰는 WinSocket 이나 이런건 그 인터페이스의 구현체 인거고</li>
+<li>사실상 모든 네트워크 데이터는 소켓스트림 이다</li>
+</ul>
+<h3 id="세그먼트-tcp-계층">세그먼트 (TCP 계층)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#세그먼트-tcp-계층" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>소켓에서 날라온 데이터가 일정크기 만큼 잘려서 TCP 단에 들어오게 된다
+(세그먼트화)</li>
+<li>그럼 그 잘린 데이터에 <strong>TCP 해더를 붙이게 되면 이게 세그먼트다</strong>
+<ul>
+<li>세그먼트 관점에서는 TCP해더 쪽이 <code>해더</code>, 데이터 영역이 <code>페이로드</code></li>
+</ul>
+</li>
+<li>그럼 만들어진 세그먼트를 IP단에 전송하면 여기 작업은 끝난다</li>
+</ul>
+<h4 id="mss-maximumsegmentsize">MSS (Maximum Segment Size)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mss-maximumsegmentsize" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<blockquote>
+<p>최대 세그먼트 사이즈</p>
+</blockquote>
+<ul>
+<li>해당 사이즈는 패킷에 크기 에 기초에서 잘려지는데 당연하지만 패킷에 크기보다 작음</li>
+<li>IP 해더 20바이트, TCP 해더 20바이트 해서 MSS의 최대 크기는
+<strong>패킷크기-40</strong> 이다</li>
+</ul>
+<h3 id="패킷-ip-단">패킷 (IP 단)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#패킷-ip-단" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>실제 전송될 데이터 덩어리
+패킷은 세그먼트를 인터넷에서 전송가능한 형태로 변환한게 패킷이다</p>
+</blockquote>
+<ul>
+<li><strong>TCP 단에서 전달받은 세그먼트+IP 해더</strong> 이것이 패킷이다</li>
+<li>IP 해더 = <code>해더</code>, 세그먼트 = <code>페이로드</code></li>
+<li>페킷을 TCP 단으로 보내는 경우 세그먼트를 디켑슐레이션 과정을 통해 TCP해더를 얻게된다</li>
+<li>즉 세그먼트=패킷에 페이로드 영역이다 라고 볼 수 있다</li>
+</ul>
+<h4 id="mtu-maximum-transmission-unit">MTU (Maximum Transmission Unit)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mtu-maximum-transmission-unit" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<blockquote>
+<p>패킷에 최대 크기</p>
+</blockquote>
+<ul>
+<li>별일없으면 <strong>MTU=1500바이트</strong></li>
+<li>그니까 하나의 패킷으로 전송가능한 최대 크기는 1500바이트 라는 뜻
+<ul>
+<li>사실상 해더 제외하면 실제 순수데이터 만으로는 1460바이트가된다</li>
+</ul>
+</li>
+<li>더 큰 사이즈를 전송하고 싶으면 위 세그먼트 단계에서 잘게잘게 잘려서 여러 패킷으로 나오게 되어 전송이 된다</li>
+</ul>
+<h3 id="프레임-mac-주소단">프레임 (MAC 주소단)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#프레임-mac-주소단" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>네트워크가 실제로 데이터를 전송할때 쓰는 단위
+이더넷 프레임 이라고 하기도 함</p>
+</blockquote>
+<ul>
+<li><strong>IP 단에서 전달받은 패킷+ 프레임 해더</strong></li>
+<li>프레임 해더 = <code>해더</code>, 패킷 = <code>페이로드</code></li>
+<li>목적지, 소스 실제 MAC 주소를 담고 있다
+<ul>
+<li><strong>여기서 MAC 주소는 최종 전달자가 아니다</strong></li>
+<li>만약 PC가 공유기(라우터)와 연결되어있다 치면 해당 공유기의 MAC 주소인거다</li>
+</ul>
+</li>
+<li><code>FCS</code>: 프레임의 무결성을 확인하기 위한 오류 검출 코드</li>
+<li>여기서 IPv4, IPv6 판단이 이루어 진다</li>
+</ul>
+<h2 id="소켓-통신">소켓 통신<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#소켓-통신" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><img src="../res/socket.png" width="auto" height="auto" alt/></p>
+<ul>
+<li>네트워크들을 연결하는 하나의 접점을 제공하는 기술.</li>
+<li>전송계층단은 OS 커널영역 인데 이걸 파일형태로 추상화 해서 개발자가 사용할수 있게끔 인터페이스화 한게 <strong>소켓</strong>이다</li>
+<li>모든 네트워크 통신에 기반</li>
+<li>자체 규격 만드는거 아니면 어떤 통신을 하건 소켓으로 하게 됨</li>
+<li><strong><code>HTTP</code>, <code>FTP</code>, <code>SSH</code> 등도 다 내부적으로는 소켓으로 구현</strong>
+<ul>
+<li>소켓으로 데이터를 보낼 때 <code>JSON</code> 처럼 규격있는 메시지를 보낸다고 생각하면 됨</li>
+</ul>
+</li>
+</ul>
+<h3 id="작동-원리">작동 원리<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#작동-원리" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>소켓은 파일이다 보통 그래서 똑같이 파일처럼 스트림을 쓰는데 이때 쓰는게 소켓 스트림</li>
+<li>전송계층과 응용계층 사이를 연결하여 <code>데이터 전송</code> 을 당당 즉</li>
+<li>그 중간에 작동한다 볼 수 있다
+<ul>
+<li>에초에 <code>HTTP</code>, <code>FTP</code>, <code>SSH</code> 이것들 전부가 소켓통신 기반</li>
+<li>즉 소켓으로도 규격에 맞는 데이터만 보낸다면 잘 작동함</li>
+</ul>
+</li>
+</ul>
+<h3 id="구현">구현<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#구현" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><code>Windows api</code> 같은 OS API를 사용하여 구현이 가능하다</li>
+<li>사실상 개발자가 구현할 수 있는 가장 밑바닥</li>
+</ul>
+<h3 id="소켓-기반-프로토콜이-나온-이유">소켓 기반 프로토콜이 나온 이유?<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#소켓-기반-프로토콜이-나온-이유" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>그냥 소켓으로도 모든 통신이 가능한데 왜 <code>HTTP</code>, <code>FTP</code>, <code>SSH</code> 이런 것들이 나왔는지에 대해 생각해 보자면</p>
+</blockquote>
+<ul>
+<li>페이지 또는 웹 브라우저 별로 각자 소켓으로 주고받는 메시지가 다르다면?</li>
+<li>누군가는 요청/응답 동작만 하는 통신에 양방향으로 설정하고 누구는 단방향으로 설정한다면?</li>
+<li>핼파티 날께 뻔하므로 규칙을 정한 듯</li>
+</ul>
+<h2 id="tcp가-udp보다-느린-이유">TCP가 UDP보다 느린 이유<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#tcp가-udp보다-느린-이유" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="패킷의-무결성-확인-과정의-대기">패킷의 무결성 확인 과정의 대기<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#패킷의-무결성-확인-과정의-대기" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>서버가 1, 2번패킷을 서버가 보냈다</li>
+<li>클라이언트가 1,2 번 패킷을 받은 경우 ACK 3 을 보내 “3번부터 보내라” 라는 전송완료 메시지를 보낸다</li>
+<li>근데 이 과정에서 서버는 ACK3 응답이 올때까지 <strong>대기</strong> 하게 된다</li>
+<li>그래서 딜레이가 생기기 때문에 느려진다</li>
+</ul>
+<h3 id="tcp-버퍼-윈도우-공간-문제">TCP 버퍼 윈도우 공간 문제<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#tcp-버퍼-윈도우-공간-문제" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>TCP 버퍼란 서버에 전송완료된 데이터를 소켓이 Read 하는 임시공간
+<ul>
+<li>서버에서 아주 빈도 높게 데이터를 전송하는 경우 소켓이 이를 즉시 Read하지 못 할수있기 때문에 만들어놓은 임시공간이라고 볼 수 있다</li>
+</ul>
+</li>
+</ul>
+<h4 id="왜-문제가-되는가">왜 문제가 되는가<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#왜-문제가-되는가" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>서버가 ACK패킷을 응답받으면 서버는 다음 패킷을 보내야 하는 상황이다</li>
+<li>수신측 TCP 버퍼쪽에 남은 윈도우 공간이 없으면 보내지 않는다</li>
+<li>그럼 이때도 또 클라이언트가 TCP 버퍼를 Socket이 읽을때 까지 또 대기타야 한다</li>
+</ul>
+<h4 id="해결-방법은">해결 방법은?<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#해결-방법은" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>송, 수신 버퍼를 동일하게 잡는다.</li>
+<li>Network 수신속도 &lt; 데이터 읽는 Read 속도
+이게 성립해야 한다
+<ul>
+<li>사실상 네트워크 I/O보다 파일I/O 속도가 느리다면 이건 프로그램을 잘못 짠거라고 생각된다</li>
+<li><strong>즉 앱을 개발하는데 있어서 네트워크 속도보다 입출력 속도가 더 빠른지 체크하면서 해야한다</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="http-통신">HTTP 통신<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#http-통신" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>소켓통신에서 양방향 통신을 버린 TCP 단방향 통신
+<ul>
+<li>HTTP 2.0 와서 지원하기 시작함</li>
+</ul>
+</li>
+<li>요청/응답 프로세싱을 지님</li>
+<li>클라이언트가 서버에 요청하면 서버가 해당 작업 후 연결 종료</li>
+<li><code>URL</code>을 통한 요청 분리 가능</li>
+</ul>
+<h3 id="구현-1">구현<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#구현-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>HTTP 도 결국은 소켓으로 통신하는 것</p>
+</blockquote>
+<h4 id="클라이언트">클라이언트<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#클라이언트" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<pre><code>POST /userAccount/login HTTP/1.1 Host: swiftapi.rubypaper.co.kr:2029 Content-Type: application/x-www-form-urlencoded account=swift%40swift.com&amp;password=1234&amp;grant_type=password
+</code></pre>
+<ul>
+<li>이런 메시지를 소켓 데이터에 담아서 보내면 잘 전달됨</li>
+<li>응답 후 연결 종료, 단방향 통신 등 이런것만 설정해주면 HTTP Reqeust API 완성</li>
+</ul>
+<h4 id="서버">서버<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#서버" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>클라이언트가 위 데이터를 보내면 해당 구문을 <code>parse</code> 하는것으로 가능</li>
+<li><code>/userAccount/login</code> 이 부분으로 구분해서 <code>Spring</code> 이나 <code>Nest.js</code>는 어노테이션으로 파싱되고 <code>Express.js</code>같은 경우 Callback으로 전달 되는 구조인 듯</li>
+<li><strong>즉 HTTP 요청 구문을 파싱해서 데이터를 받고 다시 응답 데이터를 구성해서 보내게 된다</strong></li>
+</ul>
+<h3 id="https">HTTPS<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#https" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><code>TLS</code>, <code>SSL</code> 같은 암호화 프로토콜이 추가한 방식</li>
+<li>공개키 암호화</li>
+</ul>
+<h2 id="서브넷">서브넷<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#서브넷" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote>
+<p>IPv4 주소의 소멸을 막기위해 하나의 네트워크를 한번 더 쪼갠 네트워크</p>
+</blockquote>
+<p><img src="../res/subnet.png" width="auto" height="auto" alt/></p>
+<ul>
+<li>약간 어떤느낌이냐면 공유기의 공유기인 느낌
+<ul>
+<li>1, 2 번 공유기의 외부IP 주소는 다른데</li>
+<li>이걸 서브넷으로 한번 더 묶어서 하나의 외부IP 주소를 가지게끔 설계되는 느낌</li>
+</ul>
+</li>
+<li>공유기에서 내부IP 주소를 부여하는것도 하나의 서브넷 이라고 볼 수 있다</li>
+<li>서브넷에서 상위네트워크를 통한 통신은 NAT 게이트웨이를 사용해서 라우팅되게 된다</li>
+</ul>
+<h3 id="서브넷-마스크">서브넷 마스크<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#서브넷-마스크" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>서브넷을 정의할때 사용되는 값, 어떤부분이 네트워크인 부분인지, 호스트 부분인지를 나눔</p>
+</blockquote>
+<ul>
+<li>이게 사실 공인 IP도 하나의 네트워크에서 파생된 서브넷 이라고 볼수 있어서
+<strong>모든 IP주소 할당은 서브넷 마스크를 사용하게 된다</strong></li>
+<li>가령 서브넷 마스크가 <code>255.255.255.0</code> 이라면 C클래스 IP주소라는 뜻으로
+<ul>
+<li>3바이트 네트워크, 1바이트 호스트 부분으로 결정된다</li>
+<li><code>192.168.0.x</code> 이렇게 IP 주소가 결정될 수 있다</li>
+</ul>
+</li>
+</ul>
+<h3 id="cidr-표기법">CIDR 표기법<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#cidr-표기법" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>서브넷을 정의하는 표기법
+203.76.25.1/26</p>
+</blockquote>
+<ul>
+<li>앞에 203.76.25 까지는 8+8+8 즉 24비트를 쓴거다</li>
+<li>근데 네트워크 부분이 24비트로도 부족하여 호스트에 앞에 2비트를 빌려온다</li>
+<li>즉 네트워크 부분은 <code>26</code>비트, 호스트 부분은 <code>6</code>비트가 되버린다</li>
+<li>이때 서브넷 마스크는 255.255.255.192 가된다.</li>
+<li>그러면 호스트는 0.0.0.(1~191) 값이 된다.</li>
+</ul>
+<h2 id="proxy-server">Proxy Server<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#proxy-server" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote>
+<p>클라이언트가 자신(Proxy)을 거쳐 다른 네트워크에 접속 할 수 있고록 하는 중간자 서버
+즉 일종의 터널링 서버 이다</p>
+</blockquote>
+<h3 id="forward-proxy">Forward Proxy<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#forward-proxy" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>일반적으로 말하는 프록시 서버</p>
+</blockquote>
+<p><img src="../res/Forward-Proxy.png" width="auto" height="auto" alt/></p>
+<h4 id="설명">설명<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#설명" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>클라이언트와 접근하려는 리소스 사이에 위치한다</li>
+<li>웹에 요청 시 해당요청을 내부PC 에서 하는게 아나라 프록시 서버에서 요청하여 그 결과를 리턴해준다 즉, 요청을 프록시 서버가 케치하는
+<ul>
+<li>즉 서버쪽에서는 PC의 IP 정보가 아닌 프록시 서버의 IP로 요청을 보낸다</li>
+</ul>
+</li>
+<li>위 사진에는 내부망 이라고 표현되었지만 프록시 서버에 직접적으로 접근 가능한 경우 외부망도 접근 가능하다</li>
+</ul>
+<h4 id="사용이유">사용이유<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#사용이유" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><code>케시 사용</code>:
+<ul>
+<li>프록시 서버로 요청한 내용 중 일부를 케싱 하여 재요청시 실제 서버에 요청 되는 트레픽을 줄일 수 있다</li>
+</ul>
+</li>
+<li><code>클라이언트 보안목적</code>:
+<ul>
+<li>클라이언트 쪽에서 실제 서버에 IP 주소를 노출 시키지 않기 때문에 클라이언트 보안에도 좋다</li>
+<li>학교나 기관 같은경우 프록시 서버에 룰을 도입하여 인터넷 사용을 제한하기도 한다</li>
+</ul>
+</li>
+<li><code>우회기능</code>:
+<ul>
+<li>위에서 설명 하듯이 외부 망에서 프록시 서버에 접근하여 프록시를 적용한 경우 네트워크 요청이 모두 프록시 서버를 통해 진행하기 때문에 <code>VPN</code> 같은 효과를 누릴 수 있다.</li>
+</ul>
+</li>
+</ul>
+<h4 id="점프서버">점프서버<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#점프서버" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<blockquote>
+<p>서비스들의 외부 접근은 전부 차단하고 같은 네트워크 망에 Proxy Server나 터널링 서버의 외부 접근만 허용한다
+각 클라이언트는 Proxy Server나 터널링 과정을 반드시 거치도록 설계한 서버</p>
+</blockquote>
+<ul>
+<li>일종의 외부 클라이언트의 게이트웨이 역할을 한다</li>
+<li>예를들면 MySql 의 포트 3306의 외부 포트를 차단시키고 SSH 포트 22번만 오픈하여 각 클라이언트는 SSH 터널링을 통해서만 접근 가능하도록 설계하는</li>
+</ul>
+<h3 id="revers-proxy">Revers Proxy<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#revers-proxy" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>Forward Proxy가 클라이언트 쪽 Proxy 라면
+Revers Proxy는 서버 쪽 Proxy</p>
+</blockquote>
+<p><img src="../res/Revers-Proxy.png" width="auto" height="auto" alt/></p>
+<h4 id="설명-1">설명<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#설명-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>프록시를 서버에 적용한 방식</li>
+<li>클라이언트는 평소처럼 웹에 접속을 하지만 해당 요청은 Revers Proxy 전달되고 해당 요청사항을 <code>WAS</code>나 웹 서버에 다시 전송하게 된다.</li>
+<li>이 경우 본 서버의 IP 주소를 감추는 보안적 효과를 얻는다</li>
+</ul>
+<h4 id="사용이유-1">사용이유<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#사용이유-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><code>웹 서비스 통합</code>:
+<ul>
+<li>하나의 서버의 여러개의 웹 에플리케이션을 배포하려면 서로 포트를 다르게 해야한다</li>
+<li>문제는 HTTP, HTTPS 포트는 80, 433 두개로 표준이 되어있다</li>
+<li>Proxy 서버 하나를 80 포트 또는 433 으로 호스팅하고</li>
+<li>요청된 엔드포인트가<code>api/1</code> 일경우 해당하는 서버에 전달하고 다른 엔드포인트가 오면 또 해당하는 서버에 전달하는 식으로 구성하여 해결한다.</li>
+</ul>
+</li>
+<li><code>트래픽 관리</code>:
+<ul>
+<li>본 서버를 여려개를 둔 경우(약간 메이플 처럼) 프록시 서버쪽에서 원할한 서버를 찾아 연결시켜 주어 분산화 작업이 가능하다.</li>
+<li>또 클라이언트에 지역을 파악하여 가장빠른 서버로 매칭 시켜줄 수도 있다</li>
+</ul>
+</li>
+<li><code>서버 보안목적</code>:
+<ul>
+<li>실제 서버를 감출 수 있기에 프록시 서버가 해킹 당해도 본서버만 멀정하면 복구가 수월하다</li>
+</ul>
+</li>
+</ul>
+<h3 id="socks5">SOCKS5<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#socks5" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>프록시 서버 <span>←</span>> 서버 <span>←</span>>클라이언트 의 사용되는 프로토콜</p>
+</blockquote>
+<ul>
+<li>HTTP 그 아레단 에서 작동한다</li>
+<li>TCP, UDP를 통해 네트워크 패킷을 전달하는 프로토콜</li>
+</ul>
+<h2 id="내부-네트워크외부-네트워크">내부 네트워크/외부 네트워크<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#내부-네트워크외부-네트워크" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="내부-네트워크에서의-외부-ip">내부 네트워크에서의 외부 IP<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#내부-네트워크에서의-외부-ip" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>공유기에 묶인 모든 장치의 외부 IP 주소는 같다.</li>
+<li>나가는 통신의 경우 아래 NAT 기능이 있어서 문제가 없는데</li>
+<li>여기서 가장 큰 문제가 바로 서버를 구성할 경우인데
+<ul>
+<li>외부 IP 주소는 <code>222.253.0.1</code> 이라고 가정한다</li>
+<li>각각 같은 공유기에 묶인 PC 2대가 80포트로 서버를 실행한다 치자</li>
+<li>그럼 외부에서 <code>222.253.0.1:80</code> 포트로 접속을 시도하면 어떤 서버로 들어 가져야 하는 것일까?</li>
+</ul>
+</li>
+<li>해결 방법중 하나는 공유기 포트포워딩을 하는것이다
+<ul>
+<li>PC1의 IP를 <code>192.0.0.1</code>, PC2의 IP를 <code>192.0.0.2</code> 로 가정한다</li>
+<li>외부포트 <code>100</code>을 <code>192.0.0.1</code> 에 내부포트 <code>80</code> 으로</li>
+<li>외부포트 <code>101</code>을 <code>192.0.0.2</code> 에 내부포트 <code>80</code> 으로</li>
+</ul>
+</li>
+<li>그러나 이 방법은 외부 접속시 포트가 달라지는 거라 그게 싫다면 리버스 프록시를 고려 할 수 있다</li>
+</ul>
+<h3 id="dhcp-dynamic-host-configuration-protocol">DHCP (Dynamic Host Configuration Protocol)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#dhcp-dynamic-host-configuration-protocol" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>TCP/IP 주소와 각종 프로토콜 설정을 자동적으로 재공해주는 프로토콜
+IP주소를 유동적으로 관리해 준다</p>
+</blockquote>
+<ul>
+<li>주로 <code>내부 내트워크</code> 안에있는 기기들의 ip 주소를 관리해 준다
+<ul>
+<li>외부 망에서도 사용하긴 하는데 이건 ISP들이 관리하는거라 논외다</li>
+</ul>
+</li>
+</ul>
+<h4 id="원리">원리<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#원리" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>클라이언트에게 ip 할당 요청이 들어오면 ip 를 부여해 준다</li>
+<li>IP 주소 할당은 <code>임대</code> 기간이라는것을 정해놓고 그기간동안 ip를 할당한다</li>
+</ul>
+<h4 id="주의점">주의점<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#주의점" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>IP 주소를 유동적으로 관리하기 때문에 서버를 굴릴꺼면 DHCP 를 끄는것이 좋다</li>
+</ul>
+<h3 id="gateway-게이트웨이">Gateway (게이트웨이)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#gateway-게이트웨이" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>외부 네트워크와 통신하기 위에서 반드시 거쳐야 하는 지점</p>
+</blockquote>
+<ul>
+<li>하드웨어 형태로 존재하지만 보통 공유기에 내장</li>
+<li><code>192.0.0.1</code> 같이 끝에 1비트만 1로 두는 형태</li>
+<li>공유기에 경우 보통 관리자 페이지가 서비스 되고 있다</li>
+<li>공유기에 연결된 장비가 직접적으로 외부랑 통신하는게 아니라 게이트웨이를 거쳐서 진행된다 즉 서로와 서로의 게이트웨이 끼리에 통신을 하는것이다.</li>
+</ul>
+<h4 id="nat-network-address-translation-게이트웨이">NAT (Network Address Translation) 게이트웨이<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#nat-network-address-translation-게이트웨이" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<blockquote>
+<p>하나의 외부 IP 주소를 가지고 여러 내부 네트워크 통신을 컨트롤 하는 기술</p>
+</blockquote>
+<ul>
+<li>공유기를 사용하는경우 위처럼 외부 IP 주소는 딱 하나다.</li>
+<li>NAT 은 모든 내부 장치들이 하나의 외부 IP를 가지고도 통신할수 있게 하는 기술이다</li>
+</ul>
+<h5 id="작동원리">작동원리<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#작동원리" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<ul>
+<li><code>외부로 나가는 통신</code>:
+<ul>
+<li>특정 장치가 패킷을 전송하면 <code>공유기</code>가 해당 내부IP 주소와 포트를 기억</li>
+<li>공유기는 해당 정보를 <code>NAT</code> 테이블에 저장했다가 응답이 돌아오면 다시 원래의 내부 주소와 포트로 변환한다.</li>
+<li>즉 전송 포트번호를 다르게 하여 구분한다는 것이다</li>
+</ul>
+</li>
+<li><code>외부에서 들어오는 통신</code>:
+<ul>
+<li>목적지 IP 주소와 포트번호를 공유기가 받아서 <code>NAT</code> 테이블울 참조하여 적절한 장치에 반환시킨다.</li>
+</ul>
+</li>
+</ul>
+<h4 id="인터넷-게이트웨이">인터넷 게이트웨이<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#인터넷-게이트웨이" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<blockquote>
+<p>기본적인 네트워크와 인터넷 간의 연결을 제공</p>
+</blockquote>
+<ul>
+<li>클라우드 컴퓨팅의 VPC 환경이나, 공유기를 사용하지 않고 ISP 에 직접적으로 IP 주소를 할당받는 경우
+<ul>
+<li>VPC 자체의 NAT 게이트웨이를 두지 않고 EC2 같은 단일 서비스에 공인 IP 주소를 할당 받는 상황</li>
+</ul>
+</li>
+</ul>
+<h3 id="외부-ip-주소-고정">외부 IP 주소 고정<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#외부-ip-주소-고정" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>결론부터 말하면 공짜로는 못한다</p>
+</blockquote>
+<ul>
+<li>공인 IP는 ISP 업체로부터 IP를 할당 받는 방식이라 맘대로 설정할 수 없다</li>
+<li>DDNS를 쓰든 따로 연락해서 구매하여 써야 한다.</li>
+<li>근데 나의 경우 일정 기간동안 쓰니까 몇년째 IP가 고정되었다…</li>
+</ul>
+<h2 id="라우팅--포워딩">라우팅 &amp; 포워딩<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#라우팅--포워딩" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>라우팅은 L3 (네트워크 계층), 포워딩은 L2 (데이터 링크 계층)</li>
+</ul>
+<h3 id="라우팅">라우팅<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#라우팅" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>PC가 NIC 계층에서 물리적으로 전송되어 그 정보를 라우터가 받았다 치자</li>
+<li>라우터는 PC NIC계층에서 온 프레임해더에 MAC 주소와 자신의 MAC 주소를 비교하게된다 여기서 동일한 MAC 주소가 나오면</li>
+<li>디캡슐링 과정을 통해 IP를 추출하게되어 실제 라우팅 과정이 진행 된다</li>
+</ul>
+<h3 id="osi-7계층--tcpip-계층-1">OSI 7계층 | TCP/IP 계층<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#osi-7계층--tcpip-계층-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>패킷이 출발지로 부터 도착지 까지의 경로로 설정하는 과정</p>
+</blockquote>
+<h4 id="라우팅-테이블">라우팅 테이블<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#라우팅-테이블" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<blockquote>
+<p>목적지 까지 갈수있는 경로들을 모아놓은 테이블</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>목적지</th><th>넷마스크</th><th>게이트웨이</th><th>인터페이스</th></tr></thead><tbody><tr><td>192.168.1.0</td><td>255.255.255.0</td><td>192.168.2.1</td><td>eth0</td></tr><tr><td>10.0.0.0</td><td>255.255.0.0</td><td>10.0.1.1</td><td>eth1</td></tr><tr><td>0.0.0.0</td><td>0.0.0.0</td><td>192.168.2.1</td><td>eth0</td></tr></tbody></table></div>
+<blockquote>
+<p>예시: 192.168.1.0 으로 패킷이 나가야 되면 192.168.2.1 로 이동해야함</p>
+</blockquote>
+<ul>
+<li><code>정적 라우팅</code>:
+<ul>
+<li>직접 라우팅 테이블을 건드려서 아예 다른 네트워크를 거치거나</li>
+<li>아예 목적지 주소를 바꿔 버릴 수 있음</li>
+</ul>
+</li>
+<li><code>동적 라우팅</code>:
+<ul>
+<li>라우터들끼리 알아서 정보를 교환하여 자동으로 최단 라우팅을 설정하는 방법</li>
+<li>이때 <code>OSPF</code>, <code>BGP</code>, <code>RIP</code> 같은 라우팅 테이블 생성알고리즘이 작동하게 된다</li>
+</ul>
+</li>
+</ul>
+<h3 id="포워딩">포워딩<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#포워딩" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>포트포워딩과 다른 개념이니까 오해하지말자</p>
+</blockquote>
+<ul>
+<li>포워딩은 라우팅이 경로를 설정한다면 포워딩은 실제로 패킷이 이동하는 작업이다.</li>
+<li>이 작업은 스위치가 진행한다. 보통은 라우터 안에 스위치 기능이 포함되어 라우팅 이후에 스위칭이 진행된다</li>
+</ul>
+<h4 id="포워딩-테이블">포워딩 테이블<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#포워딩-테이블" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>MAC 주소</th><th>포트</th><th>타이머</th></tr></thead><tbody><tr><td>00:1A:2B:3C:4D:5E</td><td>1</td><td>300s</td></tr><tr><td>00:1F:2E:3D:4C:5B</td><td>2</td><td>200s</td></tr><tr><td>00:1B:2A:3E:4F:5D</td><td>3</td><td>150s</td></tr></tbody></table></div>
+<ul>
+<li>라우터가(네트워크 계층) 경로를 결정하면 <code>ARP</code> 과정을 통해 IP 주소를 MAC 주소로 변경한다</li>
+<li>MAC 주소가 L2스위치(데이터링크 계층)로 전달되고 포워딩테이블을 참조하여 해당 MAC 주소에 패킷을 전달한다</li>
+</ul>
+<h2 id="ip-forwarding">IP forwarding<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#ip-forwarding" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote>
+<p>리눅스 커널 자체에서 라우팅을 할 수 있는 기능
+포워딩은 원래 데이터 링크 계층이라 MAC 주소로 작동하는데 이걸 IP 주소로 포워딩 하게 설계했다 보면됨</p>
+</blockquote>
+<p><img src="../res/IP-forwarding.png" width="auto" height="auto" alt/></p>
+<ul>
+<li>
+<p>해당 구조는 Node1, 2 3 모두 하나의 공유기에 물려있다고 생각하자</p>
+</li>
+<li>
+<p>Node01 에 패킷이 들어오면 IP forwarding 으로 옆에 있는 Node02 에 패킷을 전달하는 역할을 한다</p>
+</li>
+<li>
+<p><strong>그니까 PC를 하나의 라우터로 사용하는 방식인 것이다</strong></p>
+</li>
+</ul>
+<h3 id="응용">응용<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#응용" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>PC1 에서 VPN 서버를 설치, PC1 은 대한민국IP, PC2는 일본IP</li>
+<li>모종의 이유로 PC2에 VPN 서버를 구성할 수 없다치자</li>
+<li>그럼 PC2가 PC1에 VPN 클라이언트로 연결하여 PC1의 내부망으로 들어간다</li>
+<li>실제 VPN을 사용하려는 클라이언트가 PC1 VPN으로 들어올 경우 PC2 의 네트워크망 즉, 일본 으로 라우팅 되야하는경우 이 기능을 사용해 볼수 있다</li>
+</ul>
+<h2 id="포트포워딩">포트포워딩<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#포트포워딩" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote>
+<p>게이트웨이를 통과하는동안 외부에서 접속가능하도록 주소를 변환하는 것</p>
+</blockquote>
+<p><img src="../res/포트포워딩.png" width="auto" height="auto" alt/></p>
+<ul>
+<li>공유기로 물린 모든 장치의 외부 IP 주소는 같다</li>
+<li>그걸 접속포트로 구분하여 매핑시켜준다</li>
+</ul>
+<h2 id="dns-domain-name-system-서버">DNS (Domain Name System) 서버<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#dns-domain-name-system-서버" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote>
+<p>DNS 는 도메인 <span>→</span> IP 주소로 바꾸는 역할</p>
+</blockquote>
+<ul>
+<li>DNS 서버는 도메인 주소를 요청하면 DNS서버쪽 테이블에서 해당 도메인 주소에 맞는 IP 주소를 응답해주는 서버를 뜻함</li>
+<li>바로 DNS 서버를 거치는건 아니고 단계가 있다
+<ol>
+<li>OS의 Hosts 파일</li>
+<li>DNS 케시</li>
+<li>그때 DNS 요청</li>
+</ol>
+</li>
+<li>국내3사 통신사, 구글, cloudflare 등이 DNS 서버를 가짐</li>
+</ul>
+<h3 id="국내-이동사-dns">국내 이동사 DNS<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#국내-이동사-dns" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="인터넷-검열">인터넷 검열<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#인터넷-검열" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>우리나라는 인터넷 검열로 음지 사이트 도메인주소는 전부 <code>Warning.or.kr</code>의 IP 주소를 반환하게 설계했다</li>
+<li>그래서 DNS 주소를 구글(8.8.8.8) cloudflare(1.1.1.1) 로 바꾸면 검열된 사이트를 볼 수 있게되는거다</li>
+<li>근데 요즘은 HTTP 해더 까서 검열한다더라</li>
+</ul>
+<h4 id="skt-dns를-쓰면-인터넷이-개느린-이유">SKT DNS를 쓰면 인터넷이 개느린 이유<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#skt-dns를-쓰면-인터넷이-개느린-이유" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<blockquote>
+<p>답은 간단하게 그냥 평균 IP 반환 속도가 개느리다</p>
+</blockquote>
+<ul>
+<li>모든 광고 및 어떤 리소스를 불러와도 인터넷에서는 거의 도메인 주소를 쓴다</li>
+<li>이때 DNS 서버가 느린경우 도메인 <span>→</span> IP 주소로 변환하는 시간이 느려지면
+그 만큼 리소스를 불러오는 속도가 늦어지니까 이다</li>
+<li>파일 다운로드 하는 경우에도 그렇다. 보통 HTTP 요청할떄 bytes 해더를 써서<br/>
+바이씩 끊어서 요청하게 될텐데 그럼 그만큼 DNS서버에 IP 반환 요청도 그만큼 할태니 거기서 딜레이가 생기기 때문</li>
+</ul>
+<h3 id="adguard-dns">Adguard DNS<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#adguard-dns" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>이친구들 DNS 서버는 아예 광고로 파악된 모든 도메인 주소를 쓰레기IP 주소를 반환 하게 설계해서</li>
+<li>모든 광고를 차단하게 된다</li>
+</ul>
+<h2 id="gslb-global-server-load-balancing--cdn-content-delivery-network">GSLB (Global Server Load Balancing) &amp; CDN (Content Delivery Network)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#gslb-global-server-load-balancing--cdn-content-delivery-network" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="gslb">GSLB<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#gslb" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>여러 서버의 트래픽을 전세계로 분산시키기 위한 기술</p>
+</blockquote>
+<ul>
+<li>이렇게 함으로서 각 사용자들에게 적절한 서버를 선택하여 응답을 주거나</li>
+<li>상태가 어떠한지 Health Check 를 진행한다</li>
+</ul>
+<h3 id="cdn">CDN<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#cdn" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>물리적으로 멀리 떨어저 있는 사용자가에게 서비스를 빠르게 제공하려고 고안된 시스템 방법론</p>
+</blockquote>
+<ul>
+<li>본 서버 1개(CDN DNS 서버)랑 전세계에 분산시켜놓은 케시서버 여러대를 설치한다</li>
+<li>CDN은 하나의 기술을 특정하는 용어가 아니라 지리적 분산, 캐싱, 부하 분산, 라우팅 같은 개념을 적용한 시스템을 의미하는 것이다
+<ul>
+<li>그러니까 어떤 기술을 쓰건 CDN에 부합하게 결과가 나오면 그게 CDN 인것이다</li>
+</ul>
+</li>
+</ul>
+<h4 id="동작-원리">동작 원리<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#동작-원리" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>클라이언트가 접속을 하면 DNS 서버에 요청을할텐데</li>
+<li>DNS 서버는 CDN의 DNS 서버 IP 주소를 반환한다
+<ul>
+<li>원래 DNS 서버와 같은 느낌에 서버가 아니라 실제 물리 서버임</li>
+</ul>
+</li>
+<li>CDN DNS 서버는 사용자 IP 주소를 파악해서 가장 가까운 서버의 주소로 리다이렉션을 시켜준다</li>
+</ul>
+<h3 id="정리">정리<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#정리" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>GSLB는 CDN 방법론의 핵심 기술인 것이다, 즉 CDN의 부분집합 관계인 것이다</li>
+<li>GSLB로 트래픽이 높거나 장애가 생긴 서버를 피하고 다른 CDN 기술들로 그 중에서 가장 사용자와 가까운 서버를 찾게 되는것이다</li>
+</ul>
+<h2 id="네트워크-장비">네트워크 장비<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#네트워크-장비" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><code>스위치</code>: <a href="https://siahn95.tistory.com/161" class="external">https://siahn95.tistory.com/161<svg aria-hidden="true" class="external-icon" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+</ul>
+<h2 id="기타">기타<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#기타" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="winodws-공용-네트워크-문제">Winodws 공용 네트워크 문제<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#winodws-공용-네트워크-문제" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>Winodws내 네트워크 설정이 공용 네트워크인 경우 포트를 열어도 접근이 불가하다
+이게 공용 네트워크랑 개인 네트워크랑 방화벽 포트 설정이 달라서 그렇다
+따라서 개인 네트워크로 변경해야함</p>
+</blockquote>
+<ul>
+<li>설정 <span>→</span> 네트워크 및 이더넷  <span>→</span> 네트워크 프로필</li>
+</ul></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" id="toc" class aria-controls="toc-content" aria-expanded="true"><h3>목차</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="toc-content" class><ul class="overflow"><li class="depth-0"><a href="#기본적인-용어-정리" data-for="기본적인-용어-정리">기본적인 용어 정리</a></li><li class="depth-1"><a href="#네트워크" data-for="네트워크">네트워크</a></li><li class="depth-1"><a href="#인터넷" data-for="인터넷">인터넷</a></li><li class="depth-1"><a href="#네트워크-인터페이스" data-for="네트워크-인터페이스">네트워크 인터페이스</a></li><li class="depth-0"><a href="#tcpip-계층" data-for="tcpip-계층">TCP/IP 계층</a></li><li class="depth-1"><a href="#구조" data-for="구조">구조</a></li><li class="depth-1"><a href="#오해하면-큰일나는-것" data-for="오해하면-큰일나는-것">오해하면 큰일나는 것</a></li><li class="depth-1"><a href="#osi-7계층--tcpip-계층" data-for="osi-7계층--tcpip-계층">OSI 7계층 | TCP/IP 계층</a></li><li class="depth-0"><a href="#수신자pc-입장에서-본-tcpip-전송-구조--단위" data-for="수신자pc-입장에서-본-tcpip-전송-구조--단위">수신자PC 입장에서 본 TCP/IP 전송 구조 &amp; 단위</a></li><li class="depth-1"><a href="#소켓-스트림-응용계층" data-for="소켓-스트림-응용계층">소켓 스트림 (응용계층)</a></li><li class="depth-1"><a href="#세그먼트-tcp-계층" data-for="세그먼트-tcp-계층">세그먼트 (TCP 계층)</a></li><li class="depth-1"><a href="#패킷-ip-단" data-for="패킷-ip-단">패킷 (IP 단)</a></li><li class="depth-1"><a href="#프레임-mac-주소단" data-for="프레임-mac-주소단">프레임 (MAC 주소단)</a></li><li class="depth-0"><a href="#소켓-통신" data-for="소켓-통신">소켓 통신</a></li><li class="depth-1"><a href="#작동-원리" data-for="작동-원리">작동 원리</a></li><li class="depth-1"><a href="#구현" data-for="구현">구현</a></li><li class="depth-1"><a href="#소켓-기반-프로토콜이-나온-이유" data-for="소켓-기반-프로토콜이-나온-이유">소켓 기반 프로토콜이 나온 이유?</a></li><li class="depth-0"><a href="#tcp가-udp보다-느린-이유" data-for="tcp가-udp보다-느린-이유">TCP가 UDP보다 느린 이유</a></li><li class="depth-1"><a href="#패킷의-무결성-확인-과정의-대기" data-for="패킷의-무결성-확인-과정의-대기">패킷의 무결성 확인 과정의 대기</a></li><li class="depth-1"><a href="#tcp-버퍼-윈도우-공간-문제" data-for="tcp-버퍼-윈도우-공간-문제">TCP 버퍼 윈도우 공간 문제</a></li><li class="depth-0"><a href="#http-통신" data-for="http-통신">HTTP 통신</a></li><li class="depth-1"><a href="#구현-1" data-for="구현-1">구현</a></li><li class="depth-1"><a href="#https" data-for="https">HTTPS</a></li><li class="depth-0"><a href="#서브넷" data-for="서브넷">서브넷</a></li><li class="depth-1"><a href="#서브넷-마스크" data-for="서브넷-마스크">서브넷 마스크</a></li><li class="depth-1"><a href="#cidr-표기법" data-for="cidr-표기법">CIDR 표기법</a></li><li class="depth-0"><a href="#proxy-server" data-for="proxy-server">Proxy Server</a></li><li class="depth-1"><a href="#forward-proxy" data-for="forward-proxy">Forward Proxy</a></li><li class="depth-1"><a href="#revers-proxy" data-for="revers-proxy">Revers Proxy</a></li><li class="depth-1"><a href="#socks5" data-for="socks5">SOCKS5</a></li><li class="depth-0"><a href="#내부-네트워크외부-네트워크" data-for="내부-네트워크외부-네트워크">내부 네트워크/외부 네트워크</a></li><li class="depth-1"><a href="#내부-네트워크에서의-외부-ip" data-for="내부-네트워크에서의-외부-ip">내부 네트워크에서의 외부 IP</a></li><li class="depth-1"><a href="#dhcp-dynamic-host-configuration-protocol" data-for="dhcp-dynamic-host-configuration-protocol">DHCP (Dynamic Host Configuration Protocol)</a></li><li class="depth-1"><a href="#gateway-게이트웨이" data-for="gateway-게이트웨이">Gateway (게이트웨이)</a></li><li class="depth-1"><a href="#외부-ip-주소-고정" data-for="외부-ip-주소-고정">외부 IP 주소 고정</a></li><li class="depth-0"><a href="#라우팅--포워딩" data-for="라우팅--포워딩">라우팅 &amp; 포워딩</a></li><li class="depth-1"><a href="#라우팅" data-for="라우팅">라우팅</a></li><li class="depth-1"><a href="#osi-7계층--tcpip-계층-1" data-for="osi-7계층--tcpip-계층-1">OSI 7계층 | TCP/IP 계층</a></li><li class="depth-1"><a href="#포워딩" data-for="포워딩">포워딩</a></li><li class="depth-0"><a href="#ip-forwarding" data-for="ip-forwarding">IP forwarding</a></li><li class="depth-1"><a href="#응용" data-for="응용">응용</a></li><li class="depth-0"><a href="#포트포워딩" data-for="포트포워딩">포트포워딩</a></li><li class="depth-0"><a href="#dns-domain-name-system-서버" data-for="dns-domain-name-system-서버">DNS (Domain Name System) 서버</a></li><li class="depth-1"><a href="#국내-이동사-dns" data-for="국내-이동사-dns">국내 이동사 DNS</a></li><li class="depth-1"><a href="#adguard-dns" data-for="adguard-dns">Adguard DNS</a></li><li class="depth-0"><a href="#gslb-global-server-load-balancing--cdn-content-delivery-network" data-for="gslb-global-server-load-balancing--cdn-content-delivery-network">GSLB (Global Server Load Balancing) &amp; CDN (Content Delivery Network)</a></li><li class="depth-1"><a href="#gslb" data-for="gslb">GSLB</a></li><li class="depth-1"><a href="#cdn" data-for="cdn">CDN</a></li><li class="depth-1"><a href="#정리" data-for="정리">정리</a></li><li class="depth-0"><a href="#네트워크-장비" data-for="네트워크-장비">네트워크 장비</a></li><li class="depth-0"><a href="#기타" data-for="기타">기타</a></li><li class="depth-1"><a href="#winodws-공용-네트워크-문제" data-for="winodws-공용-네트워크-문제">Winodws 공용 네트워크 문제</a></li></ul></div></div><div class="graph"><h3>그래프 뷰</h3><div class="graph-outer"><div id="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false}"></div><button id="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div id="global-graph-outer"><div id="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true}"></div></div></div><div class="backlinks"><h3>백링크</h3><ul class="overflow"><li><a href="../리눅스/리눅스-명령어-정리" class="internal">리눅스 명령어 정리</a></li><li><a href="../스터디/Doker-스터디" class="internal">Doker 스터디</a></li><li><a href="../스터디/SSH-(Secure-Shell-Protocol)" class="internal">SSH (Secure Shell Protocol)</a></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.3.1</a> © 2024</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></body><script type="application/javascript">function c(){let t=this.parentElement;t.classList.toggle("is-collapsed");let l=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=l+"px";let o=t,e=t.parentElement;for(;e;){if(!e.classList.contains("callout"))return;let n=e.classList.contains("is-collapsed")?e.scrollHeight:e.scrollHeight+o.scrollHeight;e.style.maxHeight=n+"px",o=e,e=e.parentElement}}function i(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let l=s.firstElementChild;if(l){l.addEventListener("click",c),window.addCleanup(()=>l.removeEventListener("click",c));let e=s.classList.contains("is-collapsed")?l.scrollHeight:s.scrollHeight;s.style.maxHeight=e+"px"}}}document.addEventListener("nav",i);window.addEventListener("resize",i);
+</script><script type="module">
+          let mermaidImport = undefined
+          document.addEventListener('nav', async () => {
+            if (document.querySelector("code.mermaid")) {
+              mermaidImport ||= await import('https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.7.0/mermaid.esm.min.mjs')
+              const mermaid = mermaidImport.default
+              const darkMode = document.documentElement.getAttribute('saved-theme') === 'dark'
+              mermaid.initialize({
+                startOnLoad: false,
+                securityLevel: 'loose',
+                theme: darkMode ? 'dark' : 'default'
+              })
+
+              await mermaid.run({
+                querySelector: '.mermaid'
+              })
+            }
+          });
+          </script><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>
