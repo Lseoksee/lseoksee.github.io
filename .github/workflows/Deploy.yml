@@ -1,0 +1,49 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - v4
+  workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.ACTIONS_TOKEN }}
+          submodules: true
+
+      - name: Git Submodule Update
+        run: git submodule update --remote --recursive
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - run: npm ci
+      - name: Check types and style
+        run: npm run check
+
+      - name: Test
+        run: npm test
+
+      - name: quartz Build
+        run: npx quartz build --bundleInfo
+
+      - name: Deploy Docs
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+            github_token: ${{ secrets.ACTIONS_TOKEN  }}
+            publish_branch: "release-page"
+            publish_dir: ./public
