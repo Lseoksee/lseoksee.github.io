@@ -1,15 +1,15 @@
 {
-  "name": "@jackyzha0/quartz",
-  "description": "🌱 publish your digital garden and notes as a website",
+  "name": "@lseoksee/quartz",
+  "description": "My-Study-WebSite",
   "private": true,
   "version": "4.3.1",
   "type": "module",
-  "author": "jackyzha0 <j.zhao2k19@gmail.com>",
+  "author": "Lseoksee <da864268@naver.com>",
   "license": "MIT",
-  "homepage": "https://quartz.jzhao.xyz",
+  "homepage": "https://lseoksee.github.io/My-Study-WebSite",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jackyzha0/quartz.git"
+    "url": "https://github.com/Lseoksee/My-Study-WebSite.git"
   },
   "scripts": {
     "quartz": "./quartz/bootstrap-cli.mjs",
