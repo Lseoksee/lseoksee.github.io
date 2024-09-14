@@ -3,7 +3,7 @@
 Obsidian 으로 스터디 한것들을 웹으로 배포합니다
 
 - 템플릿: [Quartz v4](https://github.com/jackyzha0/quartz)
-- 공식문서: https://jzhao.xyz/posts/networked-thought
+- 공식문서: https://quartz.jzhao.xyz
 
 ## 배포 구조
 
