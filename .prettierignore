@@ -1,4 +1,6 @@
 public
 content
+.vscode
+.github
 node_modules
 .quartz-cache
