@@ -5,11 +5,21 @@ import * as Component from "./quartz/components"
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
-  afterBody: [],
+  afterBody: [
+    Component.Comments({
+      provider: "giscus",
+      options: {
+        repo: "Lseoksee/My-Study-WebSite",
+        repoId: "R_kgDOMxkRSw",
+        category: "General",
+        categoryId: "DIC_kwDOMxkRS84Cii-Y",
+      },
+    }),
+  ],
   footer: Component.Footer({
     links: {
-      GitHub: "https://github.com/jackyzha0/quartz",
-      "Discord Community": "https://discord.gg/cRFFHYye7t",
+      GitHub: "https://github.com/Lseoksee",
+      Instagram: "https://www.instagram.com/jeonghy_03",
     },
   }),
 }
@@ -27,13 +37,21 @@ export const defaultContentPageLayout: PageLayout = {
     Component.MobileOnly(Component.Spacer()),
     Component.Search(),
     Component.Darkmode(),
-    Component.DesktopOnly(Component.Explorer()),
+    Component.DesktopOnly(
+      Component.Explorer({
+        sortFn(a, b) {
+          const A = /[가-힣]/.test(a.displayName)
+          const B = /[가-힣]/.test(b.displayName)
+
+          if (A && !B) -1
+          if (!A && B) 1
+
+          return a.displayName.localeCompare(b.displayName)
+        },
+      }),
+    ),
   ],
-  right: [
-    Component.DesktopOnly(Component.TableOfContents()),
-    Component.Graph(),
-    Component.Backlinks(),
-  ],
+  right: [Component.DesktopOnly(Component.TableOfContents()), Component.Backlinks()],
 }
 
 // components for pages that display lists of pages  (e.g. tags or folders)

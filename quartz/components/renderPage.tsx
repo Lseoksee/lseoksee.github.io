@@ -212,6 +212,7 @@ export function renderPage(
     </div>
   )
 
+  //TODO: 여기가 메인
   const lang = componentData.fileData.frontmatter?.lang ?? cfg.locale?.split("-")[0] ?? "en"
   const doc = (
     <html lang={lang}>
