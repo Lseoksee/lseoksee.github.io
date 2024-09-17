@@ -10,61 +10,61 @@
     <link>https://https:/lseoksee.github.io/My-Study-WebSite/CLI-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8-%EB%AA%85%EB%A0%B9%EC%96%B4/Git-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC</link>
     <guid>https://https:/lseoksee.github.io/My-Study-WebSite/CLI-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8-%EB%AA%85%EB%A0%B9%EC%96%B4/Git-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC</guid>
     <description>...</description>
-    <pubDate>Mon, 16 Sep 2024 00:41:22 GMT</pubDate>
+    <pubDate>Tue, 17 Sep 2024 04:39:35 GMT</pubDate>
   </item><item>
     <title>Seoksee Study</title>
     <link>https://https:/lseoksee.github.io/My-Study-WebSite/</link>
     <guid>https://https:/lseoksee.github.io/My-Study-WebSite/</guid>
     <description>Hello 👋 I’m a college student majoring in computer science!.</description>
-    <pubDate>Mon, 16 Sep 2024 00:41:22 GMT</pubDate>
+    <pubDate>Tue, 17 Sep 2024 04:39:35 GMT</pubDate>
   </item><item>
     <title>Git 스터디</title>
     <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/Git-%EC%8A%A4%ED%84%B0%EB%94%94</link>
     <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/Git-%EC%8A%A4%ED%84%B0%EB%94%94</guid>
     <description>...</description>
-    <pubDate>Mon, 16 Sep 2024 00:41:22 GMT</pubDate>
+    <pubDate>Tue, 17 Sep 2024 04:39:35 GMT</pubDate>
   </item><item>
     <title>Github Actions 정리</title>
     <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/Github-Actions-%EC%A0%95%EB%A6%AC</link>
     <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/Github-Actions-%EC%A0%95%EB%A6%AC</guid>
     <description>jinmay.github.io/2020/05/13/git/github-action-syntax/ SPA 배포시 404.html 다운로드 후 index.html과 같은 폴더에 메인 index.html head 테그에 해당 구문 추가 &lt;script type=&quot;text/javascript&quot;&gt; ...</description>
-    <pubDate>Mon, 16 Sep 2024 00:41:22 GMT</pubDate>
+    <pubDate>Tue, 17 Sep 2024 04:39:35 GMT</pubDate>
   </item><item>
     <title>인공지능 프로그래밍 기말</title>
     <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8B%9C%ED%97%98-%EC%A0%95%EB%A6%AC/3-1/%EA%B8%B0%EB%A7%90---%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EA%B8%B0%EB%A7%90/%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EA%B8%B0%EB%A7%90</link>
     <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8B%9C%ED%97%98-%EC%A0%95%EB%A6%AC/3-1/%EA%B8%B0%EB%A7%90---%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EA%B8%B0%EB%A7%90/%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EA%B8%B0%EB%A7%90</guid>
     <description>로지스틱 회귀 어떤 사건이 발생할지 말지 예측이 아니라 그 확률을 계산하는 것 특징 선형회귀+로지스틱 함수 로지스틱 함수는 시그모이드 함수와 거의 동일 이진 분류의 경우 확률이 0.5 이상이면 참 아니면 거짓 이진 분류는 시그모이드, 다중분류는 소프트 맥스 LogisticRegression init: C: float: 규제 정도 (로그 값) 과적합 ...</description>
-    <pubDate>Mon, 16 Sep 2024 00:41:22 GMT</pubDate>
+    <pubDate>Tue, 17 Sep 2024 04:39:35 GMT</pubDate>
   </item><item>
-    <title>Gradle 스크립트 한글 깨짐 문제 해결</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Gradle-%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%ED%95%9C%EA%B8%80-%EA%B9%A8%EC%A7%90-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Gradle-%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%ED%95%9C%EA%B8%80-%EA%B9%A8%EC%A7%90-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0</guid>
-    <description>원인 Gradle 스크립트의 기반이 되는 gradle-wrapper.jar 의 기본 출력 인코딩 셋이 UTF-8 이다 그러나 윈도우 콘솔 환경에 기본 인코딩 셋은 MS949(CP-949 | EUC-KR)임 참고로 리눅스 Bash는 UTF-8이 기본 인것으로 안다 그러다 보니 Gradle 스크립트는 UTF-8로 출력되고 윈도우는 그걸 MS949 ...</description>
-    <pubDate>Mon, 16 Sep 2024 00:41:22 GMT</pubDate>
+    <title>알고리즘 중간</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8B%9C%ED%97%98-%EC%A0%95%EB%A6%AC/3-1/%EC%A4%91%EA%B0%84---%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EC%A4%91%EA%B0%84</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8B%9C%ED%97%98-%EC%A0%95%EB%A6%AC/3-1/%EC%A4%91%EA%B0%84---%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EC%A4%91%EA%B0%84</guid>
+    <description>선형검색 보초법 int i = 0; arr[arr.length-1] = value; while (true) { if (arr[i] == value) break; i++; } return i == arr.length ? -1 : i; 배열에 크기를 한칸 더 받음아서 처리 재귀함수 팩토리얼 계산 if (n &lt;= 0) { return 1; } return ...</description>
+    <pubDate>Tue, 17 Sep 2024 04:39:34 GMT</pubDate>
   </item><item>
-    <title>JVM Args</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/JVM-Args</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/JVM-Args</guid>
+    <title>인공지능 프로그래밍 중간</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8B%9C%ED%97%98-%EC%A0%95%EB%A6%AC/3-1/%EC%A4%91%EA%B0%84---%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EC%A4%91%EA%B0%84/%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EC%A4%91%EA%B0%84</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8B%9C%ED%97%98-%EC%A0%95%EB%A6%AC/3-1/%EC%A4%91%EA%B0%84---%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EC%A4%91%EA%B0%84/%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EC%A4%91%EA%B0%84</guid>
     <description>...</description>
-    <pubDate>Mon, 16 Sep 2024 00:41:22 GMT</pubDate>
+    <pubDate>Tue, 17 Sep 2024 04:39:34 GMT</pubDate>
   </item><item>
-    <title>뭔가 문서로 분리하긴 뭐한</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/%EB%AD%94%EA%B0%80-%EB%AC%B8%EC%84%9C%EB%A1%9C-%EB%B6%84%EB%A6%AC%ED%95%98%EA%B8%B4-%EB%AD%90%ED%95%9C</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/%EB%AD%94%EA%B0%80-%EB%AC%B8%EC%84%9C%EB%A1%9C-%EB%B6%84%EB%A6%AC%ED%95%98%EA%B8%B4-%EB%AD%90%ED%95%9C</guid>
-    <description>수학기호 danbi-ncsoft.github.io/study/2018/05/30/study-how_to_read_mathematical_expression.html 배치파일 표준 입력 프로그램 처리 echo 보낼꺼 | 프로그램.exe # 여러줄 ( echo 보낼꺼1 echo 보낼꺼2 echo 보낼꺼3 ) ...</description>
-    <pubDate>Mon, 16 Sep 2024 00:41:22 GMT</pubDate>
+    <title>Apache Tomcat 관련</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Apache-Tomcat-%EA%B4%80%EB%A0%A8</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Apache-Tomcat-%EA%B4%80%EB%A0%A8</guid>
+    <description>UTF-8 설정 server.xml Connector 태그 안에 해당 구문 추가 &lt;Connector port=&quot;8080&quot; protocol=&quot;HTTP/1.1&quot; connectionTimeout=&quot;20000&quot; redirectPort=&quot;8443&quot; ...</description>
+    <pubDate>Tue, 17 Sep 2024 04:39:34 GMT</pubDate>
   </item><item>
-    <title>짜잘한 윈도우 팁 모음</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/%EC%A7%9C%EC%9E%98%ED%95%9C-%EC%9C%88%EB%8F%84%EC%9A%B0-%ED%8C%81-%EB%AA%A8%EC%9D%8C</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/%EC%A7%9C%EC%9E%98%ED%95%9C-%EC%9C%88%EB%8F%84%EC%9A%B0-%ED%8C%81-%EB%AA%A8%EC%9D%8C</guid>
-    <description>윈도우 우클릭 콘택스트 메뉴 편집 oldnew.tistory.com/322 VS Code 터미널 권한 오류 해결 PowerShell을 관리자 권한으로 실행 후 해당 명령 입력 [set-executionpolicy remotesigned] 윈도우 콘솔 한글 인코딩 문제 윈도우 콘솔은 MS949(CP-949 | EUC-KR) 로 ...</description>
-    <pubDate>Mon, 16 Sep 2024 00:41:22 GMT</pubDate>
+    <title>CLI 옵션 국룰</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/CLI-%EC%98%B5%EC%85%98-%EA%B5%AD%EB%A3%B0</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/CLI-%EC%98%B5%EC%85%98-%EA%B5%AD%EB%A3%B0</guid>
+    <description>...</description>
+    <pubDate>Tue, 17 Sep 2024 04:39:34 GMT</pubDate>
   </item><item>
-    <title>딥러닝 프로그래밍 기말</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8B%9C%ED%97%98-%EC%A0%95%EB%A6%AC/3-1/%EA%B8%B0%EB%A7%90---%EB%94%A5%EB%9F%AC%EB%8B%9D-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EB%94%A5%EB%9F%AC%EB%8B%9D-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EA%B8%B0%EB%A7%90</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8B%9C%ED%97%98-%EC%A0%95%EB%A6%AC/3-1/%EA%B8%B0%EB%A7%90---%EB%94%A5%EB%9F%AC%EB%8B%9D-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EB%94%A5%EB%9F%AC%EB%8B%9D-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EA%B8%B0%EB%A7%90</guid>
-    <description>RNN (순환 신경망) 입력과 출력을 시퀀스 단위로 처리하는 모델 피드포워드 신경망과 유사하지만 순환하는 연결도 있다는게 차이점 시퀀스: 문장 같은 단어가 나열된 것 (쉽게말해서 문장을 처리하기위한 모델이다) 셀: RNN 에서 은닉층에서 함수를 통해 결과를 내보내는 역할 RNN은 입력을 받아 출력으로 나온 값을 다시 입력으로 넣는 순환구조 를 가지고 ...</description>
-    <pubDate>Mon, 16 Sep 2024 00:41:22 GMT</pubDate>
+    <title>Google API 사용법</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Google-API-%EC%82%AC%EC%9A%A9%EB%B2%95</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Google-API-%EC%82%AC%EC%9A%A9%EB%B2%95</guid>
+    <description>...</description>
+    <pubDate>Tue, 17 Sep 2024 04:39:34 GMT</pubDate>
   </item>
     </channel>
   </rss>
