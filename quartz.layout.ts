@@ -43,8 +43,8 @@ export const defaultContentPageLayout: PageLayout = {
           const A = /[가-힣]/.test(a.displayName)
           const B = /[가-힣]/.test(b.displayName)
 
-          if (A && !B) -1
-          if (!A && B) 1
+          if (A && !B) return -1
+          if (!A && B) return 1
 
           return a.displayName.localeCompare(b.displayName)
         },

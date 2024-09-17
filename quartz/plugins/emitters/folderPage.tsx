@@ -98,6 +98,9 @@ export const FolderPage: QuartzEmitterPlugin<Partial<FolderPageOptions>> = (user
         ]),
       )
 
+
+      //TODO: 이 부분에서 빌드시 각 마크다운 위치에 대하여 폴더탐색 index.html을 생성
+      // 그러나 이건 단말노드인 경우, 그니까 파일이 없고 폴더 -> 파일 로 되어있는경우가 안됨
       for (const [tree, file] of content) {
         const slug = stripSlashes(simplifySlug(file.data.slug!)) as SimpleSlug
         if (folders.has(slug)) {
