@@ -66,6 +66,7 @@ ul,
 
 strong {
   font-weight: $semiBoldWeight;
+  color: #FF82B2;
 }
 
 a {
@@ -228,6 +229,22 @@ a {
       width: initial;
       margin-left: 0;
       margin-right: 0;
+    }
+  }
+
+  //Things 테마와 동일하게
+  & .center {
+    h2 {
+      border-bottom: 2px solid #35393e;
+    }
+    h3 {
+      color: #2e80f2;
+    }
+    h4 {
+      color: #E5B567;
+    }
+    h5 {
+      color: #FF7B5C;
     }
   }
 }
