@@ -15,6 +15,8 @@ export const sharedPageComponents: SharedLayout = {
         categoryId: "DIC_kwDOMxkRS84Cii-Y",
       },
     }),
+    Component.MobileOnly(Component.Backlinks()),
+    Component.MobileOnly(Component.Explorer()),
   ],
   footer: Component.Footer({
     links: {
@@ -51,7 +53,10 @@ export const defaultContentPageLayout: PageLayout = {
       }),
     ),
   ],
-  right: [Component.DesktopOnly(Component.TableOfContents()), Component.Backlinks()],
+  right: [
+    Component.DesktopOnly(Component.TableOfContents()),
+    Component.DesktopOnly(Component.Backlinks()),
+  ],
 }
 
 // components for pages that display lists of pages  (e.g. tags or folders)
