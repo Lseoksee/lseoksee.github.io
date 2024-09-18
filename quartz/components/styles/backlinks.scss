@@ -1,4 +1,4 @@
-.backlinks {
+#backlinks {
   position: relative;
 
   & > h3 {
@@ -10,6 +10,7 @@
     list-style: none;
     padding: 0;
     margin: 0.5rem 0;
+    max-height: 27vh;
 
     & > li {
       & > a {
