@@ -28,7 +28,6 @@ button#toc {
 #toc-content {
   list-style: none;
   overflow: hidden;
-  max-height: none;
   transition:
     max-height 0.5s ease,
     visibility 0s linear 0s;
@@ -50,6 +49,7 @@ button#toc {
     list-style: none;
     margin: 0.5rem 0;
     padding: 0;
+    max-height: 44vh;
     & > li > a {
       color: var(--dark);
       opacity: 0.35;
