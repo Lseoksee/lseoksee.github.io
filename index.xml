@@ -6,65 +6,65 @@
       <description>최근 10 건 on Hi! My Name is...</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
+    <title>리눅스 명령어 정리</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EB%A6%AC%EB%88%85%EC%8A%A4/%EB%A6%AC%EB%88%85%EC%8A%A4-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EB%A6%AC%EB%88%85%EC%8A%A4/%EB%A6%AC%EB%88%85%EC%8A%A4-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC</guid>
+    <description>1024 미만 포트 허용하기 root 계정이 아닌경우 기본적으로 막혀있긴함 그래서 root로 실행하거나 이 방법 쓰거나 sudo setcap ‘cap_net_bind_service=+ep’ [실행파일] 실행파일은 node 면 which node 위치 백그라운드 단순히 백그라운드 전환 만약 포그라운드에서 급작스럽게 백그라운드 작업을 ...</description>
+    <pubDate>Mon, 30 Sep 2024 15:17:45 GMT</pubDate>
+  </item><item>
+    <title>패키지 설치</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EB%A6%AC%EB%88%85%EC%8A%A4/%ED%8C%A8%ED%82%A4%EC%A7%80-%EC%84%A4%EC%B9%98</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EB%A6%AC%EB%88%85%EC%8A%A4/%ED%8C%A8%ED%82%A4%EC%A7%80-%EC%84%A4%EC%B9%98</guid>
+    <description>필수 패키지 tree: 폴더 구조를 볼수있는 패키지 사용법: tree net-tools: 네트워크 정보 보는 사용법: ifconfig lm-sensors: PC 온도 확인 하는 사용법: sensors-detect: 센서 가능 여부 확인 sensors: 온도 확인 mc: cli 파일 브라우저 사용법: mc Node &amp; Npm 설치 ...</description>
+    <pubDate>Mon, 30 Sep 2024 15:17:45 GMT</pubDate>
+  </item><item>
     <title>AWS 스터디 &amp; 프로젝트</title>
     <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/AWS-%EC%8A%A4%ED%84%B0%EB%94%94--and--%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8</link>
     <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/AWS-%EC%8A%A4%ED%84%B0%EB%94%94--and--%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8</guid>
     <description>RDS 퍼블릭 엑세스 끄고 외부 환경에서 접속하기 2024년 2월 이후로 IPv4 주소 유료화에 따라 RDS 퍼블릭엑세스에 사용되는 ipv4 주소는 더 이상 무료가 아니다. (EC2에 사용되는 IP는 프리티어면 공짜다) 따라서 퍼블릭 엑세스를 끈 상태에서 접속을 시도해야 한다 SSH 를 사용하여 접속 EC2와 RDS 를 같은 VPC 망으로 사용한다면 EC2의 SSH를 사용하여 RDS 에 접속이 가능하다.</description>
-    <pubDate>Thu, 19 Sep 2024 08:43:49 GMT</pubDate>
+    <pubDate>Mon, 30 Sep 2024 15:17:45 GMT</pubDate>
   </item><item>
-    <title>Gradle 스크립트 한글 깨짐 문제 해결</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Gradle-%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%ED%95%9C%EA%B8%80-%EA%B9%A8%EC%A7%90-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Gradle-%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%ED%95%9C%EA%B8%80-%EA%B9%A8%EC%A7%90-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0</guid>
-    <description>원인 Gradle 스크립트의 기반이 되는 gradle-wrapper.jar 의 기본 출력 인코딩 셋이 UTF-8 이다 그러나 윈도우 콘솔 환경에 기본 인코딩 셋은 MS949(CP-949 | EUC-KR)임 참고로 리눅스 Bash는 UTF-8이 기본 인것으로 안다 그러다 보니 Gradle 스크립트는 UTF-8로 출력되고 윈도우는 그걸 MS949 ...</description>
-    <pubDate>Thu, 19 Sep 2024 08:43:49 GMT</pubDate>
-  </item><item>
-    <title>JVM Args</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/JVM-Args</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/JVM-Args</guid>
+    <title>Git 스터디</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/Git-%EC%8A%A4%ED%84%B0%EB%94%94</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/Git-%EC%8A%A4%ED%84%B0%EB%94%94</guid>
     <description>...</description>
-    <pubDate>Thu, 19 Sep 2024 08:43:49 GMT</pubDate>
+    <pubDate>Mon, 30 Sep 2024 15:17:45 GMT</pubDate>
   </item><item>
-    <title>Obsidian Publish 방법들</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Obsidian-Publish-%EB%B0%A9%EB%B2%95%EB%93%A4</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Obsidian-Publish-%EB%B0%A9%EB%B2%95%EB%93%A4</guid>
-    <description> Flowershow 이건 next.js라 github page 로 호스팅 불가 quartz Obsidian Vault to Hugo Content 이친구는 아예 Obsidian MarkDown을 변환하는것들 .</description>
-    <pubDate>Thu, 19 Sep 2024 08:43:49 GMT</pubDate>
+    <title>파일 링크</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/%ED%8C%8C%EC%9D%BC-%EB%A7%81%ED%81%AC</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/%ED%8C%8C%EC%9D%BC-%EB%A7%81%ED%81%AC</guid>
+    <description>...</description>
+    <pubDate>Mon, 30 Sep 2024 15:17:45 GMT</pubDate>
+  </item><item>
+    <title>VS code SSH 접속 시 문제 해결</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/VS-code-SSH-%EC%A0%91%EC%86%8D-%EC%8B%9C-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/VS-code-SSH-%EC%A0%91%EC%86%8D-%EC%8B%9C-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0</guid>
+    <description>WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED! C:\Users\&lt;유저&gt;\.ssh 폴더의 known_hosts 파일을 지우자 WARNING: UNPROTECTED PRIVATE KEY FILE! 해당 OpenSSH 키 파일 속성 화면 보안 탭 들어가기 고급 클릭해서 ...</description>
+    <pubDate>Mon, 30 Sep 2024 15:17:45 GMT</pubDate>
   </item><item>
     <title>뭔가 문서로 분리하긴 뭐한</title>
     <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/%EB%AD%94%EA%B0%80-%EB%AC%B8%EC%84%9C%EB%A1%9C-%EB%B6%84%EB%A6%AC%ED%95%98%EA%B8%B4-%EB%AD%90%ED%95%9C</link>
     <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/%EB%AD%94%EA%B0%80-%EB%AC%B8%EC%84%9C%EB%A1%9C-%EB%B6%84%EB%A6%AC%ED%95%98%EA%B8%B4-%EB%AD%90%ED%95%9C</guid>
     <description>수학기호 danbi-ncsoft.github.io/study/2018/05/30/study-how_to_read_mathematical_expression.html 배치파일 표준 입력 프로그램 처리 echo 보낼꺼 | 프로그램.exe # 여러줄 ( echo 보낼꺼1 echo 보낼꺼2 echo 보낼꺼3 ) ...</description>
-    <pubDate>Thu, 19 Sep 2024 08:43:49 GMT</pubDate>
+    <pubDate>Mon, 30 Sep 2024 15:17:45 GMT</pubDate>
   </item><item>
-    <title>짜잘한 윈도우 팁 모음</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/%EC%A7%9C%EC%9E%98%ED%95%9C-%EC%9C%88%EB%8F%84%EC%9A%B0-%ED%8C%81-%EB%AA%A8%EC%9D%8C</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/%EC%A7%9C%EC%9E%98%ED%95%9C-%EC%9C%88%EB%8F%84%EC%9A%B0-%ED%8C%81-%EB%AA%A8%EC%9D%8C</guid>
-    <description>윈도우 우클릭 콘택스트 메뉴 편집 oldnew.tistory.com/322 VS Code 터미널 권한 오류 해결 PowerShell을 관리자 권한으로 실행 후 해당 명령 입력 [set-executionpolicy remotesigned] 윈도우 콘솔 한글 인코딩 문제 윈도우 콘솔은 MS949(CP-949 | EUC-KR) 로 ...</description>
-    <pubDate>Thu, 19 Sep 2024 08:43:49 GMT</pubDate>
+    <title>졸작 앱 프론트 기록</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/%EC%A1%B8%EC%9E%91-%EC%95%B1-%ED%94%84%EB%A1%A0%ED%8A%B8-%EA%B8%B0%EB%A1%9D</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/%EC%A1%B8%EC%9E%91-%EC%95%B1-%ED%94%84%EB%A1%A0%ED%8A%B8-%EA%B8%B0%EB%A1%9D</guid>
+    <description>로그인 카카오 &amp; 구글 로그인 로컬 케싱 검색페이지 추천검색어 추천검색어 항목 클릭시 BackGround 를 검정색으로 바꾸고 해당 추천검색어로 바로 검색 되야 함 카카오 로그인 검색 TextFiled 지금은 검색 아이콘 클릭할때만 되는데 키보드의 “완료” 버튼 누를때도 될 수 있게 설저 ...</description>
+    <pubDate>Mon, 30 Sep 2024 15:17:45 GMT</pubDate>
   </item><item>
-    <title>알고리즘 중간</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8B%9C%ED%97%98-%EC%A0%95%EB%A6%AC/3-1/%EC%A4%91%EA%B0%84---%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EC%A4%91%EA%B0%84</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8B%9C%ED%97%98-%EC%A0%95%EB%A6%AC/3-1/%EC%A4%91%EA%B0%84---%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EC%A4%91%EA%B0%84</guid>
-    <description>선형검색 보초법 int i = 0; arr[arr.length-1] = value; while (true) { if (arr[i] == value) break; i++; } return i == arr.length ? -1 : i; 배열에 크기를 한칸 더 받음아서 처리 재귀함수 팩토리얼 계산 if (n &lt;= 0) { return 1; } return ...</description>
-    <pubDate>Thu, 19 Sep 2024 08:43:49 GMT</pubDate>
-  </item><item>
-    <title>인공지능 프로그래밍 중간</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8B%9C%ED%97%98-%EC%A0%95%EB%A6%AC/3-1/%EC%A4%91%EA%B0%84---%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EC%A4%91%EA%B0%84/%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EC%A4%91%EA%B0%84</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8B%9C%ED%97%98-%EC%A0%95%EB%A6%AC/3-1/%EC%A4%91%EA%B0%84---%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EC%A4%91%EA%B0%84/%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EC%A4%91%EA%B0%84</guid>
+    <title>Docker 명령어 정리</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/CLI-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8-%EB%AA%85%EB%A0%B9%EC%96%B4/Docker-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/CLI-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8-%EB%AA%85%EB%A0%B9%EC%96%B4/Docker-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC</guid>
     <description>...</description>
-    <pubDate>Thu, 19 Sep 2024 08:43:49 GMT</pubDate>
+    <pubDate>Mon, 30 Sep 2024 15:17:45 GMT</pubDate>
   </item><item>
-    <title>Apache Tomcat 관련</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Apache-Tomcat-%EA%B4%80%EB%A0%A8</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Apache-Tomcat-%EA%B4%80%EB%A0%A8</guid>
-    <description>UTF-8 설정 server.xml Connector 태그 안에 해당 구문 추가 &lt;Connector port=&quot;8080&quot; protocol=&quot;HTTP/1.1&quot; connectionTimeout=&quot;20000&quot; redirectPort=&quot;8443&quot; ...</description>
-    <pubDate>Thu, 19 Sep 2024 08:43:49 GMT</pubDate>
-  </item><item>
-    <title>CLI 옵션 국룰</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/CLI-%EC%98%B5%EC%85%98-%EA%B5%AD%EB%A3%B0</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/CLI-%EC%98%B5%EC%85%98-%EA%B5%AD%EB%A3%B0</guid>
-    <description>...</description>
-    <pubDate>Thu, 19 Sep 2024 08:43:49 GMT</pubDate>
+    <title>기계학습프로그래밍</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EA%B0%95%EC%9D%98%ED%95%84%EA%B8%B0/%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EA%B0%95%EC%9D%98%ED%95%84%EA%B8%B0/%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D</guid>
+    <description>3주차 ppt 13 페이지 주목 .</description>
+    <pubDate>Mon, 30 Sep 2024 15:17:45 GMT</pubDate>
   </item>
     </channel>
   </rss>
