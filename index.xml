@@ -6,65 +6,65 @@
       <description>최근 10 건 on Hi! My Name is...</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
-    <title>리눅스 명령어 정리</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EB%A6%AC%EB%88%85%EC%8A%A4/%EB%A6%AC%EB%88%85%EC%8A%A4-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EB%A6%AC%EB%88%85%EC%8A%A4/%EB%A6%AC%EB%88%85%EC%8A%A4-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC</guid>
-    <description>1024 미만 포트 허용하기 root 계정이 아닌경우 기본적으로 막혀있긴함 그래서 root로 실행하거나 이 방법 쓰거나 sudo setcap ‘cap_net_bind_service=+ep’ [실행파일] 실행파일은 node 면 which node 위치 백그라운드 단순히 백그라운드 전환 만약 포그라운드에서 급작스럽게 백그라운드 작업을 ...</description>
-    <pubDate>Mon, 30 Sep 2024 15:17:45 GMT</pubDate>
-  </item><item>
-    <title>패키지 설치</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EB%A6%AC%EB%88%85%EC%8A%A4/%ED%8C%A8%ED%82%A4%EC%A7%80-%EC%84%A4%EC%B9%98</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EB%A6%AC%EB%88%85%EC%8A%A4/%ED%8C%A8%ED%82%A4%EC%A7%80-%EC%84%A4%EC%B9%98</guid>
-    <description>필수 패키지 tree: 폴더 구조를 볼수있는 패키지 사용법: tree net-tools: 네트워크 정보 보는 사용법: ifconfig lm-sensors: PC 온도 확인 하는 사용법: sensors-detect: 센서 가능 여부 확인 sensors: 온도 확인 mc: cli 파일 브라우저 사용법: mc Node &amp; Npm 설치 ...</description>
-    <pubDate>Mon, 30 Sep 2024 15:17:45 GMT</pubDate>
-  </item><item>
-    <title>AWS 스터디 &amp; 프로젝트</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/AWS-%EC%8A%A4%ED%84%B0%EB%94%94--and--%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/AWS-%EC%8A%A4%ED%84%B0%EB%94%94--and--%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8</guid>
-    <description>RDS 퍼블릭 엑세스 끄고 외부 환경에서 접속하기 2024년 2월 이후로 IPv4 주소 유료화에 따라 RDS 퍼블릭엑세스에 사용되는 ipv4 주소는 더 이상 무료가 아니다. (EC2에 사용되는 IP는 프리티어면 공짜다) 따라서 퍼블릭 엑세스를 끈 상태에서 접속을 시도해야 한다 SSH 를 사용하여 접속 EC2와 RDS 를 같은 VPC 망으로 사용한다면 EC2의 SSH를 사용하여 RDS 에 접속이 가능하다.</description>
-    <pubDate>Mon, 30 Sep 2024 15:17:45 GMT</pubDate>
-  </item><item>
-    <title>Git 스터디</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/Git-%EC%8A%A4%ED%84%B0%EB%94%94</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/Git-%EC%8A%A4%ED%84%B0%EB%94%94</guid>
-    <description>...</description>
-    <pubDate>Mon, 30 Sep 2024 15:17:45 GMT</pubDate>
-  </item><item>
     <title>파일 링크</title>
     <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/%ED%8C%8C%EC%9D%BC-%EB%A7%81%ED%81%AC</link>
     <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/%ED%8C%8C%EC%9D%BC-%EB%A7%81%ED%81%AC</guid>
     <description>...</description>
-    <pubDate>Mon, 30 Sep 2024 15:17:45 GMT</pubDate>
+    <pubDate>Tue, 01 Oct 2024 07:45:01 GMT</pubDate>
   </item><item>
     <title>VS code SSH 접속 시 문제 해결</title>
     <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/VS-code-SSH-%EC%A0%91%EC%86%8D-%EC%8B%9C-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0</link>
     <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/VS-code-SSH-%EC%A0%91%EC%86%8D-%EC%8B%9C-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0</guid>
     <description>WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED! C:\Users\&lt;유저&gt;\.ssh 폴더의 known_hosts 파일을 지우자 WARNING: UNPROTECTED PRIVATE KEY FILE! 해당 OpenSSH 키 파일 속성 화면 보안 탭 들어가기 고급 클릭해서 ...</description>
-    <pubDate>Mon, 30 Sep 2024 15:17:45 GMT</pubDate>
+    <pubDate>Tue, 01 Oct 2024 07:45:01 GMT</pubDate>
   </item><item>
     <title>뭔가 문서로 분리하긴 뭐한</title>
     <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/%EB%AD%94%EA%B0%80-%EB%AC%B8%EC%84%9C%EB%A1%9C-%EB%B6%84%EB%A6%AC%ED%95%98%EA%B8%B4-%EB%AD%90%ED%95%9C</link>
     <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/%EB%AD%94%EA%B0%80-%EB%AC%B8%EC%84%9C%EB%A1%9C-%EB%B6%84%EB%A6%AC%ED%95%98%EA%B8%B4-%EB%AD%90%ED%95%9C</guid>
     <description>수학기호 danbi-ncsoft.github.io/study/2018/05/30/study-how_to_read_mathematical_expression.html 배치파일 표준 입력 프로그램 처리 echo 보낼꺼 | 프로그램.exe # 여러줄 ( echo 보낼꺼1 echo 보낼꺼2 echo 보낼꺼3 ) ...</description>
-    <pubDate>Mon, 30 Sep 2024 15:17:45 GMT</pubDate>
+    <pubDate>Tue, 01 Oct 2024 07:45:01 GMT</pubDate>
   </item><item>
     <title>졸작 앱 프론트 기록</title>
     <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/%EC%A1%B8%EC%9E%91-%EC%95%B1-%ED%94%84%EB%A1%A0%ED%8A%B8-%EA%B8%B0%EB%A1%9D</link>
     <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/%EC%A1%B8%EC%9E%91-%EC%95%B1-%ED%94%84%EB%A1%A0%ED%8A%B8-%EA%B8%B0%EB%A1%9D</guid>
     <description>로그인 카카오 &amp; 구글 로그인 로컬 케싱 검색페이지 추천검색어 추천검색어 항목 클릭시 BackGround 를 검정색으로 바꾸고 해당 추천검색어로 바로 검색 되야 함 카카오 로그인 검색 TextFiled 지금은 검색 아이콘 클릭할때만 되는데 키보드의 “완료” 버튼 누를때도 될 수 있게 설저 ...</description>
-    <pubDate>Mon, 30 Sep 2024 15:17:45 GMT</pubDate>
+    <pubDate>Tue, 01 Oct 2024 07:45:01 GMT</pubDate>
   </item><item>
     <title>Docker 명령어 정리</title>
     <link>https://https:/lseoksee.github.io/My-Study-WebSite/CLI-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8-%EB%AA%85%EB%A0%B9%EC%96%B4/Docker-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC</link>
     <guid>https://https:/lseoksee.github.io/My-Study-WebSite/CLI-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8-%EB%AA%85%EB%A0%B9%EC%96%B4/Docker-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC</guid>
     <description>...</description>
-    <pubDate>Mon, 30 Sep 2024 15:17:45 GMT</pubDate>
+    <pubDate>Tue, 01 Oct 2024 07:45:01 GMT</pubDate>
   </item><item>
     <title>기계학습프로그래밍</title>
     <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EA%B0%95%EC%9D%98%ED%95%84%EA%B8%B0/%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D</link>
     <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EA%B0%95%EC%9D%98%ED%95%84%EA%B8%B0/%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D</guid>
     <description>3주차 ppt 13 페이지 주목 .</description>
-    <pubDate>Mon, 30 Sep 2024 15:17:45 GMT</pubDate>
+    <pubDate>Tue, 01 Oct 2024 07:45:01 GMT</pubDate>
+  </item><item>
+    <title>시스템서버운영</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EA%B0%95%EC%9D%98%ED%95%84%EA%B8%B0/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%84%9C%EB%B2%84%EC%9A%B4%EC%98%81</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EA%B0%95%EC%9D%98%ED%95%84%EA%B8%B0/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%84%9C%EB%B2%84%EC%9A%B4%EC%98%81</guid>
+    <description>3주차 cal arch history user uname echo which man 4주차 파일 시스템 아이노드 파일 링크 데이터 블록: 파일에서 데이터를 저장하는 블록 파일 종류 일반파일 디렉터리 파일 특수파일 기호 명령: ls -al 기호-일반 정규적인 파일d디렉터리 파일l심볼릭 링크 파일b블록 단위의 Read/Writec섹터 단위의 ...</description>
+    <pubDate>Tue, 01 Oct 2024 07:45:01 GMT</pubDate>
+  </item><item>
+    <title>예술과인성</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EA%B0%95%EC%9D%98%ED%95%84%EA%B8%B0/%EC%98%88%EC%88%A0%EA%B3%BC%EC%9D%B8%EC%84%B1</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EA%B0%95%EC%9D%98%ED%95%84%EA%B8%B0/%EC%98%88%EC%88%A0%EA%B3%BC%EC%9D%B8%EC%84%B1</guid>
+    <description>4주차 예술가의 역할: 일반인들이 느끼지 못하는 인간 세상 및 인간성의 가려진 단면을 볼 줄 아는 능력 특정한 사회 문제를 지적 예술: 학문·종교·도덕 등과 같은 문화의 한 부문으로, 예술 활동과 그 성과의 총칭 (출처: 위키백과) 인간성: 인간다움, 인간을 인간답도록 하게 하는 본질을 뜻한다 (출처: 위키백과) ...</description>
+    <pubDate>Tue, 01 Oct 2024 07:45:01 GMT</pubDate>
+  </item><item>
+    <title>컴퓨터보안개론</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EA%B0%95%EC%9D%98%ED%95%84%EA%B8%B0/%EC%BB%B4%ED%93%A8%ED%84%B0%EB%B3%B4%EC%95%88%EA%B0%9C%EB%A1%A0</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EA%B0%95%EC%9D%98%ED%95%84%EA%B8%B0/%EC%BB%B4%ED%93%A8%ED%84%B0%EB%B3%B4%EC%95%88%EA%B0%9C%EB%A1%A0</guid>
+    <description>3주차 DoS (서비스 거부 공격) &amp; DDoS (분산 서비스 거부 공격) DoS는 그냥 혼자하는거고 DDoS는 여러 사람이 하는 것 공격 유형 취약점 공격형 :오류가 있는 네트워크 패킷을 보낼경우 서비스에 오작동이 발생할 경우 그걸 이용해서 공격하는 자원 고갈형 공격:네트워크 대역폭이나 시스템 자원을 소모시키는 DoS 공격 방법 보잉크/봉크/티어드롭 ...</description>
+    <pubDate>Tue, 01 Oct 2024 07:45:01 GMT</pubDate>
+  </item><item>
+    <title>리눅스 개념 정리</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EB%A6%AC%EB%88%85%EC%8A%A4/%EB%A6%AC%EB%88%85%EC%8A%A4-%EA%B0%9C%EB%85%90-%EC%A0%95%EB%A6%AC</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EB%A6%AC%EB%88%85%EC%8A%A4/%EB%A6%AC%EB%88%85%EC%8A%A4-%EA%B0%9C%EB%85%90-%EC%A0%95%EB%A6%AC</guid>
+    <description>리눅스 폴더 구조 참고자료 리눅스 디렉토리 구조 한눈에 정리 TTY (Teletypewriter) 터미널과 함께 콘솔의 한 종류 리눅스 등에서 이런 화면을 보통은 TTY 라고 생각하면 된다 seoksee@ubuntu:~$ Docker에서 -t 옵션을 사용하지 않고 -t를 사용한 경우 해당 화면이 출력되지 않고 그냥 표준 입/출력만 가능하다 만약 ...</description>
+    <pubDate>Tue, 01 Oct 2024 07:45:01 GMT</pubDate>
   </item>
     </channel>
   </rss>
