@@ -6,65 +6,65 @@
       <description>최근 10 건 on Hi! My Name is...</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
-    <title>Docker 명령어 정리</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/CLI-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8-%EB%AA%85%EB%A0%B9%EC%96%B4/Docker-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/CLI-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8-%EB%AA%85%EB%A0%B9%EC%96%B4/Docker-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC</guid>
+    <title>Doker 스터디</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/Doker-%EC%8A%A4%ED%84%B0%EB%94%94</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/Doker-%EC%8A%A4%ED%84%B0%EB%94%94</guid>
     <description>...</description>
-    <pubDate>Tue, 08 Oct 2024 12:05:18 GMT</pubDate>
+    <pubDate>Thu, 10 Oct 2024 13:49:53 GMT</pubDate>
   </item><item>
-    <title>pip 명령어 정리</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/CLI-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8-%EB%AA%85%EB%A0%B9%EC%96%B4/pip-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/CLI-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8-%EB%AA%85%EB%A0%B9%EC%96%B4/pip-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC</guid>
-    <description>pip install [패키지] 패키지 설치 옵션 -r [requirements.txt 파일] requirements.txt 에 있는 패키지 설치 pip show [패키지] 해당 패키지에 최신버전과 여러 정보 나열 pip freeze &gt; requirements.txt 설치된 패키지를 requirements.txt 에 ...</description>
-    <pubDate>Tue, 08 Oct 2024 12:05:18 GMT</pubDate>
+    <title>Git 스터디</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/Git-%EC%8A%A4%ED%84%B0%EB%94%94</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/Git-%EC%8A%A4%ED%84%B0%EB%94%94</guid>
+    <description>...</description>
+    <pubDate>Thu, 10 Oct 2024 13:49:53 GMT</pubDate>
   </item><item>
-    <title>기계학습프로그래밍</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EA%B0%95%EC%9D%98%ED%95%84%EA%B8%B0/%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EA%B0%95%EC%9D%98%ED%95%84%EA%B8%B0/%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D</guid>
-    <description>3주차 ppt 13 페이지 주목 .</description>
-    <pubDate>Tue, 08 Oct 2024 12:05:18 GMT</pubDate>
+    <title>네트워크 통신</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%ED%86%B5%EC%8B%A0</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%ED%86%B5%EC%8B%A0</guid>
+    <description>기본적인 용어 정리 네트워크 컴퓨터, 라우터, 스우치 등 여러 장비들이 서로 유/무선 으로 연결되어 데이터를 공유하는 시스템 네트워크는 단순히 내부 망(이더넷) 끼리의 통신이나, 외부 네트워크 끼리 통신하는 것 모두를 포함 이더넷 네트워크 기술의 일종. 공유기, 허브에 연결되어 여러 시스템들이 통신 가능한 네트워크 구조 인터넷 전 세계 네트워크가 서로 연결 되있는 전체 네트워크에 집합 따라서 외부 네트워크와의 통신 그 자체를 말함 네트워크 인터페이스 물리적인 렌카드 (사실상 하나의 PC) 보통은 렌포트가 하나인데 요즘 좋은것들은 2개씩 존재하는것도 있다 TCP/IP 계층 모든 네트워크 장비가 실제 물리적인 데이터 전송이 되기 전까지의 과정들을 추상화 한것 이론상 존재하는 OSI 7계층을 실제 구현한 것 보통은 컴퓨터 네트워크 통신에서는 TCP/IP로 많이 설명하는데 다른 네트워크 장비들은 설명하기 쉽다고 OSI 7으로 설명되는 경우가 많다 구조 응용계층 설명: 여긴 그냥 개발자가 개발하기 나름 프로토콜: HTTP, FTP, SSH 전송계층 설명: 데이터 전송할 수 있도록 해주는 계층 프로토콜: TCP, UDP 인터넷 계층 설명: IP 주소를 설정하여 목적지를 지정 프로토콜: IP, Port 네트워크 인터페이스 계층 (NIC 계층) 설명: 실제 물리적인 전송을 담당하는 계층 PC에 경우 보통은 공유기와 연결됨으로 공유기의 MAC 주소를 추가해준다 프로토콜: MAC, 이더넷 오해하면 큰일나는 것 각 계층에 역할(구현)은 네트워크 장비마다 다르다 보통 설명할때 전송하는 PC 입장에서 설명해놓은 경우가 많다 모든 네트워크 장비가 TCP/IP 계층을 따르긴 하는데 아래 설명한것 처럼 각각이 어떤역할을 하는지는 컴퓨터 라는 네트워크 장비를 예를 들어 설명한거다 예를들어 라우터는 TCP/IP 모델에 L2(인터넷) 계층에서 작동한다 이 말은 라우터는 TCP/IP 계층 구조에서 인터넷 계층 까지만 구현이 되어있는거다 PC가 NIC 계층에서 물리적으로 전송되어 그 정보를 라우터가 받았다 치자 네트워크 인터페이스 계층: 라우터는 PC NIC계층에서 온 프레임해더에 MAC 주소와 자신의 MAC 주소를 비교하게된다 여기서 동일한 MAC 주소가 나오면 인터넷 계층: 디캡술레이션 과정을 거쳐 최종 목적지IP 주소를 확인하게 된다 그 IP 주소를 라우팅 테이블을 참조하여 다음 목적지 주소를 확인 하고 네트워크 인터페이스 계층: 다음 목적지 MAC 주소를 결정하여 다시 프레임으로 캡슐레이션 해서 전송하게 된다 OSI 7계층 | TCP/IP 계층 #TCP/IP역할OSI 7전송단위L1네트워크 인터페이스Mac, RS-232C물리프레임L2데이터 링크L3인터넷라우팅, IP, ICMP, ARP, RARP네트워크패킷L4전송TCP, UDP, Port전송세그먼트L5세션L6표현L7응용HTTP, SSH, FTP, RIP, OSPF, RIP응용 수신자PC 입장에서 본 TCP/IP 전송 구조 &amp; 단위 인캡술레이션: 데이터 전송시 각계층을 지날때 마다 각자 해더가 하나씩 붙어가는것 디캡술레이션: 데이터 수신시 각 계층을 지날때 마다 캡슐화된 데이터를 복원하는 것 소켓 스트림 (응용계층) 아래 전송계층단은 OS 커널영역 인데 이걸 파일형태로 추상화 해서 개발자가 사용할수 있게끔 인터페이스화 한게 소켓이다 우리가 쓰는 WinSocket 이나 이런건 그 인터페이스의 구현체 인거고 사실상 모든 네트워크 데이터는 소켓스트림 이다 세그먼트 (TCP 계층) 소켓에서 날라온 데이터가 일정크기 만큼 잘려서 TCP 단에 들어오게 된다 (세그먼트화) 그럼 그 잘린 데이터에 TCP 해더를 붙이게 되면 이게 세그먼트다 세그먼트 관점에서는 TCP해더 쪽이 해더, 데이터 영역이 페이로드 그럼 만들어진 세그먼트를 IP단에 전송하면 여기 작업은 끝난다 MSS (Maximum Segment Size) 최대 세그먼트 사이즈 해당 사이즈는 패킷에 크기 에 기초에서 잘려지는데 당연하지만 패킷에 크기보다 작음 IP 해더 20바이트, TCP 해더 20바이트 해서 MSS의 최대 크기는 패킷크기-40 이다 패킷 (IP 단) 실제 전송될 데이터 덩어리 패킷은 세그먼트를 인터넷에서 전송가능한 형태로 변환한게 패킷이다 TCP 단에서 전달받은 세그먼트+IP 해더 이것이 패킷이다 IP 해더 = 해더, 세그먼트 = 페이로드 페킷을 TCP 단으로 보내는 경우 세그먼트를 디켑슐레이션 과정을 통해 TCP해더를 얻게된다 즉 세그먼트=패킷에 페이로드 영역이다 라고 볼 수 있다 MTU (Maximum Transmission Unit) 패킷에 최대 크기 별일없으면 MTU=1500바이트 그니까 하나의 패킷으로 전송가능한 최대 크기는 1500바이트 라는 뜻 사실상 해더 제외하면 실제 순수데이터 만으로는 1460바이트가된다 더 큰 사이즈를 전송하고 싶으면 위 세그먼트 단계에서 잘게잘게 잘려서 여러 패킷으로 나오게 되어 전송이 된다 프레임 (MAC 주소단) 네트워크가 실제로 데이터를 전송할때 쓰는 단위 이더넷 프레임 이라고 하기도 함 IP 단에서 전달받은 패킷+ 프레임 해더 프레임 해더 = 해더, 패킷 = 페이로드 목적지, 소스 실제 MAC 주소를 담고 있다 여기서 MAC 주소는 최종 전달자가 아니다 만약 PC가 공유기(라우터)와 연결되어있다 치면 해당 공유기의 MAC 주소인거다 FCS: 프레임의 무결성을 확인하기 위한 오류 검출 코드 여기서 IPv4, IPv6 판단이 이루어 진다 소켓 통신 네트워크들을 연결하는 하나의 접점을 제공하는 기술.</description>
+    <pubDate>Thu, 10 Oct 2024 13:49:53 GMT</pubDate>
   </item><item>
-    <title>시스템서버운영</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EA%B0%95%EC%9D%98%ED%95%84%EA%B8%B0/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%84%9C%EB%B2%84%EC%9A%B4%EC%98%81</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EA%B0%95%EC%9D%98%ED%95%84%EA%B8%B0/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%84%9C%EB%B2%84%EC%9A%B4%EC%98%81</guid>
-    <description>3주차 cal arch history user uname echo which man 4주차 파일 시스템 아이노드 파일 링크 데이터 블록: 파일에서 데이터를 저장하는 블록 파일 종류 일반파일 디렉터리 파일 특수파일 기호 명령: ls -al 기호-일반 정규적인 파일d디렉터리 파일l심볼릭 링크 파일b블록 단위의 Read/Writec섹터 단위의 ...</description>
-    <pubDate>Tue, 08 Oct 2024 12:05:18 GMT</pubDate>
+    <title>비동기와 멀티스레드 차이</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/%EB%B9%84%EB%8F%99%EA%B8%B0%EC%99%80-%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C-%EC%B0%A8%EC%9D%B4</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/%EB%B9%84%EB%8F%99%EA%B8%B0%EC%99%80-%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C-%EC%B0%A8%EC%9D%B4</guid>
+    <description> 참고자료 비동기와 멀티스레딩 멀티 스레드와 단일 스레드, 동기와 비동기 제대로 알고 쓰시나요? (feat. 성능 개선) 비동기 실생활 예 나 혼자 방 청소와, 빨래를 한다고 생각해보자. 비동기적 접근방법은 방청소 10% 만 해놓고 빨래 10% 하러가고 다시 와서 방청소 20 % 하고 동기적으로 생각하자면 방 청소 100% 완료 후 빨래를 할 것이다.</description>
+    <pubDate>Thu, 10 Oct 2024 13:49:53 GMT</pubDate>
   </item><item>
-    <title>예술과인성</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EA%B0%95%EC%9D%98%ED%95%84%EA%B8%B0/%EC%98%88%EC%88%A0%EA%B3%BC%EC%9D%B8%EC%84%B1</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EA%B0%95%EC%9D%98%ED%95%84%EA%B8%B0/%EC%98%88%EC%88%A0%EA%B3%BC%EC%9D%B8%EC%84%B1</guid>
-    <description>4주차 예술가의 역할: 일반인들이 느끼지 못하는 인간 세상 및 인간성의 가려진 단면을 볼 줄 아는 능력 특정한 사회 문제를 지적 예술: 학문·종교·도덕 등과 같은 문화의 한 부문으로, 예술 활동과 그 성과의 총칭 (출처: 위키백과) 인간성: 인간다움, 인간을 인간답도록 하게 하는 본질을 뜻한다 (출처: 위키백과) ...</description>
-    <pubDate>Tue, 08 Oct 2024 12:05:18 GMT</pubDate>
+    <title>파일 링크</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/%ED%8C%8C%EC%9D%BC-%EB%A7%81%ED%81%AC</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/%ED%8C%8C%EC%9D%BC-%EB%A7%81%ED%81%AC</guid>
+    <description>...</description>
+    <pubDate>Thu, 10 Oct 2024 13:49:53 GMT</pubDate>
   </item><item>
-    <title>컴퓨터보안개론</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EA%B0%95%EC%9D%98%ED%95%84%EA%B8%B0/%EC%BB%B4%ED%93%A8%ED%84%B0%EB%B3%B4%EC%95%88%EA%B0%9C%EB%A1%A0</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EA%B0%95%EC%9D%98%ED%95%84%EA%B8%B0/%EC%BB%B4%ED%93%A8%ED%84%B0%EB%B3%B4%EC%95%88%EA%B0%9C%EB%A1%A0</guid>
-    <description>3주차 DoS (서비스 거부 공격) &amp; DDoS (분산 서비스 거부 공격) DoS는 그냥 혼자하는거고 DDoS는 여러 사람이 하는 것 공격 유형 취약점 공격형 :오류가 있는 네트워크 패킷을 보낼경우 서비스에 오작동이 발생할 경우 그걸 이용해서 공격하는 자원 고갈형 공격:네트워크 대역폭이나 시스템 자원을 소모시키는 DoS 공격 방법 보잉크/봉크/티어드롭 ...</description>
-    <pubDate>Tue, 08 Oct 2024 12:05:18 GMT</pubDate>
+    <title>Git 로그인</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Git-%EB%A1%9C%EA%B7%B8%EC%9D%B8</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Git-%EB%A1%9C%EA%B7%B8%EC%9D%B8</guid>
+    <description>초기 로그인 git config —global user.name Lseoksee git config —global user.email da864268@naver.com 토큰 로그인 참고 GitHub 토큰 영구 로그인 echo https://&lt;Username&gt;:&lt;토큰&gt;@github.com ...</description>
+    <pubDate>Thu, 10 Oct 2024 13:49:53 GMT</pubDate>
   </item><item>
-    <title>FastAPI</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EA%B0%9C%EB%B0%9C-%EC%96%B8%EC%96%B4/Python/FastAPI</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EA%B0%9C%EB%B0%9C-%EC%96%B8%EC%96%B4/Python/FastAPI</guid>
-    <description>바이너리 Response #이제 이 버퍼에다 바이너리 값을 wirte 하면 됨 buffer = io.BytesIO() # 대충 이런느낌으로 파일 인자에 buffer 를 줘서 쓰기도 함 open(buffer, &quot;w&quot;) # buffer.getvalue(): bytes # bytes 타입으로 넣어주면됨 return ...</description>
-    <pubDate>Tue, 08 Oct 2024 12:05:18 GMT</pubDate>
+    <title>VS code SSH 접속 시 문제 해결</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/VS-code-SSH-%EC%A0%91%EC%86%8D-%EC%8B%9C-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/VS-code-SSH-%EC%A0%91%EC%86%8D-%EC%8B%9C-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0</guid>
+    <description>WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED! C:\Users\&lt;유저&gt;\.ssh 폴더의 known_hosts 파일을 지우자 WARNING: UNPROTECTED PRIVATE KEY FILE! 해당 OpenSSH 키 파일 속성 화면 보안 탭 들어가기 고급 클릭해서 ...</description>
+    <pubDate>Thu, 10 Oct 2024 13:49:53 GMT</pubDate>
   </item><item>
-    <title>Python</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EA%B0%9C%EB%B0%9C-%EC%96%B8%EC%96%B4/Python/Python</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EA%B0%9C%EB%B0%9C-%EC%96%B8%EC%96%B4/Python/Python</guid>
-    <description>Magic Method __ 로 시작해서 끝나는 기본 클래스 정의 메소드 이것 이외의 인덱스 관련함수 목록 __getitem__(index) def __getitem__(self, index): pass # index는 [] 안에 값이 객체의 [] 연산자를 사용하여 조회 할 때 작동하는 메소드 numpy의 [3,4] 이런 슬라이싱 방식이 ...</description>
-    <pubDate>Tue, 08 Oct 2024 12:05:18 GMT</pubDate>
+    <title>뭔가 문서로 분리하긴 뭐한</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/%EB%AD%94%EA%B0%80-%EB%AC%B8%EC%84%9C%EB%A1%9C-%EB%B6%84%EB%A6%AC%ED%95%98%EA%B8%B4-%EB%AD%90%ED%95%9C</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/%EB%AD%94%EA%B0%80-%EB%AC%B8%EC%84%9C%EB%A1%9C-%EB%B6%84%EB%A6%AC%ED%95%98%EA%B8%B4-%EB%AD%90%ED%95%9C</guid>
+    <description>수학기호 danbi-ncsoft.github.io/study/2018/05/30/study-how_to_read_mathematical_expression.html 과학적 기수법 숫자를 1e+6 이런식으로 지수(e) 로 표기하는법 1e+6: 숫자 1 다음에 0이 6게 온다 1000000 2e+6: 2000000 ...</description>
+    <pubDate>Thu, 10 Oct 2024 13:49:53 GMT</pubDate>
   </item><item>
-    <title>리눅스 개념 정리</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EB%A6%AC%EB%88%85%EC%8A%A4/%EB%A6%AC%EB%88%85%EC%8A%A4-%EA%B0%9C%EB%85%90-%EC%A0%95%EB%A6%AC</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EB%A6%AC%EB%88%85%EC%8A%A4/%EB%A6%AC%EB%88%85%EC%8A%A4-%EA%B0%9C%EB%85%90-%EC%A0%95%EB%A6%AC</guid>
-    <description>리눅스 폴더 구조 참고자료 리눅스 디렉토리 구조 한눈에 정리 TTY (Teletypewriter) 터미널과 함께 콘솔의 한 종류 리눅스 등에서 이런 화면을 보통은 TTY 라고 생각하면 된다 seoksee@ubuntu:~$ Docker에서 -t 옵션을 사용하지 않고 -t를 사용한 경우 해당 화면이 출력되지 않고 그냥 표준 입/출력만 가능하다 만약 ...</description>
-    <pubDate>Tue, 08 Oct 2024 12:05:18 GMT</pubDate>
+    <title>안드로이드 adb 무선 디버깅</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-adb-%EB%AC%B4%EC%84%A0-%EB%94%94%EB%B2%84%EA%B9%85</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-adb-%EB%AC%B4%EC%84%A0-%EB%94%94%EB%B2%84%EA%B9%85</guid>
+    <description>...</description>
+    <pubDate>Thu, 10 Oct 2024 13:49:53 GMT</pubDate>
   </item><item>
-    <title>리눅스 명령어 정리</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EB%A6%AC%EB%88%85%EC%8A%A4/%EB%A6%AC%EB%88%85%EC%8A%A4-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EB%A6%AC%EB%88%85%EC%8A%A4/%EB%A6%AC%EB%88%85%EC%8A%A4-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC</guid>
-    <description>1024 미만 포트 허용하기 root 계정이 아닌경우 기본적으로 막혀있긴함 그래서 root로 실행하거나 이 방법 쓰거나 sudo setcap ‘cap_net_bind_service=+ep’ [실행파일] 실행파일은 node 면 which node 위치 백그라운드 단순히 백그라운드 전환 만약 포그라운드에서 급작스럽게 백그라운드 작업을 ...</description>
-    <pubDate>Tue, 08 Oct 2024 12:05:18 GMT</pubDate>
+    <title>AR 프로젝트 진행록</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%A1%B8%EC%97%85%EC%9E%91%ED%92%88/AR-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%A7%84%ED%96%89%EB%A1%9D</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%A1%B8%EC%97%85%EC%9E%91%ED%92%88/AR-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%A7%84%ED%96%89%EB%A1%9D</guid>
+    <description>HRNet-for-Fashion-Landmark-Estimation.PyTorch 해당 모델이 카테고리에 따른 모델 예측을 해서 의류의 키포인트를 딸려면 무조건 의류가 어떤 형태(반팔, 긴팔)에 대한 정보를 알아야함 출력은 무조건 384x288 따라서 해당 비율에 맞게 전처리 하는 작업이 필요함 데이터 세트 github DeepFashion2 ...</description>
+    <pubDate>Thu, 10 Oct 2024 13:49:53 GMT</pubDate>
   </item>
     </channel>
   </rss>
