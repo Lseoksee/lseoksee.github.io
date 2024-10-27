@@ -6,65 +6,65 @@
       <description>최근 10 건 on Hi! My Name is...</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
+    <title>시스템서버운영 중간</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8B%9C%ED%97%98-%EC%A0%95%EB%A6%AC/3-2/%EC%A4%91%EA%B0%84---%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%84%9C%EB%B2%84%EC%9A%B4%EC%98%81/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%84%9C%EB%B2%84%EC%9A%B4%EC%98%81-%EC%A4%91%EA%B0%84</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8B%9C%ED%97%98-%EC%A0%95%EB%A6%AC/3-2/%EC%A4%91%EA%B0%84---%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%84%9C%EB%B2%84%EC%9A%B4%EC%98%81/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%84%9C%EB%B2%84%EC%9A%B4%EC%98%81-%EC%A4%91%EA%B0%84</guid>
+    <description>...</description>
+    <pubDate>Sun, 27 Oct 2024 13:49:06 GMT</pubDate>
+  </item><item>
+    <title>컴퓨터보안개론 중간</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8B%9C%ED%97%98-%EC%A0%95%EB%A6%AC/3-2/%EC%A4%91%EA%B0%84---%EC%BB%B4%ED%93%A8%ED%84%B0%EB%B3%B4%EC%95%88%EA%B0%9C%EB%A1%A0/%EC%BB%B4%ED%93%A8%ED%84%B0%EB%B3%B4%EC%95%88%EA%B0%9C%EB%A1%A0-%EC%A4%91%EA%B0%84</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8B%9C%ED%97%98-%EC%A0%95%EB%A6%AC/3-2/%EC%A4%91%EA%B0%84---%EC%BB%B4%ED%93%A8%ED%84%B0%EB%B3%B4%EC%95%88%EA%B0%9C%EB%A1%A0/%EC%BB%B4%ED%93%A8%ED%84%B0%EB%B3%B4%EC%95%88%EA%B0%9C%EB%A1%A0-%EC%A4%91%EA%B0%84</guid>
+    <description>연습문제 정리 해킹: 남의 컴퓨터 시스템에 허락 없이 침입하여 데이터를 빼내거나 파괴하는 일 보안의 3대요소: 기밀성, 무결성, 가용성 최초 이메일: 1970 세션관리: 지속적으로 세션을 인증 하는 snmp: IP 기반 네트워크상의 각 호스트로부터 정기적으로 여러 관리 정보 SFP: 함수 호출시 스택 프레임 구조를 유지하기 위해 저장되는 이전 함수 프레임 ...</description>
+    <pubDate>Sun, 27 Oct 2024 13:49:06 GMT</pubDate>
+  </item><item>
+    <title>Git 로그인</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Git-%EB%A1%9C%EA%B7%B8%EC%9D%B8</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Git-%EB%A1%9C%EA%B7%B8%EC%9D%B8</guid>
+    <description>초기 로그인 git config —global user.name Lseoksee git config —global user.email da864268@naver.com 토큰 로그인 참고 GitHub 토큰 영구 로그인 echo https://&lt;Username&gt;:&lt;토큰&gt;@github.com ...</description>
+    <pubDate>Sun, 27 Oct 2024 13:49:06 GMT</pubDate>
+  </item><item>
+    <title>Obsidian Publish 방법들</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Obsidian-Publish-%EB%B0%A9%EB%B2%95%EB%93%A4</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Obsidian-Publish-%EB%B0%A9%EB%B2%95%EB%93%A4</guid>
+    <description> Flowershow 이건 next.js라 github page 로 호스팅 불가 quartz Obsidian Vault to Hugo Content 이친구는 아예 Obsidian MarkDown을 변환하는것들 참고 디자인 iingang.github.io/ .</description>
+    <pubDate>Sun, 27 Oct 2024 13:49:06 GMT</pubDate>
+  </item><item>
+    <title>VS code SSH 접속 시 문제 해결</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/VS-code-SSH-%EC%A0%91%EC%86%8D-%EC%8B%9C-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/VS-code-SSH-%EC%A0%91%EC%86%8D-%EC%8B%9C-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0</guid>
+    <description>WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED! C:\Users\&lt;유저&gt;\.ssh 폴더의 known_hosts 파일을 지우자 WARNING: UNPROTECTED PRIVATE KEY FILE! 해당 OpenSSH 키 파일 속성 화면 보안 탭 들어가기 고급 클릭해서 ...</description>
+    <pubDate>Sun, 27 Oct 2024 13:49:06 GMT</pubDate>
+  </item><item>
+    <title>뭔가 문서로 분리하긴 뭐한</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/%EB%AD%94%EA%B0%80-%EB%AC%B8%EC%84%9C%EB%A1%9C-%EB%B6%84%EB%A6%AC%ED%95%98%EA%B8%B4-%EB%AD%90%ED%95%9C</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/%EB%AD%94%EA%B0%80-%EB%AC%B8%EC%84%9C%EB%A1%9C-%EB%B6%84%EB%A6%AC%ED%95%98%EA%B8%B4-%EB%AD%90%ED%95%9C</guid>
+    <description>수학기호 danbi-ncsoft.github.io/study/2018/05/30/study-how_to_read_mathematical_expression.html 과학적 기수법 숫자를 1e+6 이런식으로 지수(e) 로 표기하는법 1e+6: 숫자 1 다음에 0이 6게 온다 1000000 2e+6: 2000000 ...</description>
+    <pubDate>Sun, 27 Oct 2024 13:49:06 GMT</pubDate>
+  </item><item>
+    <title>안드로이드 adb 무선 디버깅</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-adb-%EB%AC%B4%EC%84%A0-%EB%94%94%EB%B2%84%EA%B9%85</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-adb-%EB%AC%B4%EC%84%A0-%EB%94%94%EB%B2%84%EA%B9%85</guid>
+    <description>...</description>
+    <pubDate>Sun, 27 Oct 2024 13:49:06 GMT</pubDate>
+  </item><item>
+    <title>헷갈리는 프로그래밍 연산</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/%ED%97%B7%EA%B0%88%EB%A6%AC%EB%8A%94-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EC%97%B0%EC%82%B0</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/%ED%97%B7%EA%B0%88%EB%A6%AC%EB%8A%94-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EC%97%B0%EC%82%B0</guid>
+    <description>나눗셈 처리 1/2 를 프로그래밍 에서 하면 // 답 0 System.out.println(1/2); // 답 0.5 System.out.println((float) 1/2); 1%2 를 프로그래밍 에서 하면 // 답 1 // 입력된 수 그대로 나옴 System.out.println(1%2); 뺄/덧샘 할당 덧샘 할당에 연산식 있다면 ...</description>
+    <pubDate>Sun, 27 Oct 2024 13:49:06 GMT</pubDate>
+  </item><item>
     <title>Docker 명령어 정리</title>
     <link>https://https:/lseoksee.github.io/My-Study-WebSite/CLI-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8-%EB%AA%85%EB%A0%B9%EC%96%B4/Docker-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC</link>
     <guid>https://https:/lseoksee.github.io/My-Study-WebSite/CLI-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8-%EB%AA%85%EB%A0%B9%EC%96%B4/Docker-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC</guid>
     <description>...</description>
-    <pubDate>Mon, 21 Oct 2024 13:53:19 GMT</pubDate>
+    <pubDate>Sun, 27 Oct 2024 13:49:06 GMT</pubDate>
   </item><item>
     <title>pip 명령어 정리</title>
     <link>https://https:/lseoksee.github.io/My-Study-WebSite/CLI-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8-%EB%AA%85%EB%A0%B9%EC%96%B4/pip-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC</link>
     <guid>https://https:/lseoksee.github.io/My-Study-WebSite/CLI-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8-%EB%AA%85%EB%A0%B9%EC%96%B4/pip-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC</guid>
     <description>pip install [패키지] 패키지 설치 옵션 -r [requirements.txt 파일] requirements.txt 에 있는 패키지 설치 pip show [패키지] 해당 패키지에 최신버전과 여러 정보 나열 pip freeze &gt; requirements.txt 설치된 패키지를 requirements.txt 에 ...</description>
-    <pubDate>Mon, 21 Oct 2024 13:53:19 GMT</pubDate>
-  </item><item>
-    <title>기계학습프로그래밍</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EA%B0%95%EC%9D%98%ED%95%84%EA%B8%B0/%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EA%B0%95%EC%9D%98%ED%95%84%EA%B8%B0/%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D</guid>
-    <description>3주차 ppt 13 페이지 주목 5주차.</description>
-    <pubDate>Mon, 21 Oct 2024 13:53:19 GMT</pubDate>
-  </item><item>
-    <title>시스템서버운영</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EA%B0%95%EC%9D%98%ED%95%84%EA%B8%B0/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%84%9C%EB%B2%84%EC%9A%B4%EC%98%81</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EA%B0%95%EC%9D%98%ED%95%84%EA%B8%B0/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%84%9C%EB%B2%84%EC%9A%B4%EC%98%81</guid>
-    <description>3주차 cal arch history user uname echo which man 4주차 파일 시스템 아이노드 파일 링크 데이터 블록: 파일에서 데이터를 저장하는 블록 파일 종류 일반파일 디렉터리 파일 특수파일 기호 명령: ls -al 기호-일반 정규적인 파일d디렉터리 파일l심볼릭 링크 파일b블록 단위의 Read/Writec섹터 단위의 ...</description>
-    <pubDate>Mon, 21 Oct 2024 13:53:19 GMT</pubDate>
-  </item><item>
-    <title>예술과인성</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EA%B0%95%EC%9D%98%ED%95%84%EA%B8%B0/%EC%98%88%EC%88%A0%EA%B3%BC%EC%9D%B8%EC%84%B1</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EA%B0%95%EC%9D%98%ED%95%84%EA%B8%B0/%EC%98%88%EC%88%A0%EA%B3%BC%EC%9D%B8%EC%84%B1</guid>
-    <description>4주차 예술가의 역할: 일반인들이 느끼지 못하는 인간 세상 및 인간성의 가려진 단면을 볼 줄 아는 능력 특정한 사회 문제를 지적 예술: 학문·종교·도덕 등과 같은 문화의 한 부문으로, 예술 활동과 그 성과의 총칭 (출처: 위키백과) 인간성: 인간다움, 인간을 인간답도록 하게 하는 본질을 뜻한다 (출처: 위키백과) 6주차 창의성 이란 무에서 유를 창조하는 의미는 ...</description>
-    <pubDate>Mon, 21 Oct 2024 13:53:19 GMT</pubDate>
-  </item><item>
-    <title>컴퓨터보안개론</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EA%B0%95%EC%9D%98%ED%95%84%EA%B8%B0/%EC%BB%B4%ED%93%A8%ED%84%B0%EB%B3%B4%EC%95%88%EA%B0%9C%EB%A1%A0</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EA%B0%95%EC%9D%98%ED%95%84%EA%B8%B0/%EC%BB%B4%ED%93%A8%ED%84%B0%EB%B3%B4%EC%95%88%EA%B0%9C%EB%A1%A0</guid>
-    <description>3주차 DoS (서비스 거부 공격) &amp; DDoS (분산 서비스 거부 공격) DoS는 그냥 혼자하는거고 DDoS는 여러 사람이 하는 것 공격 유형 취약점 공격형 :오류가 있는 네트워크 패킷을 보낼경우 서비스에 오작동이 발생할 경우 그걸 이용해서 공격하는 자원 고갈형 공격:네트워크 대역폭이나 시스템 자원을 소모시키는 DoS 공격 방법 보잉크/봉크/티어드롭 ...</description>
-    <pubDate>Mon, 21 Oct 2024 13:53:19 GMT</pubDate>
-  </item><item>
-    <title>HTML</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EA%B0%9C%EB%B0%9C-%EC%96%B8%EC%96%B4/HTML</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EA%B0%9C%EB%B0%9C-%EC%96%B8%EC%96%B4/HTML</guid>
-    <description>유니버설 링크 &amp; 앱 링크 웹에서 안드로이드나, IOS 앱을 실행 시킬 수 있는 방법 이거 말고도 딥 링크 라는 방법도 있음 IOS (유니버설 링크) &lt;a href=&quot;example.com/open-app App&lt;/a&gt; example.com: 이게 앱 경로 userId=12345: 데이터 전달 IOS ...</description>
-    <pubDate>Mon, 21 Oct 2024 13:53:19 GMT</pubDate>
-  </item><item>
-    <title>Java</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EA%B0%9C%EB%B0%9C-%EC%96%B8%EC%96%B4/Java</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EA%B0%9C%EB%B0%9C-%EC%96%B8%EC%96%B4/Java</guid>
-    <description>File I/O 문자열 (String I/O) 한 단어 또는 한 문자열 처리 문자 하나하나 또는 문자열을 설정된 인코딩에 맞게 변환해서 문자열 다룸 Supplementary Planes 에 해당하는 문자열은 char[]를 하나 더 읽어야 됨 확인법: Character.isSupplementaryCodePoint(codePoint) ...</description>
-    <pubDate>Mon, 21 Oct 2024 13:53:19 GMT</pubDate>
-  </item><item>
-    <title>FastAPI</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EA%B0%9C%EB%B0%9C-%EC%96%B8%EC%96%B4/Python/FastAPI</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EA%B0%9C%EB%B0%9C-%EC%96%B8%EC%96%B4/Python/FastAPI</guid>
-    <description>바이너리 Response #이제 이 버퍼에다 바이너리 값을 wirte 하면 됨 buffer = io.BytesIO() # 대충 이런느낌으로 파일 인자에 buffer 를 줘서 쓰기도 함 open(buffer, &quot;w&quot;) # buffer.getvalue(): bytes # bytes 타입으로 넣어주면됨 return ...</description>
-    <pubDate>Mon, 21 Oct 2024 13:53:19 GMT</pubDate>
-  </item><item>
-    <title>Python</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EA%B0%9C%EB%B0%9C-%EC%96%B8%EC%96%B4/Python/Python</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EA%B0%9C%EB%B0%9C-%EC%96%B8%EC%96%B4/Python/Python</guid>
-    <description>Magic Method __ 로 시작해서 끝나는 기본 클래스 정의 메소드 이것 이외의 인덱스 관련함수 목록 __getitem__(index) def __getitem__(self, index): pass # index는 [] 안에 값이 객체의 [] 연산자를 사용하여 조회 할 때 작동하는 메소드 numpy의 [3,4] 이런 슬라이싱 방식이 ...</description>
-    <pubDate>Mon, 21 Oct 2024 13:53:19 GMT</pubDate>
+    <pubDate>Sun, 27 Oct 2024 13:49:06 GMT</pubDate>
   </item>
     </channel>
   </rss>
