@@ -6,65 +6,65 @@
       <description>최근 10 건 on Hi! My Name is...</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
+    <title>시스템서버운영 중간</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8B%9C%ED%97%98-%EC%A0%95%EB%A6%AC/3-2/%EC%A4%91%EA%B0%84---%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%84%9C%EB%B2%84%EC%9A%B4%EC%98%81/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%84%9C%EB%B2%84%EC%9A%B4%EC%98%81-%EC%A4%91%EA%B0%84</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8B%9C%ED%97%98-%EC%A0%95%EB%A6%AC/3-2/%EC%A4%91%EA%B0%84---%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%84%9C%EB%B2%84%EC%9A%B4%EC%98%81/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%84%9C%EB%B2%84%EC%9A%B4%EC%98%81-%EC%A4%91%EA%B0%84</guid>
+    <description>...</description>
+    <pubDate>Tue, 29 Oct 2024 15:02:08 GMT</pubDate>
+  </item><item>
+    <title>예술과 인성 중간 정리</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8B%9C%ED%97%98-%EC%A0%95%EB%A6%AC/3-2/%EC%A4%91%EA%B0%84---%EC%98%88%EC%88%A0%EA%B3%BC%EC%9D%B8%EC%84%B1/%EC%98%88%EC%88%A0%EA%B3%BC-%EC%9D%B8%EC%84%B1-%EC%A4%91%EA%B0%84-%EC%A0%95%EB%A6%AC</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8B%9C%ED%97%98-%EC%A0%95%EB%A6%AC/3-2/%EC%A4%91%EA%B0%84---%EC%98%88%EC%88%A0%EA%B3%BC%EC%9D%B8%EC%84%B1/%EC%98%88%EC%88%A0%EA%B3%BC-%EC%9D%B8%EC%84%B1-%EC%A4%91%EA%B0%84-%EC%A0%95%EB%A6%AC</guid>
+    <description>...</description>
+    <pubDate>Tue, 29 Oct 2024 15:02:08 GMT</pubDate>
+  </item><item>
+    <title>컴퓨터보안개론 중간</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8B%9C%ED%97%98-%EC%A0%95%EB%A6%AC/3-2/%EC%A4%91%EA%B0%84---%EC%BB%B4%ED%93%A8%ED%84%B0%EB%B3%B4%EC%95%88%EA%B0%9C%EB%A1%A0/%EC%BB%B4%ED%93%A8%ED%84%B0%EB%B3%B4%EC%95%88%EA%B0%9C%EB%A1%A0-%EC%A4%91%EA%B0%84</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8B%9C%ED%97%98-%EC%A0%95%EB%A6%AC/3-2/%EC%A4%91%EA%B0%84---%EC%BB%B4%ED%93%A8%ED%84%B0%EB%B3%B4%EC%95%88%EA%B0%9C%EB%A1%A0/%EC%BB%B4%ED%93%A8%ED%84%B0%EB%B3%B4%EC%95%88%EA%B0%9C%EB%A1%A0-%EC%A4%91%EA%B0%84</guid>
+    <description>연습문제 정리 해킹: 남의 컴퓨터 시스템에 허락 없이 침입하여 데이터를 빼내거나 파괴하는 일 보안의 3대요소: 기밀성: 인가된 사용자만 정보자산의 접근 무결성: 적절한 권한을 가진 사용자가 인가된 방법으로만 정보 변경 가용성: 필요한 시점에 정보 자산에 접근 가능하도록 세션: 사용자와 시스템 사이 또는 두 시스템 사이의 활성화된 접속 최초 이메일: 1970 ...</description>
+    <pubDate>Tue, 29 Oct 2024 15:02:08 GMT</pubDate>
+  </item><item>
+    <title>Git 로그인</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Git-%EB%A1%9C%EA%B7%B8%EC%9D%B8</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Git-%EB%A1%9C%EA%B7%B8%EC%9D%B8</guid>
+    <description>초기 로그인 git config —global user.name Lseoksee git config —global user.email da864268@naver.com 토큰 로그인 참고 GitHub 토큰 영구 로그인 echo https://&lt;Username&gt;:&lt;토큰&gt;@github.com ...</description>
+    <pubDate>Tue, 29 Oct 2024 15:02:08 GMT</pubDate>
+  </item><item>
+    <title>Obsidian Publish 방법들</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Obsidian-Publish-%EB%B0%A9%EB%B2%95%EB%93%A4</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Obsidian-Publish-%EB%B0%A9%EB%B2%95%EB%93%A4</guid>
+    <description> Flowershow 이건 next.js라 github page 로 호스팅 불가 quartz Obsidian Vault to Hugo Content 이친구는 아예 Obsidian MarkDown을 변환하는것들 참고 디자인 iingang.github.io/ .</description>
+    <pubDate>Tue, 29 Oct 2024 15:02:08 GMT</pubDate>
+  </item><item>
     <title>VS code SSH 접속 시 문제 해결</title>
     <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/VS-code-SSH-%EC%A0%91%EC%86%8D-%EC%8B%9C-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0</link>
     <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/VS-code-SSH-%EC%A0%91%EC%86%8D-%EC%8B%9C-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0</guid>
     <description>WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED! C:\Users\&lt;유저&gt;\.ssh 폴더의 known_hosts 파일을 지우자 WARNING: UNPROTECTED PRIVATE KEY FILE! 해당 OpenSSH 키 파일 속성 화면 보안 탭 들어가기 고급 클릭해서 ...</description>
-    <pubDate>Mon, 28 Oct 2024 04:13:44 GMT</pubDate>
+    <pubDate>Tue, 29 Oct 2024 15:02:08 GMT</pubDate>
   </item><item>
     <title>뭔가 문서로 분리하긴 뭐한</title>
     <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/%EB%AD%94%EA%B0%80-%EB%AC%B8%EC%84%9C%EB%A1%9C-%EB%B6%84%EB%A6%AC%ED%95%98%EA%B8%B4-%EB%AD%90%ED%95%9C</link>
     <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/%EB%AD%94%EA%B0%80-%EB%AC%B8%EC%84%9C%EB%A1%9C-%EB%B6%84%EB%A6%AC%ED%95%98%EA%B8%B4-%EB%AD%90%ED%95%9C</guid>
     <description>수학기호 danbi-ncsoft.github.io/study/2018/05/30/study-how_to_read_mathematical_expression.html 과학적 기수법 숫자를 1e+6 이런식으로 지수(e) 로 표기하는법 1e+6: 숫자 1 다음에 0이 6게 온다 1000000 2e+6: 2000000 ...</description>
-    <pubDate>Mon, 28 Oct 2024 04:13:44 GMT</pubDate>
+    <pubDate>Tue, 29 Oct 2024 15:02:08 GMT</pubDate>
   </item><item>
     <title>안드로이드 adb 무선 디버깅</title>
     <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-adb-%EB%AC%B4%EC%84%A0-%EB%94%94%EB%B2%84%EA%B9%85</link>
     <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-adb-%EB%AC%B4%EC%84%A0-%EB%94%94%EB%B2%84%EA%B9%85</guid>
     <description>...</description>
-    <pubDate>Mon, 28 Oct 2024 04:13:44 GMT</pubDate>
+    <pubDate>Tue, 29 Oct 2024 15:02:08 GMT</pubDate>
   </item><item>
     <title>헷갈리는 프로그래밍 연산</title>
     <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/%ED%97%B7%EA%B0%88%EB%A6%AC%EB%8A%94-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EC%97%B0%EC%82%B0</link>
     <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/%ED%97%B7%EA%B0%88%EB%A6%AC%EB%8A%94-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EC%97%B0%EC%82%B0</guid>
     <description>나눗셈 처리 1/2 를 프로그래밍 에서 하면 // 답 0 System.out.println(1/2); // 답 0.5 System.out.println((float) 1/2); 1%2 를 프로그래밍 에서 하면 // 답 1 // 입력된 수 그대로 나옴 System.out.println(1%2); 뺄/덧샘 할당 덧샘 할당에 연산식 있다면 ...</description>
-    <pubDate>Mon, 28 Oct 2024 04:13:44 GMT</pubDate>
+    <pubDate>Tue, 29 Oct 2024 15:02:08 GMT</pubDate>
   </item><item>
-    <title>NGINX 스터디</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/NGINX-%EC%8A%A4%ED%84%B0%EB%94%94</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/NGINX-%EC%8A%A4%ED%84%B0%EB%94%94</guid>
-    <description>...</description>
-    <pubDate>Mon, 28 Oct 2024 04:13:44 GMT</pubDate>
-  </item><item>
-    <title>네트워크 통신</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%ED%86%B5%EC%8B%A0</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%ED%86%B5%EC%8B%A0</guid>
-    <description>기본적인 용어 정리 네트워크 컴퓨터, 라우터, 스우치 등 여러 장비들이 서로 유/무선 으로 연결되어 데이터를 공유하는 시스템 네트워크는 단순히 내부 망(이더넷) 끼리의 통신이나, 외부 네트워크 끼리 통신하는 것 모두를 포함 이더넷 네트워크 기술의 일종. 공유기, 허브에 연결되어 여러 시스템들이 통신 가능한 네트워크 구조 인터넷 전 세계 네트워크가 서로 연결 되있는 전체 네트워크에 집합 따라서 외부 네트워크와의 통신 그 자체를 말함 네트워크 인터페이스 물리적인 렌카드 (사실상 하나의 PC) 보통은 렌포트가 하나인데 요즘 좋은것들은 2개씩 존재하는것도 있다 TCP/IP 계층 모든 네트워크 장비가 실제 물리적인 데이터 전송이 되기 전까지의 과정들을 추상화 한것 이론상 존재하는 OSI 7계층을 실제 구현한 것 보통은 컴퓨터 네트워크 통신에서는 TCP/IP로 많이 설명하는데 다른 네트워크 장비들은 설명하기 쉽다고 OSI 7으로 설명되는 경우가 많다 구조 응용계층 설명: 여긴 그냥 개발자가 개발하기 나름 프로토콜: HTTP, FTP, SSH 전송계층 설명: 데이터 전송할 수 있도록 해주는 계층 프로토콜: TCP, UDP 인터넷 계층 설명: IP 주소를 설정하여 목적지를 지정 프로토콜: IP, Port 네트워크 인터페이스 계층 (NIC 계층) 설명: 실제 물리적인 전송을 담당하는 계층 PC에 경우 보통은 공유기와 연결됨으로 공유기의 MAC 주소를 추가해준다 프로토콜: MAC, 이더넷 오해하면 큰일나는 것 각 계층에 역할(구현)은 네트워크 장비마다 다르다 보통 설명할때 전송하는 PC 입장에서 설명해놓은 경우가 많다 모든 네트워크 장비가 TCP/IP 계층을 따르긴 하는데 아래 설명한것 처럼 각각이 어떤역할을 하는지는 컴퓨터 라는 네트워크 장비를 예를 들어 설명한거다 예를들어 라우터는 TCP/IP 모델에 L2(인터넷) 계층에서 작동한다 이 말은 라우터는 TCP/IP 계층 구조에서 인터넷 계층 까지만 구현이 되어있는거다 PC가 NIC 계층에서 물리적으로 전송되어 그 정보를 라우터가 받았다 치자 네트워크 인터페이스 계층: 라우터는 PC NIC계층에서 온 프레임해더에 MAC 주소와 자신의 MAC 주소를 비교하게된다 여기서 동일한 MAC 주소가 나오면 인터넷 계층: 디캡술레이션 과정을 거쳐 최종 목적지IP 주소를 확인하게 된다 그 IP 주소를 라우팅 테이블을 참조하여 다음 목적지 주소를 확인 하고 네트워크 인터페이스 계층: 다음 목적지 MAC 주소를 결정하여 다시 프레임으로 캡슐레이션 해서 전송하게 된다 OSI 7계층 | TCP/IP 계층 #TCP/IP역할OSI 7전송단위L1네트워크 인터페이스Mac, RS-232C물리프레임L2데이터 링크L3인터넷라우팅, IP, ICMP, ARP, RARP네트워크패킷L4전송TCP, UDP, Port전송세그먼트L5세션L6표현L7응용HTTP, SSH, FTP, RIP, OSPF, RIP응용 수신자PC 입장에서 본 TCP/IP 전송 구조 &amp; 단위 인캡술레이션: 데이터 전송시 각계층을 지날때 마다 각자 해더가 하나씩 붙어가는것 디캡술레이션: 데이터 수신시 각 계층을 지날때 마다 캡슐화된 데이터를 복원하는 것 소켓 스트림 (응용계층) 아래 전송계층단은 OS 커널영역 인데 이걸 파일형태로 추상화 해서 개발자가 사용할수 있게끔 인터페이스화 한게 소켓이다 우리가 쓰는 WinSocket 이나 이런건 그 인터페이스의 구현체 인거고 사실상 모든 네트워크 데이터는 소켓스트림 이다 세그먼트 (TCP 계층) 소켓에서 날라온 데이터가 일정크기 만큼 잘려서 TCP 단에 들어오게 된다 (세그먼트화) 그럼 그 잘린 데이터에 TCP 해더를 붙이게 되면 이게 세그먼트다 세그먼트 관점에서는 TCP해더 쪽이 해더, 데이터 영역이 페이로드 그럼 만들어진 세그먼트를 IP단에 전송하면 여기 작업은 끝난다 MSS (Maximum Segment Size) 최대 세그먼트 사이즈 해당 사이즈는 패킷에 크기 에 기초에서 잘려지는데 당연하지만 패킷에 크기보다 작음 IP 해더 20바이트, TCP 해더 20바이트 해서 MSS의 최대 크기는 패킷크기-40 이다 패킷 (IP 단) 실제 전송될 데이터 덩어리 패킷은 세그먼트를 인터넷에서 전송가능한 형태로 변환한게 패킷이다 TCP 단에서 전달받은 세그먼트+IP 해더 이것이 패킷이다 IP 해더 = 해더, 세그먼트 = 페이로드 페킷을 TCP 단으로 보내는 경우 세그먼트를 디켑슐레이션 과정을 통해 TCP해더를 얻게된다 즉 세그먼트=패킷에 페이로드 영역이다 라고 볼 수 있다 MTU (Maximum Transmission Unit) 패킷에 최대 크기 별일없으면 MTU=1500바이트 그니까 하나의 패킷으로 전송가능한 최대 크기는 1500바이트 라는 뜻 사실상 해더 제외하면 실제 순수데이터 만으로는 1460바이트가된다 더 큰 사이즈를 전송하고 싶으면 위 세그먼트 단계에서 잘게잘게 잘려서 여러 패킷으로 나오게 되어 전송이 된다 프레임 (MAC 주소단) 네트워크가 실제로 데이터를 전송할때 쓰는 단위 이더넷 프레임 이라고 하기도 함 IP 단에서 전달받은 패킷+ 프레임 해더 프레임 해더 = 해더, 패킷 = 페이로드 목적지, 소스 실제 MAC 주소를 담고 있다 여기서 MAC 주소는 최종 전달자가 아니다 만약 PC가 공유기(라우터)와 연결되어있다 치면 해당 공유기의 MAC 주소인거다 FCS: 프레임의 무결성을 확인하기 위한 오류 검출 코드 여기서 IPv4, IPv6 판단이 이루어 진다 소켓 통신 네트워크들을 연결하는 하나의 접점을 제공하는 기술.</description>
-    <pubDate>Mon, 28 Oct 2024 04:13:44 GMT</pubDate>
-  </item><item>
-    <title>비동기와 멀티스레드 차이</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/%EB%B9%84%EB%8F%99%EA%B8%B0%EC%99%80-%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C-%EC%B0%A8%EC%9D%B4</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/%EB%B9%84%EB%8F%99%EA%B8%B0%EC%99%80-%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C-%EC%B0%A8%EC%9D%B4</guid>
-    <description> 참고자료 비동기와 멀티스레딩 멀티 스레드와 단일 스레드, 동기와 비동기 제대로 알고 쓰시나요? (feat. 성능 개선) 비동기 실생활 예 나 혼자 방 청소와, 빨래를 한다고 생각해보자. 비동기적 접근방법은 방청소 10% 만 해놓고 빨래 10% 하러가고 다시 와서 방청소 20 % 하고 동기적으로 생각하자면 방 청소 100% 완료 후 빨래를 할 것이다.</description>
-    <pubDate>Mon, 28 Oct 2024 04:13:44 GMT</pubDate>
-  </item><item>
-    <title>추후 스터디 할 것들 모음</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/%EC%B6%94%ED%9B%84-%EC%8A%A4%ED%84%B0%EB%94%94-%ED%95%A0-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/%EC%B6%94%ED%9B%84-%EC%8A%A4%ED%84%B0%EB%94%94-%ED%95%A0-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C</guid>
-    <description>WebView 대표적인 하이브리드 앱 개발 방식 서버 oauth 인증/인가 백엔드 JWT 보안 인증 디자인 패턴 스터디 MVC 뭐 등등 메모리 버스 함수형 프로그래밍 호이스팅 GCC 컴파일 단계 clearwater92.tistory.com/39 자바lint www.reddit.com/r/java/comments/huht46/what_do_you_guys_use_for_linting/ ...</description>
-    <pubDate>Mon, 28 Oct 2024 04:13:44 GMT</pubDate>
-  </item><item>
-    <title>쿠키 &amp; 세션</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/%EC%BF%A0%ED%82%A4--and--%EC%84%B8%EC%85%98</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/%EC%BF%A0%ED%82%A4--and--%EC%84%B8%EC%85%98</guid>
-    <description>HTTP 에서는 서버측 쿠키 설정은 불가하다 참고자료 사이트 간 요청 위조 (CSRF) MDN 문서 브라우저 쿠키와 SameSite 속성 정확히 말하면 클라이언트와 서버가 다른 호스트에 존재한다면 서버에서 쿠키설정은 불가하다 CSRP 공격이라고 해서 쿠키를 탈취해서 사용자 정보를 얻을 수 있으므로 브라우저 측에서 서드파트 쿠키(웹 페이지와 다른 ...</description>
-    <pubDate>Mon, 28 Oct 2024 04:13:44 GMT</pubDate>
-  </item><item>
-    <title>파일 링크</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/%ED%8C%8C%EC%9D%BC-%EB%A7%81%ED%81%AC</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/%ED%8C%8C%EC%9D%BC-%EB%A7%81%ED%81%AC</guid>
-    <description>...</description>
-    <pubDate>Mon, 28 Oct 2024 04:13:44 GMT</pubDate>
+    <title>기계학습프로그래밍</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EA%B0%95%EC%9D%98%ED%95%84%EA%B8%B0/%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EA%B0%95%EC%9D%98%ED%95%84%EA%B8%B0/%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D</guid>
+    <description>3주차 ppt 13 페이지 주목 .</description>
+    <pubDate>Tue, 29 Oct 2024 15:02:08 GMT</pubDate>
   </item>
     </channel>
   </rss>
