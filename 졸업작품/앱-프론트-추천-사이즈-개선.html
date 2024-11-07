@@ -56,7 +56,7 @@
 <span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">	// 나머지 값 생략</span></span>
 <span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">	</span></span>
 <span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">	===</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">수선 가격</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">===</span></span>
-<span data-line><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">	&quot;fitprice`: 2000</span><span style="--shiki-light:#B31D28;--shiki-dark:#FDAEB7;--shiki-light-font-style:italic;--shiki-dark-font-style:italic;">,</span></span>
+<span data-line><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">	&quot;fitprice&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">2000</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
 <span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">	</span></span>
 <span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">	===</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">해당 의류가 상의인 경우</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">===</span></span>
 <span data-line><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">	&quot;itemTopInfo&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [</span></span>
@@ -196,6 +196,11 @@
 <li><strong>상위에 <code>itemType</code>은 상품 자체에 대한 타입입니다(상의, 하의, 정장 등)</strong></li>
 </ul>
 </li>
+<li><strong>추가</strong>:
+<ul>
+<li><code>pitPrice</code> 값을 제품 상세 에서 나온 <code>pitPrice</code> 값으로 추가해 주세요</li>
+</ul>
+</li>
 </ul>
 <figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="js" data-theme="github-light github-dark"><code data-language="js" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">{</span></span>
 <span data-line><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">    &quot;itemKey&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">1</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
@@ -213,6 +218,9 @@
 <span data-line> </span>
 <span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">	===</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">만약 수선 없으면</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">===</span></span>
 <span data-line><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">	&quot;pitItemCart&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">null</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">	===</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">제품 상세 </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">API</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 에서 나온 fitprice 값으로 추가 </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">===</span></span>
+<span data-line><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">	&quot;pitPrice&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">2000</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">// 수선가격</span></span>
 <span data-line> </span>
 <span data-line><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">    &quot;pitItemCart&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: {</span></span>
 <span data-line><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">		&quot;itemType&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;상의&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">// 수선 타입 (상의, 하의)</span></span>
@@ -237,6 +245,11 @@
 <ul>
 <li>값을 아래처럼 만들어서 navigate param 으로 array로 전달 하시면 됩니다</li>
 <li><a href="https://github.com/fit-pin/fitpin_frontend/blob/e02c58a3ba48996d4a63b7d35f32e11004070b2a/android/app/src/screens/Main/ProductPage.tsx#L146C9-L146C24" class="external">handlePurchase()<svg aria-hidden="true" class="external-icon" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> 수정 하시면 됩니다</li>
+<li><strong>추가</strong>:
+<ul>
+<li><code>pitPrice</code> 값을 제품 상세 에서 나온 <code>pitPrice</code> 값으로 추가해 주세요!</li>
+</ul>
+</li>
 </ul>
 <figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="js" data-theme="github-light github-dark"><code data-language="js" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">const</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> data</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> [</span></span>
 <span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">	 {</span></span>
@@ -248,7 +261,10 @@
 <span data-line> </span>
 <span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">		===수선여부===</span></span>
 <span data-line><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">		&quot;pitStatus&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">true</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">//false</span></span>
-<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">	    </span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">		===제품 상세 API 에서 나온 fitprice 값으로 추가 ===</span></span>
+<span data-line><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">		&quot;pitPrice&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">2000</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">// 수선가격</span></span>
+<span data-line> </span>
 <span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">		===상의 수선인 경우===</span></span>
 <span data-line><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">			&quot;pitTopInfo&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: { </span></span>
 <span data-line><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">			&quot;itemHeight&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">73</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">// 총장</span></span>
