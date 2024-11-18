@@ -1,4 +1,4 @@
-# My-Study-WebSite
+# lseoksee.github.io
 
 Obsidian 으로 스터디 한것들을 웹으로 배포합니다
 
