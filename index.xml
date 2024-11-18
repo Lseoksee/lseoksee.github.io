@@ -6,65 +6,65 @@
       <description>최근 10 건 on Hi! My Name is...</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
-    <title>비동기와 멀티스레드 차이</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/%EB%B9%84%EB%8F%99%EA%B8%B0%EC%99%80-%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C-%EC%B0%A8%EC%9D%B4</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/%EB%B9%84%EB%8F%99%EA%B8%B0%EC%99%80-%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C-%EC%B0%A8%EC%9D%B4</guid>
-    <description> 참고자료 비동기와 멀티스레딩 멀티 스레드와 단일 스레드, 동기와 비동기 제대로 알고 쓰시나요? (feat. 성능 개선) 비동기 실생활 예 나 혼자 방 청소와, 빨래를 한다고 생각해보자. 비동기적 접근방법은 방청소 10% 만 해놓고 빨래 10% 하러가고 다시 와서 방청소 20 % 하고 동기적으로 생각하자면 방 청소 100% 완료 후 빨래를 할 것이다.</description>
-    <pubDate>Mon, 18 Nov 2024 08:03:03 GMT</pubDate>
-  </item><item>
-    <title>추후 스터디 할 것들 모음</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/%EC%B6%94%ED%9B%84-%EC%8A%A4%ED%84%B0%EB%94%94-%ED%95%A0-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/%EC%B6%94%ED%9B%84-%EC%8A%A4%ED%84%B0%EB%94%94-%ED%95%A0-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C</guid>
-    <description>WebView 대표적인 하이브리드 앱 개발 방식 서버 oauth 인증/인가 백엔드 JWT 보안 인증 디자인 패턴 스터디 MVC 뭐 등등 메모리 버스 함수형 프로그래밍 호이스팅 GCC 컴파일 단계 clearwater92.tistory.com/39 자바lint www.reddit.com/r/java/comments/huht46/what_do_you_guys_use_for_linting/ ...</description>
-    <pubDate>Mon, 18 Nov 2024 08:03:03 GMT</pubDate>
-  </item><item>
-    <title>쿠키 &amp; 세션</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/%EC%BF%A0%ED%82%A4--and--%EC%84%B8%EC%85%98</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/%EC%BF%A0%ED%82%A4--and--%EC%84%B8%EC%85%98</guid>
-    <description>HTTP 에서는 서버측 쿠키 설정은 불가하다 참고자료 사이트 간 요청 위조 (CSRF) MDN 문서 브라우저 쿠키와 SameSite 속성 정확히 말하면 클라이언트와 서버가 다른 호스트에 존재한다면 서버에서 쿠키설정은 불가하다 CSRP 공격이라고 해서 쿠키를 탈취해서 사용자 정보를 얻을 수 있으므로 브라우저 측에서 서드파트 쿠키(웹 페이지와 다른 ...</description>
-    <pubDate>Mon, 18 Nov 2024 08:03:03 GMT</pubDate>
-  </item><item>
-    <title>파일 링크</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/%ED%8C%8C%EC%9D%BC-%EB%A7%81%ED%81%AC</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8A%A4%ED%84%B0%EB%94%94/%ED%8C%8C%EC%9D%BC-%EB%A7%81%ED%81%AC</guid>
-    <description>...</description>
-    <pubDate>Mon, 18 Nov 2024 08:03:03 GMT</pubDate>
-  </item><item>
-    <title>기계학습프로그래밍</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8B%9C%ED%97%98-%EC%A0%95%EB%A6%AC/3-2/%EC%A4%91%EA%B0%84---%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8B%9C%ED%97%98-%EC%A0%95%EB%A6%AC/3-2/%EC%A4%91%EA%B0%84---%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D</guid>
-    <description>...</description>
-    <pubDate>Mon, 18 Nov 2024 08:03:03 GMT</pubDate>
-  </item><item>
     <title>시스템서버운영 중간</title>
     <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8B%9C%ED%97%98-%EC%A0%95%EB%A6%AC/3-2/%EC%A4%91%EA%B0%84---%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%84%9C%EB%B2%84%EC%9A%B4%EC%98%81/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%84%9C%EB%B2%84%EC%9A%B4%EC%98%81-%EC%A4%91%EA%B0%84</link>
     <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8B%9C%ED%97%98-%EC%A0%95%EB%A6%AC/3-2/%EC%A4%91%EA%B0%84---%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%84%9C%EB%B2%84%EC%9A%B4%EC%98%81/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%84%9C%EB%B2%84%EC%9A%B4%EC%98%81-%EC%A4%91%EA%B0%84</guid>
     <description>...</description>
-    <pubDate>Mon, 18 Nov 2024 08:03:03 GMT</pubDate>
+    <pubDate>Mon, 18 Nov 2024 08:08:28 GMT</pubDate>
   </item><item>
     <title>예술과 인성 중간 정리</title>
     <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8B%9C%ED%97%98-%EC%A0%95%EB%A6%AC/3-2/%EC%A4%91%EA%B0%84---%EC%98%88%EC%88%A0%EA%B3%BC%EC%9D%B8%EC%84%B1/%EC%98%88%EC%88%A0%EA%B3%BC-%EC%9D%B8%EC%84%B1-%EC%A4%91%EA%B0%84-%EC%A0%95%EB%A6%AC</link>
     <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8B%9C%ED%97%98-%EC%A0%95%EB%A6%AC/3-2/%EC%A4%91%EA%B0%84---%EC%98%88%EC%88%A0%EA%B3%BC%EC%9D%B8%EC%84%B1/%EC%98%88%EC%88%A0%EA%B3%BC-%EC%9D%B8%EC%84%B1-%EC%A4%91%EA%B0%84-%EC%A0%95%EB%A6%AC</guid>
     <description>...</description>
-    <pubDate>Mon, 18 Nov 2024 08:03:03 GMT</pubDate>
+    <pubDate>Mon, 18 Nov 2024 08:08:28 GMT</pubDate>
   </item><item>
     <title>컴퓨터보안개론 중간</title>
     <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8B%9C%ED%97%98-%EC%A0%95%EB%A6%AC/3-2/%EC%A4%91%EA%B0%84---%EC%BB%B4%ED%93%A8%ED%84%B0%EB%B3%B4%EC%95%88%EA%B0%9C%EB%A1%A0/%EC%BB%B4%ED%93%A8%ED%84%B0%EB%B3%B4%EC%95%88%EA%B0%9C%EB%A1%A0-%EC%A4%91%EA%B0%84</link>
     <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8B%9C%ED%97%98-%EC%A0%95%EB%A6%AC/3-2/%EC%A4%91%EA%B0%84---%EC%BB%B4%ED%93%A8%ED%84%B0%EB%B3%B4%EC%95%88%EA%B0%9C%EB%A1%A0/%EC%BB%B4%ED%93%A8%ED%84%B0%EB%B3%B4%EC%95%88%EA%B0%9C%EB%A1%A0-%EC%A4%91%EA%B0%84</guid>
     <description>연습문제 정리 해킹: 남의 컴퓨터 시스템에 허락 없이 침입하여 데이터를 빼내거나 파괴하는 일 보안의 3대요소: 기밀성: 인가된 사용자만 정보자산의 접근 무결성: 적절한 권한을 가진 사용자가 인가된 방법으로만 정보 변경 가용성: 필요한 시점에 정보 자산에 접근 가능하도록 세션: 사용자와 시스템 사이 또는 두 시스템 사이의 활성화된 접속 최초 이메일: 1970 ...</description>
-    <pubDate>Mon, 18 Nov 2024 08:03:03 GMT</pubDate>
+    <pubDate>Mon, 18 Nov 2024 08:08:28 GMT</pubDate>
+  </item><item>
+    <title>Apache Tomcat 관련</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Apache-Tomcat-%EA%B4%80%EB%A0%A8</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Apache-Tomcat-%EA%B4%80%EB%A0%A8</guid>
+    <description>UTF-8 설정 server.xml Connector 태그 안에 해당 구문 추가 &lt;Connector port=&quot;8080&quot; protocol=&quot;HTTP/1.1&quot; connectionTimeout=&quot;20000&quot; redirectPort=&quot;8443&quot; ...</description>
+    <pubDate>Mon, 18 Nov 2024 08:08:28 GMT</pubDate>
+  </item><item>
+    <title>CLI 옵션 국룰</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/CLI-%EC%98%B5%EC%85%98-%EA%B5%AD%EB%A3%B0</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/CLI-%EC%98%B5%EC%85%98-%EA%B5%AD%EB%A3%B0</guid>
+    <description>...</description>
+    <pubDate>Mon, 18 Nov 2024 08:08:28 GMT</pubDate>
   </item><item>
     <title>Git 로그인</title>
     <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Git-%EB%A1%9C%EA%B7%B8%EC%9D%B8</link>
     <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Git-%EB%A1%9C%EA%B7%B8%EC%9D%B8</guid>
     <description>초기 로그인 git config —global user.name Lseoksee git config —global user.email da864268@naver.com 토큰 로그인 참고 GitHub 토큰 영구 로그인 echo https://&lt;Username&gt;:&lt;토큰&gt;@github.com ...</description>
-    <pubDate>Mon, 18 Nov 2024 08:03:03 GMT</pubDate>
+    <pubDate>Mon, 18 Nov 2024 08:08:28 GMT</pubDate>
+  </item><item>
+    <title>Google API 사용법</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Google-API-%EC%82%AC%EC%9A%A9%EB%B2%95</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Google-API-%EC%82%AC%EC%9A%A9%EB%B2%95</guid>
+    <description>...</description>
+    <pubDate>Mon, 18 Nov 2024 08:08:28 GMT</pubDate>
+  </item><item>
+    <title>Gradle 스크립트 한글 깨짐 문제 해결</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Gradle-%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%ED%95%9C%EA%B8%80-%EA%B9%A8%EC%A7%90-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Gradle-%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%ED%95%9C%EA%B8%80-%EA%B9%A8%EC%A7%90-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0</guid>
+    <description>원인 Gradle 스크립트의 기반이 되는 gradle-wrapper.jar 의 기본 출력 인코딩 셋이 UTF-8 이다 그러나 윈도우 콘솔 환경에 기본 인코딩 셋은 MS949(CP-949 | EUC-KR)임 참고로 리눅스 Bash는 UTF-8이 기본 인것으로 안다 그러다 보니 Gradle 스크립트는 UTF-8로 출력되고 윈도우는 그걸 MS949 ...</description>
+    <pubDate>Mon, 18 Nov 2024 08:08:28 GMT</pubDate>
+  </item><item>
+    <title>JVM Args</title>
+    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/JVM-Args</link>
+    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/JVM-Args</guid>
+    <description>...</description>
+    <pubDate>Mon, 18 Nov 2024 08:08:28 GMT</pubDate>
   </item><item>
     <title>Obsidian Publish 방법들</title>
     <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Obsidian-Publish-%EB%B0%A9%EB%B2%95%EB%93%A4</link>
     <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Obsidian-Publish-%EB%B0%A9%EB%B2%95%EB%93%A4</guid>
     <description> Flowershow 이건 next.js라 github page 로 호스팅 불가 quartz Obsidian Vault to Hugo Content 이친구는 아예 Obsidian MarkDown을 변환하는것들 참고 디자인 iingang.github.io/ .</description>
-    <pubDate>Mon, 18 Nov 2024 08:03:03 GMT</pubDate>
+    <pubDate>Mon, 18 Nov 2024 08:08:28 GMT</pubDate>
   </item>
     </channel>
   </rss>
