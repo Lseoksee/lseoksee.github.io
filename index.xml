@@ -2,69 +2,69 @@
 <rss version="2.0">
     <channel>
       <title>Hi! My Name is...</title>
-      <link>https://https://lseoksee.github.io/My-Study-WebSite</link>
+      <link>https://https://lseoksee.github.io</link>
       <description>최근 10 건 on Hi! My Name is...</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
     <title>컴퓨터보안개론 중간</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8B%9C%ED%97%98-%EC%A0%95%EB%A6%AC/3-2/%EC%A4%91%EA%B0%84---%EC%BB%B4%ED%93%A8%ED%84%B0%EB%B3%B4%EC%95%88%EA%B0%9C%EB%A1%A0/%EC%BB%B4%ED%93%A8%ED%84%B0%EB%B3%B4%EC%95%88%EA%B0%9C%EB%A1%A0-%EC%A4%91%EA%B0%84</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%8B%9C%ED%97%98-%EC%A0%95%EB%A6%AC/3-2/%EC%A4%91%EA%B0%84---%EC%BB%B4%ED%93%A8%ED%84%B0%EB%B3%B4%EC%95%88%EA%B0%9C%EB%A1%A0/%EC%BB%B4%ED%93%A8%ED%84%B0%EB%B3%B4%EC%95%88%EA%B0%9C%EB%A1%A0-%EC%A4%91%EA%B0%84</guid>
-    <description>연습문제 정리 해킹: 남의 컴퓨터 시스템에 허락 없이 침입하여 데이터를 빼내거나 파괴하는 일 보안의 3대요소: 기밀성: 인가된 사용자만 정보자산의 접근 무결성: 적절한 권한을 가진 사용자가 인가된 방법으로만 정보 변경 가용성: 필요한 시점에 정보 자산에 접근 가능하도록 세션: 사용자와 시스템 사이 또는 두 시스템 사이의 활성화된 접속 최초 이메일: 1970 ...</description>
-    <pubDate>Tue, 22 Apr 2025 04:23:42 GMT</pubDate>
+    <link>https://https://lseoksee.github.io/%EC%8B%9C%ED%97%98-%EC%A0%95%EB%A6%AC/3-2/%EC%A4%91%EA%B0%84---%EC%BB%B4%ED%93%A8%ED%84%B0%EB%B3%B4%EC%95%88%EA%B0%9C%EB%A1%A0/%EC%BB%B4%ED%93%A8%ED%84%B0%EB%B3%B4%EC%95%88%EA%B0%9C%EB%A1%A0-%EC%A4%91%EA%B0%84</link>
+    <guid>https://https://lseoksee.github.io/%EC%8B%9C%ED%97%98-%EC%A0%95%EB%A6%AC/3-2/%EC%A4%91%EA%B0%84---%EC%BB%B4%ED%93%A8%ED%84%B0%EB%B3%B4%EC%95%88%EA%B0%9C%EB%A1%A0/%EC%BB%B4%ED%93%A8%ED%84%B0%EB%B3%B4%EC%95%88%EA%B0%9C%EB%A1%A0-%EC%A4%91%EA%B0%84</guid>
+    <description>연습문제 정리 해킹: 남의 컴퓨터 시스템에 허락 없이 침입하여 데이터를 빼내거나 파괴하는 일 보안의 3대요소: 기밀성: 인가된 사용자만 정보자산의 접근 무결성: 적절한 권한을 가진 사용자가 인가된 방법으로만 정보 변경 가용성: 필요한 시점에 정보 자산에 접근 가능하도록 세션: 사용자와 시스템 사이 또는 두 시스템 사이의 활성화된 접속 최초 이메일: 1970 snmp: IP 기반 네트워크상의 각 호스트로부터 정기적으로 여러 관리 정보 SFP: 함수 호출시 스택 프레임 구조를 유지하기 위해 저장되는 이전 함수 프레임 포인터 MAC 주소...</description>
+    <pubDate>Tue, 22 Apr 2025 12:15:27 GMT</pubDate>
   </item><item>
     <title>CPU 아키텍쳐 명칭</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/CPU-%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90-%EB%AA%85%EC%B9%AD</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/CPU-%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90-%EB%AA%85%EC%B9%AD</guid>
+    <link>https://https://lseoksee.github.io/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/CPU-%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90-%EB%AA%85%EC%B9%AD</link>
+    <guid>https://https://lseoksee.github.io/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/CPU-%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90-%EB%AA%85%EC%B9%AD</guid>
     <description>x64 = x86_64 = amd64 x86 = i686 arm = arm arm64 = aarch64.</description>
-    <pubDate>Tue, 22 Apr 2025 04:23:42 GMT</pubDate>
+    <pubDate>Tue, 22 Apr 2025 12:15:27 GMT</pubDate>
   </item><item>
     <title>Docker 마인크래프트 Paper 버킷시작</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Docker-%EB%A7%88%EC%9D%B8%ED%81%AC%EB%9E%98%ED%94%84%ED%8A%B8-Paper-%EB%B2%84%ED%82%B7%EC%8B%9C%EC%9E%91</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Docker-%EB%A7%88%EC%9D%B8%ED%81%AC%EB%9E%98%ED%94%84%ED%8A%B8-Paper-%EB%B2%84%ED%82%B7%EC%8B%9C%EC%9E%91</guid>
-    <description>...</description>
-    <pubDate>Tue, 22 Apr 2025 04:23:42 GMT</pubDate>
+    <link>https://https://lseoksee.github.io/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Docker-%EB%A7%88%EC%9D%B8%ED%81%AC%EB%9E%98%ED%94%84%ED%8A%B8-Paper-%EB%B2%84%ED%82%B7%EC%8B%9C%EC%9E%91</link>
+    <guid>https://https://lseoksee.github.io/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Docker-%EB%A7%88%EC%9D%B8%ED%81%AC%EB%9E%98%ED%94%84%ED%8A%B8-Paper-%EB%B2%84%ED%82%B7%EC%8B%9C%EC%9E%91</guid>
+    <description> 참고 Minecraft Server on Docker (Java Edition) docker run -d -it -p 25565:25565 -e EULA=TRUE \ -e TYPE=PAPER \ -e MEMORY=&lt;램용량&gt; \ -e VERSION=&lt;버전&gt; \ --name minecraft itzg/minecraft-server.</description>
+    <pubDate>Tue, 22 Apr 2025 12:15:27 GMT</pubDate>
   </item><item>
     <title>FFmpeg 빌드</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/FFmpeg-%EB%B9%8C%EB%93%9C</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/FFmpeg-%EB%B9%8C%EB%93%9C</guid>
-    <description> FFmpeg + fdk-aac + libmp3lame 빌드 1. MSYS2 설치 윈도우에서 유닉스/리눅스 시스템을 구현한 프로그램 다만 정말 리눅스로 굴러가는건 아니라서 모든 바이너리가 exe로 구현된다. 리눅스와 명령어 호환성 등으로 C/C++ 크로스 플렛폼 프로그램에 윈도우용 배포 많이 사용된다.</description>
-    <pubDate>Tue, 22 Apr 2025 04:23:42 GMT</pubDate>
+    <link>https://https://lseoksee.github.io/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/FFmpeg-%EB%B9%8C%EB%93%9C</link>
+    <guid>https://https://lseoksee.github.io/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/FFmpeg-%EB%B9%8C%EB%93%9C</guid>
+    <description> FFmpeg + fdk-aac + libmp3lame 빌드 1. MSYS2 설치 윈도우에서 유닉스/리눅스 시스템을 구현한 프로그램 다만 정말 리눅스로 굴러가는건 아니라서 모든 바이너리가 exe로 구현된다.</description>
+    <pubDate>Tue, 22 Apr 2025 12:15:27 GMT</pubDate>
   </item><item>
     <title>Git 로그인</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Git-%EB%A1%9C%EA%B7%B8%EC%9D%B8</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Git-%EB%A1%9C%EA%B7%B8%EC%9D%B8</guid>
-    <description>초기 로그인 git config —global user.name Lseoksee git config —global user.email da864268@naver.com 토큰 로그인 참고 GitHub 토큰 영구 로그인 echo https://&lt;Username&gt;:&lt;토큰&gt;@github.com ...</description>
-    <pubDate>Tue, 22 Apr 2025 04:23:42 GMT</pubDate>
+    <link>https://https://lseoksee.github.io/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Git-%EB%A1%9C%EA%B7%B8%EC%9D%B8</link>
+    <guid>https://https://lseoksee.github.io/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Git-%EB%A1%9C%EA%B7%B8%EC%9D%B8</guid>
+    <description>초기 로그인 git config —global user.name Lseoksee git config —global user.email da864268@naver.com 토큰 로그인 참고 GitHub 토큰 영구 로그인 echo https://&lt;Username&gt;:&lt;토큰&gt;@github.com &gt; ~/.git-credentials git config --global credential.helper cache 임시 로그인 일단 Private 리포지토리나, push 작업을 한번 시도하면 유저이름이랑, 패스워드 물어봄...</description>
+    <pubDate>Tue, 22 Apr 2025 12:15:27 GMT</pubDate>
   </item><item>
     <title>Google API 사용법</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Google-API-%EC%82%AC%EC%9A%A9%EB%B2%95</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Google-API-%EC%82%AC%EC%9A%A9%EB%B2%95</guid>
-    <description>...</description>
-    <pubDate>Tue, 22 Apr 2025 04:23:42 GMT</pubDate>
+    <link>https://https://lseoksee.github.io/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Google-API-%EC%82%AC%EC%9A%A9%EB%B2%95</link>
+    <guid>https://https://lseoksee.github.io/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Google-API-%EC%82%AC%EC%9A%A9%EB%B2%95</guid>
+    <description> 구글 클라우드 OAuth 동의 화면으로 이동하여 앱 수정을 클릭 맨 밑에 저장 후 계속을 클릭 범위 추가 또는 삭제를 눌러 추가 해야할 범위를 추가 하고 저장한다 참고 accounts.google.com/o/oauth2/v2/auth로 로그인 요청해서 access token을 발급해야한다.</description>
+    <pubDate>Tue, 22 Apr 2025 12:15:27 GMT</pubDate>
   </item><item>
     <title>Musixmatch 가사 수정 불가 해결</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Musixmatch-%EA%B0%80%EC%82%AC-%EC%88%98%EC%A0%95-%EB%B6%88%EA%B0%80-%ED%95%B4%EA%B2%B0</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Musixmatch-%EA%B0%80%EC%82%AC-%EC%88%98%EC%A0%95-%EB%B6%88%EA%B0%80-%ED%95%B4%EA%B2%B0</guid>
-    <description>가사 페이지 에서 해당 콘텐츠를 표시할 권한 이 없다 거나, 실제 Spotify에 곡이 존재하여도 곡을 못 불러 와서 동기화가 진행 불가할 때 사용하는법 curators.musixmatch.com/tool 값&gt;&amp;mode=sync&amp;player=spotify&amp;track_id=&lt;Spotify곡 ...</description>
-    <pubDate>Tue, 22 Apr 2025 04:23:42 GMT</pubDate>
+    <link>https://https://lseoksee.github.io/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Musixmatch-%EA%B0%80%EC%82%AC-%EC%88%98%EC%A0%95-%EB%B6%88%EA%B0%80-%ED%95%B4%EA%B2%B0</link>
+    <guid>https://https://lseoksee.github.io/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Musixmatch-%EA%B0%80%EC%82%AC-%EC%88%98%EC%A0%95-%EB%B6%88%EA%B0%80-%ED%95%B4%EA%B2%B0</guid>
+    <description>가사 페이지 에서 해당 콘텐츠를 표시할 권한 이 없다 거나, 실제 Spotify에 곡이 존재하여도 곡을 못 불러 와서 동기화가 진행 불가할 때 사용하는법 curators.musixmatch.com/tool 값&gt;&amp;mode=sync&amp;player=spotify&amp;track_id=&lt;Spotify곡 ID&gt;&amp;proofread=true lyrics_abstrack 값 일단 Musixmatch에서 문제가 발생하는 곡에 가사 페이지를 들어가서 F5 한번 눌러 세로고침 개발자 탭 열어서 요소 에서 lyric...</description>
+    <pubDate>Tue, 22 Apr 2025 12:15:27 GMT</pubDate>
   </item><item>
     <title>Obsidian Publish 방법들</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Obsidian-Publish-%EB%B0%A9%EB%B2%95%EB%93%A4</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Obsidian-Publish-%EB%B0%A9%EB%B2%95%EB%93%A4</guid>
+    <link>https://https://lseoksee.github.io/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Obsidian-Publish-%EB%B0%A9%EB%B2%95%EB%93%A4</link>
+    <guid>https://https://lseoksee.github.io/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/Obsidian-Publish-%EB%B0%A9%EB%B2%95%EB%93%A4</guid>
     <description> Flowershow 이건 next.js라 github page 로 호스팅 불가 quartz Obsidian Vault to Hugo Content 이친구는 아예 Obsidian MarkDown을 변환하는것들 참고 디자인 iingang.github.io/ .</description>
-    <pubDate>Tue, 22 Apr 2025 04:23:42 GMT</pubDate>
+    <pubDate>Tue, 22 Apr 2025 12:15:27 GMT</pubDate>
   </item><item>
     <title>VS code SSH 접속 시 문제 해결</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/VS-code-SSH-%EC%A0%91%EC%86%8D-%EC%8B%9C-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/VS-code-SSH-%EC%A0%91%EC%86%8D-%EC%8B%9C-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0</guid>
-    <description>WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED! C:\Users\&lt;유저&gt;\.ssh 폴더의 known_hosts 파일을 지우자 WARNING: UNPROTECTED PRIVATE KEY FILE! 해당 OpenSSH 키 파일 속성 화면 보안 탭 들어가기 고급 클릭해서 ...</description>
-    <pubDate>Tue, 22 Apr 2025 04:23:42 GMT</pubDate>
+    <link>https://https://lseoksee.github.io/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/VS-code-SSH-%EC%A0%91%EC%86%8D-%EC%8B%9C-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0</link>
+    <guid>https://https://lseoksee.github.io/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/VS-code-SSH-%EC%A0%91%EC%86%8D-%EC%8B%9C-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0</guid>
+    <description>WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED! C:\Users\&lt;유저&gt;\.ssh 폴더의 known_hosts 파일을 지우자 WARNING: UNPROTECTED PRIVATE KEY FILE! 해당 OpenSSH 키 파일 속성 화면 보안 탭 들어가기 고급 클릭해서 상속사용안함 클릭 이후 현재 사용자만 추가하여 저장 .</description>
+    <pubDate>Tue, 22 Apr 2025 12:15:27 GMT</pubDate>
   </item><item>
     <title>개발 꿀팁</title>
-    <link>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/%EA%B0%9C%EB%B0%9C-%EA%BF%80%ED%8C%81</link>
-    <guid>https://https:/lseoksee.github.io/My-Study-WebSite/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/%EA%B0%9C%EB%B0%9C-%EA%BF%80%ED%8C%81</guid>
-    <description>특정 프로그램에 설치 위치를 알고싶을 경우 윈도우 기준으로 레지스트리 값을 탐색하면 됨 설치 위치는 달라지더라도 레지스트리에 주소값은 동일하기 때문 보통 프로그램들은 해당 래지값에 존재함 컴퓨터\HKEY_CURRENT_USER\SOFTWARE 컴퓨터\HKEY_LOCAL_MACHINE\SOFTWARE 컴퓨터\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node ...</description>
-    <pubDate>Tue, 22 Apr 2025 04:23:42 GMT</pubDate>
+    <link>https://https://lseoksee.github.io/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/%EA%B0%9C%EB%B0%9C-%EA%BF%80%ED%8C%81</link>
+    <guid>https://https://lseoksee.github.io/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%83%EB%93%A4-%EB%AA%A8%EC%9D%8C/%EA%B0%9C%EB%B0%9C-%EA%BF%80%ED%8C%81</guid>
+    <description>특정 프로그램에 설치 위치를 알고싶을 경우 윈도우 기준으로 레지스트리 값을 탐색하면 됨 설치 위치는 달라지더라도 레지스트리에 주소값은 동일하기 때문 보통 프로그램들은 해당 래지값에 존재함 컴퓨터\HKEY_CURRENT_USER\SOFTWARE 컴퓨터\HKEY_LOCAL_MACHINE\SOFTWARE 컴퓨터\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node CLI 옵션 국룰 문자는 -, 문자열은 -- test.exe -p --name test 문자 하나로 축약이 가능한 경우 문자와 문자열 둘 다 가능하게 하자 t...</description>
+    <pubDate>Tue, 22 Apr 2025 12:15:27 GMT</pubDate>
   </item>
     </channel>
   </rss>
