@@ -1,6 +1,10 @@
 @use "./base.scss";
 @use "./variables.scss" as *;
 
+img {
+  margin: 0;
+}
+
 .page {
   // 페이지 메인 내용 부분
   & article {
