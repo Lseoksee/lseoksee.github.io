@@ -1,4 +1,3 @@
-
 import { QuartzConfig } from "./quartz/cfg"
 import * as Plugin from "./quartz/plugins"
 
@@ -67,7 +66,7 @@ const config: QuartzConfig = {
         },
         keepBackground: false,
       }),
-      Plugin.HardLineBreaks(),  // 단일 줄바꿈 허용
+      Plugin.HardLineBreaks(), // 단일 줄바꿈 허용
       Plugin.ObsidianFlavoredMarkdown({ enableInHtmlEmbed: false, enableListLineBreak: true }),
       Plugin.GitHubFlavoredMarkdown(),
       Plugin.TableOfContents(),
