@@ -38,6 +38,8 @@ export interface Options {
   parseArrows: boolean
   parseBlockReferences: boolean
   enableInHtmlEmbed: boolean
+  /** 리스트 형식 개행 나누기 허용 */
+  enableListLineBreak: boolean
   enableYouTubeEmbed: boolean
   enableVideoEmbed: boolean
   enableCheckbox: boolean
@@ -52,6 +54,7 @@ const defaultOptions: Options = {
   parseTags: true,
   parseArrows: true,
   parseBlockReferences: true,
+  enableListLineBreak: true,
   enableInHtmlEmbed: false,
   enableYouTubeEmbed: true,
   enableVideoEmbed: true,
@@ -558,6 +561,15 @@ export const ObsidianFlavoredMarkdown: QuartzTransformerPlugin<Partial<Options>>
                 }
               } else if (inlineTagTypes.has(node.tagName)) {
                 const last = node.children.at(-1) as Literal
+                if ((parent as Element)?.tagName == "li") {
+                  opts.enableListLineBreak
+                    ? (node.properties = {
+                        class: "list-content-line-break",
+                      })
+                    : (node.properties = {
+                        class: "list-content",
+                      })
+                }
                 if (last && last.value && typeof last.value === "string") {
                   const matches = last.value.match(blockReferenceRegex)
                   if (matches && matches.length >= 1) {

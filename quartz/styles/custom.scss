@@ -1,6 +1,20 @@
 @use "./base.scss";
+@use "./variables.scss" as *;
 
-// put your custom CSS here!
+.page {
+  // 페이지 메인 내용 부분
+  & article {
+    & .list-content-line-break:not(:first-child) {
+      margin: revert;
+    }
+    & li {
+      margin-top: $listMargin;
+      margin-bottom: $listMargin;
+    }
+  }
+}
+
+// github 코멘트 (giscus) 스타일 설정
 .giscus {
   margin-bottom: 1rem;
 }

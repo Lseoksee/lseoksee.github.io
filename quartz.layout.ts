@@ -15,8 +15,6 @@ export const sharedPageComponents: SharedLayout = {
         categoryId: "DIC_kwDOMxkRS84Cii-Y",
       },
     }),
-    Component.MobileOnly(Component.Backlinks()),
-    Component.MobileOnly(Component.Explorer()),
   ],
   footer: Component.Footer({
     links: {
@@ -42,29 +40,16 @@ export const defaultContentPageLayout: PageLayout = {
     Component.MobileOnly(Component.Spacer()),
     Component.Flex({
       components: [
-        {
-          Component: Component.Search(),
-          grow: true,
-        },
+        { Component: Component.Search(), grow: true },
         { Component: Component.Darkmode() },
         { Component: Component.ReaderMode() },
       ],
     }),
-    Component.Explorer({
-      sortFn(a, b) {
-        const A = /[가-힣]/.test(a.displayName)
-        const B = /[가-힣]/.test(b.displayName)
-
-        if (A && !B) return -1
-        if (!A && B) return 1
-
-        return a.displayName.localeCompare(b.displayName)
-      },
-    }),
+    Component.Explorer(),
   ],
   right: [
     Component.DesktopOnly(Component.TableOfContents()),
-    Component.DesktopOnly(Component.Backlinks()),
+    Component.Backlinks()
   ],
 }
 
@@ -76,10 +61,7 @@ export const defaultListPageLayout: PageLayout = {
     Component.MobileOnly(Component.Spacer()),
     Component.Flex({
       components: [
-        {
-          Component: Component.Search(),
-          grow: true,
-        },
+        { Component: Component.Search(), grow: true },
         { Component: Component.Darkmode() },
       ],
     }),
