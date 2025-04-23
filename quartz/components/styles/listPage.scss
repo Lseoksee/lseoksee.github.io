@@ -8,7 +8,10 @@ ul.section-ul {
 
   // 기본 h3가 너무 커서
   & h3 {
-    font-size: 1.15 * $mobileMainTextSize;
+    font-size: 1.15 * $desktopMainTextSize;
+    @media all and ($mobile) {
+      font-size: 1.15 * $mobileMainTextSize;
+    }
   }
 }
 
