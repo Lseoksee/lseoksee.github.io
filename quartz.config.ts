@@ -38,6 +38,8 @@ const config: QuartzConfig = {
           tertiary: "#84a59d",
           highlight: "rgba(143, 159, 169, 0.15)",
           textHighlight: "#fff23688",
+          //code라인 색상
+          shikiBg: "#fbfcfd",
         },
         darkMode: {
           light: "#161618",
@@ -49,6 +51,8 @@ const config: QuartzConfig = {
           tertiary: "#84a59d",
           highlight: "rgba(143, 159, 169, 0.15)",
           textHighlight: "#b3aa0288",
+          //code라인 색상
+          shikiBg: "#1e1e1e",
         },
       },
     },
