@@ -5,6 +5,13 @@ Obsidian 으로 스터디 한것들을 웹으로 배포합니다
 - 템플릿: [Quartz v4](https://github.com/jackyzha0/quartz)
 - 공식문서: https://quartz.jzhao.xyz
 
+## 개발 규칙
+
+- `base.scss`를 수정 해야 하는 경우 무조건 `custom.scss`로 수정 하자\
+   components의 스타일은 각각 스타일 시트를 수정하는걸로
+
+- `variables.scss`를 활용하여 전역 스타일 관리를 하자
+
 ## 템플릿 마이그레이션 방법
 
 > 템플릿 리포지토리는 포크와 달리 커밋이 동일하지 않아 upstream을 병합하기가 어렵다.

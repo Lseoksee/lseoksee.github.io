@@ -8,17 +8,116 @@ img {
 .page {
   // 페이지 메인 내용 부분
   & article {
+    /** 굵은 글씨 색상 */
+    & strong {
+      color: #ff82b2;
+    }
+    p > strong {
+      color: #ff82b2;
+    }
+
+    /** 리스트에 개행 허용 */
     & .list-content-line-break:not(:first-child) {
       margin: revert;
     }
+
+    /** 리스트 간 기본 마진 추가 */
     & li {
-      margin-top: $listMargin;
-      margin-bottom: $listMargin;
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+
+    /** Things 테마와 동일한 해더 색상으로 변경 */
+    & h2 {
+      border-bottom: 2px solid #35393e;
+    }
+    & h3 {
+      color: #2e80f2;
+    }
+    & h4 {
+      color: #e5b567;
+    }
+    & h5 {
+      color: #ff7b5c;
+    }
+
+    /** 메인 내용 본문 폰트 크기 설정 */
+    & tbody,
+    & li,
+    & p {
+      font-size: $desktopMainTextSize;
+      @media all and ($mobile) {
+        font-size: $mobileMainTextSize;
+      }
     }
   }
 }
 
-// github 코멘트 (giscus) 스타일 설정
+/** 메인 외 quartz 요소 폰트 크기 설정  */
+tbody,
+li,
+p {
+  font-size: $quartzContentSize;
+  @media all and ($mobile) {
+    font-size: $quartzContentSize;
+  }
+}
+
+/** 해더 폰트 크기 설정 */
+h1 {
+  font-size: 1.7 * $desktopMainTextSize;
+  @media all and ($mobile) {
+    font-size: 1.7 * $mobileMainTextSize;
+  }
+}
+h2 {
+  font-size: 1.5 * $desktopMainTextSize;
+  @media all and ($mobile) {
+    font-size: 1.5 * $mobileMainTextSize;
+  }
+}
+h3 {
+  font-size: 1.2 * $desktopMainTextSize;
+  @media all and ($mobile) {
+    font-size: 1.2 * $mobileMainTextSize;
+  }
+}
+h4 {
+  font-size: 1.1 * $desktopMainTextSize;
+  @media all and ($mobile) {
+    font-size: 1.1 * $mobileMainTextSize;
+  }
+}
+h5 {
+  font-size: 1 * $desktopMainTextSize;
+  @media all and ($mobile) {
+    font-size: 1 * $mobileMainTextSize;
+  }
+}
+h6 {
+  font-size: 0.9 * $desktopMainTextSize;
+  @media all and ($mobile) {
+    font-size: 0.9 * $mobileMainTextSize;
+  }
+}
+
+/** code 요소의 폰트 크기 변경 */
+code {
+  font-size: 0.875 * $desktopMainTextSize !important;
+  @media all and ($mobile) {
+    font-size: 0.875 * $mobileMainTextSize !important;
+  }
+}
+figure[data-rehype-pretty-code-figure] {
+  & > [data-rehype-pretty-code-title] {
+    font-size: 0.875 * $desktopMainTextSize;
+    @media all and ($mobile) {
+      font-size: 0.875 * $mobileMainTextSize;
+    }
+  }
+}
+
+/** github 코멘트 (giscus) 스타일 설정 */
 .giscus {
   margin-bottom: 1rem;
 }
