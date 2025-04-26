@@ -10,7 +10,7 @@
 $breakpoints: (
   mobile: 800px,
   // 실제 화면필드 길이는 +300수준
-  desktop: 1150px,
+  desktop: 1200px,
 );
 
 $mobile: "(max-width: #{map.get($breakpoints, mobile)})";
@@ -58,5 +58,13 @@ $desktopGrid: (
       "grid-sidebar-left grid-footer grid-sidebar-right"',
 );
 
-/** 여기서 부터는 내가 만든 것들*/
-$listMargin: 5px;
+/** 여기서 부터는 내가 만든 것들 */
+
+// 데스크탑 메인 콘텐츠 폰트 사이즈 (1.125rem = 18px)
+$desktopMainTextSize: 1.125rem;
+
+// 모바일 메인 콘텐츠 폰트 사이즈 (1rem = 16px)
+$mobileMainTextSize: 1rem;
+
+// 그 외 quartz 콘텐츠 기본 사이즈 (1rem = 16px)
+$quartzContentSize: 1rem;

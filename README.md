@@ -5,7 +5,37 @@ Obsidian 으로 스터디 한것들을 웹으로 배포합니다
 - 템플릿: [Quartz v4](https://github.com/jackyzha0/quartz)
 - 공식문서: https://quartz.jzhao.xyz
 
-## 사용법
+## 개발 규칙
+
+- `base.scss`를 수정 해야 하는 경우 무조건 `custom.scss`로 수정 하자\
+   components의 스타일은 각각 스타일 시트를 수정하는걸로
+
+- `variables.scss`를 활용하여 전역 스타일 관리를 하자
+
+## 템플릿 마이그레이션 방법
+
+> 템플릿 리포지토리는 포크와 달리 커밋이 동일하지 않아 upstream을 병합하기가 어렵다.
+
+먼저 `https://github.com/jackyzha0/quartz.git`을 remote로 추가하고
+
+`migration` 브랜치로 전환하고, 이 저장소 `v4`에 모든 변경사항을 가져와서 커밋한다.
+
+```bash
+git restore --source origin/v4 --staged --worktree
+commit -m <메시지>
+```
+
+이후 remote랑 병합을 진행한다.
+
+이후 이 저장소 `v4` 브렌치로 전환해서 아래 명령어를 통해 dev에 변경된 모든 사항을 가져온다
+
+```bash
+git restore --source origin/migration --staged --worktree
+```
+
+즉 메인 브랜치인 `v4`는 merge작업이 들어가지 않고 `migration`에서 작업 후 `v4` 브랜치에는 병합 작업된 변경 사항만 가져오는 거다.
+
+## 빌드 방법
 
 1. **리포지토리 복제**
 

@@ -4,6 +4,15 @@ ul.section-ul {
   list-style: none;
   margin-top: 2em;
   padding-left: 0;
+  white-space: nowrap;
+
+  // 기본 h3가 너무 커서
+  & h3 {
+    font-size: $desktopMainTextSize;
+    @media all and ($mobile) {
+      font-size: $mobileMainTextSize;
+    }
+  }
 }
 
 li.section-li {
