@@ -1,17 +1,23 @@
-code[data-theme*=" "] {
-  color: var(--shiki-light);
+pre {
   background-color: var(--shiki-light-bg);
+
+  & > code {
+    color: var(--shiki-light);
+  }
+
+  & span {
+    color: var(--shiki-light);
+  }
 }
 
-code[data-theme*=" "] span {
-  color: var(--shiki-light);
-}
-
-[saved-theme="dark"] code[data-theme*=" "] {
-  color: var(--shiki-dark);
+[saved-theme="dark"] pre {
   background-color: var(--shiki-dark-bg);
-}
 
-[saved-theme="dark"] code[data-theme*=" "] span {
-  color: var(--shiki-dark);
+  & > code {
+    color: var(--shiki-dark);
+  }
+
+  & span {
+    color: var(--shiki-dark);
+  }
 }
