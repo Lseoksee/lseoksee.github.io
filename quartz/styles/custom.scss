@@ -51,6 +51,21 @@ img {
       }
     }
   }
+
+  // 최상위 body
+  & > #quartz-body {
+    /** 테블릿 사이드 패딩 */
+    & .center,
+    & footer {
+      @media all and ($tablet) {
+        min-width: 0;
+        // .sidebar에 패딩 수치가 조정되면 여기서도 조정 필요
+        padding-right: 2rem;
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+  }
 }
 
 /** 메인 외 quartz 요소 폰트 크기 설정  */

@@ -28,7 +28,7 @@ $mobileGrid: (
   templateRows: "auto auto auto auto auto",
   templateColumns: "auto",
   rowGap: "5px",
-  columnGap: "5px",
+  columnGap: "0px",
   templateAreas:
     '"grid-sidebar-left"\
       "grid-header"\
@@ -40,7 +40,7 @@ $tabletGrid: (
   templateRows: "auto auto auto auto",
   templateColumns: "#{$sidePanelWidth} auto",
   rowGap: "5px",
-  columnGap: "50px",
+  columnGap: "0px",
   templateAreas:
     '"grid-sidebar-left grid-header"\
       "grid-sidebar-left grid-center"\
