@@ -17,7 +17,7 @@ const config: QuartzConfig = {
     },
     locale: "ko-KR",
     baseUrl: "https://lseoksee.github.io",
-    ignorePatterns: ["private", "templates", ".obsidian"],
+    ignorePatterns: ["private", "templates", ".obsidian", "*-pv.md"],
     defaultDateType: "created",
     theme: {
       fontOrigin: "googleFonts",
